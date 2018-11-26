@@ -26,7 +26,7 @@ if (isset($_GET[md5("controller")])){
 		if(empty($_SESSION)){
 			include('app/views/register.php');
 		if($_SERVER['REQUEST_METHOD'] == 'POST'){
-			echo'<script>alert(Your passwords do not match);</script>';
+			
 			if(isset($_POST['register_submit'])){	
 				if(trim($_POST['password']) != trim($_POST['password2'])){
 					
@@ -42,7 +42,7 @@ if (isset($_GET[md5("controller")])){
 					);
 					addUser($data);
 					header("Location: index.php?controller=".md5('login')); 
-						
+					echo "<script>demo.showNotification('top','right','Sucessfully registered');</script>";
 					}//end else
 
 				}//end if register submit

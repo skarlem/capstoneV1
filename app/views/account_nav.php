@@ -21,7 +21,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('map')?>">
+            <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('table')?>">
               <i class="material-icons">content_paste</i>
               <p>Table List</p>
             </a>
@@ -30,7 +30,7 @@
         
 
           <li class="nav-item">
-            <a class="nav-link" href="index.php?controller=map">
+            <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('map')?>">
               <i class="material-icons">location_ons</i>
               <p>Filter Map</p>
             </a>

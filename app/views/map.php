@@ -85,7 +85,8 @@ include_once('map_nav.php');
   </div>
 <!-- map-->
 <script type="text/javascript" src="app/js/map.js" onload="initMap()"></script>
-	
+<script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
+
 </body>
 
 

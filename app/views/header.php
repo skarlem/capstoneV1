@@ -49,4 +49,8 @@
     <link rel="stylesheet" href="./assets/css/styles.min.css">
 
 
+<!-- date picker -->
 
+    <link href="./assets/datepicker2/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="./assets/datepicker2/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./assets/datepicker2/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>

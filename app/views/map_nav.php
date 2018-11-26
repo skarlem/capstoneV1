@@ -42,10 +42,25 @@
                     <p>Start date</p>
                 </span>
               </div>
+              
                 <input type='text' class="form-control" id='dp1' value="01/01/2010" />
+            </div>
+            <div class="input-append date form_datetime" data-date="2013-02-21T15:25:00Z">
+            <input size="16" type="text" value="">
+            <span class="add-on"><i class="icon-remove"></i></span>
+            <span class="add-on"><i class="icon-calendar"></i></span>
             </div>
           </li>
           <br>
+          <script>
+    $("dp1").datetimepicker({
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        startDate: "2013-02-14 10:00",
+        minuteStep: 10
+    });
+</script>
            <li class="nav-item">
             <div class="input-group">
               <div class="input-group-prepend">
