@@ -30,13 +30,13 @@ include_once('map_nav.php');
                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
                   <input type="text" class="form-control" id="lng" name="lng" placeholder="Longitude">
                 </div>
-                <!--
+                
                             <div class="form-group input-group">
                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
                                  
                                  <div class="dropdown" >
                                   <h5>Select Incident Type</h5>
-                                   <select name="type">
+                                   <select name="type" id="type">
                                     <option value="Theft">Theft</option>
                                     <option value="Vehicular Incident">Vehicular Incident</option>
                                     <option value="Fire">Fire</option>
@@ -46,14 +46,9 @@ include_once('map_nav.php');
                                   </select>
                                   </div>
                             </div>
+                            <div class="dropdown">
 
-
--->
-
-                  <div class="form-group input-group">
-                                 <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                 <input type="text" class="form-control" name="type" placeholder="Type" >
-                             </div>
+                  
 
                               <div class="form-group input-group">
                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>

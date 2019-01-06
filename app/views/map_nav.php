@@ -60,6 +60,9 @@
         startDate: "2013-02-14 10:00",
         minuteStep: 10
     });
+    function returnDate(){
+      return new Date().getMonth()+"/"+new Date().getDay()+"/"+new Date().getFullYear();
+    }
 </script>
            <li class="nav-item">
             <div class="input-group">
@@ -68,7 +71,7 @@
                     <p>End date</p>
                 </span>
               </div>
-               <input type='text' class="form-control" id='dp2'value="12/31/2018" />
+               <input type='text' class="form-control" id='dp2'value="" />
             </div>
           </li>
         <br>

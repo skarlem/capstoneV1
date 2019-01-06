@@ -95,54 +95,56 @@ function clearMarkers(){
 }
 
 // get images per marker type
-function loadMarkerImg(jsonMap2,i){
+function loadMarkerImg(jsonMap2,i,button,button2,popupOptions)
+
+    {
                 if(jsonMap2[i][3]=='Theft'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon}) 
                       .bindPopup("<strong>Type: Theft"+"<br>"+
                        "Date: "+jsonMap2[i][4]+"<br>"+
-                        "Location: "+jsonMap2[i][5]+"</strong>"); 
+                        "Location: "+jsonMap2[i][5]+"</strong>"+button+button2,popupOptions); 
                       layer = L.layerGroup([marker]).addTo(map); 
                     }
                     else if(jsonMap2[i][3]=='Robbery'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon})
                       .bindPopup("<strong>Type: Robbery"+"<br>"+
                             "Date: "+jsonMap2[i][4]+"<br>"+
-                        "Location: "+jsonMap2[i][5]+"</strong>"); 
+                        "Location: "+jsonMap2[i][5]+"</strong>"+button+button2,popupOptions); 
                       layer = L.layerGroup([marker]).addTo(map); 
                     }
                     else if(jsonMap2[i][3]=='Physical Injury'){
                        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: injuryIcon})
                        .bindPopup("<strong>Type: Physical Injury"+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+
-                        "Location: "+jsonMap2[i][5]+"</strong>"); 
+                        "Location: "+jsonMap2[i][5]+"</strong>"+button+button2,popupOptions); 
                        layer = L.layerGroup([marker]).addTo(map); 
                     }
                     else if(jsonMap2[i][3]=='Fire Incident'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: fire})
                       .bindPopup("<strong>Type:Fire"+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+
-                        "Location: "+jsonMap2[i][5]+"</strong>"); 
+                        "Location: "+jsonMap2[i][5]+"</strong>"+button+button2); 
                      layer = L.layerGroup([marker]).addTo(map); 
                     }
                     else if(jsonMap2[i][3]=='Rape'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: sexualAssaultIcon})
                       .bindPopup("<strong>Type: "+jsonMap2[i][3]+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+
-                        "Location: "+jsonMap2[i][5])+"</strong>"; 
+                        "Location: "+jsonMap2[i][5]+"</strong>"+button+button2) ; 
                       layer = L.layerGroup([marker]).addTo(map); 
                     }
                     else if(jsonMap2[i][3]=='Animal Bite'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: animalBiteIcon})
                       .bindPopup("<strong>Type: "+jsonMap2[i][3]+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+
-                        "Location: "+jsonMap2[i][5]+"</strong>"); 
+                        "Location: "+jsonMap2[i][5]+"</strong>"+button+button2); 
                      layer = L.layerGroup([marker]).addTo(map); 
                     }
                     else if(jsonMap2[i][3]=='Vehicular Accident'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: vehicularIncidentIcon})
                       .bindPopup("<strong>Type: "+jsonMap2[i][3]+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+
-                        "Location: "+jsonMap2[i][5]+"</strong>"); 
+                        "Location: "+jsonMap2[i][5]+"</strong>"+button+button2); 
                     layer = L.layerGroup([marker]).addTo(map); 
                    }
                  
@@ -155,7 +157,15 @@ function getMarkers2(){
   var endDate = new Date(document.getElementById('dp2').value);
   var startDate = new Date(document.getElementById('dp1').value);
    var crime_type= document.getElementsByName('search_by_type');
-  if (startDate > endDate) {
+   var button = ' <br><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</button>';
+   var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">Remove </button>';
+  
+   var popupOptions ={
+    'maxWidth': '2000',
+    'className' : 'popupCustom' // classname for another popup
+  }
+  
+   if (startDate > endDate) {
     demo.showNotification('top','right',"Starting date must be greater than ending date");
    }
   else{
@@ -170,7 +180,7 @@ function getMarkers2(){
                   if( new Date(jsonMap2[i][4])>= startDate &&  new Date(jsonMap2[i][4]) <=endDate ){
                     console.table(jsonMap2[i]);
                     if(jsonMap2[i][6] == crime_type[j].value){
-                     loadMarkerImg(jsonMap2,i); 
+                     loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                      
                   }
                 }
@@ -216,8 +226,9 @@ function onMapClick(e){
     var startDate = document.getElementById('startDate');
     document.getElementById('lat').value= latitude;
     document.getElementById('lng').value= longitude;
-    document.getElementById('date').value= new Date().getMonth()+1+"/"+new Date().getDay()+"/"+new Date().getFullYear();
+    document.getElementById('date').value= new Date().getMonth()+"/"+new Date().getDay()+"/"+new Date().getFullYear();
     demo.showNotification('top','right','You popped a marker on the map');
+
    
 }
 

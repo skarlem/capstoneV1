@@ -9,8 +9,4 @@ if (isset($_GET[md5("controller")]) ) {
 else{
 	 header("Location: index.php?".md5("controller")."=".md5('login')); 	
 }
-
-
-
-
 ?>

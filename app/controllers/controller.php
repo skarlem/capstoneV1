@@ -69,14 +69,15 @@ if (isset($_GET[md5("controller")])){
 				$type= $_POST['type'];
 				$date = $_POST['date'];
 				$location = $_POST['location'];
-			//  $type_id = $_POST['type_id'];
+			  	$type_id = $_POST['type_id'];
 	
 			  $marker = array(
 							'lat' => $lat,
 							'lng' => $lng,
 							'type' => $type,
 							'date'=>$date,
-							'location'=>$location
+							'location'=>$location,
+							'type_id'=>$type_id
 	 
 				);
 				insertMarker($marker);
