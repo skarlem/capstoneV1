@@ -1,5 +1,5 @@
 pa hack sa system hahahha itry acess ang files sa mga directories
-ang sessions wala pa nako natarong so masulod ang mga views bisag di mag login :V
+ang sessions wala pa nako natarong so masulod ang mga views bisag di mag login
 ayaw hilabti ang .htacess files :3
 
 to setup the system 
@@ -7,3 +7,5 @@ to setup the system
 -iquery sa database ang app/models/sql.sql script para sa account kag markers
 
 register lang sang account then okay na mag login login :3
+
+update: okay na ang sessions and naka encrypt na sa md5 ang paging sa url
