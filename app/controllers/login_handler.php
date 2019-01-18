@@ -1,7 +1,8 @@
 <?php
+
 function loginAdmin($user, $password)
 {
-    $sql ="select * from admin";
+    $sql ="select * from public.admin";
     $ret = pg_query(getConn(), $sql);
     if (pg_num_rows($ret)===0) {
         echo pg_last_error($db);

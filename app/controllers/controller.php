@@ -3,10 +3,12 @@ require 'app/config/config.php';
 require 'app/models/marker_model.php';
 require 'app/models/admin_model.php';
 
+
 require_once('login_handler.php');
 
 
 if (isset($_GET[md5("controller")])){
+	
 	if( $_GET[md5("controller")] === md5('login' )) {
 		if(empty($_SESSION)){		
 			include('login.php');
@@ -18,7 +20,7 @@ if (isset($_GET[md5("controller")])){
 		}
 		
 		else{
-			header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
+			//header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
 		}
 	}//end if session id is empty
 
