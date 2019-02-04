@@ -54,15 +54,33 @@
                             Longitude
                           </th>
                           <th>
-                            Type
-                          </th>
-                          <th>
                             Date
                           </th>
                           <th>
-                            Location
+                            Location Description
                           </th>
-                          
+                          <th>
+                            Persons Involved
+                          </th>
+                          <th>
+                          Victim
+                          </th>
+                          <th>
+                          Suspect
+                          </th>
+                          <th>
+                          Incident Narrative
+                          </th>
+                          <th>
+                          Action Taken
+                          </th>
+                          <th>
+                            Classification
+                          </th>
+                          <th>
+                            Reported BY
+                          </th>
+                         
                           <th>
                             Action
                           </th>
@@ -72,22 +90,33 @@
                         <?php
                         
                         foreach( getMarkers()as $row ){
-                              $id = $row['id'];
+                              $id = $row['marker_id'];
                               $lat = $row['lat'];
                               $lng = $row['lng'];
-
-                              $type= $row['type'];
                               $date = $row['date'];
-                              $location = $row['location'];
-                              $type_id = $row['type_id'];      
+                              $location = $row['location_description'];
+                              $category = $row['category_desc'];
+                              $persons_involved= $row['persons_involved'];
+                              $victim = $row['victim'];
+                              $suspect =$row['suspect'];
+                              $incident_narrative=$row['incident_narrative'];
+                              $action_taken=$row['action_taken'];
+                              $reported_by=$row['reported_by'];
+                              $classification=$row['classification_desc'];
                           echo'
                           <tr>
                               <td>'.$id.'</td>
                               <td>'.$lat.'</td>
                               <td>'.$lng.'</td>
-                              <td>'.$type.'</td>
                               <td>'.$date.'</td>
                               <td>'.$location.'</td>
+                              <td>'.$persons_involved.'</td>
+                              <td>'.$victim.'</td>
+                              <td>'.$suspect.'</td>
+                              <td>'.$incident_narrative.'</td>
+                              <td>'.$action_taken.'</td>
+                              <td>'.$classification.'</td>
+                              <td>'.$reported_by.'</td>
                               <td style="width:100px;text-align:center">
                                   <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdit'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
                                   <a style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$id.'" title="Delete"><i class="fa fa-remove"></i></a>
@@ -104,7 +133,8 @@
                                           
                                           <div class="modal-body">
                                               <div class="col-lg-12">
-                                                  <form role="form" method="POST">
+                                             
+                                                  <form role="form" method="POST" >
                                                       <input type="hidden" name="edit_id" value="'.$id.'">
                                                       <div class="form-group input-group">
                                                           <span class="input-group-addon"><i class="fa fa-edit"></i></span>
@@ -116,10 +146,7 @@
                                                           <input type="text" class="form-control" name="lng" placeholder="Longitude" value="'.$lng.'">
                                                       </div>
 
-                                                      <div class="form-group input-group">
-                                                          <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                          <input type="text" class="form-control" name="type" placeholder="Crime Type" value="'.$type.'">
-                                                      </div>
+                                                        
                                                       <div class="form-group input-group">
                                                           <span class="input-group-addon"><i class="fa fa-edit"></i></span>
                                                           <input type="text" class="form-control" name="date" placeholder="Date" value="'.$date.'">
@@ -152,6 +179,7 @@
                                           
                                           <div class="modal-body">
                                               <div class="col-lg-12">
+                                             
                                                   <form role="form" method="POST">
                                                     Are you sure you want to delete this record?
                                                     <input type="hidden" name="delete_id" value="'.$id.'">

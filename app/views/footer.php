@@ -13,9 +13,12 @@
               document.write(new Date().getFullYear())
             </script>
            
-            <p class="text-center bg-info">Copyright (c) Team Bantay, MSU GSC</p>
-          </div>
-          <!-- your footer here -->
-        </div>
+         
 </footer>
+
+<script>
+				window.onload = function() {
+					history.replaceState("", "", window.location.href);
+				}
+</script>
 

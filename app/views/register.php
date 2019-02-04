@@ -14,7 +14,9 @@ include_once('header.php');
         <div class="form-group"><input type="Password" class="form-control" name="password2" placeholder="Confirm Password"  oninvalid="this.setCustomValidity('Confirm your password')" oninput="setCustomValidity('')" required>
         </div>
 
-        <div class="form-group"><button class="btn btn-primary btn-block" name="register_submit"type="submit">Register</button>
+        <div class="form-group"><button class="btn btn-primary btn-block" name="register_submit"type="submit"
+       onclick="swal({ title:"Good job!", text: "You clicked the button!", type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"})" 
+                   > Register</button>
         </div><a href="index.php" class="forgot">Back</a>
     </form>
 </div>

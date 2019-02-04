@@ -3,7 +3,7 @@
 
 function addUser($data){
 	//foreach ($data as $key => $users) {
-	    $res = pg_insert(getConn(), 'admin' , $data);
+	    $res = pg_insert(getConn(), 'public.admin' , $data);
 	    if ($res) {
 	      echo "Inserted user";
 	     // $is_inserted = true;
@@ -16,7 +16,7 @@ function addUser($data){
 }
 
 function getAccount($where){
-	$result = pg_query(getConn(), "SELECT * FROM admin where id='$where'");
+	$result = pg_query(getConn(), "SELECT * FROM public.admin where id='$where'");
 	if (!$result) {
 	    echo "An error occurred.\n";
 	    exit;
@@ -33,7 +33,7 @@ function getAccount($where){
 
 //update function
 function updateAccount($data,$where){
-	$res = pg_update(getConn(), 'admin', $data, $where);
+	$res = pg_update(getConn(), 'public.admin', $data, $where);
 	if ($res) {
 	  	//echo "Data is updated: $res";
 		$is_updated = true;
@@ -48,7 +48,7 @@ function updateAccount($data,$where){
 
 //delete function
 function deleteAdminn($where){
-	$res = pg_delete(getConn(), 'admin', $where);	
+	$res = pg_delete(getConn(), 'public.admin', $where);	
 	if ($res) {
 	  //echo "Deleted successfully.";
 	  $is_deleted = true;

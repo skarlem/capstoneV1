@@ -14,3 +14,6 @@ include_once('header.php');
         <div class="form-group"><button class="btn btn-primary btn-block" name='login'type="submit">Log In</button></div><a href="<?php echo "index.php?".md5("controller")."=".md5('register')?>" class="forgot">Register Here</a></form>
 
 </div>
+<?php
+include_once('footer.php');
+?>

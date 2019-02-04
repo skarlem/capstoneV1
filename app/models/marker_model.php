@@ -6,7 +6,31 @@ function getMarkers(){
 	$fp = fopen('app/controllers/results.json', 'w+');
 	$markers =array();
 
-	$result = pg_query(getConn(), "SELECT * FROM mapdata2");
+	$result = pg_query(getConn(), "
+	select marker_id,lat,lng,date,location_description,persons_involved,victim,suspect,incident_narrative,action_taken,classification_desc,category_desc,class_type,fullname as reported_by
+	from(
+		
+		(select f.marker_id,f.lat,f.lng,f.date,f.location_description,f.classification_id,f.persons_involved,f.victim,f.suspect,f.incident_narrative,f.action_taken,
+		 f.reported_by,g.fullname from crime_db.mapdata as f
+			natural join crime_db.accounts as g
+		 where f.reported_by = g.school_id
+		
+		
+		) as a
+	inner join 
+	
+	
+	(select b.classification_id,b.classification_desc,d.category_desc,c.class_type from crime_db.classification as b
+	
+	natural join crime_db.class_type as c
+	natural join crime_db.category as d
+	
+	where b.classification_id = 1) as b
+	
+	on a.classification_id = b.classification_id
+		
+	);
+	");
 	if (!$result) {
 	    echo "An error occurred.\n";
 	    exit;

@@ -29,7 +29,7 @@
 <script type="text/javascript" src="./assets/DataTables/datatables.min.js"></script>
 
 
- 
+<script src="./assets/js/plugins/moment.min.js"></script>
 
   <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
   <script src="./assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
@@ -50,10 +50,15 @@
 
 
 <!-- date picker -->
-
-    <link href="./assets/datepicker2/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-<script type="text/javascript" src="./assets/datepicker2/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="./assets/datepicker2/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script src="./assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
 
 <!-- marker css -->
 <link rel="stylesheet" href="./assets/marker.css">
+
+
+<!-- marker css -->
+<link rel="stylesheet" href="./assets/date.css">
+
+
+  <!--  Plugin for Sweet Alert -->
+  <script src="./assets/js/plugins/sweetalert2.js"></script>

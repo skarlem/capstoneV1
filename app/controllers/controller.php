@@ -32,9 +32,8 @@ if (isset($_GET[md5("controller")])){
 			if(isset($_POST['register_submit'])){	
 				if(trim($_POST['password']) != trim($_POST['password2'])){
 					
-					echo'<div class="alert alert-success">
-					Passwords do not match
-					</div>';
+					echo'<script> swal({ title:"Warning!", text: "Password do not match!", type: "success", 
+						buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
 				}//end if password is not equal
 				else{	
 					unset($_POST['password2']);
@@ -108,15 +107,26 @@ if (isset($_GET[md5("controller")])){
 	
 				$where = array("id" => $_POST['edit_id']);
 				 updateMarker($data,$where);
-				 header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
+				 
+				echo'<script> swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
+					buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
+				 exit();
 				
 			 }
 			 else if(isset($_POST['delete_submit'])){
+				
 				 $where = array("id" => $_POST['delete_id']);
 				 deleteMarker($where);
-				// echo '<script>window.location.href="index.php?controller='.md5('table').'</script>';
-				 header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
+				
+				echo'<script> swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
+					buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
+				// header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
+				exit;
+				 
 			 }
+			
+				
+			
 		}// end elseif for table
 	
 		elseif($_GET[md5("controller")]===md5('editAccount')){

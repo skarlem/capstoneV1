@@ -7,7 +7,7 @@ include_once('map_nav.php');
 <body>
 	
 	<div id="map"></div>
-      <!-- Modal -->
+      <!-- Modal insert-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -78,6 +78,42 @@ include_once('map_nav.php');
 </div>
     </div>
   </div>
+
+
+<!-- modal for remove marker -->
+<div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Delete Record</h4>
+        </div>
+        
+        <div class="modal-body">
+            <div class="col-lg-12">
+                <form role="form" method="POST">
+                  Are you sure you want to delete this record?
+                  <input type="hidden" name="delete_id" value="'.$id.'">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">No <i class="fa fa-refresh"></i></button>
+                <button type="submit" class="btn btn-danger" name="delete_submit" ><i class="fa fa-check"></i> Yes</button>
+            </div>
+        </div>
+      </form>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
 <!-- map-->
 <script type="text/javascript" src="app/js/map.js" onload="initMap()"></script>
 <script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>

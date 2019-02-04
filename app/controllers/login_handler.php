@@ -8,38 +8,45 @@ function loginAdmin($user, $password)
         echo pg_last_error($db);
         exit;
     } else {
+        
         while ($row = pg_fetch_array($ret)) {
             $pass = $row['password'];
             if ($user === $row['username']) {
                 if ($password === $pass) {
                     $_SESSION['id']=$row['id'];
+                    header("Location: index.php?".md5("controller")."=".md5('map'));
+                }
+
+
+                else{
                     echo
                     '
-                    <script>demo.showNotification("top","right",'.$_SESSION['id'].');</script>
+                    <script>
+                        demo.showNotification("top","right","Login Failed");
+                        
+                    </script>
+                    qweqweqwe
                 ';
-                header("Location: index.php?".md5("controller")."=".md5('map')); 
-                   
-                  
-                } //end if
-                else {
-                       echo
-                       '
-                       <script>demo.showNotification("top","right","Login Failed");</script>
-                   ';
-                  
-                }//end inner else
-            } //end inner if
+                   exit();
+                }//inner else end
 
-            else {
-                echo
-                '
-                <script>
-                    demo.showNotification("top","right","Login Failed");
-                    
-                </script>
-            ';
+
+
+                
+                } //end inner if
+                else {
+                    echo
+                    '
+                    <script>
+                        demo.showNotification("top","right","Login Failed");
+                        
+                    </script>
+                    asdasdasdasdasd
+                ';
+                   exit();
+                }//end outer else
             
-            }//end outer else
+            
         }//end while
     }//end else
 }

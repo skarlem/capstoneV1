@@ -32,28 +32,7 @@ var vehicularIncidentIcon = L.icon({
     iconUrl: './assets/img/vehicular-incident.png',
    
   });
-function loadbyDate(){
-    var startDate = document.getElementById('dp1').value;
-    var endDate = document.getElementById('dp2').value;
-
-     $('#dp1').on('dp.change', function(e){ 
-        startDate=0;
-     
-        startDate= document.getElementById('dp1').value; 
-     //   $.post('controller_map/controller2.php', {var1: startDate, var2: endDate});
-        
-    });
-     $('#dp2').on('dp.change', function(e){
-        startDate=0; 
-        endDate= document.getElementById('dp2').value; 
-      //  $.post('controller_map/controller2.php', {var1: startDate, var2: endDate});
-    });
-      console.log(endDate);
-      console.log(startDate);
-    //  $.post('controller_map/controller.php', {var1: startDate, var2: endDate});
-        getMarkers2();
-     
-}
+  
 function loadMarkersbyType(){
     var crime_type= document.getElementsByName('search_by_type');
     var counter =0;
@@ -158,7 +137,7 @@ function getMarkers2(){
   var startDate = new Date(document.getElementById('dp1').value);
    var crime_type= document.getElementsByName('search_by_type');
    var button = ' <br><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</button>';
-   var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">Remove </button>';
+   var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
   
    var popupOptions ={
     'maxWidth': '2000',
@@ -227,9 +206,9 @@ function onMapClick(e){
     document.getElementById('lat').value= latitude;
     document.getElementById('lng').value= longitude;
     document.getElementById('date').value= new Date().getMonth()+"/"+new Date().getDay()+"/"+new Date().getFullYear();
-    demo.showNotification('top','right','You popped a marker on the map');
-
-   
+    $('#exampleModal').modal('show');
+  // swal({ title:"Hey!", text: "You put a marker on the map! Click the marker!", type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"});
+  // demo.showSwal('warning-message-and-confirmation');
 }
 
 
