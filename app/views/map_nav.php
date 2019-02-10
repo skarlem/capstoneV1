@@ -14,7 +14,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item  ">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('dashboard')?>">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
@@ -43,7 +43,7 @@
                 </span>
               </div>
  
-              <input type="text" class="form-control datetimepicker" id="dp1"class="btn btn-secondary" 
+              <input type="text" class="form-control datetimepicker" id="dp1" class="btn btn-secondary" 
               data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
            </li>
           

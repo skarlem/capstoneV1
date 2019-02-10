@@ -43,4 +43,8 @@ var table =$('#dataTables-example').DataTable( {
 
 );
  
+$(document).ready(function() {
+    $('#dataTables-example-2').DataTable();
+} );
+
 

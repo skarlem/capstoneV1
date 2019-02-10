@@ -19,46 +19,76 @@ include_once('map_nav.php');
       </div>
       <div class="modal-body">
          <div class="col-lg-12">
+
+
             <form role="form" method="POST">
+
               <input type="hidden" name="edit_id" value="'.$id.'">
+              
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                  <input type="text" class="form-control" id="lat" name="lat" placeholder="Latitude">
+                  <input type="text" class="form-control" id="lat" name="lat" placeholder="Latitude" readonly>
                 </div>
                 
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                  <input type="text" class="form-control" id="lng" name="lng" placeholder="Longitude">
+                  <input type="text" class="form-control" id="lng" name="lng" placeholder="Longitude" readonly>
                 </div>
                 
-                            <div class="form-group input-group">
-                                 <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                 
-                                 <div class="dropdown" >
-                                  <h5>Select Incident Type</h5>
-                                   <select name="type" id="type">
-                                    <option value="Theft">Theft</option>
-                                    <option value="Vehicular Incident">Vehicular Incident</option>
-                                    <option value="Fire">Fire</option>
-                                    <option value="Physical Injuries">Physical Injuries</option>
-                                    <option value="Animal Bite">Animal Bite</option>
-                                    <option value="Sexual Harassment">Sexual Harassment</option>
-                                  </select>
-                                  </div>
-                            </div>
-                            <div class="dropdown">
-
-                  
-
-                              <div class="form-group input-group">
-                                 <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                 <input type="text" class="form-control" id="date" name="date" placeholder="Date" >
-                             </div>
-                              <div class="form-group input-group">
-                                <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                <input type="text" class="form-control" name="location" placeholder="Location Description" >
-                             </div>
+ 
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <input type="text" class="form-control datetimepicker2" id="date" class="btn btn-secondary" 
+              data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
                 </div>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <input type="text" class="form-control" name="location" placeholder="Location Description" >
+                </div>
+
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <input type="text" class="form-control" id="victim" name="victim" placeholder="Victim">
+                </div>
+                
+
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <input type="text" class="form-control" id="suspect" name="suspect" placeholder="Suspect">
+                </div>
+
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <input type="text" class="form-control" id="incident_nar" name="incident_nar" placeholder="Incident Narrative">
+                </div>
+
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <input type="text" class="form-control" id="action_taken" name="action_taken" placeholder="Action Taken">
+                </div> 
+
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <input type="text" class="form-control" id="persons_involved" name="persons_involved" placeholder="Persons Involved">
+                </div>          
+
+              <div class="form-group input-group">
+                 
+                  <label for="exampleFormControlSelect1">Example select</label>
+                  <select class="form-control selectpicker" data-style="btn btn-link" id="classification" name="classification">
+                    <option >Incident Classification</option>
+                    <option value='1'>Armed Robberies</option>
+                    <option value='2'> </option>
+                    <option value='3'></option>
+                   
+                  </select>               
+              </div>
+
+              <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <input type="text" class="form-control" id="reported_by" name="reported_by" placeholder="Reported By(optional)">
+                </div>
+
                  <div class="modal-footer">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-primary" name="add_marker" >

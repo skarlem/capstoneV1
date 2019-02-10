@@ -1,5 +1,4 @@
 <?php
-
 function loginAdmin($user, $password)
 {
     $sql ="select * from public.admin";
@@ -12,28 +11,22 @@ function loginAdmin($user, $password)
         while ($row = pg_fetch_array($ret)) {
             $pass = $row['password'];
             if ($user === $row['username']) {
+                echo
+                '
+             
+                asdasdasdasdasd21312312312312
+            ';
                 if ($password === $pass) {
                     $_SESSION['id']=$row['id'];
-                    header("Location: index.php?".md5("controller")."=".md5('map'));
+                    header("Location: index.php?".md5("controller")."=".md5('dashboard'));
                 }
-
-
                 else{
-                    echo
-                    '
-                    <script>
-                        demo.showNotification("top","right","Login Failed");
-                        
-                    </script>
-                    qweqweqwe
-                ';
-                   exit();
+                   
                 }//inner else end
-
-
-
                 
                 } //end inner if
+
+
                 else {
                     echo
                     '
@@ -45,8 +38,6 @@ function loginAdmin($user, $password)
                 ';
                    exit();
                 }//end outer else
-            
-            
         }//end while
     }//end else
 }

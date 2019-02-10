@@ -1,4 +1,4 @@
-  <div class="wrapper ">
+<div class="wrapper ">
     <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -14,7 +14,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item  ">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('dashboard')?>">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
@@ -26,8 +26,7 @@
               <p>Table List</p>
             </a>
           </li>
-          
-         
+
           <li class="nav-item">
             <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('map')?>">
               <i class="material-icons">location_ons</i>

@@ -24,8 +24,7 @@ function getMarkers(){
 	
 	natural join crime_db.class_type as c
 	natural join crime_db.category as d
-	
-	where b.classification_id = 1) as b
+	) as b
 	
 	on a.classification_id = b.classification_id
 		
@@ -77,7 +76,7 @@ function deleteMarker($where){
 //insert function
 	function insertMarker($data){
 	//foreach ($data as $key => $users) {
-	    $res = pg_insert(getConn(), 'mapdata2' , $data);
+	    $res = pg_insert(getConn(), 'crime_db.mapdata' , $data);
 	    if ($res) {
 	      echo "Inserted user";
 	     // $is_inserted = true;

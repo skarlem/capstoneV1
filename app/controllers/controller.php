@@ -15,7 +15,7 @@ if (isset($_GET[md5("controller")])){
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$user =  $_POST['username'];
 				$password =  $_POST['password'];
-				loginAdmin($user,md5($password));
+				loginAdmin($user,$password);
 			}
 		}
 		
@@ -66,21 +66,31 @@ if (isset($_GET[md5("controller")])){
 			  //  $id = $_POST['id'];
 				$lat = $_POST['lat'];
 				$lng = $_POST['lng'];
-	
-				$type= $_POST['type'];
-				$date = $_POST['date'];
 				$location = $_POST['location'];
-			  	$type_id = $_POST['type_id'];
-	
-			  $marker = array(
+				
+				$date = $_POST['date'];
+				$victim= $_POST['victim'];
+				$suspect = $_POST['suspect'];
+				$indicent_narrative = $_POST['incident_nar'];
+				$action_taken = $_POST['action_taken'];
+				(int)$classification = $_POST['classification'];
+				$reported_by = $_POST['reported_by'];
+				$persons_involved = $_POST['persons_involved'];
+			  	$marker = array(
 							'lat' => $lat,
 							'lng' => $lng,
-							'type' => $type,
-							'date'=>$date,
-							'location'=>$location,
-							'type_id'=>$type_id
+							'date' => $date,
+							'location_description'=>$location,
+							'classification_id'=>$classification,
+							'persons_involved'=>$persons_involved,
+							'victim'=>$victim,
+							'suspect'=>$suspect,
+							'incident_narrative'=>$indicent_narrative,
+							'action_taken'=>$action_taken,
+							'reported_by'=>$reported_by
 	 
 				);
+
 				insertMarker($marker);
 				echo '<script>demo.showNotification("top","right","Insert Successful")</script>';
 			}
@@ -133,6 +143,14 @@ if (isset($_GET[md5("controller")])){
 			include('app/views/account.php');
 			$_SESSION['page']=md5('editAccount');
 		}//end elseif for edit account
+
+
+		elseif($_GET[md5("controller")]===md5('dashboard')){
+			include('app/views/dashboard.php');
+		}
+		elseif($_GET[md5("controller")]===md5('manage_report')){
+			include('app/views/report.php');
+		}
 	}//end else for session id
 	
 

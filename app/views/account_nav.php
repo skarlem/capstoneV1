@@ -14,7 +14,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item  ">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('dashboard')?>">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
