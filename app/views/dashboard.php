@@ -1,7 +1,6 @@
 <?php 
-include('header.php');
-include('dashboard_nav.php');
-
+include_once('header.php');
+include_once('dashboard_nav.php');
 ?>
 
       <div class="content">
@@ -105,7 +104,7 @@ include('dashboard_nav.php');
                           </div>
                           </div>
                           <div class="col-md-6 ml-auto mr-auto">
-                            <div id="worldMap" style="height: 300px;"></div>
+                            <div id="map" style="height: 350px;"></div>
                           </div>
                           </div>
                           </div>
@@ -480,5 +479,9 @@ include('dashboard_nav.php');
               </div>
       </div>
     </div>
+    
+<!-- map-->
+<script type="text/javascript" src="app/js/map.js" onload="initMap()"></script>
+<script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
   <!-- datables for our table -->
   <script src="app/js/datatables.js"></script>

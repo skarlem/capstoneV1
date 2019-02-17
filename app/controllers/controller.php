@@ -1,4 +1,5 @@
 <?php
+
 require 'app/config/config.php';
 require 'app/models/marker_model.php';
 require 'app/models/admin_model.php';
@@ -6,15 +7,14 @@ require 'app/models/admin_model.php';
 
 require_once('login_handler.php');
 
-
-if (isset($_GET[md5("controller")])){
-	
+if (isset($_GET[md5("controller")])){	
 	if( $_GET[md5("controller")] === md5('login' )) {
-		if(empty($_SESSION)){		
+		if(empty($_SESSION)){
+			session_start();		
 			include('login.php');
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$user =  $_POST['username'];
-				$password =  $_POST['password'];
+				$password =  md5($_POST['password']);
 				loginAdmin($user,$password);
 			}
 		}
@@ -98,6 +98,7 @@ if (isset($_GET[md5("controller")])){
 		elseif($_GET[md5("controller")]===md5('table')){
 			include('app/views/markers.php');
 			$_SESSION['page']=md5('table');
+			
 			if(isset($_POST['edit_submit'])){
 				
 				$lat = $_POST['lat'];

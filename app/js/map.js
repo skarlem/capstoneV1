@@ -74,52 +74,50 @@ function clearMarkers(){
 }
 
 // get images per marker type
-function loadMarkerImg(jsonMap2,i,button,button2,popupOptions)
-
-    {
-                if(jsonMap2[i][3]=='Theft'){
+function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
+                if(jsonMap2[i][11]=='Theft'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon}) 
                       .bindPopup("<strong>Type: Theft"+"<br>"+
                        "Date: "+jsonMap2[i][4]+"<br>"+
                         "Location: "+jsonMap2[i][5]+"</strong>"+button+button2,popupOptions); 
                       layer = L.layerGroup([marker]).addTo(map); 
                     }
-                    else if(jsonMap2[i][3]=='Robbery'){
+                    else if(jsonMap2[i][11]=='Robbery'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon})
                       .bindPopup("<strong>Type: Robbery"+"<br>"+
                             "Date: "+jsonMap2[i][4]+"<br>"+
                         "Location: "+jsonMap2[i][5]+"</strong>"+button+button2,popupOptions); 
                       layer = L.layerGroup([marker]).addTo(map); 
                     }
-                    else if(jsonMap2[i][3]=='Physical Injury'){
+                    else if(jsonMap2[i][11]=='Physical Injury'){
                        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: injuryIcon})
                        .bindPopup("<strong>Type: Physical Injury"+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+
                         "Location: "+jsonMap2[i][5]+"</strong>"+button+button2,popupOptions); 
                        layer = L.layerGroup([marker]).addTo(map); 
                     }
-                    else if(jsonMap2[i][3]=='Fire Incident'){
+                    else if(jsonMap2[i][11]=='Fire Incident'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: fire})
                       .bindPopup("<strong>Type:Fire"+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+
                         "Location: "+jsonMap2[i][5]+"</strong>"+button+button2); 
                      layer = L.layerGroup([marker]).addTo(map); 
                     }
-                    else if(jsonMap2[i][3]=='Rape'){
+                    else if(jsonMap2[i][11]=='Rape'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: sexualAssaultIcon})
                       .bindPopup("<strong>Type: "+jsonMap2[i][3]+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+
                         "Location: "+jsonMap2[i][5]+"</strong>"+button+button2) ; 
                       layer = L.layerGroup([marker]).addTo(map); 
                     }
-                    else if(jsonMap2[i][3]=='Animal Bite'){
+                    else if(jsonMap2[i][11]=='Animal Bite'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: animalBiteIcon})
                       .bindPopup("<strong>Type: "+jsonMap2[i][3]+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+
                         "Location: "+jsonMap2[i][5]+"</strong>"+button+button2); 
                      layer = L.layerGroup([marker]).addTo(map); 
                     }
-                    else if(jsonMap2[i][3]=='Vehicular Accident'){
+                    else if(jsonMap2[i][11]=='Vehicular Accident'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: vehicularIncidentIcon})
                       .bindPopup("<strong>Type: "+jsonMap2[i][3]+"<br>"+
                              "Date: "+jsonMap2[i][4]+"<br>"+

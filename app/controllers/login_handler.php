@@ -7,18 +7,16 @@ function loginAdmin($user, $password)
         echo pg_last_error($db);
         exit;
     } else {
-        
+        $cont = md5('controller');
+        $dsh = md5('dashboard');
         while ($row = pg_fetch_array($ret)) {
             $pass = $row['password'];
             if ($user === $row['username']) {
-                echo
-                '
-             
-                asdasdasdasdasd21312312312312
-            ';
                 if ($password === $pass) {
                     $_SESSION['id']=$row['id'];
-                    header("Location: index.php?".md5("controller")."=".md5('dashboard'));
+                  //  header("Location: index.php?".md5("controller")."=".md5('dashboard'));
+                    echo("<script>location.href = 'index.php?$cont=$dsh';</script>");
+                    exit();
                 }
                 else{
                    
@@ -27,14 +25,14 @@ function loginAdmin($user, $password)
                 } //end inner if
 
 
-                else {
-                    echo
-                    '
-                    <script>
-                        demo.showNotification("top","right","Login Failed");
+            else {
+                echo
+                '
+                <script>
+                    demo.showNotification("top","right","Login Failed");
                         
-                    </script>
-                    asdasdasdasdasd
+                </script>
+                asdasdasdasdasd
                 ';
                    exit();
                 }//end outer else
