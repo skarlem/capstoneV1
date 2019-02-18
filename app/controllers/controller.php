@@ -24,6 +24,9 @@ if (isset($_GET[md5("controller")])){
 		}
 	}//end if session id is empty
 
+
+
+	
 	elseif ($_GET[md5("controller")]===md5('register')) {
 		if(empty($_SESSION)){
 			include('app/views/register.php');

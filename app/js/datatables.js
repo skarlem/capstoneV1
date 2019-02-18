@@ -9,10 +9,6 @@ var table =$('#dataTables-example').DataTable( {
 		title: 'Incident Report',
 		exportOptions: {
 		columns: ':not(:last-child)',},
-		action: function ( e, dt, node, config ) {
-			swal({ title:"Hey!", text: "You put a marker on the map! Click the marker!", type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"});
-			
-		}
     },
     {
     	extend: 'pdfHtml5',
