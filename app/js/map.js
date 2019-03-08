@@ -9,7 +9,7 @@ var crime_type_value=['0001','0010','0011','0100','0101'];
 var types=['Theft','Animal Bite','Vehicular Incident','Fire','Physical Injury', 'Sexual Assault'];
 
 var theftIcon = L.icon({
-    iconUrl: './assets/img/theft.png',
+    iconUrl: './assets/img/new_logo.png',
 });
 var injuryIcon = L.icon({
     iconUrl: './assets/img/physical-injury.png',
@@ -33,26 +33,9 @@ var vehicularIncidentIcon = L.icon({
    
   });
   
-function loadMarkersbyType(){
-    var crime_type= document.getElementsByName('search_by_type');
-    var counter =0;
-    var endDate = new Date(document.getElementById('dp2').value);
-    var startDate = new Date(document.getElementById('dp1').value);
-        for( var x=0; x<crime_type.length; x++){
-             if(crime_type[x].checked){
-                    finalMarkers[x]=crime_type[x].value;
-             } 
-              else{
-                finalMarkers[x]=0;
-             }   
-        }
-        console.log(finalMarkers);
-         console.log(counter);
-      
-}
 function initMap(){
     var location = '';
-            map= L.map(document.getElementById("map")).setView([6.06622,125.12530], 18);
+            map= L.map(document.getElementById("map")).setView([6.06622,125.12530], 16);
                 mapLink = 
                         '<a href="http://openstreetmap.org">OpenStreetMap</a>';
                 L.tileLayer(
@@ -60,10 +43,41 @@ function initMap(){
                         attribution: 'Map data &copy; ' + mapLink,
                         maxZoom: 25,
                         }).addTo(map);
-               map.on('click', onMapClick);
-               getMarkers2();
+              map.on('click', onMapClick);
+              getMarkers2();
+              satView();
   
 }
+
+function satView(){
+  var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+});
+var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+  maxZoom: 20,
+  subdomains:['mt0','mt1','mt2','mt3']
+});
+var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+  maxZoom: 20,
+  subdomains:['mt0','mt1','mt2','mt3']
+});
+
+var osm = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
+
+var baseMaps = {
+    "OpenStreetMap": osm,
+    "StreetView": googleStreets,
+    "SatelliteView": googleSat,
+    "Hybrid":googleHybrid
+};
+
+
+
+L.control.layers(baseMaps, {position: 'bottomleft'}).addTo(map);
+}
+
+
 function clearMarkers(){
    map.eachLayer(function (layer) {
          map.removeLayer(layer);
@@ -78,10 +92,17 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
                 if(jsonMap2[i][11]=='Theft'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon}) 
                       .bindPopup("<strong>Type: Theft"+"<br>"+
-                       "Date: "+jsonMap2[i][4]+"<br>"+
-                        "Location: "+jsonMap2[i][5]+"</strong>"+button+button2,popupOptions); 
+                            "Date: "+jsonMap2[i][3]+"<br>"+
+                        "Location: "+jsonMap2[i][4]+"<br>"+
+                        "Classification:"+jsonMap2[i][10]+"<br>"+
+                        "Type:"+jsonMap2[i][12]+"<br>"+
+                        "Reported by:"+jsonMap2[i][13]+"<br>"+
+                        "</strong>"+
+                        button+button2,popupOptions); 
                       layer = L.layerGroup([marker]).addTo(map); 
                     }
+
+/*
                     else if(jsonMap2[i][11]=='Robbery'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon})
                       .bindPopup("<strong>Type: Robbery"+"<br>"+
@@ -124,13 +145,14 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
                         "Location: "+jsonMap2[i][5]+"</strong>"+button+button2); 
                     layer = L.layerGroup([marker]).addTo(map); 
                    }
+                   */
                  
 }
 
 
 //load the markers
 function getMarkers2(){
-  loadMarkersbyType();
+ 
   var endDate = new Date(document.getElementById('dp2').value);
   var startDate = new Date(document.getElementById('dp1').value);
    var crime_type= document.getElementsByName('search_by_type');
@@ -154,12 +176,12 @@ function getMarkers2(){
             for(var i=0; i<jsonMap2.length; i++){
               for(var j=0; j<crime_type.length; j++){
                 if (crime_type[j].checked == true) {
-                  if( new Date(jsonMap2[i][4])>= startDate &&  new Date(jsonMap2[i][4]) <=endDate ){
+                  if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
                     console.table(jsonMap2[i]);
-                    if(jsonMap2[i][6] == crime_type[j].value){
+                   // if(jsonMap2[i][6] == crime_type[j].value){
                      loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                      
-                  }
+                  //}
                 }
               }
             }

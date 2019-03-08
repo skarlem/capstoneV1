@@ -38,7 +38,7 @@ include_once('map_nav.php');
  
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                  <input type="text" class="form-control datetimepicker2" id="date" class="btn btn-secondary" 
+                  <input type="text" class="form-control datetimepicker2" name="date" id="date" class="btn btn-secondary" 
               data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
                 </div>
                 <div class="form-group input-group">

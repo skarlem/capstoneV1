@@ -35,151 +35,151 @@
             </a>
           </li>
 <br>
+            <li class="nav-item">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <p>Start date</p>
+                  </span>
+                </div>
+  
+                <input type="text" class="form-control datetimepicker" id="dp1" class="btn btn-secondary" 
+                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
+            </li>
+            
+            <li class="nav-item">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <p>End date</p>
+                  </span>
+                </div>
+                <input type="text" class="form-control datetimepicker" id="dp2"class="btn btn-secondary" 
+                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
+              </div>
+            </li>
+          <br>
           <li class="nav-item">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <p>Start date</p>
+            
+          <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="checkAll()" id="checkAll" type="checkbox">
+                      Select All
+                    <span class="form-check-sign">
+                  <span class="check"></span>
                 </span>
-              </div>
- 
-              <input type="text" class="form-control datetimepicker" id="dp1" class="btn btn-secondary" 
-              data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
-           </li>
-          
-          <li class="nav-item">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <p>End date</p>
-                </span>
-              </div>
-              <input type="text" class="form-control datetimepicker" id="dp2"class="btn btn-secondary" 
-              data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
+              </label>
             </div>
-          </li>
-        <br>
-        <li class="nav-item">
-           
-        <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">      
-                </span>
               </div>
-               <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input"  onclick="checkAll()" id="checkAll" type="checkbox">
-                    Select All
-                  <span class="form-check-sign">
-                <span class="check"></span>
-              </span>
-            </label>
-          </div>
-            </div>
 
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">      
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="0">
+                      Theft
+                    <span class="form-check-sign">
+                  <span class="check"></span>
                 </span>
-              </div>
-               <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input"  onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="0">
-                    Theft
-                  <span class="form-check-sign">
-                <span class="check"></span>
-              </span>
-            </label>
-          </div>
+              </label>
             </div>
+              </div>
 
-             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">      
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="1">
+                      Vehicular Incident
+                    <span class="form-check-sign">
+                  <span class="check"></span>
                 </span>
-              </div>
-               <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input"  onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="1">
-                    Vehicular Incident
-                  <span class="form-check-sign">
-                <span class="check"></span>
-              </span>
-            </label>
-          </div>
+              </label>
             </div>
-             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">      
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="2">
+                      Fire
+                    <span class="form-check-sign">
+                  <span class="check"></span>
                 </span>
-              </div>
-               <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="2">
-                    Fire
-                  <span class="form-check-sign">
-                <span class="check"></span>
-              </span>
-            </label>
-          </div>
+              </label>
             </div>
+              </div>
 
-             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">      
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="3">
+                      Physical Injuries
+                    <span class="form-check-sign">
+                  <span class="check"></span>
                 </span>
-              </div>
-               <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="3">
-                    Physical Injuries
-                  <span class="form-check-sign">
-                <span class="check"></span>
-              </span>
-            </label>
-          </div>
+              </label>
             </div>
+              </div>
 
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">      
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="4">
+                    Animal Bite
+                    <span class="form-check-sign">
+                  <span class="check"></span>
                 </span>
-              </div>
-               <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="4">
-                   Animal Bite
-                  <span class="form-check-sign">
-                <span class="check"></span>
-              </span>
-            </label>
-          </div>
+              </label>
             </div>
+              </div>
 
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">      
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="5">
+                    Sexual Harassment
+                    <span class="form-check-sign">
+                  <span class="check"></span>
                 </span>
-              </div>
-               <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type" type="checkbox" value="5">
-                   Sexual Harassment
-                  <span class="form-check-sign">
-                <span class="check"></span>
-              </span>
-            </label>
-          </div>
+              </label>
             </div>
+              </div>
 
-          </li>
+            </li>
 
-          <li class="nav-item active" onclick="clearMarkers()">
-            <a class="nav-link">
-              <i class="material-icons">done</i>
-              <p>Save Changes</p>
-            </a>
-          </li>
+            <li class="nav-item active" onclick="clearMarkers()">
+              <a class="nav-link">
+                <i class="material-icons">done</i>
+                <p>Save Changes</p>
+              </a>
+            </li>
         
 
         </ul>

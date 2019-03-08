@@ -15,10 +15,8 @@ function getMarkers(){
 			natural join crime_db.accounts as g
 		 where f.reported_by = g.school_id
 		
-		
 		) as a
 	inner join 
-	
 	
 	(select b.classification_id,b.classification_desc,d.category_desc,c.class_type from crime_db.classification as b
 	
@@ -47,13 +45,13 @@ function getMarkers(){
 
 //update function
 function updateMarker($data,$where){
-	$res = pg_update(getConn(), 'mapdata2', $data, $where);
+	$res = pg_update(getConn(), 'crime_db.mapdata', $data, $where);
 	if ($res) {
-	  	//echo "Data is updated: $res";
+	  	echo "Data is updated: $res";
 		$is_updated = true;
 	} else {
-		 //echo "error in input.. <br />";
-		 //echo pg_last_error($conn);
+		 echo "error in input.. <br />";
+		 
 		$is_updated = false;
 	}
 	return $is_updated;
@@ -62,7 +60,7 @@ function updateMarker($data,$where){
 
 //delete function
 function deleteMarker($where){
-	$res = pg_delete(getConn(), 'mapdata2', $where);	
+	$res = pg_delete(getConn(), 'crime_db.mapdata', $where);	
 	if ($res) {
 	  //echo "Deleted successfully.";
 	  $is_deleted = true;

@@ -105,21 +105,33 @@ if (isset($_GET[md5("controller")])){
 			if(isset($_POST['edit_submit'])){
 				
 				$lat = $_POST['lat'];
-				   $lng = $_POST['lng'];
-	
-				$type= $_POST['type'];
-				$date = $_POST['date'];
+				$lng = $_POST['lng'];
 				$location = $_POST['location'];
+				
+				$date = $_POST['date'];
+				$victim= $_POST['victim'];
+				$suspect = $_POST['suspect'];
+				$indicent_narrative = $_POST['incident_narrative'];
+				$action_taken = $_POST['action_taken'];
+				$classification = $_POST['classification'];
+				$reported_by = $_POST['reported_by'];
+				$persons_involved = $_POST['persons_involved'];
+			  	$data = array(
+							'lat' => $lat,
+							'lng' => $lng,
+							'date' => $date,
+							'location_description'=>$location,
+							'classification_id'=>$classification,
+							'persons_involved'=>$persons_involved,
+							'victim'=>$victim,
+							'suspect'=>$suspect,
+							'incident_narrative'=>$indicent_narrative,
+							'action_taken'=>$action_taken,
+							'reported_by'=>$reported_by
+	 
+				);
 	
-				  $data = array(
-					'lat' => $lat,
-					'lng' => $lng,
-					'type' => $type,
-					'date'=>$date,
-					'location'=>$location             
-				   );
-	
-				$where = array("id" => $_POST['edit_id']);
+				$where = array("marker_id" => $_POST['edit_id']);
 				 updateMarker($data,$where);
 				 
 				echo'<script> swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
