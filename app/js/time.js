@@ -17,7 +17,7 @@ $('.datetimepicker').datetimepicker({
 });
 $(function() {
     $('#datetimepicker2').datetimepicker({
-      language: 'pt-BR'
-    });
+              language: 'pt-BR'
+      });
   });
   

@@ -102,6 +102,7 @@
                               $action_taken=$row['action_taken'];
                               $reported_by=$row['reported_by'];
                               $classification=$row['classification_desc'];
+                              
                           echo'
                           <tr>
                               <td>'.$id.'</td> 
@@ -215,7 +216,7 @@
                                           <button type="submit" class="btn btn-danger" name="delete_submit" ><i class="fa fa-check"></i> Yes</button>
                                       </div>
                                   </div>
-                                </form>
+                                        </form>
                               </div>
                           </div>
                       </div>

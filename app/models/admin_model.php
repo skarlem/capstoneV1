@@ -6,7 +6,7 @@ function addUser($data){
 	    $res = pg_insert(getConn(), 'public.admin' , $data);
 	    if ($res) {
 	      echo "Inserted user";
-	     // $is_inserted = true;
+	      $is_inserted = true;
 	    } else {
 	      echo pg_last_error(getConn()) . " <br />";
 	      $is_inserted = false;	

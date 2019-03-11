@@ -45,7 +45,8 @@ if (isset($_GET[md5("controller")])){
 						'password'=>md5($_POST['password'])
 					);
 					addUser($data);
-					header("Location: index.php?controller=".md5('login')); 
+					//echo("<script>location.href = 'index.php?$cont=$dsh';</script>");
+					header("Location: index.php?".md5('controller')."=".md5('login')); 
 					echo "<script>demo.showNotification('top','right','Sucessfully registered');</script>";
 					}//end else
 
@@ -134,19 +135,27 @@ if (isset($_GET[md5("controller")])){
 				$where = array("marker_id" => $_POST['edit_id']);
 				 updateMarker($data,$where);
 				 
-				echo'<script> swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
-					buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
+				echo'
+					<script> 
+						swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
+						buttonsStyling: false, confirmButtonClass: "btn btn-success"});
+
+						
+					</script>';
 				 exit();
 				
 			 }
+
+
 			 else if(isset($_POST['delete_submit'])){
 				
-				 $where = array("id" => $_POST['delete_id']);
+				 $where = array("marker_id" => $_POST['delete_id']);
+				 //echo 
 				 deleteMarker($where);
 				
 				echo'<script> swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
 					buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
-				// header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
+				header("Refresh:0");
 				exit;
 				 
 			 }
