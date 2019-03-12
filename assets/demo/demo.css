@@ -54,3 +54,7 @@
   position: absolute;
   width: 260px;
 }
+
+.datetimepicker {
+  z-index:1001 !important;
+}

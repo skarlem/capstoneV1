@@ -15,9 +15,7 @@ $('.datetimepicker').datetimepicker({
         close: 'fa fa-remove'
     }
 });
-$(function() {
-    $('#datetimepicker2').datetimepicker({
-              language: 'pt-BR'
-      });
-  });
-  
+
+$(function () {
+    $('#date').datetimepicker();
+});

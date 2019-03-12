@@ -7,11 +7,12 @@ function getMarkers(){
 	$markers =array();
 
 	$result = pg_query(getConn(), "
-	select marker_id,lat,lng,date,location_description,persons_involved,victim,suspect,incident_narrative,action_taken,classification_desc,category_desc,class_type,fullname as reported_by
+	
+	select school_id,marker_id,lat,lng,date,location_description,persons_involved,victim,suspect,incident_narrative,action_taken,classification_desc,category_desc,class_type,fullname as reported_by
 	from(
 		
 		(select f.marker_id,f.lat,f.lng,f.date,f.location_description,f.classification_id,f.persons_involved,f.victim,f.suspect,f.incident_narrative,f.action_taken,
-		 f.reported_by,g.fullname from crime_db.mapdata as f
+		 f.reported_by,g.fullname,g.school_id from crime_db.mapdata as f
 			natural join crime_db.accounts as g
 		 where f.reported_by = g.school_id
 		
@@ -27,6 +28,7 @@ function getMarkers(){
 	on a.classification_id = b.classification_id
 		
 	);
+	
 	");
 	if (!$result) {
 	    echo "An error occurred.\n";
@@ -77,7 +79,7 @@ function deleteMarker($where){
 	    $res = pg_insert(getConn(), 'crime_db.mapdata' , $data);
 	    if ($res) {
 	      echo "Inserted user";
-	     // $is_inserted = true;
+	      $is_inserted = true;
 	    } else {
 	      echo pg_last_error(getConn()) . " <br />";
 	      $is_inserted = false;	

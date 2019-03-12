@@ -1,4 +1,6 @@
  
+ 
+
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
       <!--
@@ -44,7 +46,7 @@
                 </div>
   
                 <input type="text" class="form-control datetimepicker" id="dp1" class="btn btn-secondary" 
-                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
+                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY" position: relative; z-index: 9999 !important; />
             </li>
             
             <li class="nav-item">
@@ -196,7 +198,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="/.">Map</a>
+            <a class="navbar-brand" href="#">Map</a>
           </div>
           
           <div class="collapse navbar-collapse justify-content-end">
@@ -229,7 +231,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="<?php echo "index.php?".md5("controller")."=".md5('editAccount')?>">Account</a>
-                  <a class="dropdown-item" href="./app/controllers/logout.php">Logout</a>
+                  <a class="dropdown-item" href="<?php echo "header'('Refresh:0');';" ?>">Logout</a>
                   
                   
                 </div>

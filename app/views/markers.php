@@ -44,17 +44,13 @@
                     <div class="table-responsive">
                       <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
                         <thead class=" text-primary">
-                          <th>
-                            ID
-                          </th>
-                          <th>
-                            Latitude
-                          </th>
-                          <th>
-                            Longitude
-                          </th>
+                         
+                         
                           <th>
                             Date
+                          </th>
+                          <th>
+                            Id Number 
                           </th>
                           <th>
                             Location Description
@@ -102,13 +98,14 @@
                               $action_taken=$row['action_taken'];
                               $reported_by=$row['reported_by'];
                               $classification=$row['classification_desc'];
+                              $school_id=$row['school_id'];
                               
                           echo'
                           <tr>
-                              <td>'.$id.'</td> 
-                              <td>'.$lat.'</td>
-                              <td>'.$lng.'</td>
+                              
+                         
                               <td>'.$date.'</td>
+                              <td>'.$id.'</td>
                               <td>'.$location.'</td>
                               <td>'.$persons_involved.'</td>
                               <td>'.$victim.'</td>
@@ -137,12 +134,12 @@
                                               <input type="hidden" name="edit_id" value="'.$id.'">
                                               <div class="form-group input-group">
                                                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="lat" placeholder="Latitude" value="'.$lat.'">
+                                                  <input type="text" class="form-control" name="lat" placeholder="Latitude" value="'.$lat.'" readonly>
                                               </div>
 
                                               <div class="form-group input-group">
                                                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="lng" placeholder="Longitude" value="'.$lng.'">
+                                                  <input type="text" class="form-control" name="lng" placeholder="Longitude" value="'.$lng.'" readonly>
                                               </div>
 
                                               <div class="form-group input-group">
@@ -174,12 +171,12 @@
                                                   <input type="text" class="form-control" name="action_taken" placeholder="Action Taken" value="'.$action_taken.'">
                                               </div>
                                               <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="classification" placeholder="Classification" value="'.$classification.'">
-                                              </div>
+                 
+                                                       
+                                          </div>
                                               <div class="form-group input-group">
                                                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="reported_by" placeholder="Reported By " value="'.$reported_by.'">
+                                                  <input type="text" class="form-control" name="reported_by" placeholder="Reported By " value="'.$school_id.'">
                                               </div>
                                       </div>
                                   </div>
@@ -220,7 +217,7 @@
                               </div>
                           </div>
                       </div>
-                      
+                          <script>console.log("asda");</script>
                           ';
                           }
                         ?>  

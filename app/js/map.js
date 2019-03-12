@@ -44,6 +44,7 @@ function initMap(){
                         maxZoom: 25,
                         }).addTo(map);
               map.on('click', onMapClick);
+              map.keyboard.disable();
               getMarkers2();
               satView();
   
@@ -89,17 +90,16 @@ function clearMarkers(){
 
 // get images per marker type
 function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
-                if(jsonMap2[i][11]=='Theft'){
-                      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon}) 
-                      .bindPopup("<strong>Type: Theft"+"<br>"+
-                            "Date: "+jsonMap2[i][3]+"<br>"+
-                        "Location: "+jsonMap2[i][4]+"<br>"+
-                        "Classification:"+jsonMap2[i][10]+"<br>"+
-                        "Type:"+jsonMap2[i][12]+"<br>"+
-                        "Reported by:"+jsonMap2[i][13]+"<br>"+
-                        "</strong>"+
-                        button+button2,popupOptions); 
+                  if(jsonMap2[i][12]=='Theft'){
+                      marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]], {icon: theftIcon}) 
+                     
                       layer = L.layerGroup([marker]).addTo(map); 
+                    }
+                    else{
+                      marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]]) 
+                      
+                      layer = L.layerGroup([marker]).addTo(map); 
+                      console.log('addded');
                     }
 
 /*
@@ -176,7 +176,7 @@ function getMarkers2(){
             for(var i=0; i<jsonMap2.length; i++){
               for(var j=0; j<crime_type.length; j++){
                 if (crime_type[j].checked == true) {
-                  if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
+                  if( new Date(jsonMap2[i][4])>= startDate &&  new Date(jsonMap2[i][4]) <=endDate ){
                     console.table(jsonMap2[i]);
                    // if(jsonMap2[i][6] == crime_type[j].value){
                      loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
@@ -223,12 +223,33 @@ function onMapClick(e){
         marker = L.marker([latitude,longitude]).addTo(map).bindPopup("coordinates is "+ e.latlng.toString()
           +' <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Add Marker</button>');
     var startDate = document.getElementById('startDate');
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+    
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+    
+    today = mm + '/' + dd + '/' + yyyy;
+
+
+
+
     document.getElementById('lat').value= latitude;
     document.getElementById('lng').value= longitude;
-    document.getElementById('date').value= new Date().getMonth()+"/"+new Date().getDay()+"/"+new Date().getFullYear();
+    document.getElementById('date').value= today;
+    console.log(today);
     $('#exampleModal').modal('show');
-  // swal({ title:"Hey!", text: "You put a marker on the map! Click the marker!", type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"});
-  // demo.showSwal('warning-message-and-confirmation');
+ //  swal({ title:"Hey!", text: "You put a marker on the map! Click the marker!", type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"});
+    //demo.showSwal('warning-message-and-confirmation');
+   // demo.showNotification();
 }
 
 

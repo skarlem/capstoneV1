@@ -6,7 +6,7 @@ include_once('map_nav.php');
 ?>
 <body>
 	
-	<div id="map"></div>
+	<div id="map" width:900px;></div>
       <!-- Modal insert-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -38,8 +38,8 @@ include_once('map_nav.php');
  
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                  <input type="text" class="form-control datetimepicker2" name="date" id="date" class="btn btn-secondary" 
-              data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
+                  <input type="text" class="form-control datetimepicker-input" id="date" data-toggle="datetimepicker" data-target="#date"/>
+ 
                 </div>
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
@@ -59,7 +59,7 @@ include_once('map_nav.php');
 
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                  <input type="text" class="form-control" id="incident_nar" name="incident_nar" placeholder="Incident Narrative">
+                  <input type="text" class="form-control" id="incident_nar" name="incident_narrative" placeholder="Incident Narrative">
                 </div>
 
                 <div class="form-group input-group">
@@ -147,6 +147,9 @@ include_once('map_nav.php');
 <!-- map-->
 <script type="text/javascript" src="app/js/map.js" onload="initMap()"></script>
 <script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
+<script>
+
+</script>
 
 </body>
 

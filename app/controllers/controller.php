@@ -75,7 +75,7 @@ if (isset($_GET[md5("controller")])){
 				$date = $_POST['date'];
 				$victim= $_POST['victim'];
 				$suspect = $_POST['suspect'];
-				$indicent_narrative = $_POST['incident_nar'];
+				$indicent_narrative = $_POST['incident_narrative'];
 				$action_taken = $_POST['action_taken'];
 				(int)$classification = $_POST['classification'];
 				$reported_by = $_POST['reported_by'];
@@ -102,9 +102,12 @@ if (isset($_GET[md5("controller")])){
 		elseif($_GET[md5("controller")]===md5('table')){
 			include('app/views/markers.php');
 			$_SESSION['page']=md5('table');
-			
+			$cont = md5('controller');
+			$table = md5('table');
+			getMarkers();
 			if(isset($_POST['edit_submit'])){
 				
+
 				$lat = $_POST['lat'];
 				$lng = $_POST['lng'];
 				$location = $_POST['location'];
@@ -114,15 +117,15 @@ if (isset($_GET[md5("controller")])){
 				$suspect = $_POST['suspect'];
 				$indicent_narrative = $_POST['incident_narrative'];
 				$action_taken = $_POST['action_taken'];
-				$classification = $_POST['classification'];
+			//	(int)$classification = $_POST['classification'];
 				$reported_by = $_POST['reported_by'];
 				$persons_involved = $_POST['persons_involved'];
-			  	$data = array(
+			  	$marker = array(
 							'lat' => $lat,
 							'lng' => $lng,
 							'date' => $date,
 							'location_description'=>$location,
-							'classification_id'=>$classification,
+						//	'classification_id'=>$classification,
 							'persons_involved'=>$persons_involved,
 							'victim'=>$victim,
 							'suspect'=>$suspect,
@@ -131,17 +134,16 @@ if (isset($_GET[md5("controller")])){
 							'reported_by'=>$reported_by
 	 
 				);
-	
+
 				$where = array("marker_id" => $_POST['edit_id']);
-				 updateMarker($data,$where);
-				 
+				 updateMarker($marker,$where);
+				
 				echo'
 					<script> 
 						swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
-						buttonsStyling: false, confirmButtonClass: "btn btn-success"});
-
-						
+						buttonsStyling: false, confirmButtonClass: "btn btn-success" });
 					</script>';
+					
 				 exit();
 				
 			 }
@@ -155,7 +157,9 @@ if (isset($_GET[md5("controller")])){
 				
 				echo'<script> swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
 					buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
-				header("Refresh:0");
+					echo("<script>location.href = 'index.php?$cont=$table';
+					console.log('na reload na ni');
+					</script>");
 				exit;
 				 
 			 }
