@@ -153,7 +153,7 @@ include_once('dashboard_nav.php');
 
                       <!-- start column 2-->
                           <div class="col-md-8">
-                            <div id="map" style="height: 550px; padding-left:800px;"></div>
+                            <div id="map" style="height: 550px;width: 100%; padding-left:800px; "></div>
                           </div>
                           </div>
                           </div>
@@ -242,21 +242,8 @@ include_once('dashboard_nav.php');
 <script type="text/javascript" src="app/js/dashboard_map.js"onload="initMap()">
 
 </script>
-<script type="text/javascript"  charset="UTF-8">
-$('.datetimepicker').datetimepicker({
-    icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up: "fa fa-chevron-up",
-        down: "fa fa-chevron-down",
-        previous: 'fa fa-chevron-left',
-        next: 'fa fa-chevron-right',
-        today: 'fa fa-screenshot',
-        clear: 'fa fa-trash',
-        close: 'fa fa-remove'
-    }
-});
-</script>
+
+
   <!-- datables for our table -->
   <script src="app/js/datatables.js"></script>
 

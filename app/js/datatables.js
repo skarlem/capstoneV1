@@ -11,8 +11,14 @@ var table =$('#dataTables-example').DataTable( {
 		columns: ':not(:last-child)',},
     },
     {
-    	extend: 'pdfHtml5',
+			extend: 'pdfHtml5',
+			title : function() {
+				return "ABCDE List";
+		},
 		text: '<i class="fa fa-file-pdf-o"></i> PDF',
+		orientation : 'landscape',
+		pageSize : 'LEGAL',
+		
 		titleAttr: 'Export to PDF',
 		className: 'btn btn-danger',
 		
@@ -23,9 +29,14 @@ var table =$('#dataTables-example').DataTable( {
 		
 	},
 	{
-		extend: 'print',
+		extend: 'print',	
+		title : function() {
+			return "ABCDE List";
+	},
 		titleAttr: 'Print Table',
 		className: 'btn btn-default',
+		orientation : 'landscape',
+		pageSize : 'LEGAL',
 		exportOptions: {
 			columns: ':visible'
 		},

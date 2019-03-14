@@ -39,6 +39,7 @@ include_once('map_nav.php');
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
                   <input type="text" class="form-control datetimepicker-input" id="date" data-toggle="datetimepicker" data-target="#date"/>
+
  
                 </div>
                 <div class="form-group input-group">
@@ -86,7 +87,7 @@ include_once('map_nav.php');
 
               <div class="form-group input-group">
                   <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                  <input type="text" class="form-control" id="reported_by" name="reported_by" placeholder="Reported By(optional)">
+                  <input type="text" class="form-control" id="reported_by" name="reported_by" placeholder="Reported By(Required)">
                 </div>
 
                  <div class="modal-footer">

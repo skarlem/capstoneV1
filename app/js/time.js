@@ -17,5 +17,8 @@ $('.datetimepicker').datetimepicker({
 });
 
 $(function () {
-    $('#date').datetimepicker();
+    $('#date').datetimepicker({
+        format: 'L'
+    });
+
 });

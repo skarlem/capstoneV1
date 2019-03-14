@@ -41,7 +41,7 @@ function initMap(){
               maxZoom: 18,
               subdomains:['mt0','mt1','mt2','mt3']
             }).addTo(map);
-             
+              console.log('init map');
               getMarkers2();
               satView();
   
@@ -88,15 +88,13 @@ function clearMarkers(){
 // get images per marker type
 function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
   if(jsonMap2[i][11]=='Theft'){
-        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon}) 
-        .bindPopup("<strong>Type: Theft"+"<br>"+
-              "Date: "+jsonMap2[i][3]+"<br>"+
-          "Location: "+jsonMap2[i][4]+"<br>"+
-          "Classification:"+jsonMap2[i][10]+"<br>"+
-          "Type:"+jsonMap2[i][12]+"<br>"+
-          "Reported by:"+jsonMap2[i][13]+"<br>"+
-          "</strong>"+
-          button+button2,popupOptions); 
+        marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]], {icon: theftIcon}) 
+        
+        layer = L.layerGroup([marker]).addTo(map); 
+      }
+      else{
+        marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]]) 
+        
         layer = L.layerGroup([marker]).addTo(map); 
       }
 
@@ -178,7 +176,7 @@ function getMarkers2(){
               console.log( new Date(jsonMap2[i][3]));
               console.log(startDate);
               console.log(endDate);
-             if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
+             if( new Date(jsonMap2[i][4])>= startDate &&  new Date(jsonMap2[i][4]) <=endDate ){
                     console.log('asdasd');
                      loadMarkerImg(jsonMap2,i,button,button2,popupOptions);   
               }

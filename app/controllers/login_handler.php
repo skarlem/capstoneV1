@@ -1,6 +1,5 @@
 <?php
-function loginAdmin($user, $password)
-{
+function loginAdmin($user, $password) {
     $sql ="select * from public.admin";
     $ret = pg_query(getConn(), $sql);
     if (pg_num_rows($ret)===0) {
@@ -22,7 +21,7 @@ function loginAdmin($user, $password)
                    
                 }//inner else end
                 
-                } //end inner if
+            } //end inner if
 
 
             else {
@@ -35,7 +34,7 @@ function loginAdmin($user, $password)
                 asdasdasdasdasd
                 ';
                    exit();
-                }//end outer else
+            }//end outer else
         }//end while
     }//end else
 }

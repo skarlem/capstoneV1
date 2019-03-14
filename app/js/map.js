@@ -164,8 +164,8 @@ function getMarkers2(){
     'className' : 'popupCustom' // classname for another popup
   }
   
-   if (startDate > endDate) {
-    demo.showNotification('top','right',"Starting date must be greater than ending date");
+   if (startDate > endDate || startDate ==endDate) {
+    alert('bawal');
    }
   else{
      var counter =0;

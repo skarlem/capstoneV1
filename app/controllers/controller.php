@@ -7,7 +7,8 @@ require 'app/models/admin_model.php';
 
 require_once('login_handler.php');
 
-if (isset($_GET[md5("controller")])){	
+if (isset($_GET[md5("controller")])){
+	
 	if( $_GET[md5("controller")] === md5('login' )) {
 		if(empty($_SESSION)){
 			session_start();		
@@ -20,7 +21,7 @@ if (isset($_GET[md5("controller")])){
 		}
 		
 		else{
-			//header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
+			header("Location: index.php?".md5('controller')."=".md5('login')); 
 		}
 	}//end if session id is empty
 
@@ -45,8 +46,8 @@ if (isset($_GET[md5("controller")])){
 						'password'=>md5($_POST['password'])
 					);
 					addUser($data);
-					//echo("<script>location.href = 'index.php?$cont=$dsh';</script>");
-					header("Location: index.php?".md5('controller')."=".md5('login')); 
+					echo("<script>location.href = 'index.php?$cont=$dsh';</script>");
+				//	
 					echo "<script>demo.showNotification('top','right','Sucessfully registered');</script>";
 					}//end else
 
@@ -105,6 +106,7 @@ if (isset($_GET[md5("controller")])){
 			$cont = md5('controller');
 			$table = md5('table');
 			getMarkers();
+			echo($_SESSION['page']);
 			if(isset($_POST['edit_submit'])){
 				
 
@@ -143,7 +145,9 @@ if (isset($_GET[md5("controller")])){
 						swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
 						buttonsStyling: false, confirmButtonClass: "btn btn-success" });
 					</script>';
-					
+					echo("<script>location.href = 'index.php?$cont=$table';
+					console.log('na reload na ni');
+					</script>");
 				 exit();
 				
 			 }
@@ -176,16 +180,17 @@ if (isset($_GET[md5("controller")])){
 
 		elseif($_GET[md5("controller")]===md5('dashboard')){
 			include('app/views/dashboard.php');
+			$_SESSION['page']=md5('dashboard');
+			echo ($_SESSION['id']);
 		}
-		elseif($_GET[md5("controller")]===md5('manage_report')){
-			include('app/views/report.php');
-		}
+		
 	}//end else for session id
 	
 
 }//end if
 else{
-	header("Location: index.php?".md5("controller")."=".md5('login')); 
+	header("Location: index.php?".md5("controller")."=".$_SESSION['page']);
+	echo($_SESSION["page"]);
 }
 
 
