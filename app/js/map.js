@@ -92,7 +92,7 @@ function clearMarkers(){
 function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
                   if(jsonMap2[i][12]=='Theft'){
                       marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]], {icon: theftIcon}) 
-                     
+                      .bindPopup("this is a theft marker");
                       layer = L.layerGroup([marker]).addTo(map); 
                     }
                     else{
