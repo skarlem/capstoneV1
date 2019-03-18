@@ -46,7 +46,7 @@
                 </div>
   
                 <input type="text" class="form-control datetimepicker" id="dp1" class="btn btn-secondary" 
-                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY" position: relative; z-index: 9999 !important; />
+                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY" value="12/12/1990"/>
             </li>
             
             <li class="nav-item">

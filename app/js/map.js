@@ -43,8 +43,9 @@ function initMap(){
                         attribution: 'Map data &copy; ' + mapLink,
                         maxZoom: 25,
                         }).addTo(map);
-              map.on('click', onMapClick);
+              map.on('dblclick', onMapClick);
               map.keyboard.disable();
+              map.doubleClickZoom.disable();
               getMarkers2();
               satView();
   
@@ -178,10 +179,10 @@ function getMarkers2(){
                 if (crime_type[j].checked == true) {
                   if( new Date(jsonMap2[i][4])>= startDate &&  new Date(jsonMap2[i][4]) <=endDate ){
                     console.table(jsonMap2[i]);
-                   // if(jsonMap2[i][6] == crime_type[j].value){
+                    if(jsonMap2[i][6] == crime_type[j].value){
                      loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                      
-                  //}
+                  }
                 }
               }
             }
