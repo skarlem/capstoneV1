@@ -101,12 +101,13 @@ if (isset($_GET[md5("controller")])){
 			}
 		}
 		elseif($_GET[md5("controller")]===md5('table')){
+			
 			include('app/views/markers.php');
 			$_SESSION['page']=md5('table');
 			$cont = md5('controller');
 			$table = md5('table');
 			getMarkers();
-			echo($_SESSION['page']);
+			//echo($_SESSION['page']);
 			if(isset($_POST['edit_submit'])){
 				
 
@@ -140,11 +141,7 @@ if (isset($_GET[md5("controller")])){
 				$where = array("marker_id" => $_POST['edit_id']);
 				 updateMarker($marker,$where);
 				
-				echo'
-					<script> 
-						swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
-						buttonsStyling: false, confirmButtonClass: "btn btn-success" });
-					</script>';
+				
 					echo("<script>location.href = 'index.php?$cont=$table';
 					console.log('na reload na ni');
 					</script>");
@@ -181,7 +178,7 @@ if (isset($_GET[md5("controller")])){
 		elseif($_GET[md5("controller")]===md5('dashboard')){
 			include('app/views/dashboard.php');
 			$_SESSION['page']=md5('dashboard');
-			echo ($_SESSION['id']);
+			//echo ($_SESSION['id']);
 		}
 		
 	}//end else for session id

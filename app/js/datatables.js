@@ -27,23 +27,8 @@ var table =$('#dataTables-example').DataTable( {
 		exportOptions: {
 		columns: ':not(:last-child)',},
 		
-	},
-	{
-		extend: 'print',	
-		title : function() {
-			return "ABCDE List";
-	},
-		titleAttr: 'Print Table',
-		className: 'btn btn-default',
-		orientation : 'landscape',
-		pageSize : 'LEGAL',
-		exportOptions: {
-			columns: ':visible'
-		},
-		customize: function(win) {
-			$(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-		}
 	}
+	
 	]
 	
 }

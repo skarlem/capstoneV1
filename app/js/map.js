@@ -9,7 +9,7 @@ var crime_type_value=['0001','0010','0011','0100','0101'];
 var types=['Theft','Animal Bite','Vehicular Incident','Fire','Physical Injury', 'Sexual Assault'];
 
 var theftIcon = L.icon({
-    iconUrl: './assets/img/new_logo.png',
+    iconUrl: './assets/img/AnimalBite.png',iconSize: [50, 50]
 });
 var injuryIcon = L.icon({
     iconUrl: './assets/img/physical-injury.png',
@@ -93,15 +93,22 @@ function clearMarkers(){
 function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
                   if(jsonMap2[i][12]=='Theft'){
                       marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]], {icon: theftIcon}) 
-                      .bindPopup("this is a theft marker");
+                      .bindPopup("this is a theft marker<br>"+
+                      "Date: "+jsonMap2[i][4]+"<br>");
                       layer = L.layerGroup([marker]).addTo(map); 
-                    }
-                    else{
-                      marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]]) 
+                  }
+                  if(jsonMap2[i][12]=='Animal Bite'){
+                    marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]], {icon: theftIcon}) 
+                    .bindPopup("this is a theft marker<br>"+
+                    "Date: "+jsonMap2[i][4]+"<br>");
+                    layer = L.layerGroup([marker]).addTo(map); 
+                  }
+                  else{
+                    marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]]) 
                       
-                      layer = L.layerGroup([marker]).addTo(map); 
-                      console.log('addded');
-                    }
+                    layer = L.layerGroup([marker]).addTo(map); 
+                    console.log('addded');
+                  }
 
 /*
                     else if(jsonMap2[i][11]=='Robbery'){
@@ -156,7 +163,8 @@ function getMarkers2(){
  
   var endDate = new Date(document.getElementById('dp2').value);
   var startDate = new Date(document.getElementById('dp1').value);
-   var crime_type= document.getElementsByName('search_by_type');
+   var crime_type =[];
+   crime_Type = document.getElementsByName('search_by_type');
    var button = ' <br><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</button>';
    var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
   
@@ -179,18 +187,20 @@ function getMarkers2(){
                 if (crime_type[j].checked == true) {
                   if( new Date(jsonMap2[i][4])>= startDate &&  new Date(jsonMap2[i][4]) <=endDate ){
                     console.table(jsonMap2[i]);
-                    if(jsonMap2[i][6] == crime_type[j].value){
+                    console.log(crime_type[j]);
+                    if(jsonMap2[i][15] == crime_type[j].value){
+                      console.log('naload na dapat');
                      loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                      
                   }
                 }
+               }
               }
             }
-          }
+      
          }); 
     
-  }    
-     
+  }     
 
 }
 

@@ -11,7 +11,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="card">
-                  <div class="card-header card-header-primary">
+                  <div class="card-header card-header-info">
                     <h4 class="card-title ">Markers Table</h4>
                     <p class="card-category"> </p>
 
@@ -45,36 +45,40 @@
                       <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
                         <thead class=" text-primary">
                          
-                         
-                          <th>
-                            Date
-                          </th>
                           <th>
                             Id Number 
                           </th>
+
+                          <th>
+                            Date
+                          </th>
+                         
                           <th>
                             Location Description
                           </th>
+
                           <th>
-                            Persons Involved
+                           Item/Unit
                           </th>
+
                           <th>
                           Victim
                           </th>
-                          <th>
-                          Suspect
-                          </th>
+                          
                           <th>
                           Incident Narrative
                           </th>
+
                           <th>
                           Action Taken
                           </th>
+
                           <th>
                             Classification
                           </th>
+                          
                           <th>
-                            Reported By
+                            Category
                           </th> 
                           <th>
                             Action
@@ -103,20 +107,22 @@
                           echo'
                           <tr>
                               
-                         
-                              <td>'.$date.'</td>
                               <td>'.$id.'</td>
+                              <td>'.$date.'</td>
+                             
                               <td>'.$location.'</td>
-                              <td>'.$persons_involved.'</td>
+                              <td></td>
                               <td>'.$victim.'</td>
-                              <td>'.$suspect.'</td>
+                              
                               <td>'.$incident_narrative.'</td>
                               <td>'.$action_taken.'</td>
                               <td>'.$classification.'</td>
-                              <td>'.$reported_by.'</td>
+                              <td>'.$category.'</td>
                               <td style="width:100px;text-align:center">
                                 <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdit'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
                                 <a style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$id.'" title="Delete"><i class="fa fa-remove"></i></a>
+                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$id.'" title="Delete"><i class="material-icons">zoom_out_map</i></a>
+                                
                               </td>
                           </tr>
                                            
@@ -129,94 +135,107 @@
                                   </div>
                                   
                                   <div class="modal-body">
-                                      <div class="col-lg-12">
-                                          <form role="form" method="POST">
-                                              <input type="hidden" name="edit_id" value="'.$id.'">
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="lat" placeholder="Latitude" value="'.$lat.'" readonly>
-                                              </div>
-
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="lng" placeholder="Longitude" value="'.$lng.'" readonly>
-                                              </div>
-
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="date" placeholder="Date" value="'.$date.'">
-                                              </div>
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="location" placeholder="Location" value="'.$location.'">
-                                              </div>
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="persons_involved" placeholder="Persons Involved" value="'.$persons_involved.'">
-                                              </div>
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="victim" placeholder="Victim" value="'.$victim.'">
-                                              </div>
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="suspect" placeholder="Suspect" value="'.$suspect.'">
-                                              </div>
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="incident_narrative" placeholder="Incident Narrative" value="'.$incident_narrative.'">
-                                              </div>
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="action_taken" placeholder="Action Taken" value="'.$action_taken.'">
-                                              </div>
-                                              <div class="form-group input-group">
-                 
-                                                       
-                                          </div>
-                                              <div class="form-group input-group">
-                                                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                                  <input type="text" class="form-control" name="reported_by" placeholder="Reported By " value="'.$school_id.'">
-                                              </div>
-                                      </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                      <div class="col-lg-12">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                          <button type="submit" class="btn btn-info" name="edit_submit" ></i> Update Records</button>
-                                      </div>
-                                  </div>
-                                </form>
-                              </div>
-                          </div>
-                      </div>
-
-
-                      <div class="modal fade" id="ModalDelete'.$id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                      <h4 class="modal-title" id="myModalLabel">Delete Record</h4>
-                                  </div>
+                                     
+                              
+<div class="content">
+<div class="container-fluid">
+  <div class="row">
+    
+      <div class="card">
+        <div class="card-header card-header-icon card-header-rose">
+          <div class="card-icon">
+            <i class="material-icons">perm_identity</i>
+          </div>
+          <h4 class="card-title">Edit Profile -
+            <small class="category">Complete your profile</small>
+          </h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Company (disabled)</label>
+                  <input type="text" class="form-control" disabled>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Username</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Email address</label>
+                  <input type="email" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Fist Name</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Last Name</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Adress</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">City</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Country</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Postal Code</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>About Me</label>
+                  <div class="form-group">
+                    <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, Im in that two seat Lambo.</label>
+                    <textarea class="form-control" rows="5"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-rose pull-right">Update Profile</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    
+    
+</div>
+</div>
                                   
-                                  <div class="modal-body">
-                                      <div class="col-lg-12">
-                                          <form role="form" method="POST">
-                                            Are you sure you want to delete this record?
-                                            <input type="hidden" name="delete_id" value="'.$id.'">
-                                      </div>
                                   </div>
-                                  <div class="modal-footer">
-                                      <div class="col-lg-12">
-                                          <button type="button" class="btn btn-primary" data-dismiss="modal">No <i class="fa fa-refresh"></i></button>
-                                          <button type="submit" class="btn btn-danger" name="delete_submit" ><i class="fa fa-check"></i> Yes</button>
-                                      </div>
-                                  </div>
-                                        </form>
-                              </div>
-                          </div>
-                      </div>
                           <script>console.log("asda");</script>
                           ';
                           }
