@@ -26,50 +26,50 @@ include_once('map_nav.php');
               <input type="hidden" name="edit_id" value="'.$id.'">
               
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">location_on</i></span>
                   <input type="text" class="form-control" id="lat" name="lat" placeholder="Latitude" readonly>
                 </div>
                 
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">location_on</i></span>
                   <input type="text" class="form-control" id="lng" name="lng" placeholder="Longitude" readonly>
                 </div>
                 
  
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">event_note</i></span>
                   <input type="text" class="form-control datetimepicker-input" id="date" name="date" data-toggle="datetimepicker" data-target="#date"/>
 
  
                 </div>
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">edit_location</i></span>
                   <input type="text" class="form-control" name="location" placeholder="Location Description" >
                 </div>
 
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">assignment_ind</i></span>
                   <input type="text" class="form-control" id="victim" name="victim" placeholder="Victim">
                 </div>
                 
 
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">directions_run</i></span>
                   <input type="text" class="form-control" id="suspect" name="suspect" placeholder="Suspect">
                 </div>
 
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">subject</i></span>
                   <input type="text" class="form-control" id="incident_nar" name="incident_narrative" placeholder="Incident Narrative">
                 </div>
 
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">location_on</i></span>
                   <input type="text" class="form-control" id="action_taken" name="action_taken" placeholder="Action Taken">
                 </div> 
 
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">person_in</i></span>
                   <input type="text" class="form-control" id="persons_involved" name="persons_involved" placeholder="Persons Involved">
                 </div>          
 
@@ -86,7 +86,7 @@ include_once('map_nav.php');
               </div>
 
               <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                  <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
                   <input type="text" class="form-control" id="reported_by" name="reported_by" placeholder="Reported By(Required)">
                 </div>
 

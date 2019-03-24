@@ -141,7 +141,8 @@ if (isset($_GET[md5("controller")])){
 				$where = array("marker_id" => $_POST['edit_id']);
 				 updateMarker($marker,$where);
 				
-				
+				 echo'<script> swal({ title:"Incident Record Updated!", text: "Successful!", type: "info", 
+					buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
 					echo("<script>location.href = 'index.php?$cont=$table';
 					console.log('na reload na ni');
 					</script>");
@@ -156,7 +157,7 @@ if (isset($_GET[md5("controller")])){
 				 //echo 
 				 deleteMarker($where);
 				
-				echo'<script> swal({ title:"Good job!", text: "Delete Successful!", type: "success", 
+				echo'<script> swal({ title:"Incident Record Deleted!", text: "Successful!", type: "info", 
 					buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
 					echo("<script>location.href = 'index.php?$cont=$table';
 					console.log('na reload na ni');
