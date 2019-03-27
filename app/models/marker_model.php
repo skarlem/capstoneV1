@@ -7,16 +7,16 @@ function getMarkers(){
 	$markers =array();
 
 	$result = pg_query(getConn(), "
-	
 	select distinct school_id,marker_id,lat,lng,date,location_description,persons_involved,victim,suspect,incident_narrative,action_taken,
-	classification_desc,category_desc,fullname as reported_by
+	classification_desc,category_desc,class_type,fullname as reported_by
 	from(
 		
-		(select f.marker_id,f.lat,f.lng,f.date,f.location_description,f.classification_id,f.category,f.persons_involved,f.victim,f.suspect,h.category_id,h.category_desc,f.incident_narrative,f.action_taken,
-		 f.reported_by,g.fullname,g.school_id from crime_db.mapdata as f
+		(select f.marker_id,f.lat,f.lng,f.date,f.location_description,f.class,f.classification_id,f.category,f.persons_involved,f.victim,f.suspect,h.category_id,h.category_desc,f.incident_narrative,f.action_taken,
+		 f.reported_by,g.fullname,g.school_id,j.class_type from crime_db.mapdata as f
 			natural join crime_db.accounts as g
 		 	natural join crime_db.category as h
-		 where f.reported_by = g.school_id and f.category = h.category_id
+		 	natural join crime_db.class_type as j
+		 where f.reported_by = g.school_id and f.category = h.category_id and f.class = j.class_type_id
 		
 		) as a
 	inner join 
