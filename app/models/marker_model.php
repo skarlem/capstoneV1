@@ -8,21 +8,22 @@ function getMarkers(){
 
 	$result = pg_query(getConn(), "
 	
-	select school_id,marker_id,lat,lng,date,location_description,persons_involved,victim,suspect,incident_narrative,action_taken,classification_desc,category_desc,class_type,fullname as reported_by
+	select distinct school_id,marker_id,lat,lng,date,location_description,persons_involved,victim,suspect,incident_narrative,action_taken,
+	classification_desc,category_desc,fullname as reported_by
 	from(
 		
-		(select f.marker_id,f.lat,f.lng,f.date,f.location_description,f.classification_id,f.persons_involved,f.victim,f.suspect,f.incident_narrative,f.action_taken,
+		(select f.marker_id,f.lat,f.lng,f.date,f.location_description,f.classification_id,f.category,f.persons_involved,f.victim,f.suspect,h.category_id,h.category_desc,f.incident_narrative,f.action_taken,
 		 f.reported_by,g.fullname,g.school_id from crime_db.mapdata as f
 			natural join crime_db.accounts as g
-		 where f.reported_by = g.school_id
+		 	natural join crime_db.category as h
+		 where f.reported_by = g.school_id and f.category = h.category_id
 		
 		) as a
 	inner join 
 	
-	(select b.classification_id,b.classification_desc,d.category_desc,c.class_type from crime_db.classification as b
+	(select classification_id,classification_desc from crime_db.classification 
 	
-	natural join crime_db.class_type as c
-	natural join crime_db.category as d
+	
 	) as b
 	
 	on a.classification_id = b.classification_id

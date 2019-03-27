@@ -164,7 +164,7 @@ function getMarkers2(){
   var endDate = new Date(document.getElementById('dp2').value);
   var startDate = new Date(document.getElementById('dp1').value);
    var crime_type =[];
-   crime_Type = document.getElementsByName('search_by_type');
+   crime_Type = document.getElementsByName('search_by_type'); 
    var button = ' <br><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</button>';
    var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
   
@@ -181,21 +181,23 @@ function getMarkers2(){
       console.log(endDate);
       console.log(startDate);
 
+
+
       $.getJSON("app/controllers/results.json", function(jsonMap2) {
             for(var i=0; i<jsonMap2.length; i++){
-              for(var j=0; j<crime_type.length; j++){
-                if (crime_type[j].checked == true) {
+             // for(var j=0; j<crime_type.length; j++){
+               // if (crime_type[j].checked == true) {
                   if( new Date(jsonMap2[i][4])>= startDate &&  new Date(jsonMap2[i][4]) <=endDate ){
                     console.table(jsonMap2[i]);
                     console.log(crime_type[j]);
-                    if(jsonMap2[i][15] == crime_type[j].value){
+                   // if(jsonMap2[i][15] == crime_type[j].value){
                       console.log('naload na dapat');
                      loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                      
-                  }
-                }
+                 // }
+                //}
                }
-              }
+             // }
             }
       
          }); 
