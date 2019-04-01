@@ -63,7 +63,9 @@
           <br>
           <li class="nav-item">
             
-          <div class="input-group">
+          
+              <br> <span class="badge badge-pill badge-primary">Classification</span><br><br>
+              <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">      
                   </span>
@@ -78,8 +80,9 @@
               </label>
             </div>
               </div>
-              <br> <span class="badge badge-pill badge-primary">Classification</span><br><br>
+             
 
+              
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">      
@@ -87,7 +90,7 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="search_by_type"id="search_by_type" type="checkbox" value="0" checked>
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="1" checked>
                       Felony
                     <span class="form-check-sign">
                   <span class="check"></span>
@@ -103,7 +106,7 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="search_by_type"id="search_by_type" type="checkbox" value="0" checked>
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="2" checked>
                       Misdemeanor
                     <span class="form-check-sign">
                   <span class="check"></span>
@@ -119,7 +122,7 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="search_by_type"id="search_by_type" type="checkbox" value="0" checked>
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="3" checked>
                       Violation
                     <span class="form-check-sign">
                   <span class="check"></span>
@@ -129,7 +132,6 @@
               </div>
 
 
-             <br> <span class="badge badge-pill badge-primary">Category</span><br><br>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">      
@@ -137,7 +139,42 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="search_by_type"id="search_by_type" type="checkbox" value="0" checked>
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="4" checked>
+                      Incident
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+
+             <br> <span class="badge badge-pill badge-primary">Category</span><br><br>
+             <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="checkAllCategory()" id="checkAllCategory"type="checkbox"  checked>
+                      Select All
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+              
+             
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="category"id="category" type="checkbox" value="1" checked>
                       Theft
                     <span class="form-check-sign">
                   <span class="check"></span>
@@ -153,7 +190,22 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="search_by_type"id="search_by_type" type="checkbox" value="1" checked>
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="category"id="category" type="checkbox" value="2" checked>
+                    Armed Robbery
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="category"id="category" type="checkbox" value="3" checked>
                       Vehicular Incident
                     <span class="form-check-sign">
                   <span class="check"></span>
@@ -168,8 +220,8 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type"id="search_by_type" type="checkbox" value="2" checked>
-                      Fire
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="category"id="category" type="checkbox" value="4" checked>
+                     Animal Bite
                     <span class="form-check-sign">
                   <span class="check"></span>
                 </span>
@@ -184,8 +236,8 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type"id="search_by_type" type="checkbox" value="3" checked>
-                      Physical Injuries
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="category"id=category" type="checkbox" value="5" checked>
+                      Assault
                     <span class="form-check-sign">
                   <span class="check"></span>
                 </span>
@@ -200,8 +252,8 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type" id="search_by_type" type="checkbox" value="4" checked>
-                    Animal Bite
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="category" id="category" type="checkbox" value="6" checked>
+                    Fire
                     <span class="form-check-sign">
                   <span class="check"></span>
                 </span>
@@ -209,21 +261,7 @@
             </div>
               </div>
 
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">      
-                  </span>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" onclick="loadMarkersbyType()" name="search_by_type"id="search_by_type" type="checkbox" value="5" checked>
-                    Sexual Harassment
-                    <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-              </div>
+             
 
             </li>
 

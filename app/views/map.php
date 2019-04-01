@@ -26,70 +26,103 @@ include_once('map_nav.php');
               <input type="hidden" name="edit_id" value="'.$id.'">
               
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">location_on</i></span>
-                  <input type="text" class="form-control" id="lat" name="lat" placeholder="Latitude" readonly>
+                
+                  <input type="hidden" class="form-control" id="lat" name="lat" placeholder="Latitude" readonly>
                 </div>
                 
                 <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">location_on</i></span>
-                  <input type="text" class="form-control" id="lng" name="lng" placeholder="Longitude" readonly>
+                  <input type="hidden" class="form-control" id="lng" name="lng" placeholder="Longitude" readonly>
                 </div>
                 
  
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">event_note</i></span>
-                  <input type="text" class="form-control datetimepicker-input" id="date" name="date" data-toggle="datetimepicker" data-target="#date"/>
+                  <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date"name="date" data-toggle="datetimepicker" data-target="#date"/>
 
  
                 </div>
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">edit_location</i></span>
-                  <input type="text" class="form-control" name="location" placeholder="Location Description" >
+                  <input type="text" class="form-control" name="location"  required oninvalid="" placeholder="Location Description" >
+                </div>
+
+                </div>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="material-icons">edit_location</i></span>
+                  <input type="text" class="form-control" name="item" required oninvalid="" placeholder="Item/Unit" >
                 </div>
 
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">assignment_ind</i></span>
-                  <input type="text" class="form-control" id="victim" name="victim" placeholder="Victim">
+                  <input type="text" class="form-control" id="victim" required oninvalid="" name="victim" placeholder="Victim">
                 </div>
                 
 
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">directions_run</i></span>
-                  <input type="text" class="form-control" id="suspect" name="suspect" placeholder="Suspect">
+                  <input type="text" class="form-control" id="suspect" required oninvalid="" name="suspect" placeholder="Suspect">
                 </div>
 
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">subject</i></span>
-                  <input type="text" class="form-control" id="incident_nar" name="incident_narrative" placeholder="Incident Narrative">
+                  <input type="text" class="form-control" id="incident_nar"  required oninvalid="" name="incident_narrative" placeholder="Incident Narrative">
                 </div>
 
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">location_on</i></span>
-                  <input type="text" class="form-control" id="action_taken" name="action_taken" placeholder="Action Taken">
+                  <input type="text" class="form-control" id="action_taken" required oninvalid="" name="action_taken" placeholder="Action Taken">
                 </div> 
 
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">person_in</i></span>
-                  <input type="text" class="form-control" id="persons_involved" name="persons_involved" placeholder="Persons Involved">
-                </div>          
+                  <input type="text" class="form-control" id="persons_involved"  required oninvalid="" name="persons_involved" placeholder="Persons Involved">
+                </div>    
+
+                 <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
+                  <input type="text" class="form-control" id="reported_by"required  oninvalid=""  name="reported_by" placeholder="Reported By(Required)">
+                </div>
+      
 
               <div class="form-group input-group">
                  
-                  <label for="exampleFormControlSelect1">Example select</label>
-                  <select class="form-control selectpicker" data-style="btn btn-link" id="classification" name="classification">
+                  <label for="exampleFormControlSelect1">Classification</label>
+                  <select class="form-control selectpicker"   required oninvalid="" data-style="btn btn-link" id="classification" name="classification">
                     <option >Incident Classification</option>
-                    <option value='1'>Armed Robberies</option>
-                    <option value='2'> </option>
-                    <option value='3'></option>
+                    <option value='1'>Felony</option>
+                    <option value='2'>Misdemeanor</option>
+                    <option value='3'>Violation</option>
                    
                   </select>               
               </div>
 
               <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
-                  <input type="text" class="form-control" id="reported_by" name="reported_by" placeholder="Reported By(Required)">
-                </div>
+                 
+                 <label for="exampleFormControlSelect1">Class</label>
+                 <select class="form-control selectpicker"  required oninvalid="" data-style="btn btn-link" id="class" name="class">
+                   <option >Class Type</option>
+                   <option value='1'>Emerygency</option>
+                   <option value='2'>Non-Emergency</option>
+                 </select>               
+             </div>
 
+
+             <div class="form-group input-group">
+                 
+                 <label for="exampleFormControlSelect1">Category</label>
+                 <select class="form-control selectpicker"  required oninvalid="" data-style="btn btn-link" id="category" name="category">
+                   <option >Category</option>
+                   <option value='1'>Theft</option>
+                   <option value='2'>Armed Robbery</option>
+                   <option value='3'>Vehicular Incident</option>
+                   <option value='4'>Animal Bite</option>
+                   <option value='5'>Assault</option>
+                   <option value='6'>Fire</option>
+                 </select>               
+             </div>
+
+
+             
                  <div class="modal-footer">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-primary" name="add_marker" >

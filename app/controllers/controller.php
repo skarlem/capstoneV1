@@ -72,7 +72,7 @@ if (isset($_GET[md5("controller")])){
 				$lat = $_POST['lat'];
 				$lng = $_POST['lng'];
 				$location = $_POST['location'];
-				
+				$item = $_POST['item'];
 				$date = $_POST['date'];
 				$victim= $_POST['victim'];
 				$suspect = $_POST['suspect'];
@@ -81,6 +81,8 @@ if (isset($_GET[md5("controller")])){
 				(int)$classification = $_POST['classification'];
 				$reported_by = $_POST['reported_by'];
 				$persons_involved = $_POST['persons_involved'];
+				$class = $_POST['class'];
+				$category = $_POST['category'];
 			  	$marker = array(
 							'lat' => $lat,
 							'lng' => $lng,
@@ -92,8 +94,10 @@ if (isset($_GET[md5("controller")])){
 							'suspect'=>$suspect,
 							'incident_narrative'=>$indicent_narrative,
 							'action_taken'=>$action_taken,
-							'reported_by'=>$reported_by
-	 
+							'reported_by'=>$reported_by,
+							'class'=>$class,
+							'category'=>$category
+							
 				);
 
 				insertMarker($marker);

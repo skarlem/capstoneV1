@@ -5,14 +5,19 @@ var markers;
 var layer;
 var latitude;
 var longitude;
-var crime_type_value=['0001','0010','0011','0100','0101'];
-var types=['Theft','Animal Bite','Vehicular Incident','Fire','Physical Injury', 'Sexual Assault'];
+var classification=['1','2','3'];
+var category=['1','2','3','4','5','6'];
+
 
 var theftIcon = L.icon({
-    iconUrl: './assets/img/AnimalBite.png',iconSize: [50, 50]
+    iconUrl: './assets/marker/F-Theft.png',iconSize: [50, 50]
+});
+
+var theftIcon2 = L.icon({
+  iconUrl: './assets/marker/M-Theft.png',iconSize: [50, 50]
 });
 var injuryIcon = L.icon({
-    iconUrl: './assets/img/physical-injury.png',
+    iconUrl: './assets/marker/physical-injury.png',
     
 });
 
@@ -21,15 +26,15 @@ var sexualAssaultIcon = L.icon({
 
 });
 var animalBiteIcon = L.icon({
-    iconUrl: './assets/img/animal-bite.png',
+    iconUrl: './assets/marker/asd.png',
 
 });
 var fire = L.icon({
-    iconUrl: './assets/img/fire.png',
+    iconUrl: './assets/marker/fire.png',
     
 });
 var vehicularIncidentIcon = L.icon({
-    iconUrl: './assets/img/vehicular-incident.png',
+    iconUrl: './assets/marker/F-Vehicular.png',
    
   });
   
@@ -91,26 +96,47 @@ function clearMarkers(){
 
 // get images per marker type
 function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
-                  if(jsonMap2[i][12]=='Theft'){
-                      marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]], {icon: theftIcon}) 
+                  if(jsonMap2[i]['category_id']=='1'){
+                      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon}) 
                       .bindPopup("this is a theft marker<br>"+
-                      "Date: "+jsonMap2[i][4]+"<br>");
+                      "Date: "+jsonMap2[i][3]+"<br>"+
+                      "Location:"+jsonMap2[i][4]+"<br>"+
+                      "id:"+jsonMap2[i][0]);
                       layer = L.layerGroup([marker]).addTo(map); 
                   }
-                  if(jsonMap2[i][12]=='Animal Bite'){
-                    marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]], {icon: theftIcon}) 
-                    .bindPopup("this is a theft marker<br>"+
-                    "Date: "+jsonMap2[i][4]+"<br>");
+                  if(jsonMap2[i]['category_id']=='2'){
+                    marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon2}) 
+                    .bindPopup("this is a robbery icon<br>"+
+                    "Date: "+jsonMap2[i][3]+"<br>"+
+                    "Location:"+jsonMap2[i][4]+"<br>"+
+                    "id:"+jsonMap2[i][0]);
                     layer = L.layerGroup([marker]).addTo(map); 
                   }
+                  if(jsonMap2[i]['category_id']=='3'){
+                    marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: vehicularIncidentIcon}) 
+                    .bindPopup("this is a vehicular incident<br>"+
+                    "Date: "+jsonMap2[i][3]+"<br>"+
+                    "Location:"+jsonMap2[i][4]+"<br>"+
+                    "id:"+jsonMap2[i][0]);
+                    layer = L.layerGroup([marker]).addTo(map); 
+                  }
+                  if(jsonMap2[i]['category_id']=='4'){
+                    marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: animalBiteIcon}) 
+                    .bindPopup("this is a animal marker<br>"+
+                    "Date: "+jsonMap2[i][3]+"<br>"+
+                    "Location:"+jsonMap2[i][4]+"<br>"+
+                    "id:"+jsonMap2[i][0]);
+                    layer = L.layerGroup([marker]).addTo(map); 
+                  }
+                  /*
                   else{
                     marker = L.marker([jsonMap2[i][2],jsonMap2[i][3]]) 
-                      
+                    .bindPopup("this is a theft marker<br>");
                     layer = L.layerGroup([marker]).addTo(map); 
                     console.log('addded');
                   }
 
-/*
+
                     else if(jsonMap2[i][11]=='Robbery'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon})
                       .bindPopup("<strong>Type: Robbery"+"<br>"+
@@ -163,8 +189,12 @@ function getMarkers2(){
  
   var endDate = new Date(document.getElementById('dp2').value);
   var startDate = new Date(document.getElementById('dp1').value);
-   var crime_type =[];
-   crime_Type = document.getElementsByName('search_by_type'); 
+   var crime_type = document.getElementsByName('category'); 
+   var classification_arr=document.getElementsByName('classification');
+   
+   
+
+
    var button = ' <br><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</button>';
    var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
   
@@ -173,7 +203,7 @@ function getMarkers2(){
     'className' : 'popupCustom' // classname for another popup
   }
   
-   if (startDate > endDate || startDate ==endDate) {
+   if (startDate > endDate) {
     alert('bawal');
    }
   else{
@@ -182,43 +212,74 @@ function getMarkers2(){
       console.log(startDate);
 
 
-
+      
+     }
       $.getJSON("app/controllers/results.json", function(jsonMap2) {
             for(var i=0; i<jsonMap2.length; i++){
-             // for(var j=0; j<crime_type.length; j++){
-               // if (crime_type[j].checked == true) {
-                  if( new Date(jsonMap2[i][4])>= startDate &&  new Date(jsonMap2[i][4]) <=endDate ){
-                    console.table(jsonMap2[i]);
-                    console.log(crime_type[j]);
-                   // if(jsonMap2[i][15] == crime_type[j].value){
-                      console.log('naload na dapat');
-                     loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
-                     
-                 // }
-                //}
-               }
-             // }
+              for(var j=0; j<crime_type.length; j++){
+                for(var k=0; k<classification_arr.length; k++){
+                 
+                  if (crime_type[j].checked == true && classification_arr[k].checked) {
+                   
+                    if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
+                   
+                    //console.log()
+                        if(jsonMap2[i]['category_id']==crime_type[j].value){
+                          console.log('chokoy');
+                          if(jsonMap2[i]['classification']==classification_arr[k].value){
+                            console.log(jsonMap2[i][8]);
+                            console.log(classification_arr[k].value);
+                            loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
+                          }
+                          
+                        }
+                      
+                        // if jsonMapchuchu = category[i]
+                        // if jsonMapchuchu = classification[i]
+                        
+                      
+                    }
+                  }
+                       
+
+                }
+              }
             }
       
          }); 
     
   }     
 
-}
+
 
 //check all checkbox in selecting crime types
 function checkAll(){
-    var crime_type= document.getElementsByName('search_by_type');
-   // var checkAll=document.getElementById('checkall').checked;
- 
+    var crime_type= document.getElementsByName('classification');
+   
     if(document.getElementById("checkAll").checked){
-            for ( var x = 0; x < crime_type.length; x++ ){
-                crime_type[x].checked = true;
-            }
+        for ( var x = 0; x < crime_type.length; x++ ){
+            crime_type[x].checked = true;
+        }
         }
     else{
         for ( var x = 0; x < crime_type.length; x++ ){
              crime_type[x].checked = false;  
+            }
+        }
+}
+
+function checkAllCategory(){
+ 
+  var category= document.getElementsByName('category');
+
+      if(document.getElementById("checkAllCategory").checked){
+        for ( var x = 0; x < category.length; x++ ){
+           category[x].checked = true;
+        }
+        }
+    else{
+        for ( var x = 0; x < category.length; x++ ){
+             category[x].checked = false;  
             }
         }
 }

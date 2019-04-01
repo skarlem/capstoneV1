@@ -103,6 +103,7 @@
                               $reported_by=$row['reported_by'];
                               $classification=$row['classification_desc'];
                               $school_id=$row['school_id'];
+                              $item =$row['item'];
                               
                           echo'
                           <tr>
@@ -111,7 +112,7 @@
                               <td>'.$date.'</td>
                              
                               <td>'.$location.'</td>
-                              <td></td>
+                              <td>'.$item.'</td>
                               <td>'.$victim.'</td>
                               
                               <td>'.$incident_narrative.'</td>
