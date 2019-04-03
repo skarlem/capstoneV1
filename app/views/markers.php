@@ -57,22 +57,8 @@
                             Location Description
                           </th>
 
-                          <th>
-                           Item/Unit
-                          </th>
-
-                          <th>
-                          Victim
-                          </th>
-                          
-                          <th>
-                          Incident Narrative
-                          </th>
-
-                          <th>
-                          Action Taken
-                          </th>
-
+                       
+                        
                           <th>
                             Classification
                           </th>
@@ -95,15 +81,11 @@
                               $date = $row['date'];
                               $location = $row['location_description'];
                               $category = $row['category_desc'];
-                              $persons_involved= $row['persons_involved'];
-                              $victim = $row['victim'];
-                              $suspect =$row['suspect'];
-                              $incident_narrative=$row['incident_narrative'];
-                              $action_taken=$row['action_taken'];
-                              $reported_by=$row['reported_by'];
+                              
+                             
                               $classification=$row['classification_desc'];
                               $school_id=$row['school_id'];
-                              $item =$row['item'];
+                              
                               
                           echo'
                           <tr>
@@ -112,11 +94,9 @@
                               <td>'.$date.'</td>
                              
                               <td>'.$location.'</td>
-                              <td>'.$item.'</td>
-                              <td>'.$victim.'</td>
+                             
                               
-                              <td>'.$incident_narrative.'</td>
-                              <td>'.$action_taken.'</td>
+                             
                               <td>'.$classification.'</td>
                               <td>'.$category.'</td>
                               <td style="width:100px;text-align:center">
@@ -184,27 +164,8 @@
                                               <span class="input-group-addon"><i class="material-icons">edit_location</i></span>
                                               <input type="text" class="form-control" name="location" placeholder="Location" value="'.$location.'">
                                           </div>
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                              <input type="text" class="form-control" name="persons_involved" placeholder="Persons Involved" value="'.$persons_involved.'">
-                                          </div>
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                              <input type="text" class="form-control" name="victim" placeholder="Victim" value="'.$victim.'">
-                                          </div>
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                              <input type="text" class="form-control" name="suspect" placeholder="Suspect" value="'.$suspect.'">
-                                          </div>
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                              <input type="text" class="form-control" name="incident_narrative" placeholder="Incident Narrative" value="'.$incident_narrative.'">
-                                          </div>
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                              <input type="text" class="form-control" name="action_taken" placeholder="Action Taken" value="'.$action_taken.'">
-                                          </div>
-                                          <div class="form-group input-group">
+                                         
+                                       
              
                                                    
                                       </div>
