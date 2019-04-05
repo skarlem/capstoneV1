@@ -2,7 +2,7 @@
  
 
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="azure" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -25,10 +25,16 @@
           <li class="nav-item ">
             <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('table')?>">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Summary of Incident Reports</p>
             </a>
           </li>
           
+     <li class="nav-item active">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('accountsall')?>">
+          <i class="material-icons">timeline</i>
+          <p>Accounts Management</p>
+        </a>
+      </li>
          
           <li class="nav-item active ">
             <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('map')?>">
