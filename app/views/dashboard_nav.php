@@ -1,5 +1,5 @@
 <div class="wrapper ">
-<div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+<div class="sidebar" data-color="azure" data-background-color="azure" data-image="../assets/img/sidebar-1.jpg">
   <!--
     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -8,7 +8,8 @@
 
    <div class="logo">
     <a href="#" class="simple-text logo-normal">
-      Bantay MSU
+    <a href="assets/marker/asd.png" class="simple-text logo-normal" >
+        <img src="assets/marker/asd.png"> Bantay MSU
     </a>
   </div>
   <div class="sidebar-wrapper">

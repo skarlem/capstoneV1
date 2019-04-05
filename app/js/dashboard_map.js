@@ -51,6 +51,8 @@ function initMap(){
               map.on('dblclick', onMapClick);
               map.keyboard.disable();
               map.doubleClickZoom.disable();
+              map.options.maxZoom = 18;
+              map.options.minZoom = 15;
               getMarkers2();
               satView();
   
@@ -187,8 +189,8 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
 //load the markers
 function getMarkers2(){
  
-  var endDate = new Date('12/12/1990');
-  var startDate = new Date('12/12/2990');
+  var endDate = new Date('12/12/2990');
+  var startDate = new Date('12/12/1990');
    
    
 
@@ -214,23 +216,15 @@ function getMarkers2(){
      }
       $.getJSON("app/controllers/results.json", function(jsonMap2) {
             for(var i=0; i<jsonMap2.length; i++){
-              for(var j=0; j<crime_type.length; j++){
-                for(var k=0; k<classification_arr.length; k++){
+             
                  
-                  if (crime_type[j].checked == true && classification_arr[k].checked) {
-                   
                     if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
                    
                   
-                            console.log(jsonMap2[i][8]);
-                            console.log(classification_arr[k].value);
-                            loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
-                    
-                    }
-                  }
-                       
+                           
+                            loadMarkerImg(jsonMap2,i,button,button2,popupOptions);   
 
-                }
+                
               }
             }
       
