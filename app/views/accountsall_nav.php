@@ -23,7 +23,7 @@
       <li class="nav-">
         <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('table')?>">
           <i class="material-icons">content_paste</i>
-          <p>Summary of Incident Reports</p>
+          <p>Incident Summary</p>
         </a>
       </li>
 
