@@ -29,7 +29,7 @@
             </a>
           </li>
           
-     <li class="nav-item active">
+     <li class="nav-item ">
         <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('accountsall')?>">
           <i class="material-icons">timeline</i>
           <p>Accounts Management</p>
