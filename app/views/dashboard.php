@@ -6,7 +6,7 @@ include_once('dashboard_nav.php');
       <div class="content">
         <div class="content">
           <div class="container-fluid">
-            <div class="row">
+            <div class="row-responsive">
               <div class="col-md-12">
                 <div class="card ">
                   <div class="card-header card-header-success card-header-icon">
@@ -99,6 +99,9 @@ include_once('dashboard_nav.php');
                           </div>
                         </div>
 
+
+
+                        
                         <div class="row">
                         <div class="col-md-12">
                           <div class="card ">

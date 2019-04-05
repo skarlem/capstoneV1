@@ -51,6 +51,8 @@ function initMap(){
               map.on('dblclick', onMapClick);
               map.keyboard.disable();
               map.doubleClickZoom.disable();
+              map.options.maxZoom = 18;
+              map.options.minZoom = 15;
               getMarkers2();
               satView();
   
@@ -98,7 +100,7 @@ function clearMarkers(){
 function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
                   if(jsonMap2[i]['category_id']=='1'){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon}) 
-                      .bindPopup("this is a theft marker<br>"+
+                      .bindPopup("this is a theft marker<br><span class='badge badge-success'>Category</span><br>"+
                       "Date: "+jsonMap2[i][3]+"<br>"+
                       "Location:"+jsonMap2[i][4]+"<br>"+
                       "id:"+jsonMap2[i][0]);
@@ -320,7 +322,7 @@ function onMapClick(e){
     document.getElementById('lng').value= longitude;
     document.getElementById('date').value= today;
     console.log(today);
-    $('#exampleModal').modal('show');
+    $('#insertModal').modal('show');
  //  swal({ title:"Hey!", text: "You put a marker on the map! Click the marker!", type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"});
     //demo.showSwal('warning-message-and-confirmation');
    // demo.showNotification();

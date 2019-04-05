@@ -41,7 +41,11 @@ function initMap(){
   maxZoom: 20,
   subdomains:['mt0','mt1','mt2','mt3']
                         }).addTo(map);
-             
+              map.on('dblclick', onMapClick);
+              map.keyboard.disable();
+              map.doubleClickZoom.disable();
+              map.options.maxZoom = 18;
+              map.options.minZoom = 15;
               getMarkers2();
               satView();
   
@@ -153,7 +157,10 @@ function getMarkers2(){
  
   var endDate = new Date('12/12/2990');
   var startDate = new Date('12/12/1990');
-   var crime_type= document.getElementsByName('search_by_type');
+   
+   
+
+
    var button = ' <br><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</button>';
    var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
   
@@ -172,17 +179,15 @@ function getMarkers2(){
 
       $.getJSON("app/controllers/results.json", function(jsonMap2) {
             for(var i=0; i<jsonMap2.length; i++){
-              for(var j=0; j<crime_type.length; j++){
-                console.log('choy');
-              //  if (crime_type[j].checked == true) {
-                  if( new Date(jsonMap2[i][4])>= startDate &&  new Date(jsonMap2[i][4]) <=endDate ){
-                    console.table(jsonMap2[i]);
-                    //if(jsonMap2[i][12] == crime_type[j].value){
-                      console.log('naload na dapat');
-                     loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
-                     
-                 // }
-               // }
+             
+                 
+                    if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
+                   
+                  
+                           
+                            loadMarkerImg(jsonMap2,i,button,button2,popupOptions);   
+
+                
               }
             }
           }

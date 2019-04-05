@@ -8,13 +8,12 @@
 
    <div class="logo">
     <a href="#" class="simple-text logo-normal">
-    <a href="assets/marker/asd.png" class="simple-text logo-normal" >
-        <img src="assets/marker/asd.png"> Bantay MSU
+      Bantay MSU
     </a>
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item active ">
+      <li class="nav-item ">
         <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('dashboard')?>">
           <i class="material-icons">dashboard</i>
           <p>Dashboard</p>
@@ -28,18 +27,19 @@
         </a>
       </li>
 
-      <li class="nav-">
+              <li class="nav-item active">
         <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('accountsall')?>">
           <i class="material-icons">timeline</i>
           <p>Accounts Management</p>
         </a>
       </li>
+
       
      
       <li class="nav-item">
         <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('map')?>">
           <i class="material-icons">location_ons</i>
-          <p>Map</p>
+          <p>Filter Map</p>
         </a>
       </li>
     </ul>

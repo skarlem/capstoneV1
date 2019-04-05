@@ -2,15 +2,15 @@
  
 
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="azure" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo">
-        <a href="#" class="simple-text logo-normal">
-          Bantay MSU
+        <a href="assets/marker/asd.png" class="simple-text logo-normal" >
+        <img src="assets/marker/asd.png"> Bantay MSU
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -25,10 +25,16 @@
           <li class="nav-item ">
             <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('table')?>">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Incident Summary</p>
             </a>
           </li>
           
+     <li class="nav-item ">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('accountsall')?>">
+          <i class="material-icons">timeline</i>
+          <p>Accounts Management</p>
+        </a>
+      </li>
          
           <li class="nav-item active ">
             <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('map')?>">
@@ -63,24 +69,25 @@
           <br>
           <li class="nav-item">
             
-          
-              <br> <span class="badge badge-pill badge-primary">Classification</span><br><br>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">      
-                  </span>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input"  onclick="checkAll()" id="checkAll" type="checkbox"  checked>
-                      Select All
-                    <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-              </div>
-             
+
+            <br>
+          <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+     
+    <span class="badge badge-success">Classification</span>
+     
+    <span class="check"></span>
+  </span>
+</label>
+</div>
+</div>
+<br>
+
 
               
               <div class="input-group">
@@ -147,9 +154,46 @@
               </label>
             </div>
               </div>
+<br>  
+
+              <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+     
+     <span class="badge badge-success">Category</span>
+     
+    <span class="check"></span>
+  </span>
+</label>
+</div>
+</div>
+<br>
+            
 
 
-             <br> <span class="badge badge-pill badge-primary">Category</span><br><br>
+<div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                
+                <button type="button" class="btn btn-success btn-fab btn-fab-mini" data-toggle="modal" data-target="#category_modal">
+                    <i class="material-icons">add</i> 
+                </button>
+                Add Category
+                  
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+
              <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">      
@@ -342,3 +386,26 @@
 
  
       </nav>
+
+
+      
+<!-- Modal -->
+<div class="modal fade" id="category_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
