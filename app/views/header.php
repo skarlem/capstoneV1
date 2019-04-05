@@ -20,6 +20,11 @@
           src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"> 
         </script>
 
+
+<!--   Pulsing icon   -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/mapshakers/leaflet-icon-pulse/add42abc/src/L.Icon.Pulse.css">
+<script src='https://cdn.rawgit.com/mapshakers/leaflet-icon-pulse/master/src/L.Icon.Pulse.js'></script>
+
 <!--   Core JS Files   -->
 <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
@@ -98,4 +103,6 @@
 
 <script type="text/javascript" src=".assets/datepicket/src/js/tempusdominus-bootstrap-4.min.js"></script>
 <link rel="stylesheet" href="./assets/datepicket/src/css/tempusdominus-bootstrap-4.min.css" />
+
+<script type="text/javascript" src="./app/js/websocket.js"></script>
 

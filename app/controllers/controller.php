@@ -185,6 +185,13 @@ if (isset($_GET[md5("controller")])){
 			$_SESSION['page']=md5('dashboard');
 			//echo ($_SESSION['id']);
 		}
+
+		elseif($_GET[md5("controller")]===md5('accountsall')){
+			include('app/views/accountsall.php');
+			$_SESSION['page']=md5('accountsall');
+			//echo ($_SESSION['id']);
+		}
+
 		
 	}//end else for session id
 	
