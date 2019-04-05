@@ -63,24 +63,24 @@
           <br>
           <li class="nav-item">
             
-
-            <br>
-          <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">      
-    </span>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-     
-    <span class="badge badge-pill badge-primary">Classification</span>
-     
-    <span class="check"></span>
-  </span>
-</label>
-</div>
-</div>
-<br>
+          
+              <br> <span class="badge badge-pill badge-primary">Classification</span><br><br>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="checkAll()" id="checkAll" type="checkbox"  checked>
+                      Select All
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+             
 
               
               <div class="input-group">
@@ -147,25 +147,9 @@
               </label>
             </div>
               </div>
-<br><br>
 
-              <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">      
-    </span>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-     
-     <span class="badge badge-pill badge-primary">Category</span>
-     
-    <span class="check"></span>
-  </span>
-</label>
-</div>
-</div>
-<br>
-            
+
+             <br> <span class="badge badge-pill badge-primary">Category</span><br><br>
              <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">      
@@ -181,33 +165,101 @@
               </label>
             </div>
               </div>
-
-
-<?php 
- foreach( getCategory()as $row ){
-  $value = $row['category_id'];
-  $desc = $row['category_desc'];
-  echo'
-  <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">      
-    </span>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input class="form-check-input"  name="category" id="category" type="checkbox" value="'.$value.'" checked>
-      '.$desc.'
-      <span class="form-check-sign">
-    <span class="check"></span>
-  </span>
-</label>
-</div>
-</div>
-';
-}
-?>
-
               
+             
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="category"id="category" type="checkbox" value="1" checked>
+                      Theft
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="category"id="category" type="checkbox" value="2" checked>
+                    Armed Robbery
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="category"id="category" type="checkbox" value="3" checked>
+                      Vehicular Incident
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="category"id="category" type="checkbox" value="4" checked>
+                     Animal Bite
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="category"id=category" type="checkbox" value="5" checked>
+                      Assault
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" onclick="loadMarkersbyType()" name="category" id="category" type="checkbox" value="6" checked>
+                    Fire
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
 
              
 

@@ -14,7 +14,7 @@ var theftIcon = L.icon({
 });
 
 var theftIcon2 = L.icon({
-  iconUrl: './assets/marker/Icecream.png',iconSize: [50, 50]
+  iconUrl: './assets/marker/M-Theft.png',iconSize: [50, 50]
 });
 var injuryIcon = L.icon({
     iconUrl: './assets/marker/physical-injury.png',
@@ -106,7 +106,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
                   }
                   if(jsonMap2[i]['category_id']=='2'){
                     marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon2}) 
-                    .bindPopup("this is a destruction of property marker<br>"+
+                    .bindPopup("this is a robbery icon<br>"+
                     "Date: "+jsonMap2[i][3]+"<br>"+
                     "Location:"+jsonMap2[i][4]+"<br>"+
                     "id:"+jsonMap2[i][0]);
@@ -225,10 +225,10 @@ function getMarkers2(){
                    
                     //console.log()
                         if(jsonMap2[i]['category_id']==crime_type[j].value){
-                          console.log('chokoy');
+                        //  console.log('chokoy');
                           if(jsonMap2[i]['classification']==classification_arr[k].value){
-                            console.log(jsonMap2[i][8]);
-                            console.log(classification_arr[k].value);
+                           // console.log(jsonMap2[i][8]);
+                            //console.log(classification_arr[k].value);
                             loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                           }
                           

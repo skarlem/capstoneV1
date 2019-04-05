@@ -11,7 +11,7 @@ function getMarkers(){
 	select distinct * ,fullname as reported_by
 	from(
 		
-		(select f.marker_id,f.lat,f.lng,to_char(to_date(f.date, 'YYYY/MM/DD'),'MM/DD/YYYY' )as date,f.location_description,f.class,f.classification,f.category,h.category_id,h.category_desc,
+		(select f.marker_id,f.lat,f.lng,f.date,f.location_description,f.class,f.classification,f.category,h.category_id,h.category_desc,
 		 f.reported_by,h.category_id,g.fullname,g.school_id,j.class_type,j.class_type_id from crime_db.incident_records as f
 			natural join crime_db.accounts as g
 		 	natural join crime_db.category as h
@@ -86,26 +86,6 @@ function deleteMarker($where){
 	    }
 	//}
 	return $is_inserted;
-}
-
-function getCategory(){
-
-$markers =array();
-
-$result = pg_query(getConn(), "
-select * from crime_db.category order by category_id asc;
-");
-if (!$result) {
-		echo "An error occurred.\n";
-		exit;
-}
-else{
-	while($row = pg_fetch_array($result)){
-						$markers[] = $row;
-					}
-}       
-return $markers;
-	
 }
 
 

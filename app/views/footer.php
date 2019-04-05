@@ -11,14 +11,7 @@
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>
-           
-         
+            </script>  
+            
 </footer>
-
-<script>
-				window.onload = function() {
-					history.replaceState("", "", window.location.href);
-				}
-</script>
 
