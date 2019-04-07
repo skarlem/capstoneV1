@@ -77,25 +77,27 @@
                         <div class="col-sm-1">
                         </div>
                       </div>
-                      
+                    
                       <div class="modal-footer justify-content-center">
                         <button class="btn btn-primary btn-block" name='login'type="submit">Log In</button>
                         <br><br><br><br>
                       </div>
                     </form>
-
                   </div>
                 </div>
               </div>
             </div>
           </div>
- <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('app/views/assets/img/bggg.jpg');">
+ <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('app/views/assets/img/try_again.jpg');">
     <div class="container">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
+          <div class='text-center'>
+          <img class="img" src="./assets/img/logo.png" style="width:200px;">
           <div class="brand">
             <h1>BANTAY-E</h1>
             <h3 class="title">Security Management System</h3>
+          </div>
           </div>
         </div>
       </div>
