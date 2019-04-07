@@ -1,5 +1,6 @@
 
 var table =$('#dataTables-example').DataTable( {
+	responsive: true,
     dom: 'Bfrtip',
     buttons: [{
     	extend: 'excelHtml5',

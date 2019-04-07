@@ -37,4 +37,7 @@ function loginAdmin($user, $password) {
             }//end outer else
         }//end while
     }//end else
+   
 }
+
+?>

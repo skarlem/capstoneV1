@@ -7,28 +7,14 @@ function getMarkers(){
 	$markers =array();
 
 	$result = pg_query(getConn(), "
-	
-	select distinct * ,fullname as reported_by
-	from(
 		
-		(select f.marker_id,f.lat,f.lng,to_char(to_date(f.date, 'YYYY/MM/DD'),'MM/DD/YYYY' )as date,f.location_description,f.class,f.classification,f.category,h.category_id,h.category_desc,
-		 f.reported_by,h.category_id,g.fullname,g.school_id,j.class_type,j.class_type_id from crime_db.incident_records as f
-			natural join crime_db.accounts as g
-		 	natural join crime_db.category as h
-		 	natural join crime_db.class_type as j
-		 where f.reported_by = g.school_id and f.category = h.category_id and f.class = j.class_type_id
-		
-		) as a
-	inner join 
 	
-	(select classification_id,classification_desc from crime_db.classification 
+select a.*,f.classification_desc,f.category_desc,f.status_description,f.action_taken,f.what_happened from crime_db.incident_report as a
+join crime_db.mapdata as f on f.marker_id = a.marker_id;
+	 
+
+
 	
-	
-	) as b
-	
-	on a.classification = b.classification_id
-		
-	);
 	");
 	if (!$result) {
 	    echo "An error occurred.\n";

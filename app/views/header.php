@@ -98,8 +98,14 @@
 <link rel="stylesheet" href="./assets/marker.css">
 
 
+
 <!-- marker css -->
 <link rel="stylesheet" href="./assets/date.css">
+
+
+
+<!-- print css -->
+<link rel="stylesheet" href="./assets/print.css">
 
 <script type="text/javascript" src=".assets/datepicket/src/js/tempusdominus-bootstrap-4.min.js"></script>
 <link rel="stylesheet" href="./assets/datepicket/src/css/tempusdominus-bootstrap-4.min.css" />

@@ -5,8 +5,7 @@ require 'app/models/marker_model.php';
 require 'app/models/admin_model.php';
 
 
-require_once('login_handler.php');
-
+require ('login_handler.php');
 if (isset($_GET[md5("controller")])){
 	
 	if( $_GET[md5("controller")] === md5('login' )) {
@@ -107,6 +106,7 @@ if (isset($_GET[md5("controller")])){
 		elseif($_GET[md5("controller")]===md5('table')){
 			
 			include('app/views/markers.php');
+			
 			$_SESSION['page']=md5('table');
 			$cont = md5('controller');
 			$table = md5('table');
@@ -183,7 +183,7 @@ if (isset($_GET[md5("controller")])){
 		elseif($_GET[md5("controller")]===md5('dashboard')){
 			include('app/views/dashboard.php');
 			$_SESSION['page']=md5('dashboard');
-			//echo ($_SESSION['id']);
+			
 		}
 
 		elseif($_GET[md5("controller")]===md5('accountsall')){
