@@ -1,6 +1,7 @@
 <?php 
 include_once('header.php');
 include_once('dashboard_nav.php');
+
 ?>
 
       <div class="content">
@@ -162,14 +163,14 @@ include_once('dashboard_nav.php');
                               $date = $row['date'];
                               $location = $row['location_description'];
                               $category = $row['category_desc'];
-                              $persons_involved= $row['persons_involved'];
+                             
                               $victim = $row['victim'];
                               $suspect =$row['suspect'];
-                              $incident_narrative=$row['incident_narrative'];
-                              $action_taken=$row['action_taken'];
+                             
+                             
                               $reported_by=$row['reported_by'];
                               $classification=$row['classification_desc'];
-                              $school_id=$row['school_id'];
+                             
                               
                           echo'
                           <tr>
@@ -178,6 +179,7 @@ include_once('dashboard_nav.php');
                               <td>'.$date.'</td>
                              
                               <td>'.$location.'</td>
+                              
                               <td><span class="badge badge-pill badge-danger">'.$classification.'</span></td>
                               <td>'.$category.'</td>
                              

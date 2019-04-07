@@ -56,16 +56,30 @@
                           <th>
                             Location Description
                           </th>
-
                        
+                          <th>
+                            Category
+                          </th> 
+                          
+                          <th>
+                            Item/Unit
+                          </th> 
+                          
+                          <th>
+                           Victim
+                          </th>
+                          
+                          <th>
+                            Incident Narrative
+                          </th>  
                         
                           <th>
                             Classification
                           </th>
                           
                           <th>
-                            Category
-                          </th> 
+                           Action Taken
+                          </th>
                           <th>
                             Action
                           </th>
@@ -81,10 +95,13 @@
                               $date = $row['date'];
                               $location = $row['location_description'];
                               $category = $row['category_desc'];
-                              
+                              $items = $row['items'];
+                              $victim = $row['victim'];
+                              $incident_narrative = $row['what_happened'];
+                              $action_taken = $row['action_taken'];
                              
                               $classification=$row['classification_desc'];
-                              $school_id=$row['school_id'];
+                              $school_id=$row['reported_by'];
                               
                               
                           echo'
@@ -94,18 +111,55 @@
                               <td>'.$date.'</td>
                              
                               <td>'.$location.'</td>
-                             
-                              
+                              <td>'.$category.'</td>
+                              <td>'.$items.'</td>
+                              <td>'.$victim.'</td>
+                              <td>'.$incident_narrative.'</td>
                              
                               <td>'.$classification.'</td>
-                              <td>'.$category.'</td>
+                              <td>'.$action_taken.'</td>
                               <td style="width:100px;text-align:center">
                                 <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdit'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$id.'" title="Delete"><i class="fa fa-remove"></i></a>
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#Modal'.$id.'" title="Delete"><i class="material-icons">zoom_out_map</i></a>
+                               
+                                <a style="cursor:pointer" data-toggle="modal" data-target="#viewModal'.$id.'" title="Delete"><i class="material-icons">zoom_out_map</i></a>
                                 
                               </td>
                           </tr>
+
+                          <div class="modal fade bd-example-modal-lg" id="viewModal'.$id.'" tabindex="-1" 
+                          role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Incident Report Information</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div id="print">
+                                    asdadasdasd
+                                    adsasdasd
+                                    asdasd
+                                    asdasd
+                                    asda
+                                    asda
+                                  </div>
+                                   
+                            </div>
+                            <div class="modal-footer">
+                                  <div class="col-lg-12">
+                                      <button type="submit" class="btn btn-info float-right" id="btnPrint" >Print</button>
+                                      <button type="button" class="btn btn-default float-right" data-dismiss="modal">Close</button>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                              </div>
+                          </div>
+
+
+
 
 
                           
@@ -207,6 +261,42 @@
 
   <!-- datables for our table -->
   <script src="app/js/datatables.js"></script>
+
+
+  <script>
+  document.getElementById("btnPrint").onclick = function() {
+    printElement(document.getElementById("print"));
+    window.print();
+}
+
+function printElement(elem, append, delimiter) {
+    var domClone = elem.cloneNode(true);
+
+    var $printSection = document.getElementById("printSection");
+
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
+    }
+
+    if (append !== true) {
+        $printSection.innerHTML = "";
+    }
+
+    else if (append === true) {
+        if (typeof(delimiter) === "string") {
+            $printSection.innerHTML += delimiter;
+        }
+        else if (typeof(delimiter) === "object") {
+            $printSection.appendChlid(delimiter);
+        }
+    }
+
+    $printSection.appendChild(domClone);
+
+}
+  </script>
 
   <?php
   include_once('footer.php');
