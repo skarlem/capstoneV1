@@ -24,7 +24,7 @@
     <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand">LOGO </a>
+        <a class="navbar-brand" href="#"><img class="img" src="./assets/img/logo.png" style="width:40px;">BANTAY-E for MSU-GSC</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon"></span>
@@ -77,25 +77,27 @@
                         <div class="col-sm-1">
                         </div>
                       </div>
-                      
+                    
                       <div class="modal-footer justify-content-center">
                         <button class="btn btn-primary btn-block" name='login'type="submit">Log In</button>
                         <br><br><br><br>
                       </div>
                     </form>
-
                   </div>
                 </div>
               </div>
             </div>
           </div>
- <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('app/views/assets/img/bggg.jpg');">
+ <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('app/views/assets/img/try_again.jpg');">
     <div class="container">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
+          <div class='text-center'>
+          <img class="img" src="./assets/img/logo.png" style="width:200px;">
           <div class="brand">
             <h1>BANTAY-E</h1>
             <h3 class="title">Security Management System</h3>
+          </div>
           </div>
         </div>
       </div>
@@ -158,6 +160,12 @@
       materialKit.initSliders();
     });
   </script>
+
+  <script>
+        window.onload = function() {
+          history.replaceState("", "", window.location.href);
+        }
+</script>
 </body>
 
 </html>
