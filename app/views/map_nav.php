@@ -296,7 +296,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="<?php echo "index.php?".md5("controller")."=".md5('editAccount')?>">Account</a>
-                  <a class="dropdown-item" href="app/controller/logout.php">Logout</a>
+                  <a class="dropdown-item" href="index.php?controller=<?php echo md5('logout');?>">Logout</a>
                   
                   
                 </div>

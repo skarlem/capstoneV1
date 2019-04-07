@@ -103,6 +103,7 @@
                               $classification=$row['classification_desc'];
                               $school_id=$row['reported_by'];
                               
+                              $status =$row['status_description'];
                               
                           echo'
                           <tr>
@@ -131,19 +132,39 @@
                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Incident Report Information</h5>
+                                 
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
                                 <div class="modal-body">
                                   <div id="print">
-                                    asdadasdasd
-                                    adsasdasd
-                                    asdasd
-                                    asdasd
-                                    asda
-                                    asda
+                                  <center><h5>Incident Report Information</h5></center>
+                                  <div class="container">
+
+                                  <div class="row">
+
+                                    <div class="col">
+                                      Incident ID: '.$id.'
+                                    </div>
+                                    <div class="col">
+                                      Classification: '.$classification.'
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col">
+                                      Category: '.$category.'
+                                    </div>
+                                    <div class="col">
+                                      Status: '.$status.'
+                                    </div>
+
+                                
+                                  </div><!-- row end -->
+                                  
+                              
+                                </div>
+                                
                                   </div>
                                    
                             </div>
