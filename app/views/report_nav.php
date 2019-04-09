@@ -8,7 +8,7 @@
 
        <div class="logo">
         <a href="#" class="simple-text logo-normal">
-          Bantay MSU
+         <img src="app/views/assets/img/logo-small.png"> Bantay MSU
         </a>
       </div>
       <div class="sidebar-wrapper">
