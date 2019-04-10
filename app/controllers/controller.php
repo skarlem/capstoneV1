@@ -7,7 +7,6 @@ require 'app/models/admin_model.php';
 
 require ('login_handler.php');
 if (isset($_GET[md5("controller")])){
-	
 	if( $_GET[md5("controller")] === md5('login' )) {
 		if(empty($_SESSION)){
 			session_start();		
@@ -15,8 +14,8 @@ if (isset($_GET[md5("controller")])){
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$user =  $_POST['username'];
 				$password =  ($_POST['password']);
-				echo $row['username']; $row['password'];
 				loginAdmin($user,$password);
+				
 			}
 		}
 		

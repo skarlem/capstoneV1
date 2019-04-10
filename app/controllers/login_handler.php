@@ -10,23 +10,28 @@ function loginAdmin($user, $password) {
         $dsh = md5('dashboard');
         while ($row = pg_fetch_array($ret)) {
             $pass = $row['password'];
-            if ($user === $row['username']) {
-                if ($password === $pass) {
+            
+            if ($user === $row['username'] && $password === $pass) {
+              
+               echo $row['username'];
                     $_SESSION['id']=$row['id'];
                   //  header("Location: index.php?".md5("controller")."=".md5('dashboard'));
                     echo("<script>location.href = 'index.php?$cont=$dsh';</script>");
+                    echo $row['username'];
                     exit();
-                }
-                else{
                    
-                }//inner else end
                 
+                
+                //inner else end
+                echo $row['username'];
             } //end inner if
 
 
             else {
+                echo $row['password'];
+                echo $row['username'];
+                echo'di ka login chuy';
                 
-                   exit();
             }//end outer else
         }//end while
     }//end else

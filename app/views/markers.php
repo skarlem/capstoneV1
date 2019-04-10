@@ -104,7 +104,7 @@
                               $victim = $row['victim'];
                               $incident_narrative = $row['what_happened'];
                               $action_taken = $row['action_taken'];
-                             
+                             $suspect = $row['suspect'];
                               $classification=$row['classification_desc'];
                               $school_id=$row['reported_by'];
                               
@@ -125,7 +125,7 @@
                               <td>'.$classification.'</td>
                               <td>'.$action_taken.'</td>
                               <td style="width:100px;text-align:center">
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdit'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdi'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
                                
                                 <a style="cursor:pointer" data-toggle="modal" data-target="#viewModal'.$id.'" title="Delete"><i class="material-icons">zoom_out_map</i></a>
                                 
@@ -146,18 +146,19 @@
                                   <div id="print">
 
                                   
-                                  <center>
-
+                              <center>
+                                  <h5>Incident Report Information</h5>
+                                  </center>
                                   <div class="logo">
                                       
                                       <img src="assets/marker/F-Theft.png">
                                       
                                     </div>
-                                  <h5>Incident Report Information</h5>
-                                  </center>
+                                
+                                  
                                   <br>
 
-                                  
+
                                   <div class="container">
 
                                   <div class="row">
@@ -176,7 +177,43 @@
                                     <div class="col">
                                       Status: '.$status.'
                                     </div>
+                                   
+                                </div>
 
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                    Items Involved: <br>'.$items.'
+                                  </div>
+
+                                
+                                  </div><!-- row end -->
+                                  <br>
+                                <div class="row">
+                                    <div class="col">
+                                    Persons Involved <br>
+                                    Victim: '.$victim.'<br>
+                                    Suspect: '.$suspect.'
+                                  </div>
+
+                                
+                                  </div><!-- row end -->
+
+                                  
+                            <br>
+                                <div class="row">
+                                    <div class="col">
+                                    Incident Narrative: <br>'.$incident_narrative.'
+                                  </div>
+
+                                
+                                  </div><!-- row end -->
+
+                                  <br>
+                                  <div class="row">
+                                  <div class="col">
+                                  Action Taken:<br> '.$action_taken.'
+                                </div>
                                 
                                   </div><!-- row end -->
                                   

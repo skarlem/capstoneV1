@@ -360,11 +360,12 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
                     else if(jsonMap2[i]['classification']==4){
                       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: sexualAssaultIcon4}) 
                       .bindPopup("<span class='badge badge-success'>Incident</span><br>"+
-                      "Incident ID:"+jsonMap2[i][0]+"<br>"+
+                      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
                       "Incident Category:"+jsonMap2[i][13]+"<br>"+
                       "Date: "+jsonMap2[i][3]+"<br>"+
-                      "Location:"+jsonMap2[i][4]+"<br>"+
-                      "Incident Status:<span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+                      "Location:"+jsonMap2[i][4]+"<br></font>"+
+                      "Incident Status:<span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>"+
+                      );
                       layer = L.layerGroup([marker]).addTo(map); 
                     } 
                 }

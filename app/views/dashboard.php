@@ -14,12 +14,16 @@ include_once('dashboard_nav.php');
                     <div class="card-icon">
                       <i class="material-icons"></i>
                     </div>
-                     <div class="col-md-3">
-                     </div>
+                     
                    
                       <!-- start column 2-->
-                          <div class="col-md-8">
-                            <div id="map" style="height: 550px;width: 100%; padding-left:800px; "></div>
+                          <div class="col-md-8" style="padding-left:20px; padding-bottom: 20px;">
+                            <div id="map" style="height:550px;width: 100%;   ">
+                            
+                            </div>
+                           
+                          </div>
+                        
                           </div>
                           </div>
                           </div>
