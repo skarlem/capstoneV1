@@ -36,6 +36,10 @@ var table =$('#dataTables-example').DataTable( {
 
 );
  
+
+$('#container').css( 'display', 'block' );
+table.columns.adjust().draw();
+
 $(document).ready(function() {
     $('#dataTables-example-2').DataTable();
 } );

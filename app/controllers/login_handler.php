@@ -1,6 +1,6 @@
 <?php
 function loginAdmin($user, $password) {
-    $sql ="select * from public.admin";
+    $sql ="select * from crime_db.accounts";
     $ret = pg_query(getConn(), $sql);
     if (pg_num_rows($ret)===0) {
         echo pg_last_error($db);
@@ -25,14 +25,7 @@ function loginAdmin($user, $password) {
 
 
             else {
-                echo
-                '
-                <script>
-                    demo.showNotification("top","right","Login Failed");
-                        
-                </script>
-                asdasdasdasdasd
-                ';
+                
                    exit();
             }//end outer else
         }//end while

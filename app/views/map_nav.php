@@ -188,9 +188,7 @@
 </div>
 <br>
             
-
-
-<div class="input-group">
+                 <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">      
                   </span>

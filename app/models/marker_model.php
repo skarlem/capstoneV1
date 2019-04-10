@@ -10,8 +10,7 @@ function getMarkers(){
 		
 	
 select a.*,f.classification_desc,f.category_desc,f.status_description,f.action_taken,f.what_happened from crime_db.incident_report as a
-join crime_db.mapdata as f on f.marker_id = a.marker_id;
-	 
+left OUTER join crime_db.mapdata as f on f.marker_id = a.marker_id order by marker_id;
 
 
 	
@@ -62,7 +61,7 @@ function deleteMarker($where){
 //insert function
 	function insertMarker($data){
 	//foreach ($data as $key => $users) {
-	    $res = pg_insert(getConn(), 'crime_db.mapdata' , $data);
+	    $res = pg_insert(getConn(), 'crime_db.incident_records' , $data);
 	    if ($res) {
 	      echo "Inserted user";
 	      $is_inserted = true;
@@ -73,6 +72,7 @@ function deleteMarker($where){
 	//}
 	return $is_inserted;
 }
+
 
 function getCategory(){
 

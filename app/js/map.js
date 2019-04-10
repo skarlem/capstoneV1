@@ -368,7 +368,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
                       layer = L.layerGroup([marker]).addTo(map); 
                     } 
                 }
-                if(jsonMap2[i]['classification']=='6'){
+                if(jsonMap2[i]['category']=='6'){
                   if(jsonMap2[i]['classification']==1){
                     marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: fire1}) 
                     .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+

@@ -3,7 +3,12 @@
   include_once('marker_nav.php');
   ?>
 
-
+<style type="text/css" media="print">
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 1;  /* this affects the margin in the printer settings */
+}
+</style>
 
 
         <div class="content">
@@ -128,7 +133,7 @@
                           </tr>
 
                           <div class="modal fade bd-example-modal-lg" id="viewModal'.$id.'" tabindex="-1" 
-                          role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                          role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false"  >
                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -139,7 +144,20 @@
                                 </div>
                                 <div class="modal-body">
                                   <div id="print">
-                                  <center><h5>Incident Report Information</h5></center>
+
+                                  
+                                  <center>
+
+                                  <div class="logo">
+                                      
+                                      <img src="assets/marker/F-Theft.png">
+                                      
+                                    </div>
+                                  <h5>Incident Report Information</h5>
+                                  </center>
+                                  <br>
+
+                                  
                                   <div class="container">
 
                                   <div class="row">

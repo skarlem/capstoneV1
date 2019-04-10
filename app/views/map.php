@@ -10,6 +10,22 @@ include_once('map_nav.php');
   <div id="map" width:900px;></div>
   
 
+<div class="modal fade bd-example-modal-lg" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+         
+  </div>
+</div>
+    </div>
+</div>
 
 
 
@@ -45,45 +61,15 @@ include_once('map_nav.php');
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">event_note</i></span>
                   <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date"name="date" data-toggle="datetimepicker" data-target="#date"/>
-
- 
                 </div>
+
                 <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">edit_location</i></span>
                   <input type="text" class="form-control" name="location"  required oninvalid="" placeholder="Location Description" >
                 </div>
 
-                </div>
-                <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">edit_location</i></span>
-                  <input type="text" class="form-control" name="item" required oninvalid="" placeholder="Item/Unit" >
-                </div>
-
-                <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">assignment_ind</i></span>
-                  <input type="text" class="form-control" id="victim" required oninvalid="" name="victim" placeholder="Victim">
-                </div>
+          
                 
-
-                <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">directions_run</i></span>
-                  <input type="text" class="form-control" id="suspect" required oninvalid="" name="suspect" placeholder="Suspect">
-                </div>
-
-                <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">subject</i></span>
-                  <input type="text" class="form-control" id="incident_nar"  required oninvalid="" name="incident_narrative" placeholder="Incident Narrative">
-                </div>
-
-                <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">location_on</i></span>
-                  <input type="text" class="form-control" id="action_taken" required oninvalid="" name="action_taken" placeholder="Action Taken">
-                </div> 
-
-                <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">person_in</i></span>
-                  <input type="text" class="form-control" id="persons_involved"  required oninvalid="" name="persons_involved" placeholder="Persons Involved">
-                </div>    
 
                  <div class="form-group input-group">
                   <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
@@ -99,9 +85,26 @@ include_once('map_nav.php');
                     <option value='1'>Felony</option>
                     <option value='2'>Misdemeanor</option>
                     <option value='3'>Violation</option>
+                    <option value='4'>Incident</option>
                    
                   </select>               
               </div>
+
+
+
+              <div class="form-group input-group">
+                 
+                 <label for="exampleFormControlSelect1">Category</label>
+                 <select class="form-control selectpicker"  required oninvalid="" data-style="btn btn-link" id="category" name="category">
+                   <option >Category</option>
+                   <option value='1'>Theft</option>
+                   <option value='2'>Destruction of Property</option>
+                   <option value='3'>Vehicular Incident</option>
+                   <option value='4'>Animal Bite</option>
+                   <option value='5'>Assault</option>
+                   <option value='6'>Fire</option>
+                 </select>               
+             </div>
 
               <div class="form-group input-group">
                  
@@ -114,20 +117,7 @@ include_once('map_nav.php');
              </div>
 
 
-             <div class="form-group input-group">
-                 
-                 <label for="exampleFormControlSelect1">Category</label>
-                 <select class="form-control selectpicker"  required oninvalid="" data-style="btn btn-link" id="category" name="category">
-                   <option >Category</option>
-                   <option value='1'>Theft</option>
-                   <option value='2'>Armed Robbery</option>
-                   <option value='3'>Vehicular Incident</option>
-                   <option value='4'>Animal Bite</option>
-                   <option value='5'>Assault</option>
-                   <option value='6'>Fire</option>
-                 </select>               
-             </div>
-
+            
 
              
                  <div class="modal-footer">

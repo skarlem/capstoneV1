@@ -170,6 +170,7 @@ include_once('dashboard_nav.php');
                              
                               $reported_by=$row['reported_by'];
                               $classification=$row['classification_desc'];
+                              $classi = $row['classification'];
                              
                               
                           echo'
@@ -180,7 +181,14 @@ include_once('dashboard_nav.php');
                              
                               <td>'.$location.'</td>
                               
-                              <td><span class="badge badge-pill badge-danger">'.$classification.'</span></td>
+                              <td>
+                              
+                              
+
+                              <span class="badge badge-pill badge-danger">'.$classification.'
+                              
+                              
+                              </span></td>
                               <td>'.$category.'</td>
                              
                               <td>'.$victim.'</td>

@@ -14,7 +14,8 @@ if (isset($_GET[md5("controller")])){
 			include('login.php');
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$user =  $_POST['username'];
-				$password =  md5($_POST['password']);
+				$password =  ($_POST['password']);
+				echo $row['username']; $row['password'];
 				loginAdmin($user,$password);
 			}
 		}
@@ -67,19 +68,18 @@ if (isset($_GET[md5("controller")])){
 			include_once('app/views/map.php');	
 			if (isset($_POST['add_marker'])){
 				 
+
+				$time = strtotime($_POST['date']);
+
+				$newDate = date('Y-m-d',$time);
 			  //  $id = $_POST['id'];
 				$lat = $_POST['lat'];
 				$lng = $_POST['lng'];
 				$location = $_POST['location'];
-				$item = $_POST['item'];
-				$date = $_POST['date'];
-				$victim= $_POST['victim'];
-				$suspect = $_POST['suspect'];
-				$indicent_narrative = $_POST['incident_narrative'];
-				$action_taken = $_POST['action_taken'];
-				(int)$classification = $_POST['classification'];
+				
+				$date = $newDate;
 				$reported_by = $_POST['reported_by'];
-				$persons_involved = $_POST['persons_involved'];
+				(int)$classification = $_POST['classification'];
 				$class = $_POST['class'];
 				$category = $_POST['category'];
 			  	$marker = array(
@@ -87,20 +87,14 @@ if (isset($_GET[md5("controller")])){
 							'lng' => $lng,
 							'date' => $date,
 							'location_description'=>$location,
-							'classification_id'=>$classification,
-							'persons_involved'=>$persons_involved,
-							'victim'=>$victim,
-							'suspect'=>$suspect,
-							'incident_narrative'=>$indicent_narrative,
-							'action_taken'=>$action_taken,
-							'reported_by'=>$reported_by,
+							'classification'=>$classification,
+							'category'=>$category,
 							'class'=>$class,
-							'category'=>$category
-							
+							'reported_by'=>$reported_by
 				);
 
 				insertMarker($marker);
-				echo '<script>demo.showNotification("top","right","Insert Successful")</script>';
+				echo '<script>window.reload();</script>';
 			}
 		}
 		elseif($_GET[md5("controller")]===md5('table')){
@@ -111,7 +105,7 @@ if (isset($_GET[md5("controller")])){
 			$cont = md5('controller');
 			$table = md5('table');
 			getMarkers();
-			//echo($_SESSION['page']);
+			//echo($_SESSION['page']);	
 			if(isset($_POST['edit_submit'])){
 				
 
