@@ -20372,10 +20372,10 @@ select.selectpicker {
 
 .presentation-page .header-filter:after,
 .index-page .header-filter:after {
-  background: rgba(132, 13, 121, 0.88);
-  background: linear-gradient(45deg, rgba(141, 77, 149, 0.6) 0%, rgba(141, 0, 255, 0.4) 100%);
-  background: -moz-linear-gradient(135deg, rgba(141, 77, 149, 0.6) 0%, rgba(141, 0, 255, 0.4) 100%);
-  background: -webkit-linear-gradient(135deg, rgba(141, 77, 149, 0.6) 0%, rgba(141, 0, 255, 0.4) 100%);
+  background: rgba(33, 47, 41, 0.8);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: -moz-linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: -webkit-linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
 }
 
 .presentation-page h4.description,
