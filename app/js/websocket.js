@@ -6,8 +6,9 @@ if ("WebSocket" in window) {
   };
 
   ws.onmessage = function (e) {
+    //console.log(e);
     data = JSON.parse(e.data);
-    console.log(data.result);
+    
             
     if(data.type == "emergency"){
       mePin(data);
@@ -27,7 +28,7 @@ if ("WebSocket" in window) {
       
 
 function mePin(data){
-  // specify popup options 
+  
   var customOptions =
     {
       'maxWidth': '500',
@@ -40,31 +41,61 @@ function mePin(data){
       image.src = data.message.image;
 
       messagestring = "<center><h6><span style=\"color:red\">Emergency</span></h6></center><hr>" +
-      "<p><b>Reporter's Details:<br> </b>" +
+      "<p><b>Emergency No. "+ data.emergency_id +" </b><br>" +
+      "Reporter's Details:<br>" +
       "Name: "+ data.user_details.fullname +"<br>"+
       "Gender: "+ data.user_details.gender +"<br>"+
-      "Contact No.: "+ data.user_details.contact_no +"</p>" +
-      "<b>Report Details: </b><br>"+ data.message.message +"</p>" +
-      "<b>Report Image Attachment: </b><br><br> <img onclick=\"window.open(this.src)\" id= \"myImg\" src=\"data:image/jpeg;base64,"+ data.message.image+"\" style=\"width:80%;height:80%;\"/>" +
+      "Contact No.: "+ data.user_details.contact_no  +
+      "<br><b>Report Details: </b><br>"+ data.message.message +"<br>" +
+      "<b>Report Image Attachment: </b><br><br> <img onclick=\"window.open(this.src)\" id= \"myImg\" src=\"data:image/jpeg;base64,"+ data.message.image+"\" style=\"width:500px;height:500px;\"/>" +
       "</p>" +
-      "<center><button  onclick=\"call()\" class=\" btn btn-primary \" id=\"btn_call\">Call</button></center>";
+     "<center><button value = \'" + JSON.stringify(data) + "\'  onclick=\"call(this)\" class=\" btn btn-primary \" id=\"btn_call\">Call</button></center>";
     }
     else{
       messagestring = "<center><h6><span style=\"color:red\">Emergency</span></h6></center><hr>" +
-      "<p>Name: "+ data.user_details.fullname +"<br>"+
+      "<p>Emergency No. "+ data.emergency_id +" <br><br>" +
+      "Name: "+ data.user_details.fullname +"<br>"+
       "Gender: "+ data.user_details.gender +"<br>"+
       "Contact No.: "+ data.user_details.contact_no +"</p>" +
-      "<center><button  onclick=\"call()\" class=\" btn btn-primary \" id=\"btn_call\">Call</button></center>";  
+      "<center><button value = \'" + JSON.stringify(data) + "\'  onclick=\"call(this)\" class=\" btn btn-primary \" id=\"btn_call\">Call</button></center>";  
     }
 
-    var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:'red'});
+    var icon_color = data.message.has_message ? 'orange' : 'red';
+
+    var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:icon_color});
+
     var marker = L.marker([data.location.lat, data.location.long],{icon: pulsingIcon}).bindPopup(messagestring, customOptions).addTo(map);
       map.panTo(marker.getLatLng());
     }
 
 
-function call(){
-  ws.send('{"type":"message", "contact_no":"09293737890", "message":"charaaaan"}');
+function call(btn){
+  data = JSON.parse(btn.value);
+  data.type = 'call_to_user';
+  update_emergency(data.emergency_id);
+
+  var jsonobj = '{"type":"' + data.type + '",' +
+  '"contact_no":"'+ data.user_details.contact_no +'",' +
+  '"emergency_id":"' + data.emergency_id + '"}';
+
+
+  ws.send(jsonobj);
+
 }
+
+function update_emergency(eid){
+  $.ajax({
+    type: 'POST',
+    url : 'app/webservice/update_emergency_status.php',
+    dataType: "json",
+    data: {
+      emergency_id: eid
+    },
+    success : function(response){
+      console.log(response);
+    }
+  });
+}
+
 
 

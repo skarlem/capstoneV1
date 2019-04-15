@@ -32,7 +32,7 @@ if(checkParameters(array('id_num', 'fullname', 'password', 'email', 'contact_no'
 					'password'			=> $password,
 					'university_email'	=> $email,
 					'contact_no'		=> $contact_no,
-					'profile_pic'		=> $target_dir
+					//'profile_pic'		=> $target_dir
 					);
 
 		$result = pg_insert($conn, 'crime_db.accounts', $values);
