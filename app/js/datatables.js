@@ -1,5 +1,6 @@
 
 var table =$('#dataTables-example').DataTable( {
+	responsive: true,
     dom: 'Bfrtip',
     buttons: [{
     	extend: 'excelHtml5',
@@ -35,6 +36,7 @@ var table =$('#dataTables-example').DataTable( {
 
 );
  
+
 $(document).ready(function() {
     $('#dataTables-example-2').DataTable();
 } );

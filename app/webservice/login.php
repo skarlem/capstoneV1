@@ -4,7 +4,7 @@ if(checkParameters(array('email', 'password'))){
 	$email 		= $_POST['email'];
 	$password	= md5($_POST['password']);
 
-	$query = "SELECT * FROM crime_db.accounts WHERE university_email = '$email' AND password = '$password' AND role_id = 1";
+	$query = "SELECT * FROM crime_db.accounts WHERE university_email = '$email' AND password = '$password'";
 	$result = pg_query($conn, $query);
 
 	if(pg_num_rows($result) > 0){

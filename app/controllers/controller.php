@@ -5,18 +5,17 @@ require 'app/models/marker_model.php';
 require 'app/models/admin_model.php';
 
 
-require_once('login_handler.php');
-
+require ('login_handler.php');
 if (isset($_GET[md5("controller")])){
-	
 	if( $_GET[md5("controller")] === md5('login' )) {
 		if(empty($_SESSION)){
 			session_start();		
 			include('login.php');
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$user =  $_POST['username'];
-				$password =  md5($_POST['password']);
+				$password =  ($_POST['password']);
 				loginAdmin($user,$password);
+				
 			}
 		}
 		
@@ -68,19 +67,18 @@ if (isset($_GET[md5("controller")])){
 			include_once('app/views/map.php');	
 			if (isset($_POST['add_marker'])){
 				 
+
+				$time = strtotime($_POST['date']);
+
+				$newDate = date('Y-m-d',$time);
 			  //  $id = $_POST['id'];
 				$lat = $_POST['lat'];
 				$lng = $_POST['lng'];
 				$location = $_POST['location'];
-				$item = $_POST['item'];
-				$date = $_POST['date'];
-				$victim= $_POST['victim'];
-				$suspect = $_POST['suspect'];
-				$indicent_narrative = $_POST['incident_narrative'];
-				$action_taken = $_POST['action_taken'];
-				(int)$classification = $_POST['classification'];
+				
+				$date = $newDate;
 				$reported_by = $_POST['reported_by'];
-				$persons_involved = $_POST['persons_involved'];
+				(int)$classification = $_POST['classification'];
 				$class = $_POST['class'];
 				$category = $_POST['category'];
 			  	$marker = array(
@@ -88,30 +86,25 @@ if (isset($_GET[md5("controller")])){
 							'lng' => $lng,
 							'date' => $date,
 							'location_description'=>$location,
-							'classification_id'=>$classification,
-							'persons_involved'=>$persons_involved,
-							'victim'=>$victim,
-							'suspect'=>$suspect,
-							'incident_narrative'=>$indicent_narrative,
-							'action_taken'=>$action_taken,
-							'reported_by'=>$reported_by,
+							'classification'=>$classification,
+							'category'=>$category,
 							'class'=>$class,
-							'category'=>$category
-							
+							'reported_by'=>$reported_by
 				);
 
 				insertMarker($marker);
-				echo '<script>demo.showNotification("top","right","Insert Successful")</script>';
+				echo '<script>window.reload();</script>';
 			}
 		}
 		elseif($_GET[md5("controller")]===md5('table')){
 			
 			include('app/views/markers.php');
+			
 			$_SESSION['page']=md5('table');
 			$cont = md5('controller');
 			$table = md5('table');
 			getMarkers();
-			//echo($_SESSION['page']);
+			//echo($_SESSION['page']);	
 			if(isset($_POST['edit_submit'])){
 				
 
@@ -183,7 +176,7 @@ if (isset($_GET[md5("controller")])){
 		elseif($_GET[md5("controller")]===md5('dashboard')){
 			include('app/views/dashboard.php');
 			$_SESSION['page']=md5('dashboard');
-			//echo ($_SESSION['id']);
+			
 		}
 
 		elseif($_GET[md5("controller")]===md5('accountsall')){

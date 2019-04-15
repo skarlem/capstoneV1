@@ -3,7 +3,12 @@
   include_once('marker_nav.php');
   ?>
 
-
+<style type="text/css" media="print">
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 1;  /* this affects the margin in the printer settings */
+}
+</style>
 
 
         <div class="content">
@@ -56,30 +61,30 @@
                           <th>
                             Location Description
                           </th>
-
+                       
                           <th>
-                           Item/Unit
-                          </th>
-
+                            Category
+                          </th> 
+                          
                           <th>
-                          Victim
+                            Item/Unit
+                          </th> 
+                          
+                          <th>
+                           Victim
                           </th>
                           
                           <th>
-                          Incident Narrative
-                          </th>
-
-                          <th>
-                          Action Taken
-                          </th>
-
+                            Incident Narrative
+                          </th>  
+                        
                           <th>
                             Classification
                           </th>
                           
                           <th>
-                            Category
-                          </th> 
+                           Action Taken
+                          </th>
                           <th>
                             Action
                           </th>
@@ -95,15 +100,15 @@
                               $date = $row['date'];
                               $location = $row['location_description'];
                               $category = $row['category_desc'];
-                              $persons_involved= $row['persons_involved'];
+                              $items = $row['items'];
                               $victim = $row['victim'];
-                              $suspect =$row['suspect'];
-                              $incident_narrative=$row['incident_narrative'];
-                              $action_taken=$row['action_taken'];
-                              $reported_by=$row['reported_by'];
+                              $incident_narrative = $row['what_happened'];
+                              $action_taken = $row['action_taken'];
+                             $suspect = $row['suspect'];
                               $classification=$row['classification_desc'];
-                              $school_id=$row['school_id'];
-                              $item =$row['item'];
+                              $school_id=$row['reported_by'];
+                              
+                              $status =$row['status_description'];
                               
                           echo'
                           <tr>
@@ -112,20 +117,125 @@
                               <td>'.$date.'</td>
                              
                               <td>'.$location.'</td>
-                              <td>'.$item.'</td>
-                              <td>'.$victim.'</td>
-                              
-                              <td>'.$incident_narrative.'</td>
-                              <td>'.$action_taken.'</td>
-                              <td>'.$classification.'</td>
                               <td>'.$category.'</td>
+                              <td>'.$items.'</td>
+                              <td>'.$victim.'</td>
+                              <td>'.$incident_narrative.'</td>
+                             
+                              <td>'.$classification.'</td>
+                              <td>'.$action_taken.'</td>
                               <td style="width:100px;text-align:center">
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdit'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$id.'" title="Delete"><i class="fa fa-remove"></i></a>
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#Modal'.$id.'" title="Delete"><i class="material-icons">zoom_out_map</i></a>
+                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdi'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
+                               
+                                <a style="cursor:pointer" data-toggle="modal" data-target="#viewModal'.$id.'" title="Delete"><i class="material-icons">zoom_out_map</i></a>
                                 
                               </td>
                           </tr>
+
+                          <div class="modal fade bd-example-modal-lg" id="viewModal'.$id.'" tabindex="-1" 
+                          role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false"  >
+                          <div class="modal-dialog modal-lg" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                 
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div id="print">
+
+                                  
+                              <center>
+                                  <h5>Incident Report Information</h5>
+                                  </center>
+                                  <div class="logo">
+                                      
+                                      <img src="assets/marker/F-Theft.png">
+                                      
+                                    </div>
+                                
+                                  
+                                  <br>
+
+
+                                  <div class="container">
+
+                                  <div class="row">
+
+                                    <div class="col">
+                                      Incident ID: '.$id.'
+                                    </div>
+                                    <div class="col">
+                                      Classification: '.$classification.'
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col">
+                                      Category: '.$category.'
+                                    </div>
+                                    <div class="col">
+                                      Status: '.$status.'
+                                    </div>
+                                   
+                                </div>
+
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                    Items Involved: <br>'.$items.'
+                                  </div>
+
+                                
+                                  </div><!-- row end -->
+                                  <br>
+                                <div class="row">
+                                    <div class="col">
+                                    Persons Involved <br>
+                                    Victim: '.$victim.'<br>
+                                    Suspect: '.$suspect.'
+                                  </div>
+
+                                
+                                  </div><!-- row end -->
+
+                                  
+                            <br>
+                                <div class="row">
+                                    <div class="col">
+                                    Incident Narrative: <br>'.$incident_narrative.'
+                                  </div>
+
+                                
+                                  </div><!-- row end -->
+
+                                  <br>
+                                  <div class="row">
+                                  <div class="col">
+                                  Action Taken:<br> '.$action_taken.'
+                                </div>
+                                
+                                  </div><!-- row end -->
+                                  
+                              
+                                </div>
+                                
+                                  </div>
+                                   
+                            </div>
+                            <div class="modal-footer">
+                                  <div class="col-lg-12">
+                                      <button type="submit" class="btn btn-info float-right" id="btnPrint" >Print</button>
+                                      <button type="button" class="btn btn-default float-right" data-dismiss="modal">Close</button>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                              </div>
+                          </div>
+
+
+
 
 
                           
@@ -246,6 +356,42 @@
 
   <!-- datables for our table -->
   <script src="app/js/datatables.js"></script>
+
+
+  <script>
+  document.getElementById("btnPrint").onclick = function() {
+    printElement(document.getElementById("print"));
+    window.print();
+}
+
+function printElement(elem, append, delimiter) {
+    var domClone = elem.cloneNode(true);
+
+    var $printSection = document.getElementById("printSection");
+
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
+    }
+
+    if (append !== true) {
+        $printSection.innerHTML = "";
+    }
+
+    else if (append === true) {
+        if (typeof(delimiter) === "string") {
+            $printSection.innerHTML += delimiter;
+        }
+        else if (typeof(delimiter) === "object") {
+            $printSection.appendChlid(delimiter);
+        }
+    }
+
+    $printSection.appendChild(domClone);
+
+}
+  </script>
 
   <?php
   include_once('footer.php');

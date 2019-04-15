@@ -1,9 +1,9 @@
 <?php
 function getConn(){
-$host = "host=aa1bdr1mp3fpivs.casa8f2ijdnu.us-west-2.rds.amazonaws.com";
+$host = "host=localhost";
 $port = "port=5432";
-$dbname = "dbname=bantay";
-$credentials = "user=bantay password=zaq12wsx";
+$dbname = "dbname=bantaychuchu";
+$credentials = "user=postgres password=1318";
 
 $db = pg_connect( "$host $port $dbname $credentials" );
 

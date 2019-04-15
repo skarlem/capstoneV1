@@ -10,7 +10,7 @@
     -->
       <div class="logo">
         <a href="assets/marker/asd.png" class="simple-text logo-normal" >
-        <img src="assets/marker/asd.png"> Bantay MSU
+        <img src="app/views/assets/img/logo-small.png"> Bantay MSU
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -89,7 +89,24 @@
 <br>
 
 
-              
+<div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="checkAll()" id="checkAll"type="checkbox"  checked>
+                      Select All
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+
+
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">      
@@ -173,9 +190,7 @@
 </div>
 <br>
             
-
-
-<div class="input-group">
+                 <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">      
                   </span>
@@ -364,7 +379,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="<?php echo "index.php?".md5("controller")."=".md5('editAccount')?>">Account</a>
-                  <a class="dropdown-item" href="app/controller/logout.php">Logout</a>
+                  <a class="dropdown-item" href="index.php?controller=<?php echo md5('logout');?>">Logout</a>
                   
                   
                 </div>
