@@ -91,10 +91,41 @@ if (isset($_GET[md5("controller")])){
 							'class'=>$class,
 							'reported_by'=>$reported_by
 				);
+				
+
+				$item_name = $_POST['item'];
+				$item_desc = $_POST['item_desc'];
+				$item_worth = $_POST['item_worth'];
+				$item_quantity = $_POST['item_quantity'];
+				
+				
+				
+				$item = array(
+					'marker_id'=> (int)getMarkerId()[0][0]+1,
+					'item_name'=>$item_name,
+					'item_description'=>$item_desc,
+					'quantity'=>$item_quantity,
+					'est_worth'=>$item_worth
+				);
 
 				insertMarker($marker);
+
+				insertItem($item);
+			
 				echo '<script>window.reload();</script>';
 			}
+			if(isset($_POST['add_category'])){
+				$category = $_POST['category'];
+
+				$data = array(
+					'category_desc'=>$category
+				);
+				insertCategory($data);
+			}
+		}
+		elseif($_GET[md5("controller")]===md5('emergency')){
+			include('app/views/emergency.php');
+
 		}
 		elseif($_GET[md5("controller")]===md5('table')){
 			

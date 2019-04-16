@@ -42,6 +42,18 @@
               <p>Map</p>
             </a>
           </li>
+
+          
+     
+          
+          <li class="nav-item">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('emergency')?>">
+        <i class="material-icons">
+report_problem
+</i>
+          <p>Emergency Reports</p>
+        </a>
+      </li>
 <br>
             <li class="nav-item">
               <div class="input-group">
@@ -341,18 +353,27 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel"> Add Category</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form role="form" method="POST">
+          <div class="form-group input-group">
+               <span class="input-group-addon"><i class="material-icons">event_note</i></span>
+          <input type="text" class="form-control" required oninvalid="" id="category"name="category" placeholder="Add Category"/>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="col-lg-12">
+              <button type="submit" class="btn btn-primary" name="add_category" >
+               <i class="fa "></i> Save to database</button>
+          </div>
+                       
       </div>
+      </form>
     </div>
   </div>
 </div>
+

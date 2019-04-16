@@ -1,6 +1,6 @@
-  <?php
+<?php
   include_once('header.php');
-  include_once('marker_nav.php');
+  include_once('emergency_nav.php');
   ?>
 
 <style type="text/css" media="print">
@@ -17,7 +17,7 @@
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header card-header-info">
-                    <h4 class="card-title ">Markers Table</h4>
+                    <h4 class="card-title ">Emergency Reports Table</h4>
                     <p class="card-category"> </p>
 
                   </div>
@@ -47,44 +47,23 @@
 
                 <div class="dataTable_wrapper">
                     <div class="table-responsive">
-                      <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
+                      <table class="table table-striped table-bordered nowrap" id="dataTables-example3" style="width:100%">
                         <thead class=" text-primary">
-                         
-                          <th>
-                            Id Number 
-                          </th>
-
-                          <th>
-                            Date
-                          </th>
-                         
-                          <th>
-                            Location Description
-                          </th>
-                       
-                          <th>
-                            Category
-                          </th> 
-                          
-                          <th>
-                            Item/Unit
-                          </th> 
-                          
-                          <th>
-                           Victim
-                          </th>
-                          
-                          <th>
-                            Incident Narrative
-                          </th>  
-                        
-                          <th>
-                            Classification
-                          </th>
-                          
-                          <th>
-                           Action Taken
-                          </th>
+                        <th>
+                        Date Reported
+                         </th>
+                         <th>
+                         Reporter Fullname
+                         </th>
+                         <th>
+                         Contact Number
+                         </th>
+                         <th>
+                         Reporter Gender
+                         </th>
+                         <th>
+                         Reporter ID
+                         </th>
                           <th>
                             Action
                           </th>
@@ -93,37 +72,22 @@
                           
                         <?php
                         
-                        foreach( getMarkers()as $row ){
-                              $id = $row['marker_id'];
-                              $lat = $row['lat'];
-                              $lng = $row['lng'];
-                              $date = $row['date'];
-                              $location = $row['location_description'];
-                              $category = $row['category_desc'];
-                              $items = $row['items'];
-                              $victim = $row['victim'];
-                              $incident_narrative = $row['what_happened'];
-                              $action_taken = $row['action_taken'];
-                             $suspect = $row['suspect'];
-                              $classification=$row['classification_desc'];
-                              $school_id=$row['reported_by'];
-                              
-                              $status =$row['status_description'];
-                              
+                        foreach( getEmergency()as $row ){
+                             $reporter = $row['reporter_fullname'];
+                              $id=$row['e_report_id'];
+                              $rep_id = $row['reporter_id'];
+                              $date = $row['date_reported'];
+                              $gender = $row['reporter_gender'];
+                              $contact = $row['contact_number'];
                           echo'
                           <tr>
+                                <td>'.$date.'</td>
+                                <td>'.$reporter.'</td>
+                                <td>'.$contact.'</td>
+                                <td>'.$gender.'</td>
+                                <td>'.$rep_id.'</td>
                               
-                              <td>'.$id.'</td>
-                              <td>'.$date.'</td>
-                             
-                              <td>'.$location.'</td>
-                              <td>'.$category.'</td>
-                              <td>'.$items.'</td>
-                              <td>'.$victim.'</td>
-                              <td>'.$incident_narrative.'</td>
-                             
-                              <td>'.$classification.'</td>
-                              <td>'.$action_taken.'</td>
+                              
                               <td style="width:100px;text-align:center">
                                 <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdi'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
                                
@@ -132,6 +96,8 @@
                               </td>
                           </tr>
 
+
+                          
                           <div class="modal fade bd-example-modal-lg" id="viewModal'.$id.'" tabindex="-1" 
                           role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false"  >
                           <div class="modal-dialog modal-lg" role="document">
@@ -161,64 +127,7 @@
 
                                   <div class="container">
 
-                                  <div class="row">
-
-                                    <div class="col">
-                                      Incident ID: '.$id.'
-                                    </div>
-                                    <div class="col">
-                                      Classification: '.$classification.'
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col">
-                                      Category: '.$category.'
-                                    </div>
-                                    <div class="col">
-                                      Status: '.$status.'
-                                    </div>
-                                   
-                                </div>
-
-                                <br>
-                                <div class="row">
-                                    <div class="col">
-                                    Items Involved: <br>'.$items.'
-                                  </div>
-
-                                
-                                  </div><!-- row end -->
-                                  <br>
-                                <div class="row">
-                                    <div class="col">
-                                    Persons Involved <br>
-                                    Victim: '.$victim.'<br>
-                                    Suspect: '.$suspect.'
-                                  </div>
-
-                                
-                                  </div><!-- row end -->
-
                                   
-                            <br>
-                                <div class="row">
-                                    <div class="col">
-                                    Incident Narrative: <br>'.$incident_narrative.'
-                                  </div>
-
-                                
-                                  </div><!-- row end -->
-
-                                  <br>
-                                  <div class="row">
-                                  <div class="col">
-                                  Action Taken:<br> '.$action_taken.'
-                                </div>
-                                
-                                  </div><!-- row end -->
-                                  
-                              
-                                </div>
                                 
                                   </div>
                                    
@@ -278,31 +187,7 @@
                                   <div class="col-lg-12">
                                       <form role="form" method="POST">
                                           <input type="hidden" name="edit_id" value="'.$id.'">
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="material-icons">location_on</i></span>
-                                              <input type="text" class="form-control" name="lat" placeholder="Latitude" value="'.$lat.'" readonly>
-                                          </div>
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="material-icons">location_on</i></span>
-                                              <input type="text" class="form-control" name="lng" placeholder="Longitude" value="'.$lng.'" readonly>
-                                          </div>
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="material-icons">event_note</i></span>
-                                              <input type="text" class="form-control" name="date" placeholder="Date" value="'.$date.'">
-                                          </div>
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="material-icons">edit_location</i></span>
-                                              <input type="text" class="form-control" name="location" placeholder="Location" value="'.$location.'">
-                                          </div>
-                                         
-                                       
-             
-                                                   
-                                      </div>
-                                          <div class="form-group input-group">
-                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                              <input type="text" class="form-control" name="reported_by" placeholder="Reported By " value="'.$school_id.'">
-                                          </div>
+                                          
                                   </div>
                               </div>
                               <div class="modal-footer">

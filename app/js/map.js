@@ -364,8 +364,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
                       "Incident Category:"+jsonMap2[i][13]+"<br>"+
                       "Date: "+jsonMap2[i][3]+"<br>"+
                       "Location:"+jsonMap2[i][4]+"<br></font>"+
-                      "Incident Status:<span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>"+
-                      );
+                      "Incident Status:<span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
                       layer = L.layerGroup([marker]).addTo(map); 
                     } 
                 }
@@ -542,8 +541,6 @@ function onMapClick(e){
     } 
     
     today = mm + '/' + dd + '/' + yyyy;
-
-
 
 
     document.getElementById('lat').value= latitude;

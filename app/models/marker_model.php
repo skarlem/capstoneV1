@@ -74,6 +74,51 @@ function deleteMarker($where){
 }
 
 
+function insertItem($data){
+	$res = pg_insert(getConn(), 'crime_db.item_involved' , $data);
+	if ($res) {
+		echo "Inserted item";
+		$is_inserted = true;
+	} else {
+		echo pg_last_error(getConn()) . " <br />";
+		$is_inserted = false;	
+	}
+//}
+return $is_inserted;
+}
+function getMarkerId(){
+		$markers =array();
+
+		$result = pg_query(getConn(), "
+				select max(incident_records.marker_id) as marker_id from crime_db.incident_records;
+		");
+		if (!$result) {
+				echo "An error occurred.\n";
+				exit;
+		}
+		else{
+			while($row = pg_fetch_array($result)){
+								$markers[] = $row;
+							}
+		}       
+return $markers;
+}
+
+//insert function
+function insertCategory($data){
+	//foreach ($data as $key => $users) {
+	    $res = pg_insert(getConn(), 'crime_db.category' , $data);
+	    if ($res) {
+	      echo "Inserted user";
+	      $is_inserted = true;
+	    } else {
+	      echo pg_last_error(getConn()) . " <br />";
+	      $is_inserted = false;	
+	    }
+	//}
+	return $is_inserted;
+}
+
 function getCategory(){
 
 $markers =array();
@@ -92,6 +137,25 @@ else{
 }       
 return $markers;
 	
+}
+
+
+
+function getEmergency(){
+	
+$result = pg_query(getConn(), "
+select * from crime_db.emergency_report;
+");
+if (!$result) {
+		echo "An error occurred.\n";
+		exit;
+}
+else{
+	while($row = pg_fetch_array($result)){
+						$markers[] = $row;
+					}
+}       
+return $markers;
 }
 
 

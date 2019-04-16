@@ -42,3 +42,8 @@ $(document).ready(function() {
 } );
 
 
+$(document).ready(function() {
+    $('#dataTables-example-3').DataTable();
+} );
+
+

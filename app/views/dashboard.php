@@ -189,7 +189,7 @@ include_once('dashboard_nav.php');
                               
                               
 
-                              <span class="badge badge-pill badge-danger">'.$classification.'
+                              <span class="badge badge-pill badge-info">'.$classification.'
                               
                               
                               </span></td>
@@ -198,7 +198,7 @@ include_once('dashboard_nav.php');
                               <td>'.$victim.'</td>
                               <td>'.$suspect.'</td>
                              
-                              <td><span class="badge badge-pill badge-danger">Incident Status</span></td>
+                              <td><span class="badge badge-pill badge-primary">Incident Status</span></td>
                               <td>'.$reported_by.'</td>
                              
                              
@@ -335,10 +335,13 @@ include_once('dashboard_nav.php');
                       </div>
 
     
-<!-- map-->
-<script type="text/javascript" src="app/js/dashboard_map.js"onload="initMap()">
 
-</script>
+    
+<!-- map-->
+<script type="text/javascript" src="app/js/map.js" onload="initMap()"></script>
+<script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
+
+
 
 
   <!-- datables for our table -->
