@@ -736,17 +736,21 @@ demo = {
         showCancelButton: true,
         confirmButtonClass: 'btn btn-success',
         cancelButtonClass: 'btn btn-danger',
-        confirmButtonText: 'Yes, delete it!',
+        confirmButtonText: 'Submit',
         buttonsStyling: false
       }).then(function() {
+        $('#change_password').modal('show'),
         swal({
-          title: 'Deleted!',
-          text: 'Your file has been deleted.',
+          
+          title: 'Sucess!',
+          text: 'Your input was submitted',
           type: 'success',
           confirmButtonClass: "btn btn-success",
           buttonsStyling: false
         })
       }).catch(swal.noop)
+      
+    
     } else if (type == 'warning-message-and-cancel') {
       swal({
         title: 'Are you sure?',
@@ -759,6 +763,7 @@ demo = {
         cancelButtonClass: "btn btn-danger",
         buttonsStyling: false
       }).then(function() {
+        
         swal({
           title: 'Deleted!',
           text: 'Your imaginary file has been deleted.',
@@ -766,6 +771,8 @@ demo = {
           confirmButtonClass: "btn btn-success",
           buttonsStyling: false
         }).catch(swal.noop)
+        
+      
       }, function(dismiss) {
         // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
         if (dismiss === 'cancel') {

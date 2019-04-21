@@ -21,6 +21,25 @@
         </script>
 
 
+
+
+<style type="text/css">
+    @media screen and (min-width: 768px) {
+        .modal-dialog {
+          width: 700px; /* New width for default modal */
+        }
+        .modal-sm {
+          width: 350px; /* New width for small modal */
+        }
+    }
+    @media screen and (min-width: 992px) {
+      .modal-lg {
+        max-width: 100% !important;
+        }
+    }
+</style>
+  
+
 <!--   Pulsing icon   -->
 <link rel="stylesheet" href="https://cdn.rawgit.com/mapshakers/leaflet-icon-pulse/add42abc/src/L.Icon.Pulse.css">
 <script src='https://cdn.rawgit.com/mapshakers/leaflet-icon-pulse/master/src/L.Icon.Pulse.js'></script>
@@ -36,8 +55,8 @@
 <!-- Plugin for the momentJs  -->
 <script src="./assets/js/plugins/moment.min.js"></script>
 
-<!--  Plugin for Sweet Alert -->
-<script src="./assets/js/plugins/sweetalert2.js"></script>
+<!--  Plugin for Sweet Alert  ./assets/js/plugins/sweetalert2.js-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- Forms Validations Plugin -->
 <script src="./assets/js/plugins/jquery.validate.min.js"></script>
@@ -87,7 +106,7 @@
 <script src="./assets/demo/demo.js"></script>
 
 
-
+<script type="text/javascript" src="./assets/datatables/ColReorder-1.5.0/js/ColReorderWithResize.js"></script>
 
 
 <!-- login css -->

@@ -8,7 +8,11 @@
     size: auto;   /* auto is the initial value */
     margin: 1;  /* this affects the margin in the printer settings */
 }
+
+
 </style>
+
+
 
 
         <div class="content">
@@ -50,9 +54,6 @@
                       <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
                         <thead class=" text-primary">
                          
-                          <th>
-                            Id Number 
-                          </th>
 
                           <th>
                             Date
@@ -112,10 +113,7 @@
                               
                           echo'
                           <tr>
-                              
-                              <td>'.$id.'</td>
                               <td>'.$date.'</td>
-                             
                               <td>'.$location.'</td>
                               <td>'.$category.'</td>
                               <td>'.$items.'</td>
@@ -125,13 +123,15 @@
                               <td>'.$classification.'</td>
                               <td>'.$action_taken.'</td>
                               <td style="width:100px;text-align:center">
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdi'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a style="cursor:pointer" data-toggle="modal" data-target="#updateModal" title="Edit"><i class="fa fa-edit"></i></a>
                                
                                 <a style="cursor:pointer" data-toggle="modal" data-target="#viewModal'.$id.'" title="View Record"><i class="material-icons">zoom_out_map</i></a>
                                 
                               </td>
                           </tr>
 
+
+                          
                           <div class="modal fade bd-example-modal-lg" id="viewModal'.$id.'" tabindex="-1" 
                           role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false"  >
                           <div class="modal-dialog modal-lg" role="document">
@@ -154,10 +154,7 @@
                                       <img src="assets/marker/F-Theft.png">
                                       
                                     </div>
-                                
-                                  
                                   <br>
-
 
                                   <div class="container">
 
@@ -334,6 +331,249 @@
               </div>
       </div>
     </div>
+
+
+    
+
+<div class="modal fade bd-example-modal-lg" id="updateModal" tabindex="-1" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg w-75 p-3">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Records</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+        <div class="modal-body">
+        <form role="form" method="POST">
+        <div class="form-group input-group">
+                
+                <input type="hidden" class="form-control" id="lat" name="lat" placeholder="Latitude" readonly>
+              </div>
+              
+              <div class="form-group input-group">
+                <input type="hidden" class="form-control" id="lng" name="lng" placeholder="Longitude" readonly>
+              </div>
+
+
+          <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+            <h4>General Details</h4>     
+            </div>
+            <div class="col">
+            <h4>Items Involved </h4>     
+            </div>
+            <div class="col">
+            <h4>Persons Involved </h4>     
+            </div>
+            <div class="col">
+            <h4>Incident Narrative </h4>     
+            </div>
+            
+          </div>
+            <div class="row">
+              <div class="col">
+
+               <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="material-icons">event_note</i></span>
+                  <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date"name="date" data-toggle="datetimepicker" data-target="#date"/>
+                </div>
+
+            </div><!-- end col-md-4 -->
+
+            <div class="col">
+                <div class="form-group input-group">
+                <i class="material-icons">phonelink </i>
+                  <input type="text" class="form-control"  placeholder="Item Name"required oninvalid="" id="item"name="item"/>
+                </div>
+
+              
+            </div>
+            <div class="col">
+            <div class="form-group input-group">
+                <i class="material-icons">phonelink </i>
+                  <input type="text" class="form-control"  placeholder="Fullname"required oninvalid="" id="person_involved_name"name="person_involved_name"/>
+                </div>
+            </div>
+            <div class="col">
+            
+            <div class="form-group input-group">
+                <i class="material-icons">phonelink </i>
+                  <input type="text" class="form-control"  placeholder="What Happened"required oninvalid="" id="narrative"name="narrative"/>
+                </div>
+            </div>
+          </div><!-- end row -->
+
+          <div class="row">
+            <div class="col">
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="material-icons">edit_location</i></span>
+                    <input type="text" class="form-control" name="location"  required oninvalid="" placeholder="Location Description" >
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group input-group">
+                <i class="material-icons">phonelink </i>
+                  <input type="text" class="form-control"  placeholder="Item Quantity"required oninvalid="" id="item_quantity"name="item_quantity"/>
+                </div>
+              
+            </div>
+            <div class="col">
+            <div class="form-group input-group">
+                <i class="material-icons">phonelink </i>
+                  <input type="text" class="form-control"  placeholder="Affiliation"required oninvalid="" id="affiliation"name="affiliation"/>
+                </div>
+            </div>
+            <div class="col">
+            <div class="form-group input-group">
+                <i class="material-icons">phonelink </i>
+                  <input type="text" class="form-control"  placeholder="Action Taken"required oninvalid="" id="action_taken"name="action_taken"/>
+                </div>
+            </div>
+                
+          </div><!-- end row -->
+
+          <div class="row">
+            <div class="col">
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
+                  <input type="text" class="form-control" id="reported_by"required  oninvalid=""  name="reported_by" placeholder="Reported By(Required)">
+                </div>
+              </div>
+
+                          
+              <div class="col">
+                  <div class="form-group input-group">
+                  <i class="material-icons">phonelink </i>
+                    <input type="text" class="form-control"  placeholder="Item Description"required oninvalid="" id="item_desc"name="item_desc"/>
+                  </div>
+                
+              </div>
+
+              <div class="col">
+                  <div class="form-group input-group">
+                      
+                      <label for="exampleFormControlSelect1">Involvement</label>
+                      <select class="form-control selectpicker"   required oninvalid="" data-style="btn btn-link" id="involvement" name="involvement">
+                        <option >Involvement</option>
+                        <option value='1'>Victim</option>
+                        <option value='2'>Suspect</option>
+                        <option value='3'>Witness</option>
+                        <option value='4'>Investigator</option>
+                        <option value='5'>Roving Guards</option>
+                        
+                      </select>               
+                  </div>
+            </div>
+
+            <div class="col">
+              <div class="form-group input-group">
+                    
+                    <label for="exampleFormControlSelect1">Incident Status</label>
+                    <select class="form-control selectpicker"   required oninvalid="" data-style="btn btn-link" id="incident_status" name="incident_status">
+                      <option >Incident Status</option>
+                      <option value='1'>Resolved</option>
+                      <option value='2'>Unresolved</option>
+                      <option value='3'>Under Investigation</option>
+                      <option value='4'>Forwarded to OSA</option>
+                      <option value='5'>Forwarded to PNP</option>
+                      <option value='6'>Resolved in OSA</option>
+                      <option value='7'>Settled</option>
+                      <option value='8'>Settled in OSA</option>
+                      <option value='9'>Investigated</option>
+                      
+                    </select>               
+                </div>
+                </div>
+            </div><!-- end row -->
+
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group input-group">
+                  
+                  <label for="exampleFormControlSelect1">Classification</label>
+                  <select class="form-control selectpicker"   required oninvalid="" data-style="btn btn-link" id="classification" name="classification">
+                    <option >Incident Classification</option>
+                    <option value='1'>Felony</option>
+                    <option value='2'>Misdemeanor</option>
+                    <option value='3'>Violation</option>
+                    <option value='4'>Incident</option>
+                    
+                  </select>               
+              </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group input-group">
+                <i class="material-icons">phonelink </i>
+                  <input type="text" class="form-control"  placeholder="Item Est. Worth"required oninvalid="" id="item_worth"name="item_worth"/>
+                </div>
+          </div>
+          <div class="col">
+            </div>
+            <div class="col">
+            </div>
+              
+
+              </div>
+          </div>
+
+          <div class="row">
+            
+                          
+            
+            <div class="col">
+              
+              <div class="form-group input-group">
+                 
+                 <label for="exampleFormControlSelect1">Category</label>
+                 <select class="form-control selectpicker"  required oninvalid="" data-style="btn btn-link" id="category" name="category">
+                   <option >Category</option>
+                   <option value='1's>Theft</option>
+                   <option value='2'>Destruction of Property</option>
+                   <option value='3'>Vehicular Incident</option>
+                   <option value='4'>Animal Bite</option>
+                   <option value='5'>Assault</option>
+                   <option value='6'>Fire</option>
+                 </select>               
+             </div>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+            </div>  
+          </div>
+
+
+
+
+
+
+          <div class="form-group input-group">
+                
+                <input type="hidden" class="form-control" id="class" name="class" placeholder="Latitude" readonly value='1'>
+              </div>
+          <div class="modal-footer">
+            <div class="col-lg-12">
+                <button type="submit" class="btn btn-primary float-right" name="add_marker" >
+                <i class="fa "></i> Save to database</button>
+            </div>
+                       
+           </div><!-- end form-body-->
+
+          </form>
+        </div><!-- end modal-body-->
+
+
+    </div>
+  </div>
+</div>x
 
   <!-- datables for our table -->
   <script src="app/js/datatables.js"></script>

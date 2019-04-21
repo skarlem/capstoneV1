@@ -447,14 +447,9 @@ function getMarkers2(){
      }
       $.getJSON("app/controllers/results.json", function(jsonMap2) {
             for(var i=0; i<jsonMap2.length; i++){
-              console.log('qweqwe');
+            
                     if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
-                   
-                    console.log('okay ang date')
-                       
-                          console.log('chokoy');
-                        
-                            console.log(jsonMap2[i][8]);
+                
                            
                             loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                           }

@@ -1,7 +1,7 @@
 
 var table =$('#dataTables-example').DataTable( {
 	responsive: true,
-    dom: 'Bfrtip',
+    dom: 'BRlfrtip' ,
     buttons: [{
     	extend: 'excelHtml5',
 		text: '<i class="fa fa-file-excel-o"></i> Excel',
@@ -37,8 +37,16 @@ var table =$('#dataTables-example').DataTable( {
 );
  
 
-$(document).ready(function() {
-    $('#dataTables-example-2').DataTable();
+
+
+$(document).ready( function () {
+    var divExample = $('#dataTables-example-2');
+    var tableExample = divExample.DataTable({
+        
+        "searching": true,
+        "stateSave": true,
+        "dom": 'Rlfrtip'    
+    });
 } );
 
 

@@ -65,9 +65,9 @@ if (isset($_GET[md5("controller")])){
 			getMarkers();
 			$_SESSION['page']=md5('map');
 			include_once('app/views/map.php');	
-			if (isset($_POST['add_marker'])){
+			if (isset($_POST['add-form'])){
 				 
-
+				$marker_id = (int)getMarkerId()[0][0]+1;
 				$time = strtotime($_POST['date']);
 
 				$newDate = date('Y-m-d',$time);
@@ -98,19 +98,44 @@ if (isset($_GET[md5("controller")])){
 				$item_worth = $_POST['item_worth'];
 				$item_quantity = $_POST['item_quantity'];
 				
-				
-				
 				$item = array(
-					'marker_id'=> (int)getMarkerId()[0][0]+1,
+					'marker_id'=> $marker_id,
 					'item_name'=>$item_name,
 					'item_description'=>$item_desc,
 					'quantity'=>$item_quantity,
 					'est_worth'=>$item_worth
 				);
 
+				$fullname = $_POST['person_involved_name'];
+				$affiliation = $_POST['affiliation'];
+				(int)$involvement = $_POST['involvement'];
+
+				$person = array(
+					'marker_id'=>$marker_id,
+					'fullname'=>$fullname,
+					'affiliation'=>$affiliation,
+					'involvement'=>$involvement
+				);
+
+				$what_happened = $_POST['narrative'];
+				$action_taken = $_POST['action_taken'];
+				(int)$incident_status= $_POST['incident_status'];
+
+
+				$narrative = array(
+					'marker_id'=>$marker_id,
+					'what_happened'=>$what_happened,
+					'action_taken'=>$action_taken,
+					'incident_status'=>$incident_status
+				);
+
 				insertMarker($marker);
 
 				insertItem($item);
+
+				insertNarrative($narrative);
+
+				insertPerson($person);
 			
 				echo '<script>window.reload();</script>';
 			}

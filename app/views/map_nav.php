@@ -46,7 +46,7 @@
           
      
           
-          <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('emergency')?>">
         <i class="material-icons">
 report_problem
@@ -64,7 +64,7 @@ report_problem
                 </div>
   
                 <input type="text" class="form-control datetimepicker" id="dp1" class="btn btn-secondary" 
-                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY" value="12/12/1990"/>
+                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY" value="January 01, 1990, 12:00"/>
             </li>
             
             <li class="nav-item">
@@ -75,7 +75,18 @@ report_problem
                   </span>
                 </div>
                 <input type="text" class="form-control datetimepicker" id="dp2"class="btn btn-secondary" 
-                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY" value="12/12/2990"/>
+                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY"/>
+                <script>
+                
+                var today1 = new Date().toLocaleDateString(undefined, {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                });
+                  document.getElementById('dp2').value= today1;
+                </script>
               </div>
             </li>
           <br>
@@ -285,20 +296,124 @@ report_problem
     </div>
   
 
-           <div class="main-panel">
+    <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="#">Map</a>
           </div>
+
+
+          <div class="collapse navbar-collapse justify-content-end">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#0" role="button" aria-haspopup="true" aria-expanded="false">Classification</a>
+                <div class="dropdown-menu">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">      
+                    </span>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="3" checked>
+                        Violation
+                      <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+                </div>
+
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">      
+                    </span>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="4" checked>
+                        Incident
+                      <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+                </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#0" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
+                <div class="dropdown-menu">
+                
+             <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="checkAllCategory()" id="checkAllCategory"type="checkbox"  checked>
+                      Select All
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+
+<?php 
+ foreach( getCategory()as $row ){
+  $value = $row['category_id'];
+  $desc = $row['category_desc'];
+  echo'
+  <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input"  name="category" id="category" type="checkbox" value="'.$value.'" checked>
+      '.$desc.'
+      <span class="form-check-sign">
+    <span class="check"></span>
+  </span>
+</label>
+</div>
+</div>
+';
+}
+?>
+
+                </div>
+            </li>
+
+          <li class="nav-item">
+          <div class="form-group input-group">
+            Start date
+                 
+                  <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date3"name="date3" data-toggle="datetimepicker" data-target="#date"/>
+                </div>
+          </li>
+
+          <li class="nav-item">
+          <div class="form-group input-group">
+           End date
+                 
+                  <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date1"name="date1" data-toggle="datetimepicker" data-target="#date1"/>
+                </div>
+          </li>
+
+    </ul>
+        </div>
+         
           
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
-              <?php
-              require 'app/models/notif_model.php';
-
-              ?>
           <!-- dropdown for notification--> 
           <li class="nav-item dropdown">
                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -73,7 +73,7 @@ function deleteMarker($where){
 	return $is_inserted;
 }
 
-
+//insert into item table
 function insertItem($data){
 	$res = pg_insert(getConn(), 'crime_db.item_involved' , $data);
 	if ($res) {
@@ -86,6 +86,36 @@ function insertItem($data){
 //}
 return $is_inserted;
 }
+
+
+//insert into incident narrative table
+function insertNarrative($data){
+	$res = pg_insert(getConn(), 'crime_db.incident_narratives' , $data);
+	if ($res) {
+		echo "Inserted item";
+		$is_inserted = true;
+	} else {
+		echo pg_last_error(getConn()) . " <br />";
+		$is_inserted = false;	
+	}
+//}
+return $is_inserted;
+}
+//insert into persons involved
+function insertPerson($data){
+	$res = pg_insert(getConn(), 'crime_db.persons_involved' , $data);
+	if ($res) {
+		echo "Inserted persons";
+		$is_inserted = true;
+	} else {
+		echo pg_last_error(getConn()) . " <br />";
+		$is_inserted = false;	
+	}
+//}
+return $is_inserted;
+}
+
+//get the most recent id of markers
 function getMarkerId(){
 		$markers =array();
 
@@ -118,6 +148,8 @@ function insertCategory($data){
 	//}
 	return $is_inserted;
 }
+
+
 
 function getCategory(){
 

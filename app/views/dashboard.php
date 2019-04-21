@@ -15,7 +15,7 @@ include_once('dashboard_nav.php');
                       <i class="material-icons"></i>
                     </div>
                      
-                   
+                   <div class="row">
                       <!-- start column 2-->
                           <div class="col-md-8" style="padding-left:20px; padding-bottom: 20px;">
                             <div id="map" style="height:550px;width: 100%;   ">
@@ -23,7 +23,251 @@ include_once('dashboard_nav.php');
                             </div>
                            
                           </div>
-                        
+
+                          <div class="col-md-4">
+                          
+      <li class="nav-item">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <p>Start date</p>
+                  </span>
+                </div>
+  
+                <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="dp1"name="dp1" 
+                data-toggle="datetimepicker" data-target="#dp1" value="January 01, 1990, 12:00"/>
+                
+            </li>
+            
+            <li class="nav-item">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <p>End date</p>
+                  </span>
+                </div>
+                <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="dp2"name="dp2" 
+                data-toggle="datetimepicker" data-target="#dp2"/>
+                
+              </div>
+            </li>
+            <script>
+                 var today1 = new Date().toLocaleDateString(undefined, {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                });
+                  
+                  document.getElementById('dp2').value= today1;
+                </script>
+
+                <div class="row">
+
+                <div class="col">
+          <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+     
+    <span class="badge badge-success">Classification</span>
+     
+    <span class="check"></span>
+  </span>
+</label>
+</div>
+</div>
+<br>
+
+
+<div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="checkAll()" id="checkAll"type="checkbox"  checked>
+                      Select All
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="1" checked>
+                      Felony
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="2" checked>
+                      Misdemeanor
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="3" checked>
+                      Violation
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="4" checked>
+                      Incident
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+
+            </div><!-- end col-->
+
+
+            <div class=".col-6 .col-md-4">
+
+           
+            <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+     
+     <span class="badge badge-success">Category</span>
+     
+    <span class="check"></span>
+  </span>
+</label>
+</div>
+</div>
+<br>
+            
+                 <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                
+                <button type="button" class="btn btn-success btn-fab btn-fab-mini" data-toggle="modal" data-target="#category_modal">
+                    <i class="material-icons">add</i> 
+                </button>
+                Add Category
+                  
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+
+             <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="checkAllCategory()" id="checkAllCategory"type="checkbox"  checked>
+                      Select All
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+              
+<?php 
+ foreach( getCategory()as $row ){
+  $value = $row['category_id'];
+  $desc = $row['category_desc'];
+  echo'
+  <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input"  name="category" id="category" type="checkbox" value="'.$value.'" checked>
+      '.$desc.'
+      <span class="form-check-sign">
+    <span class="check"></span>
+  </span>
+</label>
+</div>
+</div>
+';
+}
+?>
+            </div><!-- end col-->
+                </div><!-- end row-->
+<div class="row">
+                <div class="col">
+                  <font color="black"> 
+                  <button type="button"  onclick="clearMarkers()" class="btn btn-info">Apply Filter</button>
+
+                  </font>
+                </div>
+                </div>
+   
+
+                </li>
+
+
+            
+                          </div><!-- end col -->
+                        </div> <!-- end row -->
                           </div>
                           </div>
                           </div>
@@ -175,7 +419,7 @@ include_once('dashboard_nav.php');
                               $reported_by=$row['reported_by'];
                               $classification=$row['classification_desc'];
                               $classi = $row['classification'];
-                             
+                              $status = $row['status_description'];
                               
                           echo'
                           <tr>
@@ -198,7 +442,7 @@ include_once('dashboard_nav.php');
                               <td>'.$victim.'</td>
                               <td>'.$suspect.'</td>
                              
-                              <td><span class="badge badge-pill badge-primary">Incident Status</span></td>
+                              <td><span class="badge badge-pill badge-primary">'.$status.'</span></td>
                               <td>'.$reported_by.'</td>
                              
                              
