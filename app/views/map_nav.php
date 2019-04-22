@@ -64,7 +64,7 @@ report_problem
                 </div>
   
                 <input type="text" class="form-control datetimepicker" id="dp1" class="btn btn-secondary" 
-                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY" value="January 01, 1990, 12:00"/>
+                data-toggle="tooltip" data-placement="top" title="ex. 12/22/2017 as MM/DD/YYYY" value="January 01, 1990, 00:00"/>
             </li>
             
             <li class="nav-item">
