@@ -112,89 +112,26 @@ report_problem
 <br>
 
 
+
+
 <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">      
-                  </span>
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+  <div class="form-group input-group">
+                    <select class="form-control selectpicker"   onchange="populate(this.id,'select_category')" required oninvalid="" data-style="btn btn-link" id="incident_status" name="incident_status">
+                      <option >Classification</option>
+                      <option value='1'>Crimes against Person</option>
+                      <option value='2'>Crimes against Chastity</option>
+                      <option value='3'>Crimes against Property</option>
+                      <option value='4'>Emergency</option>
+                    </select>               
                 </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input"  onclick="checkAll()" id="checkAll"type="checkbox"  checked>
-                      Select All
-                    <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-              </div>
+</div>
 
+<br>
 
-
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">      
-                  </span>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="1" checked>
-                      Felony
-                    <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-              </div>
-
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">      
-                  </span>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="2" checked>
-                      Misdemeanor
-                    <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-              </div>
-
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">      
-                  </span>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="3" checked>
-                      Violation
-                    <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-              </div>
-
-
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">      
-                  </span>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="4" checked>
-                      Incident
-                    <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-              </div>
-<br>  
 
               <div class="input-group">
   <div class="input-group-prepend">
@@ -213,24 +150,7 @@ report_problem
 </div>
 <br>
             
-                 <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">      
-                  </span>
-                </div>
-                <div class="form-check">
-                
-                <button type="button" class="btn btn-success btn-fab btn-fab-mini" data-toggle="modal" data-target="#category_modal">
-                    <i class="material-icons">add</i> 
-                </button>
-                Add Category
-                  
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-              </div>
-
+              
 
              <div class="input-group">
                 <div class="input-group-prepend">
@@ -249,32 +169,55 @@ report_problem
               </div>
 
 
-<?php 
- foreach( getCategory()as $row ){
-  $value = $row['category_id'];
-  $desc = $row['category_desc'];
-  echo'
-  <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">      
-    </span>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input class="form-check-input"  name="category" id="category" type="checkbox" value="'.$value.'" checked>
-      '.$desc.'
-      <span class="form-check-sign">
-    <span class="check"></span>
-  </span>
-</label>
-</div>
-</div>
-';
-}
-?>
 
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check" id="select_category">
+                  
+            </div>
+              </div>
               
+<script type="text/javascript">
+ var val = 1;
+    function populate(slct1, slct2) {
+        var s1 = document.getElementById(slct1);
+        var s2 = document.getElementById(slct2);
+        s2.innerHTML = "";
+        if (s1.value == "1") {
+            var optionArray = ["Disorder", "Drugs", "Death","Assault"];
+        } else if (s1.value == "2") {
+            var optionArray = ["Rape", "Lasciviousness"];
+        } else if (s1.value == "3") {
+            var optionArray = ["Robbery", "Theft", "Breaking and Entering"];      
+      }
+      else if (s1.value == "4") {
+            var optionArray = ["Emergency Disasters", "Fire", "Vehicular Accidents","Animal Bite"];
+      }
 
+    for (var option in optionArray) {
+     
+        if (optionArray.hasOwnProperty(option)) {
+            var pair = optionArray[option];
+            var checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.name = pair;
+            checkbox.value = pair;
+           
+            s2.appendChild(checkbox);
+    
+            var label = document.createElement('label')
+            label.htmlFor = pair;
+            label.appendChild(document.createTextNode(pair));
+
+            s2.appendChild(label);
+            s2.appendChild(document.createElement("br"));    
+        }
+    }
+}
+</script>
              
 
             </li>
@@ -304,112 +247,6 @@ report_problem
             <a class="navbar-brand" href="#">Map</a>
           </div>
 
-
-          <div class="collapse navbar-collapse justify-content-end">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#0" role="button" aria-haspopup="true" aria-expanded="false">Classification</a>
-                <div class="dropdown-menu">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">      
-                    </span>
-                  </div>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="3" checked>
-                        Violation
-                      <span class="form-check-sign">
-                    <span class="check"></span>
-                  </span>
-                </label>
-              </div>
-                </div>
-
-
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">      
-                    </span>
-                  </div>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input"  onclick="loadMarkersbyType()" name="classification"id="classification" type="checkbox" value="4" checked>
-                        Incident
-                      <span class="form-check-sign">
-                    <span class="check"></span>
-                  </span>
-                </label>
-              </div>
-                </div>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#0" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
-                <div class="dropdown-menu">
-                
-             <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">      
-                  </span>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input"  onclick="checkAllCategory()" id="checkAllCategory"type="checkbox"  checked>
-                      Select All
-                    <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-              </div>
-
-
-<?php 
- foreach( getCategory()as $row ){
-  $value = $row['category_id'];
-  $desc = $row['category_desc'];
-  echo'
-  <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">      
-    </span>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input class="form-check-input"  name="category" id="category" type="checkbox" value="'.$value.'" checked>
-      '.$desc.'
-      <span class="form-check-sign">
-    <span class="check"></span>
-  </span>
-</label>
-</div>
-</div>
-';
-}
-?>
-
-                </div>
-            </li>
-
-          <li class="nav-item">
-          <div class="form-group input-group">
-            Start date
-                 
-                  <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date3"name="date3" data-toggle="datetimepicker" data-target="#date"/>
-                </div>
-          </li>
-
-          <li class="nav-item">
-          <div class="form-group input-group">
-           End date
-                 
-                  <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date1"name="date1" data-toggle="datetimepicker" data-target="#date1"/>
-                </div>
-          </li>
-
-    </ul>
-        </div>
          
           
           <div class="collapse navbar-collapse justify-content-end">

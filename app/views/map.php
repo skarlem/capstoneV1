@@ -243,9 +243,13 @@ include_once('map_nav.php');
              </div>
             </div>
             <div class="col">
-            <button type="submit"id="asd" class="btn btn-primary float-right"  >click me</button>
+            <button type="submit"id="item_involved_form" class="btn btn-success float-right">Add item</button>
             </div>
-            <div class="col">
+            <div class="col" id="olol">
+        
+  
+            <button type="submit"id="person_involved_form" class="btn btn-success float-right"  data-toggle="tooltip" data-placement="top" >Add person</button>
+          
             </div>
             <div class="col">
             </div>  
@@ -352,13 +356,12 @@ $(".swa-confirm").on("click", function(e) {
 
 
 <script>
-    $(document).ready(function() {
-      // Initialise the wizard
-      demo.initMaterialWizard();
-      setTimeout(function() {
-        $('.card.card-wizard').addClass('active');
-      }, 600);
-    });
+  $('a[data-toggle="tooltip"]').tooltip({
+    animated: 'fade',
+    placement: 'bottom',
+    html: true
+});
+
   </script>
 
 
