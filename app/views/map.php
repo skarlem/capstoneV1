@@ -286,17 +286,132 @@ include_once('map_nav.php');
 
 
 
-<div class="modal fade" id="change_password" role="dialog">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+<!-- add person modal asdasdsa-->
+
+<div class="modal fade" id="add-person-modal" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Person</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+        <div class="modal-body">
+        <form role="form" method="POST" id="add-person-form" onsubmit="return false" name="add-person-form">
+           <div class="form-group input-group">
+                
+                <input type="hidden" class="form-control" id="add-person-form" name="add-person-form" readonly>
+              </div>
+            <div class="form-group input-group">
+                
+                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Fullname">
+              </div>
+              
+              <div class="form-group input-group">
+                <input type="text" class="form-control" id="affiliation" name="affiliation" placeholder="Affiliation" >
+              </div>
+              <div class="form-group input-group">
+                      <label for="exampleFormControlSelect1">Involvement</label>
+                      <select class="form-control selectpicker"   required oninvalid="" data-style="btn btn-link" id="involvement" name="involvement">
+                        <option >Involvement</option>
+                        <option value='1'>Victim</option>
+                        <option value='2'>Suspect</option>
+                        <option value='3'>Witness</option>
+                        <option value='4'>Investigator</option>
+                        <option value='5'>Roving Guards</option>
+                        
+                      </select>               
+                  </div>
+
+
+
+
+          <div class="form-group input-group">
+                
+                <input type="hidden" class="form-control" id="class" name="class" placeholder="Latitude" readonly value='1'>
+              </div>
+          <div class="modal-footer">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary float-right btn-add-person" id="add_person"name="add_person" >
+                <i class="fa "></i> Save to database</button>
+             
+                <button type="button" class="btn btn-secondary float-right btn-cancel-person" aria-label="Close" >
+                <i class="fa "></i> Close</button>
             </div>
-            <div class="modal-body change_password">
-                Modal body
-            </div>
-        </div>
+                       
+           </div><!-- end form-body-->
+
+          </form>
+        </div><!-- end modal-body-->
+
+
     </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="add-item-modal" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+        <div class="modal-body">
+        <form role="form" method="POST" id="add-item-form" onsubmit="return false" name="add-item-form">
+           <div class="form-group input-group">
+                
+                <input type="hidden" class="form-control" id="add-item-form" name="add-item-form" readonly>
+              </div>
+            <div class="form-group input-group">
+                
+                <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Item Name">
+              </div>
+              
+              <div class="form-group input-group">
+                <input type="text" class="form-control" id="item_desc" name="item_desc" placeholder="Description" >
+              </div>
+              
+              
+              <div class="form-group input-group">
+                <input type="text" class="form-control" id="item_quantity" name="item_quantity" placeholder="Quantity" >
+              </div>
+
+              <div class="form-group input-group">
+                <input type="text" class="form-control" id="item_work" name="item_worth" placeholder="Estimated worth" >
+              </div>
+
+
+
+          <div class="form-group input-group">
+                
+                <input type="hidden" class="form-control" id="class" name="class" placeholder="Latitude" readonly value='1'>
+              </div>
+          <div class="modal-footer">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary float-right btn-add-item" id="add_item"name="add_item" >
+                <i class="fa "></i> Save to database</button>
+             
+                <button type="button" class="btn btn-secondary float-right btn-cancel-item" aria-label="Close" >
+                <i class="fa "></i> Close</button>
+            </div>
+                       
+           </div><!-- end form-body-->
+
+          </form>
+        </div><!-- end modal-body-->
+
+
+    </div>
+  </div>
 </div>
 
 
@@ -308,34 +423,23 @@ include_once('map_nav.php');
 <script type="text/javascript" src="app/js/map.js" onload="initMap()"></script>
 <script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
 
+
+
+
+
 <script>
 
 $(function () {
     $('#person_involved_form').on('click',function (e) {
-              $.ajax({
-                type: 'post',
-                url: 'app/controllers/controller.php',
-                data: $('#person_involved_form').serialize(),
-                success: function () {
-                   add_person();
-                }
-              });
-          e.preventDefault();
+      $('#add-person-modal').modal('show');
    });
 });
 
 
 $(function () {
     $('#add-item-form').on('click',function (e) {
-              $.ajax({
-                type: 'post',
-                url: 'app/controllers/controller.php',
-                data: $('#add-item-form').serialize(),
-                success: function () {
-                  add_item();
-                }
-              });
-          e.preventDefault();
+      $('#add-item-modal').modal('show');
+             
    });
 });
 
@@ -368,7 +472,66 @@ $(function () {
           })
         }
       });
+    });
 
+    $(".btn-add-person").click(function(){
+      Swal.fire({
+        title: "Are you sure you want to save changes?",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Saved!',
+            'Changes have been saved',
+            'success'
+          ).then((result) => {
+            $("#add-person-form").submit();
+            });
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          })
+        }
+      });
+    });
+
+    $(".btn-add-item").click(function(){
+      Swal.fire({
+        title: "Are you sure you want to save changes?",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Saved!',
+            'Changes have been saved',
+            'success'
+          ).then((result) => {
+            $("#add-item-form").submit();
+            });
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          })
+        }
+      });
     });
 
     
@@ -464,6 +627,63 @@ function add_item(){
 
     });
 
+
+    
+  $(".btn-cancel-item").click(function(){
+      Swal.fire({
+        title: "Are you sure you want to cancel? Changes will not be saved",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          }).then((result) => {
+            $('#add-item-modal').modal('hide');
+            });;
+          
+         
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+         
+        }
+      });
+    });
+
+    $(".btn-cancel-person").click(function(){
+      Swal.fire({
+        title: "Are you sure you want to cancel? Changes will not be saved",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          }).then((result) => {
+            $('#add-person-modal').modal('hide');
+            });;
+          
+         
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+         
+        }
+      });
+    });
 </script>
 
 

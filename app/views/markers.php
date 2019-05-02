@@ -50,9 +50,7 @@
                       <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
                         <thead class=" text-primary">
                          
-                          <th>
-                            Id Number 
-                          </th>
+                          
 
                           <th>
                             Date
@@ -77,14 +75,14 @@
                           <th>
                             Incident Narrative
                           </th>  
-                        
+                          <th>
+                           Action Taken
+                          </th>
                           <th>
                             Classification
                           </th>
                           
-                          <th>
-                           Action Taken
-                          </th>
+                          
                           <th>
                             Action
                           </th>
@@ -113,7 +111,7 @@
                           echo'
                           <tr>
                               
-                              <td>'.$id.'</td>
+                              
                               <td>'.$date.'</td>
                              
                               <td>'.$location.'</td>
@@ -121,9 +119,9 @@
                               <td>'.$items.'</td>
                               <td>'.$victim.'</td>
                               <td>'.$incident_narrative.'</td>
-                             
+                             <td>'.$action_taken.'</td>
                               <td>'.$classification.'</td>
-                              <td>'.$action_taken.'</td>
+                              
                               <td style="width:100px;text-align:center">
                                 <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdi'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
                                

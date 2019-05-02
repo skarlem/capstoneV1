@@ -132,7 +132,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
         "Incident Category:"+jsonMap2[i][13]+"<br>"+
         "Date: "+jsonMap2[i][3]+"<br>"+
         "Location:"+jsonMap2[i][4]+"<br>"+
-        "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+        "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
         layer = L.layerGroup([marker]).addTo(map); 
 
       }
@@ -143,7 +143,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
         "Incident Category:"+jsonMap2[i][13]+"<br>"+
         "Date: "+jsonMap2[i][3]+"<br>"+
         "Location:"+jsonMap2[i][4]+"<br>"+
-        "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+        "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
         layer = L.layerGroup([marker]).addTo(map); 
 
       }
@@ -154,7 +154,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
         "Incident Category:"+jsonMap2[i][13]+"<br>"+
         "Date: "+jsonMap2[i][3]+"<br>"+
         "Location:"+jsonMap2[i][4]+"<br>"+
-        "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+        "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
         layer = L.layerGroup([marker]).addTo(map); 
 
       }
@@ -165,7 +165,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
         "Incident Category:"+jsonMap2[i][13]+"<br>"+
         "Date: "+jsonMap2[i][3]+"<br>"+
         "Location:"+jsonMap2[i][4]+"<br>"+
-        "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+        "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
         layer = L.layerGroup([marker]).addTo(map); 
 
       }
@@ -180,7 +180,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "Incident Category:"+jsonMap2[i][13]+"<br>"+
       "Date: "+jsonMap2[i][3]+"<br>"+
       "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
       layer = L.layerGroup([marker]).addTo(map); 
 
     }
@@ -191,7 +191,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "Incident Category:"+jsonMap2[i][13]+"<br>"+
       "Date: "+jsonMap2[i][3]+"<br>"+
       "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
       layer = L.layerGroup([marker]).addTo(map); 
 
     }
@@ -205,7 +205,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "Incident Category:"+jsonMap2[i][13]+"<br>"+
       "Date: "+jsonMap2[i][3]+"<br>"+
       "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
       layer = L.layerGroup([marker]).addTo(map); 
 
     }
@@ -216,7 +216,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "Incident Category:"+jsonMap2[i][13]+"<br>"+
       "Date: "+jsonMap2[i][3]+"<br>"+
       "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
       layer = L.layerGroup([marker]).addTo(map); 
 
     }
@@ -227,7 +227,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "Incident Category:"+jsonMap2[i][13]+"<br>"+
       "Date: "+jsonMap2[i][3]+"<br>"+
       "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
       layer = L.layerGroup([marker]).addTo(map); 
 
     }
@@ -243,7 +243,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "Incident Category:"+jsonMap2[i][13]+"<br>"+
       "Date: "+jsonMap2[i][3]+"<br>"+
       "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
       layer = L.layerGroup([marker]).addTo(map); 
 
     }
@@ -254,7 +254,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "Incident Category:"+jsonMap2[i][13]+"<br>"+
       "Date: "+jsonMap2[i][3]+"<br>"+
       "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
       layer = L.layerGroup([marker]).addTo(map); 
 
     }
@@ -265,7 +265,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "Incident Category:"+jsonMap2[i][13]+"<br>"+
       "Date: "+jsonMap2[i][3]+"<br>"+
       "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
       layer = L.layerGroup([marker]).addTo(map); 
 
     }
@@ -276,7 +276,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "Incident Category:"+jsonMap2[i][13]+"<br>"+
       "Date: "+jsonMap2[i][3]+"<br>"+
       "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][14]+"</span>");
       layer = L.layerGroup([marker]).addTo(map); 
 
     }
