@@ -9,109 +9,58 @@ var classification=['1','2','3'];
 var category=['1','2','3','4','5','6'];
 
 
-var theftIcon1 = L.icon({
-    iconUrl: './assets/marker/F-Theft.png',iconSize: [50, 50]
+var act_of_lasciviousness = L.icon({
+    iconUrl: './assets/img/newMarkers/Act_of_Lasciviousness.png',iconSize: [50, 50]
 });
 
-var theftIcon2 = L.icon({
-  iconUrl: './assets/marker/M-Theft.png',iconSize: [50, 50]
+var animal_bite = L.icon({
+  iconUrl: './assets/img/newMarkers/Animal_Bite.png',iconSize: [50, 50]
 });
 
-var theftIcon3 = L.icon({
-  iconUrl: './assets/marker/V-Theft.png',iconSize: [50, 50]
+var assault = L.icon({
+  iconUrl: './assets/img/newMarkers/Assault.png',iconSize: [50, 50]
 });
 
-var theftIcon4 = L.icon({
-  iconUrl: './assets/marker/I-Theft.png',iconSize: [50, 50]
+var breaking_and_entering = L.icon({
+  iconUrl: './assets/img/newMarkers/Breaking_and_Entering.png',iconSize: [50, 50]
 });
 
-var destruction1 = L.icon({
-    iconUrl: './assets/marker/F-Destruction.png',iconSize: [50, 50]
-    
+var death = L.icon({
+  iconUrl: './assets/img/newMarkers/Death.png',iconSize: [50, 50]
 });
 
-var destruction2 = L.icon({
-  iconUrl: './assets/marker/M-Destruction.png',iconSize: [50, 50]
-  
+var disorder = L.icon({
+  iconUrl: './assets/img/newMarkers/Disorder.png',iconSize: [50, 50]
 });
 
-
-var destruction3 = L.icon({
-  iconUrl: './assets/marker/V-Destruction.png',iconSize: [50, 50]
-  
+var drugs = L.icon({
+  iconUrl: './assets/img/newMarkers/Drugs.png',iconSize: [50, 50]
 });
 
-
-var destruction4 = L.icon({
-  iconUrl: './assets/marker/I-Destruction.png',iconSize: [50, 50]
-  
+var emergency = L.icon({
+  iconUrl: './assets/img/newMarkers/Emergency.png',iconSize: [50, 50]
 });
 
-
-var vehicularIncidentIcon1 = L.icon({
-    iconUrl: './assets/marker/F-Vehicular.png',iconSize: [50, 50]
-   
-  });
-
-
-  var vehicularIncidentIcon2 = L.icon({
-    iconUrl: './assets/marker/M-Vehicular.png',iconSize: [50, 50]
-   
-  });
-  
-var vehicularIncidentIcon3 = L.icon({
-  iconUrl: './assets/marker/V-Vehicular.png',iconSize: [50, 50]
- 
+var fire = L.icon({
+  iconUrl: './assets/img/newMarkers/Fire.png',iconSize: [50, 50]
 });
 
-var vehicularIncidentIcon4 = L.icon({
-  iconUrl: './assets/marker/I-Vehicular.png',iconSize: [50, 50]
- 
-});
-var sexualAssaultIcon1 = L.icon({
-    iconUrl: './assets/img/F-Harassment.png',iconSize: [50, 50]
-
+var rape = L.icon({
+  iconUrl: './assets/img/newMarkers/Rape.png',iconSize: [50, 50]
 });
 
-var sexualAssaultIcon2 = L.icon({
-  iconUrl: './assets/img/M-Harassment.png',iconSize: [50, 50]
-
+var robbery = L.icon({
+  iconUrl: './assets/img/newMarkers/Robbery.png',iconSize: [50, 50]
 });
 
-var sexualAssaultIcon3 = L.icon({
-  iconUrl: './assets/img/V-Harassment.png',iconSize: [50, 50]
-
+var theft = L.icon({
+  iconUrl: './assets/img/newMarkers/Theft.png',iconSize: [50, 50]
 });
 
-var sexualAssaultIcon4 = L.icon({
-  iconUrl: './assets/img/I-Harassment.png',iconSize: [50, 50]
-
-});
-var animalBiteIcon1 = L.icon({
-    iconUrl: './assets/marker/I-Animal Bite.png',iconSize: [50, 50]
-
+var vehicular_accident = L.icon({
+  iconUrl: './assets/img/newMarkers/Vehicular.png',iconSize: [50, 50]
 });
 
-
-var fire1 = L.icon({
-    iconUrl: './assets/marker/F-Fire.png',iconSize: [50, 50]
-    
-});
-
-var fire2 = L.icon({
-  iconUrl: './assets/marker/M-Fire.png',iconSize: [50, 50]
-  
-});
-
-var fire3 = L.icon({
-  iconUrl: './assets/marker/V-Fire.png',iconSize: [50, 50]
-  
-});
-
-var fire4 = L.icon({
-  iconUrl: './assets/marker/I-Fire.png',iconSize: [50, 50]
-  
-});
   
 function initMap(){
     var location = '';
@@ -174,10 +123,11 @@ function clearMarkers(){
 
 // get images per marker type
 function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
-  if(jsonMap2[i]['category']=='1'){
-      if(jsonMap2[i]['classification']==1){
-        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon1}) 
-        .bindPopup("<span class='badge badge-success'>Misdemeanor</span><br>"+
+  if(jsonMap2[i]['classification']=='1'){
+    console.log('classification is 1  ');
+      if(jsonMap2[i]['category']==1){
+        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: disorder}) 
+        .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
         "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
         "Incident Category:"+jsonMap2[i][13]+"<br>"+
         "Date: "+jsonMap2[i][3]+"<br>"+
@@ -186,233 +136,151 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
         layer = L.layerGroup([marker]).addTo(map); 
 
       }
-      else if(jsonMap2[i]['classification']==2){
-        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon2}) 
-        .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
+      else if(jsonMap2[i]['category']==2){
+        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: drugs}) 
+        .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
         "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
         "Incident Category:"+jsonMap2[i][13]+"<br>"+
         "Date: "+jsonMap2[i][3]+"<br>"+
         "Location:"+jsonMap2[i][4]+"<br>"+
         "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
         layer = L.layerGroup([marker]).addTo(map); 
+
       }
-      else if(jsonMap2[i]['classification']==3){
-        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon3}) 
-        .bindPopup("<span class='badge badge-success'>Violation</span><br>"+
+      else if(jsonMap2[i]['category']==3){
+        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: death}) 
+        .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
         "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
         "Incident Category:"+jsonMap2[i][13]+"<br>"+
         "Date: "+jsonMap2[i][3]+"<br>"+
         "Location:"+jsonMap2[i][4]+"<br>"+
         "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
         layer = L.layerGroup([marker]).addTo(map); 
+
       }
-      else if(jsonMap2[i]['classification']==4){
-        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: theftIcon4}) 
-        .bindPopup("<span class='badge badge-success'>Incident</span><br>"+
+      else if(jsonMap2[i]['category']==4){
+        marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: assault}) 
+        .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
         "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
         "Incident Category:"+jsonMap2[i][13]+"<br>"+
         "Date: "+jsonMap2[i][3]+"<br>"+
         "Location:"+jsonMap2[i][4]+"<br>"+
         "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
         layer = L.layerGroup([marker]).addTo(map); 
+
       }
-     
-  }
-
-
-  if(jsonMap2[i]['category']=='2'){
-    if(jsonMap2[i]['classification']==1){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: destruction1}) 
-      .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-
-    }
-    else if(jsonMap2[i]['classification']==2){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: destruction2}) 
-      .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-    }
-    else if(jsonMap2[i]['classification']==3){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: destruction3}) 
-      .bindPopup("<span class='badge badge-success'>Violation</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br></font>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-    }
-    else if(jsonMap2[i]['classification']==4){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: destruction4}) 
-      .bindPopup("<span class='badge badge-success'>Incident</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-    } 
-  }
-
-
-
-  if(jsonMap2[i]['category']=='3'){
-    if(jsonMap2[i]['classification']==1){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: vehicularIncidentIcon1}) 
-      .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-
-    }
-    else if(jsonMap2[i]['classification']==2){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: vehicularIncidentIcon2}) 
-      .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-    }
-    else if(jsonMap2[i]['classification']==3){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: vehicularIncidentIcon3}) 
-      .bindPopup("<span class='badge badge-success'>Violation</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-    }
-    else if(jsonMap2[i]['classification']==4){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: vehicularIncidentIcon4}) 
-      .bindPopup("<span class='badge badge-success'>Incident</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-    } 
-  }
-
-  
-  if(jsonMap2[i]['category']=='4'){
-   
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: animalBiteIcon1}) 
-      .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-
-  }
-
-
-  if(jsonMap2[i]['category']=='5'){
-   
-    if(jsonMap2[i]['classification']==1){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: sexualAssaultIcon1}) 
-      .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-
-    }
-    else if(jsonMap2[i]['classification']==2){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: sexualAssaultIcon2}) 
-      .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-    }
-    else if(jsonMap2[i]['classification']==3){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: sexualAssaultIcon3}) 
-      .bindPopup("<span class='badge badge-success'>Violation</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-    }
-    else if(jsonMap2[i]['classification']==4){
-      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: sexualAssaultIcon4}) 
-      .bindPopup("<span class='badge badge-success'>Incident</span><br>"+
-      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-      "Incident Category:"+jsonMap2[i][13]+"<br>"+
-      "Date: "+jsonMap2[i][3]+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
-      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-      layer = L.layerGroup([marker]).addTo(map); 
-    } 
-}
-if(jsonMap2[i]['category']=='6'){
-  if(jsonMap2[i]['classification']==1){
-    marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: fire1}) 
-    .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
-    "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-    "Incident Category:"+jsonMap2[i][13]+"<br>"+
-    "Date: "+jsonMap2[i][3]+"<br>"+
-    "Location:"+jsonMap2[i][4]+"<br>"+
-    "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-    layer = L.layerGroup([marker]).addTo(map); 
-
-  }
-  else if(jsonMap2[i]['classification']==2){
-    marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: fire2}) 
-    .bindPopup("<span class='badge badge-danger'>Misdemeanor</span><br>"+
-    "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-    "Incident Category:"+jsonMap2[i][13]+"<br>"+
-    "Date: "+jsonMap2[i][3]+"<br>"+
-    "Location:"+jsonMap2[i][4]+"<br>"+
-    "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-    layer = L.layerGroup([marker]).addTo(map); 
-  }
-  else if(jsonMap2[i]['classification']==3){
-    marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: fire3}) 
-    .bindPopup("<span class='badge badge-success'>Violation</span><br>"+
-    "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-    "Incident Category:"+jsonMap2[i][13]+"<br>"+
-    "Date: "+jsonMap2[i][3]+"<br>"+
-    "Location:"+jsonMap2[i][4]+"<br>"+
-    "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-    layer = L.layerGroup([marker]).addTo(map); 
-  }
-  else if(jsonMap2[i]['classification']==4){
-    marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: fire4}) 
-    .bindPopup("<span class='badge badge-success'>Incident</span><br>"+
-    "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
-    "Incident Category:"+jsonMap2[i][13]+"<br>"+
-    "Date: "+jsonMap2[i][3]+"<br>"+
-    "Location:"+jsonMap2[i][4]+"<br>"+
-    "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
-    layer = L.layerGroup([marker]).addTo(map); 
-  } 
-}
  
+  }
+   if(jsonMap2[i]['classification']==2){
+    console.log('classification is 2');
+    if(jsonMap2[i]['category']==5){
+      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:rape }) 
+      .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
+      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
+      "Incident Category:"+jsonMap2[i][13]+"<br>"+
+      "Date: "+jsonMap2[i][3]+"<br>"+
+      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      layer = L.layerGroup([marker]).addTo(map); 
+
+    }
+    else if(jsonMap2[i]['category']==6){
+      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:act_of_lasciviousness }) 
+      .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
+      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
+      "Incident Category:"+jsonMap2[i][13]+"<br>"+
+      "Date: "+jsonMap2[i][3]+"<br>"+
+      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      layer = L.layerGroup([marker]).addTo(map); 
+
+    }
+  }
+   if(jsonMap2[i]['classification']==3){
+    console.log('classification is 3');
+    if(jsonMap2[i]['category']==7){
+      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:robbery }) 
+      .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
+      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
+      "Incident Category:"+jsonMap2[i][13]+"<br>"+
+      "Date: "+jsonMap2[i][3]+"<br>"+
+      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      layer = L.layerGroup([marker]).addTo(map); 
+
+    }
+    else if(jsonMap2[i]['category']==8){
+      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:theft }) 
+      .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
+      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
+      "Incident Category:"+jsonMap2[i][13]+"<br>"+
+      "Date: "+jsonMap2[i][3]+"<br>"+
+      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      layer = L.layerGroup([marker]).addTo(map); 
+
+    }
+   else if(jsonMap2[i]['category']==9){
+      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:breaking_and_entering }) 
+      .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
+      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
+      "Incident Category:"+jsonMap2[i][13]+"<br>"+
+      "Date: "+jsonMap2[i][3]+"<br>"+
+      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      layer = L.layerGroup([marker]).addTo(map); 
+
+    }
+    
+
+  }
+   if(jsonMap2[i]['classification']==4){
+    console.log('classification is 4');
+    if(jsonMap2[i]['category']==10){
+      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:emergency }) 
+      .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
+      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
+      "Incident Category:"+jsonMap2[i][13]+"<br>"+
+      "Date: "+jsonMap2[i][3]+"<br>"+
+      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      layer = L.layerGroup([marker]).addTo(map); 
+
+    }
+    else if(jsonMap2[i]['category']==11){
+      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:fire }) 
+      .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
+      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
+      "Incident Category:"+jsonMap2[i][13]+"<br>"+
+      "Date: "+jsonMap2[i][3]+"<br>"+
+      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      layer = L.layerGroup([marker]).addTo(map); 
+
+    }
+    else if(jsonMap2[i]['category']==12){
+      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:vehicular_accident }) 
+      .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
+      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
+      "Incident Category:"+jsonMap2[i][13]+"<br>"+
+      "Date: "+jsonMap2[i][3]+"<br>"+
+      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      layer = L.layerGroup([marker]).addTo(map); 
+
+    }
+    else if(jsonMap2[i]['category']==13){
+      marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:animal_bite }) 
+      .bindPopup("<span class='badge badge-success'>Crime against Person</span><br>"+
+      "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
+      "Incident Category:"+jsonMap2[i][13]+"<br>"+
+      "Date: "+jsonMap2[i][3]+"<br>"+
+      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Incident Status:</font><span class='badge badge-danger'>"+jsonMap2[i][13]+"</span>");
+      layer = L.layerGroup([marker]).addTo(map); 
+
+    }
+  }
 }
 
 //load the markers
@@ -453,27 +321,29 @@ function getMarkers2(){
                   console.log(classification_arr);
                   console.log(crime_type.length);
                  
-                //  if (crime_type[j].checked == true && classification_arr[k].checked) {
-                  
+                 if (crime_type[j].checked == true) {
+                  console.log(crime_type[j].value);
+                  console.log(jsonMap2[i]["category_desc"]+"checked");
                     if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
                      
-                      console.log(crime_type[i].value);
+                      console.log(crime_type[j].value);
                       console.log(jsonMap2[i]["category_desc"]);
                         if(jsonMap2[i]['category_desc']==crime_type[j].value){
-                          console.log(crime_type[i].value);
-                          console.log(classification_arr);
+                          console.log(jsonMap2[i]['classification']+"jsonmap classi");
+                          console.log(classification_arr+"classi_arr");
                           
-                          loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
+                         
                           if(jsonMap2[i]['classification']==classification_arr){
-                          
-
+                            loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
+                            console.log(crime_type[j].value);
+                            console.log(classification_arr);
                           }
                           
                         }
                       
                         
                       
-                  //   }
+                    }
                   
                        
 
