@@ -84,18 +84,13 @@ include_once('map_nav.php');
             </div><!-- end col-md-4 -->
 
             <div class="col">
-                <div class="form-group input-group">
-                <i class="material-icons">phonelink </i>
-                  <input type="text" class="form-control"  placeholder="Item Name"required oninvalid="" id="item"name="item"/>
-                </div>
-
+              
+            <button type="submit" id="add-item-form"form="add-item-form" name="add-item-form" class="btn btn-success ">Add item</button>
               
             </div>
             <div class="col">
-            <div class="form-group input-group">
-                <i class="material-icons">phonelink </i>
-                  <input type="text" class="form-control"  placeholder="Fullname"required oninvalid="" id="person_involved_name"name="person_involved_name"/>
-                </div>
+            <button type="submit" id="person_involved_form"form="person_involved_form" class="btn btn-success"  data-toggle="tooltip" data-placement="top" >Add person</button>
+          
             </div>
             <div class="col">
             
@@ -115,17 +110,11 @@ include_once('map_nav.php');
               </div>
 
               <div class="col">
-                <div class="form-group input-group">
-                <i class="material-icons">phonelink </i>
-                  <input type="text" class="form-control"  placeholder="Item Quantity"required oninvalid="" id="item_quantity"name="item_quantity"/>
-                </div>
-              
+               
+            
             </div>
             <div class="col">
-            <div class="form-group input-group">
-                <i class="material-icons">phonelink </i>
-                  <input type="text" class="form-control"  placeholder="Affiliation"required oninvalid="" id="affiliation"name="affiliation"/>
-                </div>
+          
             </div>
             <div class="col">
             <div class="form-group input-group">
@@ -138,35 +127,17 @@ include_once('map_nav.php');
 
           <div class="row">
             <div class="col">
-                <div class="form-group input-group">
-                  <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
-                  <input type="text" class="form-control" id="reported_by"required  oninvalid=""  name="reported_by" placeholder="Reported By(Required)">
-                </div>
+                
               </div>
 
                           
               <div class="col">
-                  <div class="form-group input-group">
-                  <i class="material-icons">phonelink </i>
-                    <input type="text" class="form-control"  placeholder="Item Description"required oninvalid="" id="item_desc"name="item_desc"/>
-                  </div>
+                 
                 
               </div>
 
               <div class="col">
-                  <div class="form-group input-group">
-                      
-                      <label for="exampleFormControlSelect1">Involvement</label>
-                      <select class="form-control selectpicker"   required oninvalid="" data-style="btn btn-link" id="involvement" name="involvement">
-                        <option >Involvement</option>
-                        <option value='1'>Victim</option>
-                        <option value='2'>Suspect</option>
-                        <option value='3'>Witness</option>
-                        <option value='4'>Investigator</option>
-                        <option value='5'>Roving Guards</option>
-                        
-                      </select>               
-                  </div>
+                 
             </div>
 
             <div class="col">
@@ -208,10 +179,7 @@ include_once('map_nav.php');
             </div>
 
             <div class="col">
-                <div class="form-group input-group">
-                <i class="material-icons">phonelink </i>
-                  <input type="text" class="form-control"  placeholder="Item Est. Worth"required oninvalid="" id="item_worth" name="item_worth"/>
-                </div>
+                
           </div>
           <div class="col">
             </div>
@@ -243,13 +211,11 @@ include_once('map_nav.php');
              </div>
             </div>
             <div class="col">
-            <button type="submit" id="add-item-form"form="add-item-form" name="add-item-form" class="btn btn-success float-right ">Add item</button>
+            
             </div>
             <div class="col" id="olol">
         
   
-            <button type="submit" id="person_involved_form"form="person_involved_form" class="btn btn-success float-right"  data-toggle="tooltip" data-placement="top" >Add person</button>
-          
             </div>
             <div class="col">
             </div>  
