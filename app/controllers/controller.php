@@ -139,13 +139,22 @@ if (isset($_GET[md5("controller")])){
 			
 				echo '<script>window.reload();</script>';
 			}
-			if(isset($_POST['add_category'])){
-				$category = $_POST['category'];
+			if(isset($_POST['add-item-form'])){
+				$marker_id = (int)getMarkerId()[0][0]+1;
 
-				$data = array(
-					'category_desc'=>$category
+				$item_name = $_POST['item'];
+				$item_desc = $_POST['item_desc'];
+				$item_worth = $_POST['item_worth'];
+				$item_quantity = $_POST['item_quantity'];
+				
+				$item = array(
+					'marker_id'=> $marker_id,
+					'item_name'=>$item_name,
+					'item_description'=>$item_desc,
+					'quantity'=>$item_quantity,
+					'est_worth'=>$item_worth
 				);
-				insertCategory($data);
+				insertItem($item);
 			}
 		}
 		elseif($_GET[md5("controller")]===md5('emergency')){
@@ -238,7 +247,7 @@ if (isset($_GET[md5("controller")])){
 		elseif($_GET[md5("controller")]===md5('accountsall')){
 			include('app/views/accountsall.php');
 			$_SESSION['page']=md5('accountsall');
-			//echo ($_SESSION['id']);
+			
 		}
 
 		

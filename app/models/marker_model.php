@@ -190,5 +190,22 @@ else{
 return $markers;
 }
 
+function getAccounts(){
+	
+$result = pg_query(getConn(), "
+select * from crime_db.accounts;
+");
+if (!$result) {
+		echo "An error occurred.\n";
+		exit;
+}
+else{
+	while($row = pg_fetch_array($result)){
+						$account[] = $row;
+					}
+}       
+return $account;
+}
+
 
 ?>

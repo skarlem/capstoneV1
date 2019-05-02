@@ -42,6 +42,16 @@
           <p>Filter Map</p>
         </a>
       </li>
+
+           
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('emergency')?>">
+        <i class="material-icons">
+report_problem
+</i>
+          <p>Emergency Reports</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

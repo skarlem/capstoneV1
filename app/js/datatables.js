@@ -41,9 +41,6 @@ var table =$('#dataTables-example').DataTable( {
 }
 
 );
- 
-
-
 
 $(document).ready( function () {
     var divExample = $('#dataTables-example-2');
@@ -58,6 +55,11 @@ $(document).ready( function () {
 
 $(document).ready(function() {
     $('#dataTables-example-3').DataTable();
+} );
+
+
+$(document).ready(function() {
+    $('#table-accounts').DataTable();
 } );
 
 

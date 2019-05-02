@@ -55,8 +55,8 @@
 <!-- Plugin for the momentJs  -->
 <script src="./assets/js/plugins/moment.min.js"></script>
 
-<!--  Plugin for Sweet Alert  ./assets/js/plugins/sweetalert2.js-->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--  Plugin for Sweet Alert  -->
+<script src="./assets/js/plugins/sweetalert2.js"></script>
 
 <!-- Forms Validations Plugin -->
 <script src="./assets/js/plugins/jquery.validate.min.js"></script>
@@ -130,4 +130,8 @@
 <link rel="stylesheet" href="./assets/datepicket/src/css/tempusdominus-bootstrap-4.min.css" />
 
 <script type="text/javascript" src="./app/js/websocket.js"></script>
+
+
+<link href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.js"></script>
 

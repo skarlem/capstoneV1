@@ -70,49 +70,39 @@
                         </div>
                       </div>
                     </div>
-                    </li>
-                
-      
-                  </ul>
+                    </li> 
+
+
+
+                    <div class="modal fade" id="ModalDelete'.$id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Delete Record</h4>
+                            </div>
+                            
+                            <div class="modal-body">
+                                <div class="col-lg-12">
+                               
+                                    <form role="form" method="POST">
+                                      Are you sure you want to delete this record?
+                                      <input type="hidden" name="delete_id" value="'.$id.'">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col-lg-12">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
+                                    <button type="submit" class="btn btn-danger " name="delete_submit" ><i class="fa fa-check"></i> Yes</button>
+                                </div>
+                            </div>
+                          </form>
+                        </div>
+                    </div>
                 </div>
-              </div>
-                      </div><!-- End of Fluid -->
-                     
-                      </div><!-- End of Content -->
 
 
-                      
-
-                      <div class="modal fade" id="ModalDelete'.$id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                  <h4 class="modal-title" id="myModalLabel">Delete Record</h4>
-                              </div>
-                              
-                              <div class="modal-body">
-                                  <div class="col-lg-12">
-                                 
-                                      <form role="form" method="POST">
-                                        Are you sure you want to delete this record?
-                                        <input type="hidden" name="delete_id" value="'.$id.'">
-                                  </div>
-                              </div>
-                              <div class="modal-footer">
-                                  <div class="col-lg-12">
-                                      <button type="button" class="btn btn-primary" data-dismiss="modal">No <i class="fa fa-refresh"></i></button>
-                                      <button type="submit" class="btn btn-danger" name="delete_submit" ><i class="fa fa-check"></i> Yes</button>
-                                  </div>
-                              </div>
-                            </form>
-                          </div>
-                      </div>
-                  </div>
-                  
-
-                  
-
+                
 <div class="modal fade bd-example-modal-lg" id="exampleModal'.$id.'" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg w-75 p-3">
   <div class="modal-content">
@@ -127,15 +117,15 @@
       <form role="form" method="POST" id="add-form" name="add-form">
       <div class="form-group input-group">
               
-              <input type="hidden" class="form-control" id="add-form" name="add-form-emergency" readonly>
+              <input type="hidden" class="form-control" id="add-form" name="add-form" readonly>
             </div>
       <div class="form-group input-group">
               
-              <input type="hidden" class="form-control" id="lat" name="lat" placeholder="Latitude" value="'.$lat.'" readonly>
+              <input type="hidden" class="form-control" id="lat" name="lat" placeholder="Latitude" readonly>
             </div>
             
             <div class="form-group input-group">
-              <input type="hidden" class="form-control" id="lng" name="lng" placeholder="Longitude" value="'.$lng.' "readonly>
+              <input type="hidden" class="form-control" id="lng" name="lng" placeholder="Longitude" readonly>
             </div>
 
 
@@ -160,7 +150,7 @@
 
              <div class="form-group input-group">
                 <span class="input-group-addon"><i class="material-icons">event_note</i></span>
-                <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date"name="date" data-toggle="datetimepicker" data-target="#date" value="'.$date.'"/>
+                <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date"name="date" data-toggle="datetimepicker" value="'.$date.'" data-target="#date"/>
               </div>
 
           </div><!-- end col-md-4 -->
@@ -222,7 +212,7 @@
           <div class="col">
               <div class="form-group input-group">
                 <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
-                <input type="text" class="form-control" id="reported_by"required  oninvalid=""  name="reported_by" value="'.$reporter_id.'" placeholder="Reported By(Required)">
+                <input type="text" class="form-control" id="reported_by"required  oninvalid=""  name="reported_by" placeholder="Reported By(Required)">
               </div>
             </div>
 
@@ -292,7 +282,7 @@
           <div class="col">
               <div class="form-group input-group">
               <i class="material-icons">phonelink </i>
-                <input type="text" class="form-control"  placeholder="Item Est. Worth"required oninvalid="" id="item_worth"name="item_worth"/>
+                <input type="text" class="form-control"  placeholder="Item Est. Worth"required oninvalid="" id="item_worth" name="item_worth"/>
               </div>
         </div>
         <div class="col">
@@ -313,7 +303,7 @@
             <div class="form-group input-group">
                
                <label for="exampleFormControlSelect1">Category</label>
-               <select class="form-control selectpicker"  required oninvalid="" data-style="btn btn-link" id="category" name="category">
+               <select class="form-control selectpicker"  required oninvalid="" data-style="btn btn-link" id="category1" name="category1">
                  <option >Category</option>
                  <option value="1"s>Theft</option>
                  <option value="2">Destruction of Property</option>
@@ -325,12 +315,12 @@
            </div>
           </div>
           <div class="col">
-          <button type="submit"id="asd" class="btn btn-primary float-right">click me</button>
+          <button type="submit" id="add-item-form" name="add-item-form" class="btn btn-success float-right ">Add item</button>
           </div>
           <div class="col" id="olol">
       
 
-<button type="submit"id="asd" class="btn btn-primary float-right"  data-toggle="tooltip" data-placement="top">click me</button>
+          <button type="submit"id="person_involved_form" class="btn btn-success float-right"  data-toggle="tooltip" data-placement="top" >Add person</button>
         
           </div>
           <div class="col">
@@ -344,11 +334,11 @@
 
         <div class="form-group input-group">
               
-              <input type="hidden" class="form-control" id="class" name="class" placeholder="Latitude" readonly value="2 ">
+              <input type="hidden" class="form-control" id="class" name="class" placeholder="Latitude" readonly value="2">
             </div>
         <div class="modal-footer">
           <div class="col-lg-12">
-              <button type="button" class="btn btn-primary float-right swa-confirm" id="add_marker"name="add_marker" >
+              <button type="button" class="btn btn-primary float-right btn-add" id="add_marker"name="add_marker" >
               <i class="fa "></i> Save to database</button>
            
               <button type="button" class="btn btn-secondary float-right" data-dismiss="modal" aria-label="Close" >
@@ -364,28 +354,15 @@
   </div>
 </div>
 </div>
-
-
-
-
-<div class="modal fade" id="change_password" role="dialog">
-  <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body change_password">
-              Modal body
-          </div>
-      </div>
-  </div>
-</div>
-      
                         ';
                     }
                 ?>
-
-
+                  </ul>
+                </div>
+              </div>
+                      </div><!-- End of Fluid -->
+                     
+                      </div><!-- End of Content -->
 
 
 
@@ -397,7 +374,176 @@
       placement: 'bottom',
       html: true
   });
-</script>         
+</script>  
+
+
+<script>
+
+$(function () {
+    $('#person_involved_form').on('click',function (e) {
+              $.ajax({
+                type: 'post',
+                url: 'app/controllers/controller.php',
+                data: $('#person_involved_form').serialize(),
+                success: function () {
+                   add_person();
+                }
+              });
+          e.preventDefault();
+   });
+});
+
+
+$(function () {
+    $('#add-item-form').on('click',function (e) {
+              $.ajax({
+                type: 'post',
+                url: 'app/controllers/controller.php',
+                data: $('#person_involved_form').serialize(),
+                success: function () {
+                  add_item();
+                }
+              });
+          e.preventDefault();
+   });
+});
+
+
+  $(".btn-add").click(function(){
+      Swal.fire({
+        title: "Are you sure you want to save changes?",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Saved!',
+            'Changes have been saved',
+            'success'
+          ).then((result) => {
+            $("#add-form").submit();
+            });
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          })
+        }
+      });
+
+    });
+
+    
+function add_person(){
+  Swal.fire({
+        title: "Are you sure you want to add this person?",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Saved!',
+            'Changes have been saved',
+            'success'
+          );
+        
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          })
+        }
+      });
+
+   
+
+}
+      
+function add_item(){
+  Swal.fire({
+        title: "Are you sure you want to add this item?",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Saved!',
+            'Changes have been saved',
+            'success'
+          );
+         
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          })
+        }
+      });
+}
+
+    
+  $(".btn-cancel").click(function(){
+      Swal.fire({
+        title: "Are you sure you want to cancel? Changes will not be saved",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          }).then((result) => {
+            $('#exampleModal').modal('hide');
+            });;
+          
+         
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+         
+        }
+      });
+
+
+    });
+
+</script>
+
+
+<script>
+  $('a[data-toggle="tooltip"]').tooltip({
+    animated: 'fade',
+    placement: 'bottom',
+    html: true
+});
+
+  </script>
       
   <?php
   include_once('footer.php');

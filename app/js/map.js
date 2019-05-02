@@ -421,7 +421,7 @@ function getMarkers2(){
   var endDate = new Date(document.getElementById('dp2').value);
   var startDate = new Date(document.getElementById('dp1').value);
    var crime_type = document.getElementsByName('category'); 
-   var classification_arr=document.getElementsByName('classification');
+   var classification_arr=document.getElementById('classification').value;
    
    
 
@@ -445,29 +445,36 @@ function getMarkers2(){
 
       
      }
+     
       $.getJSON("app/controllers/results.json", function(jsonMap2) {
             for(var i=0; i<jsonMap2.length; i++){
               for(var j=0; j<crime_type.length; j++){
-                for(var k=0; k<classification_arr.length; k++){
-
-                  if (crime_type[j].checked == true && classification_arr[k].checked) {
+               
+                  console.log(classification_arr);
+                  console.log(crime_type.length);
+                 
+                //  if (crime_type[j].checked == true && classification_arr[k].checked) {
                   
                     if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
-                   
-                    
-                        if(jsonMap2[i]['category']==crime_type[j].value){
+                     
+                      console.log(crime_type[i].value);
+                      console.log(jsonMap2[i]["category_desc"]);
+                        if(jsonMap2[i]['category_desc']==crime_type[j].value){
+                          console.log(crime_type[i].value);
+                          console.log(classification_arr);
                           
-                          if(jsonMap2[i]['classification']==classification_arr[k].value){
-                           
-                            loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
+                          loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
+                          if(jsonMap2[i]['classification']==classification_arr){
+                          
+
                           }
                           
                         }
                       
                         
                       
-                    }
-                  }
+                  //   }
+                  
                        
 
                 }

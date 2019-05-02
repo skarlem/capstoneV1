@@ -210,7 +210,7 @@ include_once('map_nav.php');
             <div class="col">
                 <div class="form-group input-group">
                 <i class="material-icons">phonelink </i>
-                  <input type="text" class="form-control"  placeholder="Item Est. Worth"required oninvalid="" id="item_worth"name="item_worth"/>
+                  <input type="text" class="form-control"  placeholder="Item Est. Worth"required oninvalid="" id="item_worth" name="item_worth"/>
                 </div>
           </div>
           <div class="col">
@@ -231,7 +231,7 @@ include_once('map_nav.php');
               <div class="form-group input-group">
                  
                  <label for="exampleFormControlSelect1">Category</label>
-                 <select class="form-control selectpicker"  required oninvalid="" data-style="btn btn-link" id="category" name="category">
+                 <select class="form-control selectpicker"  required oninvalid="" data-style="btn btn-link" id="category1" name="category1">
                    <option >Category</option>
                    <option value='1's>Theft</option>
                    <option value='2'>Destruction of Property</option>
@@ -243,12 +243,12 @@ include_once('map_nav.php');
              </div>
             </div>
             <div class="col">
-            <button type="submit"id="item_involved_form" class="btn btn-success float-right">Add item</button>
+            <button type="submit" id="add-item-form"form="add-item-form" name="add-item-form" class="btn btn-success float-right ">Add item</button>
             </div>
             <div class="col" id="olol">
         
   
-            <button type="submit"id="person_involved_form" class="btn btn-success float-right"  data-toggle="tooltip" data-placement="top" >Add person</button>
+            <button type="submit" id="person_involved_form"form="person_involved_form" class="btn btn-success float-right"  data-toggle="tooltip" data-placement="top" >Add person</button>
           
             </div>
             <div class="col">
@@ -266,10 +266,10 @@ include_once('map_nav.php');
               </div>
           <div class="modal-footer">
             <div class="col-lg-12">
-                <button type="button" class="btn btn-primary float-right swa-confirm" id="add_marker"name="add_marker" >
+                <button type="button" class="btn btn-primary float-right btn-add" id="add_marker"name="add_marker" >
                 <i class="fa "></i> Save to database</button>
              
-                <button type="button" class="btn btn-secondary float-right" data-dismiss="modal" aria-label="Close" >
+                <button type="button" class="btn btn-secondary float-right btn-cancel" aria-label="Close" >
                 <i class="fa "></i> Close</button>
             </div>
                        
@@ -309,48 +309,160 @@ include_once('map_nav.php');
 <script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
 
 <script>
-function notif(){
-  swal({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        type: 'warning',
+
+$(function () {
+    $('#person_involved_form').on('click',function (e) {
+              $.ajax({
+                type: 'post',
+                url: 'app/controllers/controller.php',
+                data: $('#person_involved_form').serialize(),
+                success: function () {
+                   add_person();
+                }
+              });
+          e.preventDefault();
+   });
+});
+
+
+$(function () {
+    $('#add-item-form').on('click',function (e) {
+              $.ajax({
+                type: 'post',
+                url: 'app/controllers/controller.php',
+                data: $('#add-item-form').serialize(),
+                success: function () {
+                  add_item();
+                }
+              });
+          e.preventDefault();
+   });
+});
+
+
+  $(".btn-add").click(function(){
+      Swal.fire({
+        title: "Are you sure you want to save changes?",
+        type: "question",
         showCancelButton: true,
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        confirmButtonText: 'Yes, delete it!',
-        buttonsStyling: false
-      }).then(function() {
-        $('#change_password').modal('show')
-       
-      }).catch(swal.noop)
-}
-$(".swa-confirm").on("click", function(e) {
-    e.preventDefault();
-    var form = $(this).parents('form');
-    swal({
-        title: "Are you sure?",
-        text: "You cannot undo your changes",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          console.log('submit oy pota');
-          swal("Your changes have been saved!", {
-            icon: "success",
-          }).then(function(){
-            
-            document.forms["add-form"].submit();
-          });
-         
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Saved!',
+            'Changes have been saved',
+            'success'
+          ).then((result) => {
+            $("#add-form").submit();
+            });
         } 
-        else {
-          swal("Your changes was not saved!");
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          })
         }
       });
-});
-  
+
+    });
+
+    
+function add_person(){
+  Swal.fire({
+        title: "Are you sure you want to add this person?",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Saved!',
+            'Changes have been saved',
+            'success'
+          );
+        
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          })
+        }
+      });
+
+   
+
+}
+      
+function add_item(){
+  Swal.fire({
+        title: "Are you sure you want to add this item?",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Saved!',
+            'Changes have been saved',
+            'success'
+          );
+         
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          })
+        }
+      });
+}
+
+    
+  $(".btn-cancel").click(function(){
+      Swal.fire({
+        title: "Are you sure you want to cancel? Changes will not be saved",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          }).then((result) => {
+            $('#exampleModal').modal('hide');
+            });;
+          
+         
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+         
+        }
+      });
+
+
+    });
 
 </script>
 

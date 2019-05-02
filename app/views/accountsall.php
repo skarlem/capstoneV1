@@ -16,16 +16,9 @@ include_once('accountsall_nav.php');
                 
                <span style="float: right;">
                  <div class="input-group no-border">
-                      <button type="submit" class="btn btn-link" style="width: 5px;">
-                        <i class="material-icons" >search</i>
-                      </button> <input type="text" value="" class="form-control" placeholder="Search..." style="height:45px"> 
+                     
                    <div class="col-md-6" style="float: right;">
-                      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter by:</button>
-                      <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Client</a>
-                      <a class="dropdown-item" href="#">Therapist</a>
-                      <a class="dropdown-item" href="#">Support</a>
-                       </div>
+                     
                     </div>
                 </div>
               </span>
@@ -33,7 +26,7 @@ include_once('accountsall_nav.php');
 
                <div class="card-body">
                    <div class="table-responsive">
-                      <table class="table">
+                      <table class="table" id="table-accounts">
                         <thead class=" text-primary" style="text-align: center;">
                           <th>
                             Username
@@ -47,12 +40,20 @@ include_once('accountsall_nav.php');
                           </th>
                         </thead>
                         <tbody>
-                          <tr style="text-align: center;">
+                        <?php
+                          foreach( getAccounts()as $row ){
+                            $username = $row['username'];
+                            $fullname = $row['fullname'];
+                            $id = $row['school_id'];
+
+                            echo'
+                            <tr style="text-align: center;">
                             <td>
-                              user1
+                            '.$username.'
                             </td>
+                          
                             <td>
-                              Jane Doe
+                              '.$fullname.'
                             </td>
                            <td class="text-right">  <center>
                             <a href="#" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">description</i></a>
@@ -60,6 +61,10 @@ include_once('accountsall_nav.php');
                             <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
                           </center> </td>
                           </tr>
+                            ';
+                          }
+                        ?>
+                          
 
                           
                         </tbody>
@@ -75,3 +80,5 @@ include_once('accountsall_nav.php');
           <!-- end row -->
         </div>
       </div>
+  <!-- datables for our table -->
+  <script src="app/js/datatables.js"></script>

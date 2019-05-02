@@ -119,8 +119,8 @@ report_problem
     <span class="input-group-text">      
     </span>
   </div>
-  <div class="form-group input-group">
-                    <select class="form-control selectpicker"   onchange="populate(this.id,'select_category')" required oninvalid="" data-style="btn btn-link" id="incident_status" name="incident_status">
+                <div class="form-group input-group">
+                    <select class="form-control selectpicker"  onchange="populate(this.id,'select_category')" required oninvalid="" data-style="btn btn-link" id="classification" name="classification">
                       <option >Classification</option>
                       <option value='1'>Crimes against Person</option>
                       <option value='2'>Crimes against Chastity</option>
@@ -194,7 +194,7 @@ report_problem
             var optionArray = ["Robbery", "Theft", "Breaking and Entering"];      
       }
       else if (s1.value == "4") {
-            var optionArray = ["Emergency Disasters", "Fire", "Vehicular Accidents","Animal Bite"];
+            var optionArray = ["Emergency Disasters", "Fire", "Vehicular Accident","Animal Bite"];
       }
 
     for (var option in optionArray) {
@@ -203,9 +203,10 @@ report_problem
             var pair = optionArray[option];
             var checkbox = document.createElement("input");
             checkbox.type = "checkbox";
-            checkbox.name = pair;
+            checkbox.name = 'category';
             checkbox.value = pair;
-           
+            checkbox.checked=true;
+            checkbox.id = 'category';
             s2.appendChild(checkbox);
     
             var label = document.createElement('label')
@@ -299,33 +300,4 @@ report_problem
       </nav>
 
 
-      
-<!-- Modal -->
-<div class="modal fade" id="category_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"> Add Category</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form role="form" method="POST">
-          <div class="form-group input-group">
-               <span class="input-group-addon"><i class="material-icons">event_note</i></span>
-          <input type="text" class="form-control" required oninvalid="" id="category"name="category" placeholder="Add Category"/>
-        </div>
-      </div>
-      <div class="modal-footer">
-          <div class="col-lg-12">
-              <button type="submit" class="btn btn-primary" name="add_category" >
-               <i class="fa "></i> Save to database</button>
-          </div>
-                       
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
 
