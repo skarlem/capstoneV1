@@ -1,4 +1,4 @@
-<?php
+  <?php
   include_once('header.php');
   include_once('marker_nav.php');
   ?>
@@ -50,7 +50,9 @@
                       <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
                         <thead class=" text-primary">
                          
-                          
+                          <th class="hidden">
+                            Incident ID
+                          </th>
 
                           <th>
                             Date
@@ -75,14 +77,14 @@
                           <th>
                             Incident Narrative
                           </th>  
-                          <th>
-                           Action Taken
-                          </th>
+                        
                           <th>
                             Classification
                           </th>
                           
-                          
+                          <th>
+                           Action Taken
+                          </th>
                           <th>
                             Action
                           </th>
@@ -102,7 +104,7 @@
                               $victim = $row['victim'];
                               $incident_narrative = $row['what_happened'];
                               $action_taken = $row['action_taken'];
-                              $suspect = $row['suspect'];
+                             $suspect = $row['suspect'];
                               $classification=$row['classification_desc'];
                               $school_id=$row['reported_by'];
                               
@@ -111,7 +113,7 @@
                           echo'
                           <tr>
                               
-                              
+                              <td>'.$id.'</td>
                               <td>'.$date.'</td>
                              
                               <td>'.$location.'</td>
@@ -119,9 +121,9 @@
                               <td>'.$items.'</td>
                               <td>'.$victim.'</td>
                               <td>'.$incident_narrative.'</td>
-                             <td>'.$action_taken.'</td>
+                             
                               <td>'.$classification.'</td>
-                              
+                              <td>'.$action_taken.'</td>
                               <td style="width:100px;text-align:center">
                                 <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdi'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
                                
@@ -231,6 +233,110 @@
                           </div>
                               </div>
                           </div>
+
+
+
+
+
+                          
+                          <div class="modal fade" id="ModalDelete'.$id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                      <h4 class="modal-title" id="myModalLabel">Delete Record</h4>
+                                  </div>
+                                  
+                                  <div class="modal-body">
+                                      <div class="col-lg-12">
+                                          <form role="form" method="POST">
+                                            Are you sure you want to delete this record?
+                                            <input type="hidden" name="delete_id" value="'.$id.'">
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer justify-content-between">
+                                      <div class="col-lg-12">
+                                          <button type="submit" class="btn btn-info float-right" name="delete_submit" > Yes</button>
+                                          <button type="button" class="btn btn-default float-right" data-dismiss="modal">No</button>
+                                         
+                                      </div>
+                                  </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                                           
+                      <div class="modal fade" id="ModalEdit'.$id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="myModalLabel">Modify Record</h4>
+                              </div>
+                              
+                              <div class="modal-body">
+                                  <div class="col-lg-12">
+                                      <form role="form" method="POST">
+                                          <input type="hidden" name="edit_id" value="'.$id.'">
+                                          <div class="form-group input-group">
+                                              <span class="input-group-addon"><i class="material-icons">location_on</i></span>
+                                              <input type="text" class="form-control" name="lat" placeholder="Latitude" value="'.$lat.'" readonly>
+                                          </div>
+                                          <div class="form-group input-group">
+                                              <span class="input-group-addon"><i class="material-icons">location_on</i></span>
+                                              <input type="text" class="form-control" name="lng" placeholder="Longitude" value="'.$lng.'" readonly>
+                                          </div>
+                                          <div class="form-group input-group">
+                                              <span class="input-group-addon"><i class="material-icons">event_note</i></span>
+                                              <input type="text" class="form-control" name="date" placeholder="Date" value="'.$date.'">
+                                          </div>
+                                          <div class="form-group input-group">
+                                              <span class="input-group-addon"><i class="material-icons">edit_location</i></span>
+                                              <input type="text" class="form-control" name="location" placeholder="Location" value="'.$location.'">
+                                          </div>
+                                          
+                                          <div class="form-group input-group">
+                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                                              <input type="text" class="form-control" name="victim" placeholder="Victim" value="'.$victim.'">
+                                          </div>
+                                          <div class="form-group input-group">
+                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                                              <input type="text" class="form-control" name="suspect" placeholder="Suspect" value="'.$suspect.'">
+                                          </div>
+                                          <div class="form-group input-group">
+                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                                              <input type="text" class="form-control" name="incident_narrative" placeholder="Incident Narrative" value="'.$incident_narrative.'">
+                                          </div>
+                                          <div class="form-group input-group">
+                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                                              <input type="text" class="form-control" name="action_taken" placeholder="Action Taken" value="'.$action_taken.'">
+                                          </div>
+                                          <div class="form-group input-group">
+             
+                                                   
+                                      </div>
+                                          <div class="form-group input-group">
+                                              <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                                              <input type="text" class="form-control" name="reported_by" placeholder="Reported By " value="'.$school_id.'">
+                                          </div>
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                  <div class="col-lg-12">
+                                      <button type="submit" class="btn btn-info float-right" name="edit_submit" ></i> Update Records</button>
+                                      <button type="button" class="btn btn-default float-right" data-dismiss="modal">Close</button>
+                                      
+                                  </div>
+                              </div>
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+
+
+
+                                  
+                          <script>console.log("asda");</script>
                           ';
                           }
                         ?>  

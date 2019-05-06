@@ -19,8 +19,8 @@
         <script 
           src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"> 
         </script>
-
-
+<!-- lightbox -->
+<link href="./assets/lightbox2/lightbox.css" rel="stylesheet">
 
 
 <style type="text/css">
@@ -135,3 +135,4 @@
 <link href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.js"></script>
 
+    <script src="./assets/lightbox2/lightbox.js"></script>

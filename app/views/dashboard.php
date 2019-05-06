@@ -26,8 +26,176 @@ include_once('dashboard_nav.php');
 
                           <div class="col-md-4">
                           
+                          <li class="nav-item">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <p>Start date</p>
+                  </span>
+                </div>
+  
+              
+                <input type="text" class="form-control datetimepicker-input" required oninvalid="" value="January 01, 1990, 00:00"
+                id="date1"name="date1" data-toggle="datetimepicker" data-target="#date1"/>
+                
+            </li>
+            
+            <li class="nav-item">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <p>End date</p>
+                  </span>
+                </div>
+               
+                  <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date2"name="date2" data-toggle="datetimepicker" data-target="#date2"/>
+                
+                <script>
+                
+                var today1 = new Date().toLocaleDateString(undefined, {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                });
+                  document.getElementById('date2').value= today1;
+                </script>
+              </div>
+            </li>
+            <br>
+            <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+     
+    <span class="badge badge-success">Classification</span>
+     
+    <span class="check"></span>
+  </span>
+</label>
+</div>
+</div>
+<br>
+
+
+
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+                <div class="form-group input-group">
+                    <select class="form-control selectpicker"  onchange="populate(this.id,'select_category')" required oninvalid="" data-style="btn btn-link" id="classification" name="classification">
+                      <option >Classification</option>
+                      <option value='1'>Crimes against Person</option>
+                      <option value='2'>Crimes against Chastity</option>
+                      <option value='3'>Crimes against Property</option>
+                      <option value='4'>Emergency</option>
+                    </select>               
+                </div>
+</div>
+
+<br>
+
+
+              <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">      
+    </span>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+     
+     <span class="badge badge-success">Category</span>
+     
+    <span class="check"></span>
+  </span>
+</label>
+</div>
+</div>
+<br>
+            
+              
+
+             <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input"  onclick="checkAllCategory()" id="checkAllCategory"type="checkbox"  checked>
+                      Select All
+                    <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              </div>
+
+
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">      
+                  </span>
+                </div>
+                <div class="form-check" id="select_category">
+                  
+            </div>
+              </div>
+              
+<script type="text/javascript">
+ var val = 1;
+    function populate(slct1, slct2) {
+        var s1 = document.getElementById(slct1);
+        var s2 = document.getElementById(slct2);
+        s2.innerHTML = "";
+        if (s1.value == "1") {
+            var optionArray = ["Disorder", "Drugs", "Death","Assault"];
+        } else if (s1.value == "2") {
+            var optionArray = ["Rape", "Lasciviousness"];
+        } else if (s1.value == "3") {
+            var optionArray = ["Robbery", "Theft", "Breaking and Entering"];      
+      }
+      else if (s1.value == "4") {
+            var optionArray = ["Emergency (Disasters)", "Fire", "Vehicular Accident","Animal Bite"];
+      }
+
+    for (var option in optionArray) {
+     
+        if (optionArray.hasOwnProperty(option)) {
+            var pair = optionArray[option];
+            var checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.name = 'category';
+            checkbox.value = pair;
+            checkbox.checked=true;
+            checkbox.id = 'category';
+            s2.appendChild(checkbox);
     
-            </div><!-- end col-->
+            var label = document.createElement('label')
+            label.htmlFor = pair;
+            label.appendChild(document.createTextNode(pair));
+
+            s2.appendChild(label);
+            s2.appendChild(document.createElement("br"));    
+        }
+    }
+}
+</script>
+             
+
+            </li>
+
+            <button class="btn btn-primary" onclick="clearMarkers()">Apply Filter</button>
+    
+                           </div><!-- end col-->
 
 
             <div class=".col-6 .col-md-4">
@@ -351,7 +519,7 @@ include_once('dashboard_nav.php');
 
     
 <!-- map-->
-<script type="text/javascript" src="app/js/map.js" onload="initMap()"></script>
+<script type="text/javascript" src="app/js/dashboard_map.js" onload="initMap()"></script>
 <script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
 
 

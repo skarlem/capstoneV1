@@ -43,7 +43,7 @@
           </li>
 
 
-          <li class="nav-item ">
+          <li class="nav-item active ">
         <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('add_marker')?>">
         <i class="material-icons">
 note_add
@@ -52,7 +52,7 @@ note_add
         </a>
       </li>
           
-      <li class="nav-item  active">
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('emergency')?>">
         <i class="material-icons">
 report_problem

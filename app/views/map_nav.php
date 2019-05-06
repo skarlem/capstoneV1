@@ -43,7 +43,14 @@
             </a>
           </li>
 
-          
+          <li class="nav-item ">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('add_marker')?>">
+        <i class="material-icons">
+note_add
+</i>
+          <p>Add Markers</p>
+        </a>
+      </li>
      
           
       <li class="nav-item">
@@ -120,7 +127,7 @@ report_problem
     </span>
   </div>
                 <div class="form-group input-group">
-                    <select class="form-control selectpicker"  onchange="populate(this.id,'select_category')" required oninvalid="" data-style="btn btn-link" id="classification" name="classification">
+                    <select class="form-control selectpicker"  onchange="populate(this.id,'select_category_nav')" required oninvalid="" data-style="btn btn-link" id="classification_nav" name="classification_nav">
                       <option >Classification</option>
                       <option value='1'>Crimes against Person</option>
                       <option value='2'>Crimes against Chastity</option>
@@ -175,7 +182,7 @@ report_problem
                   <span class="input-group-text">      
                   </span>
                 </div>
-                <div class="form-check" id="select_category">
+                <div class="form-check" id="select_category_nav">
                   
             </div>
               </div>
@@ -194,7 +201,7 @@ report_problem
             var optionArray = ["Robbery", "Theft", "Breaking and Entering"];      
       }
       else if (s1.value == "4") {
-            var optionArray = ["Emergency Disasters", "Fire", "Vehicular Accident","Animal Bite"];
+            var optionArray = ["Emergency (Disasters)", "Fire", "Vehicular Accident","Animal Bite"];
       }
 
     for (var option in optionArray) {
