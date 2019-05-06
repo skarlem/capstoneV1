@@ -6,36 +6,38 @@
         "lat": "6.0695",
         "2": "125.12629",
         "lng": "125.12629",
-        "3": "February  05, 2018 ",
-        "date": "February  05, 2018 ",
-        "4": "ISL,CNSM",
-        "location_description": "ISL,CNSM",
+        "3": "January   01, 1970 ",
+        "date": "January   01, 1970 ",
+        "4": "ISL,CMMMMM",
+        "location_description": "ISL,CMMMMM",
         "5": "2",
         "classification": "2",
-        "6": "1",
-        "category": "1",
-        "7": "2",
-        "class": "2",
+        "6": "5",
+        "category": "5",
+        "7": "1",
+        "class": "1",
         "8": "admin",
         "reported_by": "admin",
         "9": null,
         "items": null,
-        "10": "Shiela Pacheco",
-        "victim": "Shiela Pacheco",
-        "11": "Al Sajid Jave Japal,Luis Angelo Belmonte",
-        "suspect": "Al Sajid Jave Japal,Luis Angelo Belmonte",
+        "10": null,
+        "victim": null,
+        "11": "mhounic",
+        "suspect": "mhounic",
         "12": "Crime against Chastity",
         "classification_desc": "Crime against Chastity",
-        "13": "Disorder",
-        "category_desc": "Disorder",
-        "14": "Forwarded to OSA",
-        "status_description": "Forwarded to OSA",
+        "13": "Rape",
+        "category_desc": "Rape",
+        "14": "Under Investigation",
+        "status_description": "Under Investigation",
         "15": "Investigated and revealed the suspect, MR. AL SAJID  JAVE K. JAPAL (MSU Student) pointed by the witness Mr. Luis Angelo E. Belmonte (MSU Student) . Mr. Japal (suspect) admitted the crime and paid same to Ms. Pacheco. The case was forwarded to OSA office for appropriate action.",
         "action_taken": "Investigated and revealed the suspect, MR. AL SAJID  JAVE K. JAPAL (MSU Student) pointed by the witness Mr. Luis Angelo E. Belmonte (MSU Student) . Mr. Japal (suspect) admitted the crime and paid same to Ms. Pacheco. The case was forwarded to OSA office for appropriate action.",
         "16": "She left her bag containing money of P 1,100.00 at the chair while talking to her classmate inside  the said room and later found out that her money was already missing.",
         "what_happened": "She left her bag containing money of P 1,100.00 at the chair while talking to her classmate inside  the said room and later found out that her money was already missing.",
-        "17": "4",
-        "status_id": "4"
+        "17": "3",
+        "status_id": "3",
+        "18": "1",
+        "narrative_id": "1"
     },
     {
         "0": "2",
@@ -73,7 +75,9 @@
         "16": "He left his residence with nobody left to look after the cottage. The culprit entered the house by destroying the window at the back of the cottage.",
         "what_happened": "He left his residence with nobody left to look after the cottage. The culprit entered the house by destroying the window at the back of the cottage.",
         "17": "9",
-        "status_id": "9"
+        "status_id": "9",
+        "18": "2",
+        "narrative_id": "2"
     },
     {
         "0": "3",
@@ -111,7 +115,9 @@
         "16": "Upon reaching of the  said  intersection, the motorcycle with defective break suddenly approached and hit the motor driven by Mr. Empas.",
         "what_happened": "Upon reaching of the  said  intersection, the motorcycle with defective break suddenly approached and hit the motor driven by Mr. Empas.",
         "17": "7",
-        "status_id": "7"
+        "status_id": "7",
+        "18": "3",
+        "narrative_id": "3"
     },
     {
         "0": "4",
@@ -149,7 +155,9 @@
         "16": "The victim placed his Laptop and Cellphone on top of the table inside his room while sleeping and when he woke up, he found these items already missing.",
         "what_happened": "The victim placed his Laptop and Cellphone on top of the table inside his room while sleeping and when he woke up, he found these items already missing.",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "4",
+        "narrative_id": "4"
     },
     {
         "0": "5",
@@ -187,7 +195,9 @@
         "16": "The window of their romm was destroyed by the suspect\/s and took away the units. The missing items were discovered missing when the victims woke up in the morning",
         "what_happened": "The window of their romm was destroyed by the suspect\/s and took away the units. The missing items were discovered missing when the victims woke up in the morning",
         "17": "5",
-        "status_id": "5"
+        "status_id": "5",
+        "18": "5",
+        "narrative_id": "5"
     },
     {
         "0": "6",
@@ -225,7 +235,9 @@
         "16": "The LPG tank was put on the said building when the roving guards Sg. Merka, R. and Sg. Colot, EB, conducted roving on the said area, they spotted the unidentified suspect crying the said LPG tank. They tried to stop the suspects by initiating a warning shot, but the suspect managed to escape to unknown direction and the LPG tank was recovered by the said Security personne on the grassy area left by the suspect\/s during hot pursuit.",
         "what_happened": "The LPG tank was put on the said building when the roving guards Sg. Merka, R. and Sg. Colot, EB, conducted roving on the said area, they spotted the unidentified suspect crying the said LPG tank. They tried to stop the suspects by initiating a warning shot, but the suspect managed to escape to unknown direction and the LPG tank was recovered by the said Security personne on the grassy area left by the suspect\/s during hot pursuit.",
         "17": "1",
-        "status_id": "1"
+        "status_id": "1",
+        "18": "6",
+        "narrative_id": "6"
     },
     {
         "0": "7",
@@ -263,7 +275,9 @@
         "16": "Roving guards Sg. Usman Akmad and Sg. Desamito Mamalumpong conducted roving on the said area and noticed a hole (damaged ceiling of the building) and marked of footprints on the wall. The Dean of the College was informed and declared That two(2) units Flat Screen TV were missing after an inventory was conducted at around 10:00am. The suspect\/s exited the building by destroying the back door.",
         "what_happened": "Roving guards Sg. Usman Akmad and Sg. Desamito Mamalumpong conducted roving on the said area and noticed a hole (damaged ceiling of the building) and marked of footprints on the wall. The Dean of the College was informed and declared That two(2) units Flat Screen TV were missing after an inventory was conducted at around 10:00am. The suspect\/s exited the building by destroying the back door.",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "7",
+        "narrative_id": "7"
     },
     {
         "0": "8",
@@ -301,7 +315,9 @@
         "16": "The Utility worker noticed the door inside the building and the internal padlock of the back doors already damaged.",
         "what_happened": "The Utility worker noticed the door inside the building and the internal padlock of the back doors already damaged.",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "8",
+        "narrative_id": "8"
     },
     {
         "0": "9",
@@ -339,7 +355,9 @@
         "16": "He accidentally bumped the signage while driving his vehicle on the said road that resulted to damage on the leaf head part of his vehicle.",
         "what_happened": "He accidentally bumped the signage while driving his vehicle on the said road that resulted to damage on the leaf head part of his vehicle.",
         "17": "7",
-        "status_id": "7"
+        "status_id": "7",
+        "18": "9",
+        "narrative_id": "9"
     },
     {
         "0": "10",
@@ -377,7 +395,9 @@
         "16": "Parked vehicle was hit and run by the unidentified suspect, drove the motorcycle and hit the parked vehicle when starting motorcycle while its selector gear was engaged.",
         "what_happened": "Parked vehicle was hit and run by the unidentified suspect, drove the motorcycle and hit the parked vehicle when starting motorcycle while its selector gear was engaged.",
         "17": "9",
-        "status_id": "9"
+        "status_id": "9",
+        "18": "10",
+        "narrative_id": "10"
     },
     {
         "0": "11",
@@ -415,7 +435,9 @@
         "16": "The house was left with nobody inside and when he came back the side wall of the house was already damaged which is  believed to be the point of entry of the suspect.",
         "what_happened": "The house was left with nobody inside and when he came back the side wall of the house was already damaged which is  believed to be the point of entry of the suspect.",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "11",
+        "narrative_id": "11"
     },
     {
         "0": "13",
@@ -453,7 +475,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "14",
@@ -491,7 +515,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "15",
@@ -529,7 +555,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "16",
@@ -567,7 +595,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "17",
@@ -605,7 +635,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "18",
@@ -643,7 +675,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "19",
@@ -681,7 +715,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "20",
@@ -719,7 +755,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "45",
@@ -757,7 +795,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "47",
@@ -795,7 +835,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "48",
@@ -833,7 +875,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "49",
@@ -871,7 +915,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "50",
@@ -909,7 +955,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "51",
@@ -947,7 +995,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "52",
@@ -985,7 +1035,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "53",
@@ -1023,7 +1075,9 @@
         "16": "haha nakalimot ko",
         "what_happened": "haha nakalimot ko",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "12",
+        "narrative_id": "12"
     },
     {
         "0": "54",
@@ -1061,7 +1115,9 @@
         "16": "qweqweqwe",
         "what_happened": "qweqweqwe",
         "17": "3",
-        "status_id": "3"
+        "status_id": "3",
+        "18": "13",
+        "narrative_id": "13"
     },
     {
         "0": "55",
@@ -1099,7 +1155,9 @@
         "16": "qweqweqweqweqwe",
         "what_happened": "qweqweqweqweqwe",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "14",
+        "narrative_id": "14"
     },
     {
         "0": "56",
@@ -1137,7 +1195,9 @@
         "16": "qweqweqweqwe",
         "what_happened": "qweqweqweqwe",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "15",
+        "narrative_id": "15"
     },
     {
         "0": "57",
@@ -1175,7 +1235,9 @@
         "16": "asdasdsad",
         "what_happened": "asdasdsad",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "16",
+        "narrative_id": "16"
     },
     {
         "0": "58",
@@ -1213,7 +1275,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": "17",
+        "narrative_id": "17"
     },
     {
         "0": "59",
@@ -1251,7 +1315,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": "20",
+        "narrative_id": "20"
     },
     {
         "0": "60",
@@ -1289,7 +1355,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": "21",
+        "narrative_id": "21"
     },
     {
         "0": "61",
@@ -1327,7 +1395,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "62",
@@ -1365,7 +1435,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "63",
@@ -1403,7 +1475,9 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     },
     {
         "0": "64",
@@ -1441,7 +1515,9 @@
         "16": "QWEQWEQWE",
         "what_happened": "QWEQWEQWE",
         "17": "1",
-        "status_id": "1"
+        "status_id": "1",
+        "18": "22",
+        "narrative_id": "22"
     },
     {
         "0": "65",
@@ -1479,7 +1555,9 @@
         "16": "qweqweqw",
         "what_happened": "qweqweqw",
         "17": "1",
-        "status_id": "1"
+        "status_id": "1",
+        "18": "23",
+        "narrative_id": "23"
     },
     {
         "0": "66",
@@ -1517,7 +1595,9 @@
         "16": "qweqweqw",
         "what_happened": "qweqweqw",
         "17": "1",
-        "status_id": "1"
+        "status_id": "1",
+        "18": "24",
+        "narrative_id": "24"
     },
     {
         "0": "67",
@@ -1555,7 +1635,9 @@
         "16": "qweqweq",
         "what_happened": "qweqweq",
         "17": "3",
-        "status_id": "3"
+        "status_id": "3",
+        "18": "25",
+        "narrative_id": "25"
     },
     {
         "0": "68",
@@ -1593,7 +1675,9 @@
         "16": "qweqweqwe",
         "what_happened": "qweqweqwe",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "26",
+        "narrative_id": "26"
     },
     {
         "0": "69",
@@ -1631,7 +1715,9 @@
         "16": "qweqweqweqwe",
         "what_happened": "qweqweqweqwe",
         "17": "2",
-        "status_id": "2"
+        "status_id": "2",
+        "18": "27",
+        "narrative_id": "27"
     },
     {
         "0": "70",
@@ -1669,6 +1755,8 @@
         "16": null,
         "what_happened": null,
         "17": null,
-        "status_id": null
+        "status_id": null,
+        "18": null,
+        "narrative_id": null
     }
 ]

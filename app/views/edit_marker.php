@@ -20,6 +20,8 @@ if(isset($_POST['edit_marker'])){
     $_SESSION['action_taken']=$_POST['action_taken'];
     $_SESSION['incident_status']=$_POST['incident_status'];
     $_SESSION['reported_by']=$_POST['reported_by'];
+    $_SESSION['narrative_id']=$_POST['narrative_id'];
+
 }
 
 if(isset($_SESSION['marker_id'])){  
@@ -52,6 +54,18 @@ if(isset($_SESSION['marker_id'])){
       
       <input type="hidden" class="form-control" id="edit-form" name="edit-form" readonly>
     </div>
+
+    
+<div class="form-group input-group">
+      
+<input type="text" class="form-control" id="edit_id" name="edit_id" value="'.$_SESSION['marker_id'].'"placeholder="Latitude" readonly>
+</div>
+<div class="form-group input-group">
+
+<div class="form-group input-group">
+      
+<input type="text" class="form-control" id="narrative_id" name="narrative_id" value="'.$_SESSION['narrative_id'].'"placeholder="Latitude" readonly>
+</div>
 <div class="form-group input-group">
       
       <input type="text" class="form-control" id="lat" name="lat" value="'.$lat.'"placeholder="Latitude" readonly>
@@ -94,9 +108,10 @@ if(isset($_SESSION['marker_id'])){
       
      <div class="form-group input-group">
         <span class="input-group-addon"><i class="material-icons">event_note</i></span>
-        <input type="text" class="form-control datetimepicker-input" required oninvalid="" value="'.$date.'"name="date" data-toggle="datetimepicker" data-target="#date"/>
+        <input type="text" class="form-control datetimepicker-input" required oninvalid="" value="'.$date.'"name="date" id="date" data-toggle="datetimepicker" data-target="#date"/>
       </div>
 
+      
   </div><!-- end col-md-4 -->
 
   <div class="col">
@@ -265,7 +280,7 @@ if(isset($_SESSION['marker_id'])){
   <div class="col-lg-12"> 
     <button type="button" class="btn btn-secondary float-left btn-cancel" aria-label="Close" >
       <i class="fa "></i> Cancel</button>
-      <button type="button" class="btn btn-primary float-left btn-add" id="edit_marker"name="edit_marker" >
+      <button type="button" class="btn btn-primary float-left btn-add" id="edit_marker" name="edit_marker" >
       <i class="fa "></i> Save to database</button>
    
      
@@ -288,10 +303,7 @@ if(isset($_SESSION['marker_id'])){
        
     ';
 } 
-
-
-
-print_r($_SESSION);
+ 
 ?>
 <div class="col-md-12">
     <div class="card ">
@@ -364,7 +376,7 @@ print_r($_SESSION);
                                      
                                           <form role="form" method="POST">
                                             Are you sure you want to delete this record?
-                                            <input type="hidden" name="delete_id" value="'.$item_id.'">
+                                            <input type="text" name="delete_id" value="'.$item_id.'">
                                       </div>
                                   </div>
                                   <div class="modal-footer">
@@ -414,7 +426,7 @@ print_r($_SESSION);
                               <div class="modal-footer">
                                   <div class="col-lg-12">
                                       <button type="button" class="btn btn-secondary float-right" data-dismiss="modal"> Cancel </button>
-                                      <button type="submit" class="btn btn-primary float-right " name="delete_item" >Submit</button>
+                                      <button type="submit" class="btn btn-primary float-right " name="edit_item" >Submit</button>
                                   </div>
                               </div>
                             </form>
@@ -476,7 +488,7 @@ print_r($_SESSION);
                               $fullname=$row['fullname'];
                               $affiliation=$row['affiliation'];
                               $involvement=$row['involvement_description'];
-                             
+                                $involvement_id=$row['involvement'];
                                 
                               
                           echo'
@@ -547,6 +559,8 @@ print_r($_SESSION);
                                       <form role="form" method="POST">
                                        Edit this record: "'.$person_id.'"
                                         <input type="hidden" name="edit_person_id" value="'.$person_id.'">
+                                        <input type="text" name="marker_id" value="'.$id.'">
+            
                                        
                                             <div class="form-group input-group">
                                                 <span class="input-group-addon"><i class="material-icons">event_note</i></span>
@@ -558,18 +572,7 @@ print_r($_SESSION);
                                                 <input type="text" class="form-control" placeholder="Affiliation"required oninvalid="" value="'.$affiliation.'" name="affiliation"/>
                                             </div>
 
-                                            <div class="form-group input-group">
-                                            <label for="exampleFormControlSelect1">Involvement</label>
-                                            <select class="form-control selectpicker" value="'.$involvement.'"  required oninvalid="" data-style="btn btn-link" id="involvement" name="involvement">
-                                              <option >Involvement</option>
-                                              <option value="1">Victim</option>
-                                              <option value="2">Suspect</option>
-                                              <option value="3">Witness</option>
-                                              <option value="4">Investigator</option>
-                                              <option value="5">Roving Guards</option>
-                                              
-                                            </select>               
-                                        </div>
+
                                   </div>
                               </div>
                               <div class="modal-footer">
@@ -582,7 +585,6 @@ print_r($_SESSION);
                           </div>
                       </div>
                   </div>
-
                           ';
                           }
                          
@@ -636,6 +638,11 @@ print_r($_SESSION);
         <form role="form" method="POST" id="add-person-form" name="add-person-form">
            <div class="form-group input-group">
                 
+
+           <input type="text" class="form-control" id="person_id" name="person_id" value="<?php echo $_SESSION['marker_id'];?>" readonly>
+              </div>
+            <div class="form-group input-group">
+
                 <input type="hidden" class="form-control" id="add-person-form" name="add-person-form" readonly>
               </div>
             <div class="form-group input-group">
@@ -667,16 +674,18 @@ print_r($_SESSION);
                 <button type="button" class="btn btn-primary float-right btn-add-person" id="add_person" name="add_person">
                 <i class="fa "></i> Save to database</button>
                 </form>
-                <form method="POST" id="cancel-all" name="cancel-all">
-                  <button type="button" class="btn btn-secondary float-right btn-cancel-all" aria-label="Close" >
+               
+                  <button type="button" class="btn btn-secondary float-right btn-cancel-person" aria-label="Close" >
                   <i class="fa "></i> Close</button>
-                </form>
+                
             </div>
                        
-           </div><!-- end form-body-->
+           </div>
+           <!-- end form-body -->
 
           
-        </div><!-- end modal-body-->
+        </div>
+        <!-- end modal-body -->
 
 
     </div>
@@ -685,6 +694,9 @@ print_r($_SESSION);
 
 
 
+
+
+<!-- add person modal asdasdsa-->
 
 <div class="modal fade" id="add-item-modal" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog ">
@@ -697,12 +709,14 @@ print_r($_SESSION);
       </div>
       
         <div class="modal-body">
+
         <form role="form" method="POST" id="add-item-form" name="add-item-form">
-        <div class="form-group input-group">
+           <div class="form-group input-group">
                 
-                <input type="hidden" class="form-control" id="add-item-form" name="add-item-form" readonly>
+
+           <input type="text" class="form-control" id="item_id" name="item_id" value="<?php echo $_SESSION['marker_id'];?>" readonly>
               </div>
-            <div class="form-group input-group">
+              <div class="form-group input-group">
                 
                 <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Item Name">
               </div>
@@ -719,27 +733,23 @@ print_r($_SESSION);
               <div class="form-group input-group">
                 <input type="text" class="form-control" id="item_work" name="item_worth" placeholder="Estimated worth" >
               </div>
-
-
-
-
-
-          <div class="form-group input-group">
                 
                 <input type="hidden" class="form-control" id="class" name="class" placeholder="Latitude" readonly value='1'>
               </div>
           <div class="modal-footer">
             <div class="col-lg-12">
-                <button type="button" class="btn btn-primary float-right btn-item-form" id="add_item"name="add_item" >
+                <button type="submit" class="btn btn-primary float-right" id="add_item" name="add_item">
                 <i class="fa "></i> Save to database</button>
-             
-                <button type="button" class="btn btn-secondary float-right btn-cancel-person" aria-label="Close" >
-                <i class="fa "></i> Close</button>
+                </form>
+               
+                  <button type="button" class="btn btn-secondary float-right btn-cancel-item" aria-label="Close" >
+                  <i class="fa "></i> Close</button>
+                
             </div>
                        
            </div><!-- end form-body-->
 
-          </form>
+          
         </div><!-- end modal-body-->
 
 
@@ -748,26 +758,9 @@ print_r($_SESSION);
 </div>
 
 
-<div class="modal fade bd-example-modal-lg"data-backdrop="static" data-keyboard="false" id="set-lat-lng" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg w-75 p-3">
-    <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Records</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
-        <div class="modal-body">
-          <form role="form" method="POST" id="add-form-map" name="add-form-map" >
-            <div id="map"></div>
-          </form>
-        </div><!-- end modal-body-->
 
 
-    </div>
-  </div>
-</div>
+
 
 <script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
 
@@ -782,20 +775,13 @@ $(function () {
 
 $(function () {
     $('#add-item-form').on('click',function (e) {
+      //  e.preventDefault();
       $('#add-item-modal').modal('show');
       console.log('asdasdasd');
              
    });
 });
 
-
-$(function () {
-    $('#map_modal').on('click',function (e) {
-      $('#set-lat-lng').modal('show');
-      console.log('asdasdasd');
-             
-   });
-});
 
 
   $(".btn-add").click(function(){
@@ -813,7 +799,7 @@ $(function () {
             'Changes have been saved',
             'success'
           ).then((result) => {
-            $("#add-form").submit();
+            $("#edit-form").submit();
             });
         } 
         else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -844,6 +830,7 @@ $(function () {
             'success'
           ).then((result) => {
             $("#add-person-form").submit();
+            alert('success');
             });
         } 
         else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -858,7 +845,9 @@ $(function () {
       });
     });
 
-    $(".btn-item-form").click(function(){
+
+
+    $(".btn-add-item").click(function(){
       Swal.fire({
         title: "Are you sure you want to add changes to previous record?",
         type: "question",
@@ -874,6 +863,39 @@ $(function () {
             'success'
           ).then((result) => {
             $("#add-item-form").submit();
+            alert('success');
+            });
+        } 
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: "Changes were not saved!",
+            type: "info",
+            
+            confirmButtonText: 'Ok',
+            
+          })
+        }
+      });
+    });
+
+
+    $(".btn-add-item").click(function(){
+      Swal.fire({
+        title: "Are you sure you want to add changes to previous record?",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Saved!',
+            'Changes have been saved',
+            'success'
+          ).then((result) => {
+            $("#add-item").submit();
+            alert('success-item');
             });
         } 
         else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -940,7 +962,7 @@ $(function () {
             confirmButtonText: 'Ok',
             
           }).then((result) => {
-            $('#add-item-modal').modal('hide');
+            $('#add-item').modal('hide');
             });;
           
          

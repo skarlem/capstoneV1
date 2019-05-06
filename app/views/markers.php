@@ -112,7 +112,7 @@
                               $status_id=$row['status_id'];
                               $category_id=$row['category'];
                               $class=$row['class'];
-                              
+                              $narrative_id= $row['narrative_id'];
 
                           echo'
                           <tr>
@@ -267,6 +267,7 @@
                                     <input type="text" name="action_taken" value="'.$action_taken.'">
                                     <input type="text" name="incident_status" value="'.$status_id.'">
                                     <input type="text" name="reported_by" value="'.$school_id.'">
+                                    <input type="text" name="narrative_id" value="'.$narrative_id.'">
                               </div>
                           </div>
                           <div class="modal-footer">

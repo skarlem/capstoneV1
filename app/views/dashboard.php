@@ -1,7 +1,7 @@
 <?php 
 include_once('header.php');
 include_once('dashboard_nav.php');
-
+print_r($_SESSION);
 ?>
 
       <div class="content">

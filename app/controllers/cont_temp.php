@@ -401,7 +401,6 @@ function getPersons(){
 
 
 
-
 require ('login_handler.php');
 if (isset($_GET[md5("controller")])){
 	if( $_GET[md5("controller")] === md5('login' )) {
@@ -479,22 +478,24 @@ if (isset($_GET[md5("controller")])){
 			include('app/views/markers.php');
 			
 			$_SESSION['page']=md5('table');
-			$cont = md5('controller');
-			$table = md5('table');
-			getMarkers();
-		
+			getMarkers();		
 			
 		}// end elseif for table
-
-		
 	
+		elseif($_GET[md5("controller")]===md5('editAccount')){
+			include('app/views/account.php');
+			$_SESSION['page']=md5('editAccount');
+		}//end elseif for edit account
+
+
+
 		elseif($_GET[md5("controller")]===md5('edit_marker')){
 			session_start();
 			$_SESSION['page']=md5('edit_marker');
 			
 			include('app/views/edit_marker.php');
 
-			if(isset($_POST['add_item'])){
+			if(isset($_POST['add-item-form'])){
 				$marker_id = $_POST['item_id'];
 
 				$item_name = $_POST['item'];
@@ -681,23 +682,8 @@ if (isset($_GET[md5("controller")])){
 				 exit();
 			
 		}//end elseif for edit marker
-	}
 
 
-		elseif($_GET[md5("controller")]===md5('editAccount')){
-			include('app/views/account.php');
-			$_SESSION['page']=md5('editAccount');
-		}//end elseif for edit account
-
-
-
-		elseif($_GET[md5("controller")]===md5('edit_marker')){
-			session_start();
-			$_SESSION['page']=md5('edit_marker');
-			
-			include('app/views/edit_marker.php');
-		
-		}//end elseif for edit account
 
 
 		elseif($_GET[md5("controller")]===md5('dashboard')){
@@ -742,6 +728,12 @@ if (isset($_GET[md5("controller")])){
 				}
 			
 		}
+
+
+
+
+
+
 
 
 
@@ -797,6 +789,14 @@ if (isset($_GET[md5("controller")])){
 					var_dump($_POST); // this will show all posts received 
 			
 				echo '<script>console.log("add na oy");</script>';
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
 			}
 			if(isset($_POST['add-item-form'])){
 				$marker_id = (int)getMarkerId()[0][0];
@@ -815,6 +815,14 @@ if (isset($_GET[md5("controller")])){
 				);
 				insertItem($item);
 				echo '<script>console.log("add na oy");</script>';
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
 			}
 			
 			if(isset($_POST['add-person-form'])){
@@ -832,6 +840,14 @@ if (isset($_GET[md5("controller")])){
 
 				insertPerson($person);
 				echo '<script>console.log("add na oy");</script>';
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
 			}
 
 			if(isset($_POST['cancel-all'])){
@@ -843,7 +859,7 @@ if (isset($_GET[md5("controller")])){
 		
 	}//end else for session id
 	
-
+	}
 }//end if
 else{
 	header("Location: index.php?".md5("controller")."=".$_SESSION['page']);
