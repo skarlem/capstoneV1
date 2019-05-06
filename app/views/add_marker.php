@@ -57,6 +57,11 @@ if(isset($_POST['save_emergency'])){
                 
                 <input type="text" class="form-control" id="lat" name="lat" value="'.$lat.'"placeholder="Latitude" readonly>
               </div>
+
+              <div class="form-group input-group">
+                
+                <input type="text" class="form-control" id="marker_id" name="marker_id" value="'.$id.'"placeholder="" readonly>
+              </div>
               
               <div class="form-group input-group">
                 <input type="text" class="form-control" id="lng" name="lng" value="'.$lng.'"placeholder="Longitude" readonly>

@@ -58,6 +58,17 @@ $(document).ready(function() {
 } );
 
 
+
+$(document).ready(function() {
+    $('#dataTables-items').DataTable();
+} );
+
+
+
+$(document).ready(function() {
+    $('#dataTables-person').DataTable();
+} );
+
 $(document).ready(function() {
     $('#table-accounts').DataTable();
 } );

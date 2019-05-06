@@ -92,7 +92,7 @@
                         <tbody>
                           
                         <?php
-                        
+                         $action =  "index.php?".md5("controller")."=".md5("edit_marker");
                         foreach( getMarkers()as $row ){
                               $id = $row['marker_id'];
                               $lat = $row['lat'];
@@ -109,7 +109,11 @@
                               $school_id=$row['reported_by'];
                               
                               $status =$row['status_description'];
+                              $status_id=$row['status_id'];
+                              $category_id=$row['category'];
+                              $class=$row['class'];
                               
+
                           echo'
                           <tr>
                               
@@ -125,7 +129,7 @@
                               <td>'.$classification.'</td>
                               <td>'.$action_taken.'</td>
                               <td style="width:100px;text-align:center">
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalEdi'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
+                              <a style="cursor:pointer" data-toggle="modal" data-target="#send'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
                                
                                 <a style="cursor:pointer" data-toggle="modal" data-target="#viewModal'.$id.'" title="Delete"><i class="material-icons">zoom_out_map</i></a>
                                 
@@ -235,6 +239,48 @@
                           </div>
 
 
+
+
+                          
+
+                  <div class="modal fade" id="send'.$id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                              <h4 class="modal-title" id="myModalLabel">Save to Record</h4>
+                          </div>
+                          
+                          <div class="modal-body">
+                              <div class="col-lg-12">
+                             
+                                  <form role="form" id="edit_marker" action="'.$action.'"method="POST">
+                                    Are you sure you want to save this record?
+                                    <input type="text" name="marker_id" value="'.$id.'">
+                                    <input type="text" name="lat" value="'.$lat.'">
+                                    <input type="text" name="lng" value="'.$lng.'">
+                                    <input type="text" name="date" value="'.$date.'">
+                                    <input type="text" name="location" value="'.$location.'">
+                                    <input type="text" name="category" value="'.$category_id.'">
+                                    <input type="text" name="class" value="'.$class.'">
+                                    <input type="text" name="narrative" value="'.$incident_narrative.'">
+                                    <input type="text" name="action_taken" value="'.$action_taken.'">
+                                    <input type="text" name="incident_status" value="'.$status_id.'">
+                                    <input type="text" name="reported_by" value="'.$school_id.'">
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <div class="col-lg-12">
+                              <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
+        
+                                  <button type="submit" class="btn btn-danger float-right " name="edit_marker" ><i class="fa fa-check"></i> Yes</button>
+     
+                              </div>
+                          </div>
+                        </form>
+                      </div>
+                  </div>
+              </div>
 
 
 

@@ -23,12 +23,9 @@ function getMarkers(){
 
 	$result = pg_query(getConn(), "
 		
-	
-select a.*,f.classification_desc,f.category_desc,f.status_description,f.action_taken,f.what_happened from crime_db.incident_report as a
+select a.*,f.classification_desc,f.category_desc,f.status_description,f.action_taken,f.what_happened,f.status_id from crime_db.incident_report as a
 left OUTER join crime_db.mapdata as f on f.marker_id = a.marker_id order by marker_id;
 
-
-	
 	");
 	if (!$result) {
 	    echo "An error occurred.\n";
@@ -290,7 +287,44 @@ return $account;
 }
 
 
+function getItems(){
+	//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
+	$result = pg_query(getConn(), "
+	select * from crime_db.item_involved");
+	// $a = trim('1'); 
+	// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
+	// $result = pg_query(getConn(), $query); 
+	if (!$result) {
+			echo "An error occurred.\n";
+			exit;
+	}
+	else{
+		while($row = pg_fetch_array($result)){
+							$account[] = $row;
+						}
+	}       
+	return $account;
+	}
 
+	
+function getPersons(){
+	//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
+	$result = pg_query(getConn(), "
+	select * from crime_db.persons_involved as a inner join crime_db.involvement b on a.involvement = b.involvement_id");
+	// $a = trim('1'); 
+	// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
+	// $result = pg_query(getConn(), $query); 
+	if (!$result) {
+			echo "An error occurred.\n";
+			exit;
+	}
+	else{
+		while($row = pg_fetch_array($result)){
+							$account[] = $row;
+						}
+	}       
+	return $account;
+	}
 
 
 
@@ -363,6 +397,7 @@ if (isset($_GET[md5("controller")])){
 		
 		}
 		elseif($_GET[md5("controller")]===md5('emergency')){
+			session_start();
 			include('app/views/emergency.php');
 			if(isset($_POST['delete_emergency'])){
 				$where = array("e_report_id" => $_POST['delete_id']);
@@ -448,6 +483,16 @@ if (isset($_GET[md5("controller")])){
 		}//end elseif for edit account
 
 
+
+		elseif($_GET[md5("controller")]===md5('edit_marker')){
+			session_start();
+			$_SESSION['page']=md5('edit_marker');
+			
+			include('app/views/edit_marker.php');
+		
+		}//end elseif for edit account
+
+
 		elseif($_GET[md5("controller")]===md5('dashboard')){
 			include('app/views/dashboard.php');
 			$_SESSION['page']=md5('dashboard');	
@@ -489,8 +534,8 @@ if (isset($_GET[md5("controller")])){
 			$_SESSION['page']=md5('add_marker');	
 
 			if (isset($_POST['add-form'])){
-				 
 				(int)$marker_id = (int)getMarkerId()[0][0]+1;
+				//(int)$marker_id = $_POST['marker_id'];
 				$time = strtotime($_POST['date']);
 
 				$newDate = date('Y-m-d',$time);
@@ -529,6 +574,8 @@ if (isset($_GET[md5("controller")])){
 				insertMarker($marker);
 
 				insertNarrative($narrative);
+				$where = array("e_report_id" => (int)$marker_id);
+				//deleteEmergency($where);
 			
 					var_dump($_POST); // this will show all posts received 
 			

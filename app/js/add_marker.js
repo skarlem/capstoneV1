@@ -16,7 +16,7 @@ function initMap(){
             setMarker();
 }
 
-
+  
 var customOptions ={
         'maxWidth': '500',
         'className' : 'custom'
