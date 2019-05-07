@@ -407,13 +407,14 @@ function getPersons(){
 require ('login_handler.php');
 if (isset($_GET[md5("controller")])){
 	if( $_GET[md5("controller")] === md5('login' )) {
+	
 		if(empty($_SESSION)){
-			session_start();		
+			session_start();
 			include('login.php');
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$user =  $_POST['username'];
 				$password =  ($_POST['password']);
-				loginAdmin($user,$password);
+					loginAdmin($user,$password);
 				
 			}
 		}
@@ -425,39 +426,6 @@ if (isset($_GET[md5("controller")])){
 
 
 
-	
-	elseif ($_GET[md5("controller")]===md5('register')) {
-		if(empty($_SESSION)){
-			include('app/views/register.php');
-		if($_SERVER['REQUEST_METHOD'] == 'POST'){
-			
-			if(isset($_POST['register_submit'])){	
-				if(trim($_POST['password']) != trim($_POST['password2'])){
-					
-					echo'<script> swal({ title:"Warning!", text: "Password do not match!", type: "success", 
-						buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
-				}//end if password is not equal
-				else{	
-					unset($_POST['password2']);
-					$data= array(
-						'username'=>$_POST['username'],
-						'password'=>md5($_POST['password'])
-					);
-					addUser($data);
-					echo("<script>location.href = 'index.php?$cont=$dsh';</script>");
-				//	
-					echo "<script>demo.showNotification('top','right','Sucessfully registered');</script>";
-					}//end else
-
-				}//end if register submit
-
-			}//end if method is post
-
-		}//end if session is empty
-		else{
-			header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
-		}
-	}//end else if 
 
 	else{
 		if($_GET[md5("controller")]===md5('map')){
@@ -466,6 +434,130 @@ if (isset($_GET[md5("controller")])){
 			include_once('app/views/map.php');	
 		
 		}
+
+		elseif($_GET[md5("controller")]===md5('dashboard_support')){
+			session_start();
+			include('app/views/support/dashboard_support.php');
+		}
+
+
+		
+		elseif($_GET[md5("controller")]===md5('map_support')){
+			session_start();
+			include('app/views/support/map_support.php');
+		}
+		elseif($_GET[md5("controller")]===md5('emergency_support')){
+			session_start();
+			include('app/views/support/emergency_support.php');
+			if(isset($_POST['delete_emergency'])){
+				$where = array("e_report_id" => $_POST['delete_id']);
+				deleteEmergency($where);
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
+			}
+		}
+		elseif($_GET[md5("controller")]===md5('add_marker_support')){
+			session_start();
+			include('app/views/support/add_marker_support.php');
+			$_SESSION['page']=md5('add_marker');	
+			if (isset($_POST['add-form'])){
+				(int)$marker_id = (int)getMarkerId()[0][0]+1;
+				//(int)$marker_id = $_POST['marker_id'];
+				$time = strtotime($_POST['date']);
+
+				$newDate = date('Y-m-d',$time);
+			  //  $id = $_POST['id'];
+				$lat = $_POST['lat'];
+				$lng = $_POST['lng'];
+				$location = $_POST['location'];
+				
+				$date = $newDate;
+				$reported_by = $_POST['reported_by'];
+		
+				$class = $_POST['class'];
+				$category = $_POST['category'];
+
+				$what_happened = $_POST['narrative'];
+				$action_taken = $_POST['action_taken'];
+				$incident_status = $_POST['incident_status'];
+			  $marker = array(
+							'marker_id'=>$marker_id,
+							'lat' => $lat,
+							'lng' => $lng,
+							'date' => $date,
+							'location_description'=>$location,
+							'category'=>$category,
+							'class'=>$class,
+							'reported_by'=>$reported_by
+				);
+
+				$narrative = array(
+					'narrative_id'=>$marker_id,
+					'marker_id'=>$marker_id,
+
+					'what_happened'=>$what_happened,
+					'action_taken'=>$action_taken,
+					'incident_status'=>$incident_status
+				);
+
+				insertMarker($marker);
+
+				insertNarrative($narrative);
+				$where = array("e_report_id" => (int)$marker_id);
+				//deleteEmergency($where);
+			
+					var_dump($_POST); // this will show all posts received 
+			
+				echo '<script>console.log("add na oy");</script>';
+			}
+			if(isset($_POST['add-item-form'])){
+				$marker_id = (int)getMarkerId()[0][0];
+
+				$item_name = $_POST['item'];
+				$item_desc = $_POST['item_desc'];
+				$item_worth = $_POST['item_worth'];
+				$item_quantity = $_POST['item_quantity'];
+				
+				$item = array(
+					'marker_id'=> $marker_id,
+					'item_name'=>$item_name,
+					'item_description'=>$item_desc,
+					'quantity'=>$item_quantity,
+					'est_worth'=>$item_worth
+				);
+				insertItem($item);
+				echo '<script>console.log("add na oy");</script>';
+			}
+			
+			if(isset($_POST['add-person-form'])){
+				$marker_id = (int)getMarkerId()[0][0];
+				$fullname = $_POST['fullname'];
+				$affiliation = $_POST['affiliation'];
+				(int)$involvement = $_POST['involvement'];
+
+				$person = array(
+					'marker_id'=>$marker_id,
+					'fullname'=>$fullname,
+					'affiliation'=>$affiliation,
+					'involvement'=>$involvement
+				);
+
+				insertPerson($person);
+				echo '<script>console.log("add na oy");</script>';
+			}
+
+			if(isset($_POST['cancel-all'])){
+				$marker_id = (int)getMarkerId()[0][0];
+			}
+		}
+
+
 		elseif($_GET[md5("controller")]===md5('emergency')){
 			session_start();
 			include('app/views/emergency.php');
@@ -703,6 +795,7 @@ if (isset($_GET[md5("controller")])){
 
 
 		elseif($_GET[md5("controller")]===md5('dashboard')){
+			session_start();
 			include('app/views/dashboard.php');
 			$_SESSION['page']=md5('dashboard');	
 			

@@ -1,6 +1,6 @@
 <?php 
 include_once('header.php');
-include_once('dashboard_nav.php');
+include_once('dashboard_nav_support.php');
 print_r($_SESSION['role_id']);
 ?>
 
