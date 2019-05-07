@@ -1,7 +1,6 @@
 <?php 
 include_once('header.php');
 include_once('dashboard_nav.php');
-print_r($_SESSION);
 ?>
 
       <div class="content">
@@ -90,7 +89,7 @@ print_r($_SESSION);
     </span>
   </div>
                 <div class="form-group input-group">
-                    <select class="form-control selectpicker"  onchange="populate(this.id,'select_category')" required oninvalid="" data-style="btn btn-link" id="classification" name="classification">
+                    <select class="form-control selectpicker"  onchange="populate(this.id,'select_category')" required oninvalid="" data-style="btn btn-link" id="classification_nav" name="classification_nav">
                       <option >Classification</option>
                       <option value='1'>Crimes against Person</option>
                       <option value='2'>Crimes against Chastity</option>

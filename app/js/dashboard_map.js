@@ -293,7 +293,7 @@ function getMarkers2(){
   var endDate = new Date(document.getElementById('date2').value);
   var startDate = new Date(document.getElementById('date1').value);
    var crime_type = document.getElementsByName('category'); 
-   var classification_arr=document.getElementById('classification').value;
+   var classification_arr=document.getElementById('classification_nav').value;
    
    
 
@@ -337,7 +337,7 @@ function getMarkers2(){
                           console.log(classification_arr+"classi_arr");
                           
                          
-                          if(jsonMap2[i]['classification']==classification_arr){
+                          if(jsonMap2[i]['classification_id']==classification_arr){
                             loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                             console.log(crime_type[j].value);
                             console.log(classification_arr);

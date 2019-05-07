@@ -830,7 +830,7 @@ $(function () {
             'success'
           ).then((result) => {
             $("#add-person-form").submit();
-            alert('success');
+           // alert('success');
             });
         } 
         else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -863,7 +863,7 @@ $(function () {
             'success'
           ).then((result) => {
             $("#add-item-form").submit();
-            alert('success');
+          //  alert('success');
             });
         } 
         else if (result.dismiss === Swal.DismissReason.cancel) {

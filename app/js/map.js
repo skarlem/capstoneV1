@@ -337,7 +337,7 @@ function getMarkers2(){
                           console.log(classification_arr+"classi_arr");
                           
                          
-                          if(jsonMap2[i]['classification']==classification_arr){
+                          if(jsonMap2[i]['classification_id']==classification_arr){
                             loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                             console.log(crime_type[j].value);
                             console.log(classification_arr);

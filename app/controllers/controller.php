@@ -4,10 +4,10 @@
 
 
 function getConn(){
-	$host = "host=localhost";
-	$port = "port=5432";
-	$dbname = "dbname=bantaychuchu";
-	$credentials = "user=postgres password=12345";
+	$host = "host=bigeye.msugensan.edu.ph";
+	$port = "port=5440";
+	$dbname = "dbname=bantaymsu";
+	$credentials = "user=bea password=bea";
 	
 	$db = pg_connect( "$host $port $dbname $credentials" );
 	
@@ -22,8 +22,10 @@ function getMarkers(){
 	$markers =array();
 
 	$result = pg_query(getConn(), "
-	select a.*,f.classification_desc,f.category_desc,f.status_description,f.action_taken,f.what_happened,f.status_id,f.narrative_id from crime_db.incident_report as a
-left OUTER join crime_db.mapdata as f on f.marker_id = a.marker_id order by marker_id;
+
+	
+	select a.*,f.classification_desc,f.category_desc,f.status_description,f.action_taken,f.what_happened,f.status_id,f.narrative_id,f.classification_id from crime_db.incident_report as a
+	left OUTER join crime_db.mapdata as f on f.marker_id = a.marker_id order by marker_id;
 
 
 	");
@@ -339,7 +341,7 @@ return $markers;
 function getAccounts(){
 	
 $result = pg_query(getConn(), "
-select * from crime_db.accounts;
+select * from crime_db.accounts order by school_id asc;
 ");
 if (!$result) {
 		echo "An error occurred.\n";
@@ -714,6 +716,14 @@ if (isset($_GET[md5("controller")])){
 						$where = array("school_id" => $_POST['delete_id']);
 						deleteAccount($where);
 						echo'deleeeeeete';
+						echo'<script> Swal.fire(
+							"Saved!",
+							"Changes have been saved",
+							"success"
+						).then((result) => {
+								window.location.reload();
+							});
+							</script>';
 					}
 					else if(isset($_POST['update_profile'])){
 

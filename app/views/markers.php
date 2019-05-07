@@ -255,7 +255,7 @@
                               <div class="col-lg-12">
                              
                                   <form role="form" id="edit_marker" action="'.$action.'"method="POST">
-                                    Are you sure you want to save this record?
+                                    Are you sure you want to Edit this record?
                                     <input type="text" name="marker_id" value="'.$id.'">
                                     <input type="text" name="lat" value="'.$lat.'">
                                     <input type="text" name="lng" value="'.$lng.'">
