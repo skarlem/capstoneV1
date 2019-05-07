@@ -125,9 +125,12 @@ function clearMarkers(){
 }
 
 
+
+
+
 // get images per marker type
 function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
-  if(jsonMap2[i]['classification']=='1'){
+  if(jsonMap2[i]['classification_id']=='1'){
     console.log('classification is 1  ');
       if(jsonMap2[i]['category']==1){
         marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: disorder}) 
@@ -175,7 +178,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       }
  
   }
-   if(jsonMap2[i]['classification']==2){
+   if(jsonMap2[i]['classification_id']==2){
     console.log('classification is 2');
     if(jsonMap2[i]['category']==5){
       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:rape }) 
@@ -200,7 +203,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
 
     }
   }
-   if(jsonMap2[i]['classification']==3){
+   if(jsonMap2[i]['classification_id']==3){
     console.log('classification is 3');
     if(jsonMap2[i]['category']==7){
       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:robbery }) 
@@ -238,7 +241,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
     
 
   }
-   if(jsonMap2[i]['classification']==4){
+   if(jsonMap2[i]['classification_id']==4){
     console.log('classification is 4');
     if(jsonMap2[i]['category']==10){
       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:emergency }) 
@@ -286,6 +289,11 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
     }
   }
 }
+
+
+
+
+
 
 //load the markers
 function getMarkers2(){
