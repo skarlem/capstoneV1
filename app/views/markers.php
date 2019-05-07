@@ -4,10 +4,20 @@
   ?>
 
 <style type="text/css" media="print">
-@page {
-    size: auto;   /* auto is the initial value */
-    margin: 1;  /* this affects the margin in the printer settings */
-}
+@media print {
+    header, .footer, footer {
+        display: none;
+    }
+
+    /* hide main content when dialog open */
+    body.modal-open div.container.body-content div#mainContent {
+        display: none;
+    }
+
+    .noPrint {
+        display: none;
+    }
+    }
 </style>
 
 
@@ -50,7 +60,7 @@
                       <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
                         <thead class=" text-primary">
                          
-                          <th class="hidden">
+                          <th>
                             Incident ID
                           </th>
 
@@ -147,12 +157,12 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                  <div id="print">
+                                  <div id="printMe">
 
                                   
-                              <center>
-                                  <h5>Incident Report Information</h5>
-                                  </center>
+                                      <center>
+                                          <h5>Incident Report Information</h5>
+                                          </center>
                                   <div class="logo">
                                       
                                       <img src="assets/marker/F-Theft.png">
@@ -174,6 +184,7 @@
                                       Classification: '.$classification.'
                                     </div>
                                   </div>
+
                                   <div class="row">
                                     <div class="col">
                                       Category: '.$category.'
@@ -188,7 +199,7 @@
                                 <div class="row">
                                     <div class="col">
                                     Items Involved: <br>'.$items.'
-                                  </div>
+                                    </div>
 
                                 
                                   </div><!-- row end -->
@@ -211,13 +222,13 @@
                                   </div>
 
                                 
-                                  </div><!-- row end -->
+                                </div><!-- row end -->
 
                                   <br>
                                   <div class="row">
-                                  <div class="col">
-                                  Action Taken:<br> '.$action_taken.'
-                                </div>
+                                      <div class="col">
+                                      Action Taken:<br> '.$action_taken.'
+                                    </div>
                                 
                                   </div><!-- row end -->
                                   
@@ -235,8 +246,8 @@
                                   </div>
                               </div>
                           </div>
-                              </div>
-                          </div>
+                          
+                             
 
 
 
@@ -400,41 +411,66 @@
 
   <!-- datables for our table -->
   <script src="app/js/datatables.js"></script>
+<script>
 
+jQuery.fn.extend({
+	printElem: function() {
+		var cloned = this.clone();
+    var printSection = $('#printSection');
+    if (printSection.length == 0) {
+    	printSection = $('<div id="printSection"></div>')
+    	$('body').append(printSection);
+    }
+    printSection.append(cloned);
+    var toggleBody = $('body *:visible');
+    toggleBody.hide();
+    $('#printSection, #printSection *').show();
+    window.print();
+    printSection.remove();
+    toggleBody.show();
+	}
+});
+
+$(document).ready(function(){
+	$(document).on('click', '#btnPrint', function(){
+  	$('#printMe').printElem();
+  });
+});
+</script>
 
   <script>
-  document.getElementById("btnPrint").onclick = function() {
-    printElement(document.getElementById("print"));
-    window.print();
-}
+//   document.getElementById("btnPrint").onclick = function() {
+//     printElement(document.getElementById("print"));
+//     window.print();
+// }
 
-function printElement(elem, append, delimiter) {
-    var domClone = elem.cloneNode(true);
+// function printElement(elem, append, delimiter) {
+//     var domClone = elem.cloneNode(true);
 
-    var $printSection = document.getElementById("printSection");
+//     var $printSection = document.getElementById("printSection");
 
-    if (!$printSection) {
-        var $printSection = document.createElement("div");
-        $printSection.id = "printSection";
-        document.body.appendChild($printSection);
-    }
+//     if (!$printSection) {
+//         var $printSection = document.createElement("div");
+//         $printSection.id = "printSection";
+//         document.body.appendChild($printSection);
+//     }
 
-    if (append !== true) {
-        $printSection.innerHTML = "";
-    }
+//     if (append !== true) {
+//         $printSection.innerHTML = "";
+//     }
 
-    else if (append === true) {
-        if (typeof(delimiter) === "string") {
-            $printSection.innerHTML += delimiter;
-        }
-        else if (typeof(delimiter) === "object") {
-            $printSection.appendChlid(delimiter);
-        }
-    }
+//     else if (append === true) {
+//         if (typeof(delimiter) === "string") {
+//             $printSection.innerHTML += delimiter;
+//         }
+//         else if (typeof(delimiter) === "object") {
+//             $printSection.appendChlid(delimiter);
+//         }
+//     }
 
-    $printSection.appendChild(domClone);
+//     $printSection.appendChild(domClone);
 
-}
+// }
   </script>
 
   <?php

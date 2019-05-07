@@ -341,7 +341,7 @@ return $markers;
 function getAccounts(){
 	
 $result = pg_query(getConn(), "
-select * from crime_db.accounts order by school_id asc;
+select * from crime_db.accounts as a inner join crime_db.role as b on a.role_id = b.role_id order by school_id asc;
 ");
 if (!$result) {
 		echo "An error occurred.\n";
@@ -397,6 +397,93 @@ function getPersons(){
 
 
 
+		
+function getTotalCrime(){
+	//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
+	$result = pg_query(getConn(), "
+	select count(marker_id) as total_crime from crime_db.incident_records ");
+	// $a = trim('1'); 
+	// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
+	// $result = pg_query(getConn(), $query); 
+	if (!$result) {
+			echo "An error occurred.\n";
+			exit;
+	}
+	else{
+		while($row = pg_fetch_array($result)){
+							$account[] = $row;
+						}
+	}       
+	return $account;
+	}
+
+	function getTotalUsers(){
+		//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
+		$result = pg_query(getConn(), "
+		select count(school_id) as total_users from crime_db.accounts where role_id=1
+		");
+		// $a = trim('1'); 
+		// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
+		// $result = pg_query(getConn(), $query); 
+		if (!$result) {
+				echo "An error occurred.\n";
+				exit;
+		}
+		else{
+			while($row = pg_fetch_array($result)){
+								$account[] = $row;
+							}
+		}       
+		return $account;
+		}
+
+
+		function getTotalInvestitation(){
+			//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
+			$result = pg_query(getConn(), "
+			
+select count(narrative_id) as under_investigation from crime_db.incident_narratives where incident_status =3
+
+			");
+			// $a = trim('1'); 
+			// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
+			// $result = pg_query(getConn(), $query); 
+			if (!$result) {
+					echo "An error occurred.\n";
+					exit;
+			}
+			else{
+				while($row = pg_fetch_array($result)){
+									$account[] = $row;
+								}
+			}       
+			return $account;
+			}
+
+	
+			function getTotalResolved(){
+				//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
+				$result = pg_query(getConn(), "
+		
+select count(narrative_id) as resolved_cases from crime_db.incident_narratives where incident_status =1 
+or incident_status=7
+or incident_status=6
+or incident_status=68
+				");
+				// $a = trim('1'); 
+				// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
+				// $result = pg_query(getConn(), $query); 
+				if (!$result) {
+						echo "An error occurred.\n";
+						exit;
+				}
+				else{
+					while($row = pg_fetch_array($result)){
+										$account[] = $row;
+									}
+				}       
+				return $account;
+				}
 
 
 

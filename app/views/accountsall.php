@@ -29,10 +29,10 @@ include_once('accountsall_nav.php');
                       <table class="table" id="table-accounts">
                         <thead class=" text-primary" style="text-align: center;">
                           <th>
-                            Username
+                            Fullname
                           </th>
                           <th>
-                            Fullname
+                           Role
                           </th>
                           <th><center>
                             Actions
@@ -48,14 +48,15 @@ include_once('accountsall_nav.php');
                             $email= $row['university_email'];
                             $contact = $row['contact_no'];
                             $profile_pic = $row['profile_pic'];
+                            $role=$row['role_desc'];
                             echo'
                             <tr style="text-align: center;">
                             <td>
-                            '.$username.'
+                            '.$fullname.'
                             </td>
-                          
+                         
                             <td>
-                              '.$fullname.'
+                              '.$role.'
                             </td>
                            <td class="text-right">  <center>
                             <a href="#" class="btn btn-link btn-warning btn-just-icon edit" data-toggle="modal" data-target="#exampleModal'.$id.'"><i class="material-icons">dvr</i></a>
