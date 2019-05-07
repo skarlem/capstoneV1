@@ -1,5 +1,5 @@
 <?php
-if(checkParameters(array('id_num', 'fullname', 'password', 'email', 'contact_no'))){
+if(checkParameters(array('id_num', 'fullname', 'password', 'email', 'contact_no', 'gender'))){
 
 	$id_num 	= $_POST['id_num'];
 	#$fullname	= $_POST['firstname']." ".$_POST['lastname'];
@@ -7,15 +7,16 @@ if(checkParameters(array('id_num', 'fullname', 'password', 'email', 'contact_no'
 	$password	= md5($_POST['password']);
 	$email 		= $_POST['email'];
 	$contact_no	= $_POST['contact_no'];
+	$gender	= $_POST['gender'];
 
 
-	if(isset($_POST['profile_pic'])){
-		$profile_pic = $_POST['profile_pic'];
-		include 'decode_picture.php';
-	}
-	else{
-		$profile_pic = null;
-	}
+	// if(isset($_POST['profile_pic'])){
+	// 	$profile_pic = $_POST['profile_pic'];
+	// 	include 'decode_picture.php';
+	// }
+	// else{
+	// 	$profile_pic = null;
+	// }
 
 				//check if user exists
 	$result = pg_query($conn, "SELECT * FROM crime_db.accounts WHERE school_id = '".$id_num."' AND password = '".$password."'");
@@ -32,7 +33,8 @@ if(checkParameters(array('id_num', 'fullname', 'password', 'email', 'contact_no'
 					'password'			=> $password,
 					'university_email'	=> $email,
 					'contact_no'		=> $contact_no,
-					'profile_pic'		=> $target_dir
+					'gender'			=> $gender,
+					//'profile_pic'		=> $target_dir
 					);
 
 		$result = pg_insert($conn, 'crime_db.accounts', $values);
@@ -44,11 +46,12 @@ if(checkParameters(array('id_num', 'fullname', 'password', 'email', 'contact_no'
 
 			$user = array(
 					'id_num' 	=> $arr["school_id"],
-					'fullname' => $arr["fullname"],
+					'fullname' 	=> $arr["fullname"],
 					#'lastname'	=> $_POST['lastname'],
 					'password'	=> $arr["password"],
 					'email'		=> $arr["university_email"],
-					'contact_no'=> $arr["contact_no"] );
+					'contact_no'=> $arr["contact_no"],
+					'gender'	=> $arr["gender"] );
 
 					$response['error'] 	= false;
 					$response['message']= 'Registered successfully';
@@ -60,4 +63,3 @@ else{
 	$response['error']	= true;
 	$response['message']= 'required paramaters are not available';
 }
-

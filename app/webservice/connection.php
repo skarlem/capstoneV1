@@ -1,12 +1,12 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-$host = "host=aa1bdr1mp3fpivs.casa8f2ijdnu.us-west-2.rds.amazonaws.com"; 
-$port = "port=5432";
-$dbname = "dbname=bantay";
-$user = "user=bantay password=zaq12wsx";
+$host = "host=bigeye.msugensan.edu.ph";
+$port = "port=5440";
+$dbname = "dbname=bantaymsu";
+$credentials = "user=bea password=bea";
 
-$conn = pg_connect( "$host $port $dbname $user" );
+$conn = pg_connect( "$host $port $dbname $credentials" );
 
 if(!$conn){
 	echo "Error : Unable to open database\n";

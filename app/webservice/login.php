@@ -17,7 +17,8 @@ if(checkParameters(array('email', 'password'))){
 					#'lastname'	=> $_POST['lastname'],
 					'password'	=> $arr["password"],
 					'email'		=> $arr["university_email"],
-					'contact_no'=> $arr["contact_no"] );
+					'contact_no'=> $arr["contact_no"],
+					'gender'=> $arr["gender"] );
 
 		$response['error'] 	= false;
 		$response['message']= 'Logged in successfully';
@@ -32,4 +33,4 @@ if(checkParameters(array('email', 'password'))){
 else{
 	$response['error']	= true;
 	$response['message']= 'required paramaters are not available';
-} 
+}  
