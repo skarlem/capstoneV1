@@ -127,7 +127,7 @@ function clearMarkers(){
 
 // get images per marker type
 function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
-  if(jsonMap2[i]['classification']=='1'){
+  if(jsonMap2[i]['classification_id']=='1'){
     console.log('classification is 1  ');
       if(jsonMap2[i]['category']==1){
         marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon: disorder}) 
@@ -175,7 +175,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       }
  
   }
-   if(jsonMap2[i]['classification']==2){
+   if(jsonMap2[i]['classification_id']==2){
     console.log('classification is 2');
     if(jsonMap2[i]['category']==5){
       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:rape }) 
@@ -200,7 +200,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
 
     }
   }
-   if(jsonMap2[i]['classification']==3){
+   if(jsonMap2[i]['classification_id']==3){
     console.log('classification is 3');
     if(jsonMap2[i]['category']==7){
       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:robbery }) 
@@ -238,7 +238,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
     
 
   }
-   if(jsonMap2[i]['classification']==4){
+   if(jsonMap2[i]['classification_id']==4){
     console.log('classification is 4');
     if(jsonMap2[i]['category']==10){
       marker = L.marker([jsonMap2[i][1],jsonMap2[i][2]], {icon:emergency }) 
@@ -322,18 +322,14 @@ function getMarkers2(){
             for(var i=0; i<jsonMap2.length; i++){
               for(var j=0; j<crime_type.length; j++){
                
-                  console.log(classification_arr);
-                  console.log(crime_type.length);
+                  
                  
                  if (crime_type[j].checked == true) {
-                  console.log(crime_type[j].value);
-                  console.log(jsonMap2[i]["category_desc"]+"checked");
+                 
                     if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
                      
-                      console.log(crime_type[j].value);
-                      console.log(jsonMap2[i]["category_desc"]);
                         if(jsonMap2[i]['category_desc']==crime_type[j].value){
-                          console.log(jsonMap2[i]['classification']+"jsonmap classi");
+                          console.log(jsonMap2[i]['classification_id']+"jsonmap classi");
                           console.log(classification_arr+"classi_arr");
                           
                          
