@@ -9,7 +9,7 @@
    <div class="logo">
     <a href="#" class="simple-text logo-normal">
     <a href="assets/marker/asd.png" class="simple-text logo-normal" >
-        <img src="app/views/assets/img/logo-small.png"> Bantay MSU Support
+        <img src="app/views/assets/img/logo-small.png"> Bantay MSU 
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -59,7 +59,7 @@ report_problem
   <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
     <div class="container-fluid">
       <div class="navbar-wrapper">
-        <a class="navbar-brand" href="">Dashboard Support</a>
+        <a class="navbar-brand" href="">Dashboard</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>

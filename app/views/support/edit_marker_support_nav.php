@@ -8,7 +8,8 @@
 
    <div class="logo">
     <a href="#" class="simple-text logo-normal">
-      <img src="app/views/assets/img/logo-small.png">Bantay MSU
+    <a href="assets/marker/asd.png" class="simple-text logo-normal" >
+        <img src="app/views/assets/img/logo-small.png"> Bantay MSU
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -19,39 +20,51 @@
           <p>Dashboard</p>
         </a>
       </li>
-      
-      <li class="nav-">
-        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('table')?>">
-          <i class="material-icons">content_paste</i>
-          <p>Incident Summary</p>
-        </a>
-      </li>
-
-              <li class="nav-item active">
-        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('accountsall')?>">
-          <i class="material-icons">timeline</i>
-          <p>Accounts Management</p>
-        </a>
-      </li>
-
+    
       
      
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('map')?>">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('map_support')?>">
           <i class="material-icons">location_ons</i>
-          <p>Filter Map</p>
+          <p>Map</p>
         </a>
       </li>
 
-           
+          
+
       <li class="nav-item ">
-        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('add_marker')?>">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('add_marker_support')?>">
         <i class="material-icons">
 note_add
 </i>
           <p>Add Markers</p>
         </a>
       </li>
+
+
+
+         
+      <li class="nav-item  ">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('emergency_support')?>">
+        <i class="material-icons">
+report_problem
+</i>
+          <p>Emergency Reports</p>
+        </a>
+      </li>
+
+
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('edit_marker_support')?>">
+        <i class="material-icons">
+border_color
+</i>
+          <p>Edit Marker</p>
+        </a>
+      </li>
+
+    
+  
     </ul>
   </div>
 </div>
@@ -60,7 +73,7 @@ note_add
   <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
     <div class="container-fluid">
       <div class="navbar-wrapper">
-        <a class="navbar-brand" href="">Dashboard</a>
+        <a class="navbar-brand" href="">Edit Marker</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
@@ -70,6 +83,24 @@ note_add
       </button>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
+          
+       <!-- dropdown for notification--> 
+       <li class="nav-item dropdown">
+            <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons">notifications</i>
+              <span class="notification">5</span>
+              <p class="d-lg-none d-md-block">
+                Some Actions
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Mike John responded to your email</a>
+              <a class="dropdown-item" href="#">You have 5 new tasks</a>
+              
+            </div>
+          </li>
+         <!-- /dropdown for noticification--> 
+
 
          <!-- dropdown for settings--> 
          <li class="nav-item dropdown">

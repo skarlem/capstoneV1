@@ -170,13 +170,13 @@
                              
                                   <form role="form" id="save_emergency" action="'.$action.'"method="POST">
                                     Are you sure you want to save this record?
-                                    <input type="text" name="marker_id" value="'.$id.'">
-                                    <input type="text" name="date" value="'.$date.'">
-                                    <input type="text" name="report_details" value="'.$report_details.'">
+                                    <input type="hidden" name="marker_id" value="'.$id.'">
+                                    <input type="hidden" name="date" value="'.$date.'">
+                                    <input type="hidden" name="report_details" value="'.$report_details.'">
                                     <input type="hidden" name="image" value="'.$report_image.'">
-                                    <input type="text" name="reported_by" value="'.$reporter_id.'">
-                                    <input type="text" name="lat" value="'.$lat.'">
-                                    <input type="text" name="lng" value="'.$lng.'">
+                                    <input type="hidden" name="reported_by" value="'.$reporter_id.'">
+                                    <input type="hidden" name="lat" value="'.$lat.'">
+                                    <input type="hidden" name="lng" value="'.$lng.'">
                                     
                                     
 

@@ -53,14 +53,6 @@ note_add
       </li>
      
           
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('emergency')?>">
-        <i class="material-icons">
-report_problem
-</i>
-          <p>Emergency Reports</p>
-        </a>
-      </li>
 <br>
             <li class="nav-item">
               <div class="input-group">
@@ -259,17 +251,7 @@ report_problem
           
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
-          <!-- dropdown for notification--> 
-          <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">notifications</i>
-                  <p class="d-lg-none d-md-block">
-                    Some Actions
-                  </p>
-                </a>
-             
-              </li>
-             <!-- /dropdown for noticification--> 
+         
 
 
              <!-- dropdown for settings--> 

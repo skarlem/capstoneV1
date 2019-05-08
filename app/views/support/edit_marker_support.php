@@ -1,6 +1,6 @@
 <?php
   include_once('header.php');
-  include_once('edit_marker_nav.php');
+  include_once('edit_marker_support_nav.php');
   ?>
 <?php
 

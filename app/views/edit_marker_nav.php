@@ -53,14 +53,6 @@ note_add
           <p>Add Markers</p>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('emergency')?>">
-        <i class="material-icons">
-report_problem
-</i>
-          <p>Emergency Reports</p>
-        </a>
-      </li>
 
 
       <li class="nav-item active">
@@ -94,22 +86,6 @@ border_color
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           
-       <!-- dropdown for notification--> 
-       <li class="nav-item dropdown">
-            <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="material-icons">notifications</i>
-              <span class="notification">5</span>
-              <p class="d-lg-none d-md-block">
-                Some Actions
-              </p>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Mike John responded to your email</a>
-              <a class="dropdown-item" href="#">You have 5 new tasks</a>
-              
-            </div>
-          </li>
-         <!-- /dropdown for noticification--> 
 
 
          <!-- dropdown for settings--> 

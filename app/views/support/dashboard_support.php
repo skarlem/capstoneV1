@@ -1,7 +1,6 @@
 <?php 
 include_once('header.php');
 include_once('dashboard_nav_support.php');
-print_r($_SESSION['role_id']);
 ?>
 
       <div class="content">
@@ -10,11 +9,13 @@ print_r($_SESSION['role_id']);
             <div class="row-responsive">
               <div class="col-md-12">
                 <div class="card ">
-                  <div class="card-header card-header-success card-header-icon">
-                    <div class="card-icon">
-                      <i class="material-icons"></i>
-                    </div>
-                     
+                
+                <div class="card-header card-header-info card-header-text">
+        <div class="card-text">
+          <h4 class="card-title">Showing Incident Records for the Past Month</h4>
+        </div>
+      </div>
+      <div class="card-body " style="padding:50px;">
                    <div class="row">
                       <!-- start column 2-->
                           <div class="col-md-8" style="padding-left:20px; padding-bottom: 20px;">
@@ -26,43 +27,48 @@ print_r($_SESSION['role_id']);
 
                           <div class="col-md-4">
                           
-                          <li class="nav-item">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                      <p>Start date</p>
-                  </span>
-                </div>
-  
-              
-                <input type="text" class="form-control datetimepicker-input" required oninvalid="" value="January 01, 1990, 00:00"
-                id="date1"name="date1" data-toggle="datetimepicker" data-target="#date1"/>
-                
-            </li>
+                          
             
-            <li class="nav-item">
+  <br><br>
+              
+                <input type="hidden" required oninvalid=""
+                id="date1"name="date1" readonly/>
+                <script>
+                 var today1 = new Date();
+
+                 console.log(today1);
+                  today1.setMonth(today1.getMonth() - 1);
+
+                  var now = today1.toLocaleDateString(undefined,{
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                  });
+                  //console.log(today1.toLocaleDateString());
+                  document.getElementById('date1').value=now;
+                </script>
+                
+         
+           
+          
               <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                      <p>End date</p>
-                  </span>
-                </div>
+                
                
-                  <input type="text" class="form-control datetimepicker-input" required oninvalid="" id="date2"name="date2" data-toggle="datetimepicker" data-target="#date2"/>
+                  <input type="hidden" id="date2"name="date2" readonly />
                 
                 <script>
-                
                 var today1 = new Date().toLocaleDateString(undefined, {
                     day: '2-digit',
                     month: 'long',
                     year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
+                    
                 });
+
+                
                   document.getElementById('date2').value= today1;
                 </script>
               </div>
-            </li>
+           
             <br>
             <div class="input-group">
   <div class="input-group-prepend">
@@ -211,42 +217,67 @@ print_r($_SESSION['role_id']);
                           </div>
                           </div>
                         </div>
+</div>
                         <!-- <button type="button" class="btn btn-round btn-default dropdown-toggle btn-link" data-toggle="dropdown">
 7 days
 </button> -->
                         
 
 
-                        <div class="row">
+<div class="row" style="padding:40px;">
                           <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                               <div class="card-header card-header-warning card-header-icon">
                                 <div class="card-icon">
                                   <i class="material-icons">weekend</i>
                                 </div>
-                                <p class="card-category">Total Crimes Reported</p>
-                                <h3 class="card-title">184</h3>
+                                <p class="card-category">Total Incident Records</p>
+                                <h3 class="card-title"><?php
+                                echo getTotalCrime()[0][0];
+                                ?></h3>
                               </div>
                               <div class="card-footer">
                                 <div class="stats">
                                   <i class="material-icons text-danger">warning</i>
-                                  <a href="#pablo">All time</a>
+                                  <a href="#pablo">As of <script>
+                var today1 = new Date().toLocaleDateString(undefined, {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    
+                }); 
+                  document.write(today1);
+                </script></a>
                                 </div>
                               </div>
                             </div>
                           </div>
+                         
                           <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                               <div class="card-header card-header-rose card-header-icon">
                                 <div class="card-icon">
                                   <i class="material-icons">equalizer</i>
                                 </div>
-                                <p class="card-category">Total number of users</p>
-                                <h3 class="card-title">750</h3>
+                                <p class="card-category">Total Number of Users</p>
+                                <h3 class="card-title">
+                                <?php
+                                echo getTotalUsers()[0][0];
+                                ?>
+                                </h3>
                               </div>
                               <div class="card-footer">
                                 <div class="stats">
                                   <i class="material-icons">update</i> 
+                                  As of <script>
+                var today1 = new Date().toLocaleDateString(undefined, {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    
+                }); 
+                  document.write(today1);
+                </script>
                                 </div>
                               </div>
                             </div>
@@ -257,12 +288,22 @@ print_r($_SESSION['role_id']);
                                 <div class="card-icon">
                                   <i class="material-icons">store</i>
                                 </div>
-                                <p class="card-category">Pending Reports</p>
-                                <h3 class="card-title">123</h3>
+                                <p class="card-category">Incidents Under Investigation</p>
+                                <h3 class="card-title"><?php
+                                echo getTotalInvestitation()[0][0];
+                                ?></h3>
                               </div>
                               <div class="card-footer">
                                 <div class="stats">
-                                  <i class="material-icons">date_range</i> All time
+                                  <i class="material-icons">date_range</i> As of <script>
+                var today1 = new Date().toLocaleDateString(undefined, {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    
+                }); 
+                  document.write(today1);
+                </script>
                                 </div>
                               </div>
                             </div>
@@ -273,12 +314,22 @@ print_r($_SESSION['role_id']);
                                 <div class="card-icon">
                                   <i class="fa fa-twitter"></i>
                                 </div>
-                                <p class="card-category">Closed Cases</p>
-                                <h3 class="card-title">245</h3>
+                                <p class="card-category">Closed Incidents</p>
+                                <h3 class="card-title"><?php
+                                echo getTotalResolved()[0][0];
+                                ?></h3>
                               </div>
                               <div class="card-footer">
                                 <div class="stats">
-                                  <i class="material-icons">update</i> Just Updated
+                                  <i class="material-icons">update</i> As of <script>
+                var today1 = new Date().toLocaleDateString(undefined, {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    
+                }); 
+                  document.write(today1);
+                </script>
                                 </div>
                               </div>
                             </div>
@@ -288,13 +339,14 @@ print_r($_SESSION['role_id']);
 
 
                         
-                        <div class="row">
+                        <div class="row" style="padding:20px;">
                         <div class="col-md-12">
                           <div class="card ">
                             <div class="card-header card-header-success card-header-icon">
                                 <div class="card-icon">
                                 <i class="material-icons"></i>
                                 </div>
+                               
                                 <div class="dataTable_wrapper">
                     <div class="table-responsive">
                       <table class="table table-striped table-bordered nowrap" id="dataTables-example-2" style="width:100%">
@@ -495,7 +547,6 @@ print_r($_SESSION['role_id']);
 </div>
                                   
                                   </div>
-                          <script>console.log("asda");</script>
                           ';
                           }
                         ?>  
@@ -514,12 +565,12 @@ print_r($_SESSION['role_id']);
                           </div>
                         </div>
                       </div>
-
+                      
     
 
     
 <!-- map-->
-<script type="text/javascript" src="app/js/dashboard_map.js" onload="initMap()"></script>
+<script type="text/javascript" src="app/js/dashboard_map.js" onload="initMap2()"></script>
 <script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
 
 

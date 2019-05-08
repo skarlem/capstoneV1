@@ -8,7 +8,7 @@ include_once('accountsall_nav.php');
           <div class="row">
             <div class="col-md-12">
               <div class="card">
-                <div class="card-header card-header-primary card-header-icon">
+                <div class="card-header card-header-info card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">assignment</i>
                   </div>
@@ -84,8 +84,8 @@ include_once('accountsall_nav.php');
                               </div>
                               <div class="modal-footer">
                                   <div class="col-lg-12">
-                                      <button type="button" class="btn btn-primary" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-                                      <button type="submit" class="btn btn-danger " name="delete_account" ><i class="fa fa-check"></i> Yes</button>
+                                      <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
+                                      <button type="submit" class="btn btn-danger float-right " name="delete_account" ><i class="fa fa-check"></i> Yes</button>
                                   </div>
                               </div>
                             </form>

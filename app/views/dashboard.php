@@ -10,12 +10,12 @@ include_once('dashboard_nav.php');
               <div class="col-md-12">
                 <div class="card ">
                 
-                <div class="card-header card-header-rose card-header-text">
+                <div class="card-header card-header-info card-header-text">
         <div class="card-text">
           <h4 class="card-title">Showing Incident Records for the Past Month</h4>
         </div>
       </div>
-                     
+      <div class="card-body " style="padding:50px;">
                    <div class="row">
                       <!-- start column 2-->
                           <div class="col-md-8" style="padding-left:20px; padding-bottom: 20px;">
@@ -217,20 +217,21 @@ include_once('dashboard_nav.php');
                           </div>
                           </div>
                         </div>
+</div>
                         <!-- <button type="button" class="btn btn-round btn-default dropdown-toggle btn-link" data-toggle="dropdown">
 7 days
 </button> -->
                         
 
 
-                        <div class="row">
+<div class="row" style="padding:40px;">
                           <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                               <div class="card-header card-header-warning card-header-icon">
                                 <div class="card-icon">
                                   <i class="material-icons">weekend</i>
                                 </div>
-                                <p class="card-category">Total Crimes Reported</p>
+                                <p class="card-category">Total Incident Records</p>
                                 <h3 class="card-title"><?php
                                 echo getTotalCrime()[0][0];
                                 ?></h3>
@@ -258,7 +259,7 @@ include_once('dashboard_nav.php');
                                 <div class="card-icon">
                                   <i class="material-icons">equalizer</i>
                                 </div>
-                                <p class="card-category">Total number of users</p>
+                                <p class="card-category">Total Number of Users</p>
                                 <h3 class="card-title">
                                 <?php
                                 echo getTotalUsers()[0][0];
@@ -287,7 +288,7 @@ include_once('dashboard_nav.php');
                                 <div class="card-icon">
                                   <i class="material-icons">store</i>
                                 </div>
-                                <p class="card-category">Pending Reports</p>
+                                <p class="card-category">Incidents Under Investigation</p>
                                 <h3 class="card-title"><?php
                                 echo getTotalInvestitation()[0][0];
                                 ?></h3>
@@ -313,7 +314,7 @@ include_once('dashboard_nav.php');
                                 <div class="card-icon">
                                   <i class="fa fa-twitter"></i>
                                 </div>
-                                <p class="card-category">Closed Cases</p>
+                                <p class="card-category">Closed Incidents</p>
                                 <h3 class="card-title"><?php
                                 echo getTotalResolved()[0][0];
                                 ?></h3>
@@ -338,13 +339,14 @@ include_once('dashboard_nav.php');
 
 
                         
-                        <div class="row">
+                        <div class="row" style="padding:20px;">
                         <div class="col-md-12">
                           <div class="card ">
                             <div class="card-header card-header-success card-header-icon">
                                 <div class="card-icon">
                                 <i class="material-icons"></i>
                                 </div>
+                               
                                 <div class="dataTable_wrapper">
                     <div class="table-responsive">
                       <table class="table table-striped table-bordered nowrap" id="dataTables-example-2" style="width:100%">
@@ -563,12 +565,12 @@ include_once('dashboard_nav.php');
                           </div>
                         </div>
                       </div>
-
+                      
     
 
     
 <!-- map-->
-<script type="text/javascript" src="app/js/dashboard_map.js" onload="initMap()"></script>
+<script type="text/javascript" src="app/js/dashboard_map.js" onload="initMap2()"></script>
 <script type="text/javascript" src="app/js/time.js" charset="UTF-8"></script>
 
 

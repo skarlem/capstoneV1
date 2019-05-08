@@ -72,7 +72,7 @@ function initMap(){
                         attribution: 'Map data &copy; ' + mapLink,
                         maxZoom: 25,
                         }).addTo(map);
-              map.on('dblclick', onMapClick);
+             
               map.keyboard.disable();
               map.doubleClickZoom.disable();
               map.options.maxZoom = 18;
@@ -81,6 +81,41 @@ function initMap(){
               satView();
   
 }
+
+
+
+function clearMarkers2(){
+  map.eachLayer(function (layer) {
+        map.removeLayer(layer);
+       });
+  map.remove();
+   initMap2();
+  
+}
+
+function initMap2(){
+  var location = '';
+          map= L.map(document.getElementById("map")).setView([6.06622,125.12530], 16);
+              mapLink = 
+                      '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+              L.tileLayer(
+                      'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                      attribution: 'Map data &copy; ' + mapLink,
+                      maxZoom: 25,
+                      }).addTo(map);
+            
+            map.keyboard.disable();
+            map.doubleClickZoom.disable();
+            map.options.maxZoom = 18;
+            map.options.minZoom = 15;
+            getMarkers3();
+            satView();
+
+}
+var customOptions ={
+        'maxWidth': '500',
+        'className' : 'custom'
+        }
 var customOptions ={
         'maxWidth': '500',
         'className' : 'custom'
@@ -287,6 +322,52 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
   }
 }
 
+
+
+
+//load the markers
+function getMarkers3(){
+  console.log(document.getElementById('dp2').value);
+   var endDate = new Date(document.getElementById('dp2').value);
+   var startDate = new Date(document.getElementById('dp1').value);
+    var crime_type = document.getElementsByName('category'); 
+    var classification_arr=document.getElementById('classification_nav').value;
+    
+    
+ 
+ 
+    var button = ' <br><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</button>';
+    var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
+   
+    var popupOptions ={
+     'maxWidth': '2000',
+     'className' : 'popupCustom' // classname for another popup
+   }
+   
+    if (startDate > endDate) {
+     alert('bawal');
+    }
+   else{
+      var counter =0;
+       console.log(endDate);
+       console.log(startDate);
+ 
+ 
+       
+      }
+      
+       $.getJSON("app/controllers/results.json", function(jsonMap2) {
+             for(var i=0; i<jsonMap2.length; i++){
+               
+                     if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
+                      
+                      loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
+               }
+             }
+       
+          }); 
+     
+   }    
 //load the markers
 function getMarkers2(){
  console.log(document.getElementById('dp2').value);

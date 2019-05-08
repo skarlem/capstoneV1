@@ -27,7 +27,7 @@
 
                 
 
-                <div class="dataTable_wrapper">
+                <div class="dataTable_wrapper" style="padding:25px;">
                     <div class="table-responsive">
                       <table class="table table-striped table-bordered nowrap" id="dataTables-emergency" style="width:100%">
                         <thead class=" text-primary">
@@ -147,8 +147,8 @@
                               </div>
                               <div class="modal-footer">
                                   <div class="col-lg-12">
-                                      <button type="button" class="btn btn-primary" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-                                      <button type="submit" class="btn btn-danger " name="delete_emergency" ><i class="fa fa-check"></i> Yes</button>
+                                      <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
+                                      <button type="submit" class="btn btn-danger float-right " name="delete_emergency" ><i class="fa fa-check"></i> Yes</button>
                                   </div>
                               </div>
                             </form>
@@ -170,13 +170,13 @@
                              
                                   <form role="form" id="save_emergency" action="'.$action.'"method="POST">
                                     Are you sure you want to save this record?
-                                    <input type="text" name="marker_id" value="'.$id.'">
-                                    <input type="text" name="date" value="'.$date.'">
-                                    <input type="text" name="report_details" value="'.$report_details.'">
+                                    <input type="hidden" name="marker_id" value="'.$id.'">
+                                    <input type="hidden" name="date" value="'.$date.'">
+                                    <input type="hidden" name="report_details" value="'.$report_details.'">
                                     <input type="hidden" name="image" value="'.$report_image.'">
-                                    <input type="text" name="reported_by" value="'.$reporter_id.'">
-                                    <input type="text" name="lat" value="'.$lat.'">
-                                    <input type="text" name="lng" value="'.$lng.'">
+                                    <input type="hidden" name="reported_by" value="'.$reporter_id.'">
+                                    <input type="hidden" name="lat" value="'.$lat.'">
+                                    <input type="hidden" name="lng" value="'.$lng.'">
                                     
                                     
 

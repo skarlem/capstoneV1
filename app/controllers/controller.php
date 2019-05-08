@@ -4,10 +4,10 @@
 
 
 function getConn(){
-	$host = "host=bigeye.msugensan.edu.ph";
-	$port = "port=5440";
-	$dbname = "dbname=bantaymsu";
-	$credentials = "user=bea password=bea";
+	$host = "host=localhost";
+	$port = "port=5432";
+	$dbname = "dbname=bantaymsuu";
+	$credentials = "user=postgres password=12345";
 	
 	$db = pg_connect( "$host $port $dbname $credentials" );
 	
@@ -25,7 +25,7 @@ function getMarkers(){
 
 	
 	select a.*,f.classification_desc,f.category_desc,f.status_description,f.action_taken,f.what_happened,f.status_id,f.narrative_id,f.classification_id from crime_db.incident_report as a
-	left OUTER join crime_db.mapdata as f on f.marker_id = a.marker_id order by marker_id;
+	left OUTER join crime_db.mapdata as f on f.marker_id = a.marker_id order by date asc;
 
 
 	");
@@ -527,6 +527,10 @@ if (isset($_GET[md5("controller")])){
 			include('app/views/support/dashboard_support.php');
 		}
 
+		elseif($_GET[md5("controller")]===md5('edit_marker_support')){
+			session_start();
+			include('app/views/support/edit_marker_support.php');
+		}
 
 		
 		elseif($_GET[md5("controller")]===md5('map_support')){
@@ -592,7 +596,7 @@ if (isset($_GET[md5("controller")])){
 					'action_taken'=>$action_taken,
 					'incident_status'=>$incident_status
 				);
-
+				
 				insertMarker($marker);
 
 				insertNarrative($narrative);
@@ -676,13 +680,12 @@ if (isset($_GET[md5("controller")])){
 			include('app/views/edit_marker.php');
 
 			if(isset($_POST['add_item'])){
-				$marker_id = $_POST['item_id'];
-
-				$item_name = $_POST['item'];
+				$marker_id = $_POST['marker_id'];
+				$item_name = $_POST['item_name'];
 				$item_desc = $_POST['item_desc'];
 				$item_worth = $_POST['item_worth'];
 				$item_quantity = $_POST['item_quantity'];
-				
+				print_r($_POST);
 				$item = array(
 					'marker_id'=> $marker_id,
 					'item_name'=>$item_name,
@@ -960,18 +963,19 @@ if (isset($_GET[md5("controller")])){
 				$what_happened = $_POST['narrative'];
 				$action_taken = $_POST['action_taken'];
 				$incident_status = $_POST['incident_status'];
-			  $marker = array(
-							'lat' => $lat,
-							'lng' => $lng,
-							'date' => $date,
-							'location_description'=>$location,
-							//'classification'=>$classification,
-							'category'=>$category,
-							'class'=>$class,
-							'reported_by'=>$reported_by
+				$marker = array(
+					'marker_id'=>$marker_id,
+					'lat' => $lat,
+					'lng' => $lng,
+					'date' => $date,
+					'location_description'=>$location,
+					'category'=>$category,
+					'class'=>$class,
+					'reported_by'=>$reported_by
 				);
 
 				$narrative = array(
+					'narrative_id'=>$marker_id,
 					'marker_id'=>$marker_id,
 					'what_happened'=>$what_happened,
 					'action_taken'=>$action_taken,

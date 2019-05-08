@@ -4,20 +4,10 @@
   ?>
 
 <style type="text/css" media="print">
-@media print {
-    header, .footer, footer {
-        display: none;
-    }
-
-    /* hide main content when dialog open */
-    body.modal-open div.container.body-content div#mainContent {
-        display: none;
-    }
-
-    .noPrint {
-        display: none;
-    }
-    }
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 1;  /* this affects the margin in the printer settings */
+}
 </style>
 
 
@@ -31,36 +21,13 @@
                     <p class="card-category"> </p>
 
                   </div>
-
-                
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="map"></div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-                <div class="dataTable_wrapper">
+                 
+                <div class="dataTable_wrapper" style="padding:25px;">
                     <div class="table-responsive">
                       <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
                         <thead class=" text-primary">
                          
-                          <th>
+                          <th class="hidden">
                             Incident ID
                           </th>
 
@@ -157,12 +124,12 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                  <div id="printMe">
+                                  <div id="print">
 
                                   
-                                      <center>
-                                          <h5>Incident Report Information</h5>
-                                          </center>
+                              <center>
+                                  <h5>Incident Report Information</h5>
+                                  </center>
                                   <div class="logo">
                                       
                                       <img src="assets/marker/F-Theft.png">
@@ -184,7 +151,6 @@
                                       Classification: '.$classification.'
                                     </div>
                                   </div>
-
                                   <div class="row">
                                     <div class="col">
                                       Category: '.$category.'
@@ -199,7 +165,7 @@
                                 <div class="row">
                                     <div class="col">
                                     Items Involved: <br>'.$items.'
-                                    </div>
+                                  </div>
 
                                 
                                   </div><!-- row end -->
@@ -222,13 +188,13 @@
                                   </div>
 
                                 
-                                </div><!-- row end -->
+                                  </div><!-- row end -->
 
                                   <br>
                                   <div class="row">
-                                      <div class="col">
-                                      Action Taken:<br> '.$action_taken.'
-                                    </div>
+                                  <div class="col">
+                                  Action Taken:<br> '.$action_taken.'
+                                </div>
                                 
                                   </div><!-- row end -->
                                   
@@ -246,8 +212,8 @@
                                   </div>
                               </div>
                           </div>
-                          
-                             
+                              </div>
+                          </div>
 
 
 
@@ -267,18 +233,18 @@
                              
                                   <form role="form" id="edit_marker" action="'.$action.'"method="POST">
                                     Are you sure you want to Edit this record?
-                                    <input type="text" name="marker_id" value="'.$id.'">
-                                    <input type="text" name="lat" value="'.$lat.'">
-                                    <input type="text" name="lng" value="'.$lng.'">
-                                    <input type="text" name="date" value="'.$date.'">
-                                    <input type="text" name="location" value="'.$location.'">
-                                    <input type="text" name="category" value="'.$category_id.'">
-                                    <input type="text" name="class" value="'.$class.'">
-                                    <input type="text" name="narrative" value="'.$incident_narrative.'">
-                                    <input type="text" name="action_taken" value="'.$action_taken.'">
-                                    <input type="text" name="incident_status" value="'.$status_id.'">
-                                    <input type="text" name="reported_by" value="'.$school_id.'">
-                                    <input type="text" name="narrative_id" value="'.$narrative_id.'">
+                                    <input type="hidden" name="marker_id" value="'.$id.'">
+                                    <input type="hidden" name="lat" value="'.$lat.'">
+                                    <input type="hidden" name="lng" value="'.$lng.'">
+                                    <input type="hidden" name="date" value="'.$date.'">
+                                    <input type="hidden" name="location" value="'.$location.'">
+                                    <input type="hidden" name="category" value="'.$category_id.'">
+                                    <input type="hidden" name="class" value="'.$class.'">
+                                    <input type="hidden" name="narrative" value="'.$incident_narrative.'">
+                                    <input type="hidden" name="action_taken" value="'.$action_taken.'">
+                                    <input type="hidden" name="incident_status" value="'.$status_id.'">
+                                    <input type="hidden" name="reported_by" value="'.$school_id.'">
+                                    <input type="hidden" name="narrative_id" value="'.$narrative_id.'">
                               </div>
                           </div>
                           <div class="modal-footer">
@@ -406,71 +372,47 @@
                 </div>
                 </div>
               </div>
+                      
       </div>
     </div>
 
   <!-- datables for our table -->
   <script src="app/js/datatables.js"></script>
-<script>
 
-jQuery.fn.extend({
-	printElem: function() {
-		var cloned = this.clone();
-    var printSection = $('#printSection');
-    if (printSection.length == 0) {
-    	printSection = $('<div id="printSection"></div>')
-    	$('body').append(printSection);
-    }
-    printSection.append(cloned);
-    var toggleBody = $('body *:visible');
-    toggleBody.hide();
-    $('#printSection, #printSection *').show();
-    window.print();
-    printSection.remove();
-    toggleBody.show();
-	}
-});
-
-$(document).ready(function(){
-	$(document).on('click', '#btnPrint', function(){
-  	$('#printMe').printElem();
-  });
-});
-</script>
 
   <script>
-//   document.getElementById("btnPrint").onclick = function() {
-//     printElement(document.getElementById("print"));
-//     window.print();
-// }
+  document.getElementById("btnPrint").onclick = function() {
+    printElement(document.getElementById("print"));
+    window.print();
+}
 
-// function printElement(elem, append, delimiter) {
-//     var domClone = elem.cloneNode(true);
+function printElement(elem, append, delimiter) {
+    var domClone = elem.cloneNode(true);
 
-//     var $printSection = document.getElementById("printSection");
+    var $printSection = document.getElementById("printSection");
 
-//     if (!$printSection) {
-//         var $printSection = document.createElement("div");
-//         $printSection.id = "printSection";
-//         document.body.appendChild($printSection);
-//     }
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
+    }
 
-//     if (append !== true) {
-//         $printSection.innerHTML = "";
-//     }
+    if (append !== true) {
+        $printSection.innerHTML = "";
+    }
 
-//     else if (append === true) {
-//         if (typeof(delimiter) === "string") {
-//             $printSection.innerHTML += delimiter;
-//         }
-//         else if (typeof(delimiter) === "object") {
-//             $printSection.appendChlid(delimiter);
-//         }
-//     }
+    else if (append === true) {
+        if (typeof(delimiter) === "string") {
+            $printSection.innerHTML += delimiter;
+        }
+        else if (typeof(delimiter) === "object") {
+            $printSection.appendChlid(delimiter);
+        }
+    }
 
-//     $printSection.appendChild(domClone);
+    $printSection.appendChild(domClone);
 
-// }
+}
   </script>
 
   <?php
