@@ -61,7 +61,10 @@ $_SESSION['recommendation']=$_POST['recommendation'];
       <div class="card-header card-info-info card-header-text">
         <div class="card-text">
           <h4 class="card-title">Items Involved</h4>
-        </div>
+         
+        </div> 
+        <br>
+        <button class="btn btn-primary float-right"  data-toggle="modal" data-target="#add-item-modal">Add Item</button>
       </div>
       <div class="card-body " style="padding:50px;">
 
@@ -127,13 +130,13 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                                      
                                           <form role="form" method="POST">
                                             Are you sure you want to delete this record?
-                                            <input type="text" name="delete_id" value="'.$item_id.'">
+                                            <input type="hidden" name="delete_id" value="'.$item_id.'">
                                       </div>
                                   </div>
                                   <div class="modal-footer">
                                       <div class="col-lg-12">
-                                          <button type="button" class="btn btn-primary" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-                                          <button type="submit" class="btn btn-danger " name="delete_item" ><i class="fa fa-check"></i> Yes</button>
+                                          <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
+                                          <button type="submit" class="btn btn-danger  float-right" name="delete_item" ><i class="fa fa-check"></i> Yes</button>
                                       </div>
                                   </div>
                                 </form>
@@ -210,7 +213,10 @@ $_SESSION['recommendation']=$_POST['recommendation'];
       <div class="card-header card-header-info card-header-text">
         <div class="card-text">
           <h4 class="card-title">Persons/Constituent Involved</h4>
+         
         </div>
+        <br>
+        <button class="btn btn-primary float-right"  data-toggle="modal" data-target="#add-person-modal">Add Person</button>
       </div>
       <div class="card-body " style="padding:50px;">
 <div class="dataTable_wrapper">
@@ -280,8 +286,8 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                                   </div>
                                   <div class="modal-footer">
                                       <div class="col-lg-12">
-                                          <button type="button" class="btn btn-primary" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-                                          <button type="submit" class="btn btn-danger " name="delete_person" ><i class="fa fa-check"></i> Yes</button>
+                                          <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
+                                          <button type="submit" class="btn btn-danger float-right" name="delete_person" ><i class="fa fa-check"></i> Yes</button>
                                       </div>
                                   </div>
                                 </form>
@@ -310,7 +316,7 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                                       <form role="form" method="POST">
                                        Edit this record: "'.$person_id.'"
                                         <input type="hidden" name="edit_person_id" value="'.$person_id.'">
-                                        <input type="text" name="marker_id" value="'.$id.'">
+                                        <input type="hidden" name="marker_id" value="'.$id.'">
             
                                        
                                             <div class="form-group input-group">
@@ -354,9 +360,6 @@ $_SESSION['recommendation']=$_POST['recommendation'];
 </div>
 
 <?php
-
-
-print_r($_SESSION);
 if(isset($_SESSION['marker_id'])){  
     $marker_id= $_SESSION['marker_id'];
     $lat=$_SESSION['lat'];
@@ -548,12 +551,13 @@ if(isset($_SESSION['marker_id'])){
           </div>
         </div>
       </div> 
+      <input type="hidden" class="form-control" id="edit_id" name="edit_id" value="'. $_SESSION['marker_id'].'" readonly>
        
       <div class="col-md-4 ml-auto mr-auto text-center">
       <button type="button" class="btn btn-secondary btn-cancel">
      Cancel
     </button>
-      <button type="submit" name="edit_form"class="btn btn-primary btn-add">
+      <button type="submit" name="edit_form"class="btn btn-primary">
         Save
       </button>
      </div>    
@@ -613,7 +617,7 @@ if(isset($_SESSION['marker_id'])){
            <div class="form-group input-group">
                 
 
-           <input type="text" class="form-control" id="person_id" name="person_id" value="<?php echo $_SESSION['marker_id'];?>" readonly>
+           <input type="hidden" class="form-control" id="person_id" name="person_id" value="<?php echo $_SESSION['marker_id'];?>" readonly>
               </div>
             <div class="form-group input-group">
 
@@ -690,7 +694,7 @@ if(isset($_SESSION['marker_id'])){
 
                      
 
-           <input type="text" class="form-control" id="marker_id" name="marker_id" value="<?php echo $_SESSION['marker_id'];?>" readonly>
+           <input type="hidden" class="form-control" id="item_id" name="item_id" value="<?php echo $_SESSION['marker_id'];?>" readonly>
               </div>
               <div class="form-group input-group">
                 

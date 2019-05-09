@@ -8,6 +8,13 @@
     size: auto;   /* auto is the initial value */
     margin: 1;  /* this affects the margin in the printer settings */
 }
+.text-wrap{
+    white-space:normal;
+}
+.width-200{
+    width:200px;
+}
+
 </style>
 
 
@@ -17,22 +24,44 @@
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header card-header-info">
-                    <h4 class="card-title ">Markers Table</h4>
+                    <h4 class="card-title ">Incident Records</h4>
                     <p class="card-category"> </p>
 
                   </div>
-                 
-                <div class="dataTable_wrapper" style="padding:25px;">
+
+                
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="map"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+                <div class="dataTable_wrapper" style="margin:20px;">
                     <div class="table-responsive">
-                      <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
+                      <table class="table table-striped compact nowrap fixed" cellspacing="0"  id="dataTables-example" style="width:100%;">
                         <thead class=" text-primary">
                          
-                          <th class="hidden">
-                            Incident ID
+                          <th > 
                           </th>
 
                           <th>
-                            Date
+                            Date Reported
                           </th>
                          
                           <th>
@@ -81,7 +110,7 @@
                               $victim = $row['victim'];
                               $incident_narrative = $row['what_happened'];
                               $action_taken = $row['action_taken'];
-                             $suspect = $row['suspect'];
+                              $suspect = $row['suspect'];
                               $classification=$row['classification_desc'];
                               $school_id=$row['reported_by'];
                               
@@ -90,12 +119,13 @@
                               $category_id=$row['category'];
                               $class=$row['class'];
                               $narrative_id= $row['narrative_id'];
+                              $recommendation= $row['recommendation'];
 
                           echo'
                           <tr>
                               
-                              <td>'.$id.'</td>
-                              <td>'.$date.'</td>
+                              <td></td>
+                              <td>'.date("M d, Y", strtotime($date)).'</td>
                              
                               <td>'.$location.'</td>
                               <td>'.$category.'</td>
@@ -106,9 +136,8 @@
                               <td>'.$classification.'</td>
                               <td>'.$action_taken.'</td>
                               <td style="width:100px;text-align:center">
-                              <a style="cursor:pointer" data-toggle="modal" data-target="#send'.$id.'" title="Edit"><i class="fa fa-edit"></i></a>
-                               
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#viewModal'.$id.'" title="Delete"><i class="material-icons">zoom_out_map</i></a>
+                              <a class="btn btn-link btn-warning btn-just-icon edit" style="cursor:pointer" data-toggle="modal" data-target="#send'.$id.'" title="Edit"><i class="material-icons">edit</i></a>
+                              <a class="btn btn-link btn-info btn-just-icon edit" style="cursor:pointer" data-toggle="modal" data-target="#viewModal'.$id.'" title="View Full Report"><i class="material-icons">zoom_out_map</i></a>
                                 
                               </td>
                           </tr>
@@ -129,6 +158,7 @@
                                   
                               <center>
                                   <h5>Incident Report Information</h5>
+                                  <hr>
                                   </center>
                                   <div class="logo">
                                       
@@ -225,14 +255,14 @@
                       <div class="modal-content">
                           <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                              <h4 class="modal-title" id="myModalLabel">Save to Record</h4>
+                              <h4 class="modal-title" id="myModalLabel">Edit Record</h4>
                           </div>
                           
                           <div class="modal-body">
                               <div class="col-lg-12">
                              
                                   <form role="form" id="edit_marker" action="'.$action.'"method="POST">
-                                    Are you sure you want to Edit this record?
+                                    Are you sure you want to edit this record?
                                     <input type="hidden" name="marker_id" value="'.$id.'">
                                     <input type="hidden" name="lat" value="'.$lat.'">
                                     <input type="hidden" name="lng" value="'.$lng.'">
@@ -245,6 +275,7 @@
                                     <input type="hidden" name="incident_status" value="'.$status_id.'">
                                     <input type="hidden" name="reported_by" value="'.$school_id.'">
                                     <input type="hidden" name="narrative_id" value="'.$narrative_id.'">
+                                    <input type="hidden" name="recommendation" value="'.$recommendation.'">
                               </div>
                           </div>
                           <div class="modal-footer">
@@ -372,7 +403,6 @@
                 </div>
                 </div>
               </div>
-                      
       </div>
     </div>
 

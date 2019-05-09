@@ -4,12 +4,12 @@
 
 
 function getConn(){
-	$host = "host=localhost";
-	$port = "port=5432";
-	$dbname = "dbname=bantaymsuu";
-	$credentials = "user=postgres password=12345";
-	
-	$db = pg_connect( "$host $port $dbname $credentials" );
+$host = "host=bigeye.msugensan.edu.ph";
+$port = "port=5440";
+$dbname = "dbname=bantaymsu";
+$credentials = "user=bea password=bea";
+
+$db = pg_connect( "$host $port $dbname $credentials" );
 	
 	return $db;
 }
@@ -22,12 +22,10 @@ function getMarkers(){
 	$markers =array();
 
 	$result = pg_query(getConn(), "
-
-	
-	select a.*,f.classification_desc,f.category_desc,f.status_description,f.action_taken,f.what_happened,f.status_id,f.narrative_id,f.classification_id from crime_db.incident_report as a
-	left OUTER join crime_db.mapdata as f on f.marker_id = a.marker_id order by date asc;
-
-
+	SELECT a.*,f.classification_desc,f.category_desc,f.status_description,f.action_taken,f.what_happened,f.status_id,f.narrative_id,f.classification_id,f.recommendation
+	FROM crime_db.incident_report as a 
+	LEFT OUTER JOIN crime_db.mapdata as f ON f.marker_id = a.marker_id 
+	ORDER BY date DESC;
 	");
 	if (!$result) {
 	    echo "An error occurred.\n";
@@ -42,6 +40,10 @@ function getMarkers(){
         fwrite($fp, json_encode($markers, JSON_PRETTY_PRINT)); 
         fclose($fp);       
 	return $markers;
+}
+
+function encodeDate(){
+	
 }
 
 //update function
@@ -225,6 +227,22 @@ function insertNarrative($data){
 return $is_inserted;
 }
 //insert into persons involved
+function insertAccount($data){
+	$res = pg_insert(getConn(), 'crime_db.accounts' , $data);
+	if ($res) {
+		echo "Inserted account";
+		$is_inserted = true;
+	} else {
+		echo pg_last_error(getConn()) . " <br />";
+		$is_inserted = false;	
+	}
+//}
+return $is_inserted;
+}
+
+
+
+//insert into account
 function insertPerson($data){
 	$res = pg_insert(getConn(), 'crime_db.persons_involved' , $data);
 	if ($res) {
@@ -324,7 +342,7 @@ return $markers;
 function getEmergency(){
 	
 $result = pg_query(getConn(), "
-select * from crime_db.emergency_report;
+SELECT * FROM crime_db.emergencyview
 ");
 if (!$result) {
 		echo "An error occurred.\n";
@@ -341,7 +359,7 @@ return $markers;
 function getAccounts(){
 	
 $result = pg_query(getConn(), "
-select * from crime_db.accounts as a inner join crime_db.role as b on a.role_id = b.role_id order by school_id asc;
+select * from crime_db.accountsview;
 ");
 if (!$result) {
 		echo "An error occurred.\n";
@@ -395,33 +413,10 @@ function getPersons(){
 	return $account;
 	}
 
-
-
-		
-function getTotalCrime(){
-	//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
-	$result = pg_query(getConn(), "
-	select count(marker_id) as total_crime from crime_db.incident_records ");
-	// $a = trim('1'); 
-	// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
-	// $result = pg_query(getConn(), $query); 
-	if (!$result) {
-			echo "An error occurred.\n";
-			exit;
-	}
-	else{
-		while($row = pg_fetch_array($result)){
-							$account[] = $row;
-						}
-	}       
-	return $account;
-	}
-
-	function getTotalUsers(){
+	function getTotalCrime(){
 		//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
 		$result = pg_query(getConn(), "
-		select count(school_id) as total_users from crime_db.accounts where role_id=1
-		");
+		select count(marker_id) as total_crime from crime_db.incident_records ");
 		// $a = trim('1'); 
 		// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
 		// $result = pg_query(getConn(), $query); 
@@ -436,14 +431,11 @@ function getTotalCrime(){
 		}       
 		return $account;
 		}
-
-
-		function getTotalInvestitation(){
+	
+		function getTotalUsers(){
 			//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
 			$result = pg_query(getConn(), "
-			
-select count(narrative_id) as under_investigation from crime_db.incident_narratives where incident_status =3
-
+			select count(school_id) as total_users from crime_db.accounts where role_id=1
 			");
 			// $a = trim('1'); 
 			// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
@@ -459,16 +451,14 @@ select count(narrative_id) as under_investigation from crime_db.incident_narrati
 			}       
 			return $account;
 			}
-
 	
-			function getTotalResolved(){
+	
+			function getTotalInvestitation(){
 				//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
 				$result = pg_query(getConn(), "
-		
-select count(narrative_id) as resolved_cases from crime_db.incident_narratives where incident_status =1 
-or incident_status=7
-or incident_status=6
-or incident_status=68
+				
+	select count(narrative_id) as under_investigation from crime_db.incident_narratives where incident_status =3
+	
 				");
 				// $a = trim('1'); 
 				// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
@@ -484,6 +474,34 @@ or incident_status=68
 				}       
 				return $account;
 				}
+	
+		
+				function getTotalResolved(){
+					//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
+					$result = pg_query(getConn(), "
+			
+	select count(narrative_id) as resolved_cases from crime_db.incident_narratives where incident_status =1 
+	or incident_status=7
+	or incident_status=6
+	or incident_status=68
+					");
+					// $a = trim('1'); 
+					// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
+					// $result = pg_query(getConn(), $query); 
+					if (!$result) {
+							echo "An error occurred.\n";
+							exit;
+					}
+					else{
+						while($row = pg_fetch_array($result)){
+											$account[] = $row;
+										}
+					}       
+					return $account;
+					}
+	
+
+
 
 
 
@@ -494,14 +512,13 @@ or incident_status=68
 require ('login_handler.php');
 if (isset($_GET[md5("controller")])){
 	if( $_GET[md5("controller")] === md5('login' )) {
-	
 		if(empty($_SESSION)){
-			session_start();
+			session_start();		
 			include('login.php');
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$user =  $_POST['username'];
 				$password =  ($_POST['password']);
-					loginAdmin($user,$password);
+				loginAdmin($user,$password);
 				
 			}
 		}
@@ -513,6 +530,39 @@ if (isset($_GET[md5("controller")])){
 
 
 
+	
+	elseif ($_GET[md5("controller")]===md5('register')) {
+		if(empty($_SESSION)){
+			include('app/views/register.php');
+		if($_SERVER['REQUEST_METHOD'] == 'POST'){
+			
+			if(isset($_POST['register_submit'])){	
+				if(trim($_POST['password']) != trim($_POST['password2'])){
+					
+					echo'<script> swal({ title:"Warning!", text: "Password do not match!", type: "success", 
+						buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
+				}//end if password is not equal
+				else{	
+					unset($_POST['password2']);
+					$data= array(
+						'username'=>$_POST['username'],
+						'password'=>md5($_POST['password'])
+					);
+					addUser($data);
+					echo("<script>location.href = 'index.php?$cont=$dsh';</script>");
+				//	
+					echo "<script>demo.showNotification('top','right','Sucessfully registered');</script>";
+					}//end else
+
+				}//end if register submit
+
+			}//end if method is post
+
+		}//end if session is empty
+		else{
+			header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
+		}
+	}//end else if 
 
 	else{
 		if($_GET[md5("controller")]===md5('map')){
@@ -521,6 +571,12 @@ if (isset($_GET[md5("controller")])){
 			include_once('app/views/map.php');	
 		
 		}
+
+
+
+
+
+
 
 		elseif($_GET[md5("controller")]===md5('dashboard_support')){
 			session_start();
@@ -672,6 +728,13 @@ if (isset($_GET[md5("controller")])){
 		}// end elseif for table
 
 		
+
+
+
+
+		///////////////////////////////////////////////
+		///////////////////////////////////////////////
+		///////////////////////////////////////////////
 	
 		elseif($_GET[md5("controller")]===md5('edit_marker')){
 			session_start();
@@ -680,12 +743,13 @@ if (isset($_GET[md5("controller")])){
 			include('app/views/edit_marker.php');
 
 			if(isset($_POST['add_item'])){
-				$marker_id = $_POST['marker_id'];
+				$marker_id = $_POST['item_id'];
+
 				$item_name = $_POST['item_name'];
 				$item_desc = $_POST['item_desc'];
 				$item_worth = $_POST['item_worth'];
 				$item_quantity = $_POST['item_quantity'];
-				print_r($_POST);
+				
 				$item = array(
 					'marker_id'=> $marker_id,
 					'item_name'=>$item_name,
@@ -812,9 +876,9 @@ if (isset($_GET[md5("controller")])){
 				});
 				</script>';
 
-	}
+			}
 
-			if(isset($_POST['edit-form'])){
+			if(isset($_POST['edit_form'])){
 				
 
 				$newformat = date('Y-m-d',(int)$_POST['date']);
@@ -849,7 +913,7 @@ if (isset($_GET[md5("controller")])){
 				);
 
 				$where = array("marker_id" => $_POST['edit_id']);
-				$narrative_id = array("narrative_id" => $_POST['narrative_id']);
+				$narrative_id = array("narrative_id" => $_POST['edit_id']);
 				 updateMarker($marker,$where);
 
 				 updateNarrative($narrative,$narrative_id);
@@ -885,7 +949,6 @@ if (isset($_GET[md5("controller")])){
 
 
 		elseif($_GET[md5("controller")]===md5('dashboard')){
-			session_start();
 			include('app/views/dashboard.php');
 			$_SESSION['page']=md5('dashboard');	
 			
@@ -908,12 +971,13 @@ if (isset($_GET[md5("controller")])){
 							});
 							</script>';
 					}
-					else if(isset($_POST['update_profile'])){
+				else if(isset($_POST['update_profile'])){
 
 						$username = $_POST['username'];
 						$fullname = $_POST['fullname'];
 						$contact = $_POST['contact'];
 						$email = $_POST['email'];
+					
 						$marker = array(
 							'username' => $username,
 							'fullname' => $fullname,
@@ -933,6 +997,36 @@ if (isset($_GET[md5("controller")])){
 						</script>';
 					
 				}
+				else if(isset($_POST['add_account'])){
+					$username = $_POST['username'];
+					$fullname = $_POST['fullname'];
+					$contact = $_POST['contact'];
+					$email = $_POST['email'];
+					$school_id =$_POST['school_id'];
+					$role=$_POST['role'];
+					$picture =$_POST['profile_picture'];
+					$marker = array(
+						'school_id'=>$school_id,
+						'role_id'=>$role,
+						'username' => $username,
+						'fullname' => $fullname,
+						'contact_no' => $contact,
+						'university_email'=>$email,
+						'profile_pic'=>$picture
+					);
+
+					insertAccount($marker);
+					echo'<script> Swal.fire(
+						"Saved!",
+						"Changes have been saved",
+						"success"
+					).then((result) => {
+							window.location.reload();
+						});
+						</script>';
+
+				}
+
 			
 		}
 
@@ -963,19 +1057,18 @@ if (isset($_GET[md5("controller")])){
 				$what_happened = $_POST['narrative'];
 				$action_taken = $_POST['action_taken'];
 				$incident_status = $_POST['incident_status'];
-				$marker = array(
-					'marker_id'=>$marker_id,
-					'lat' => $lat,
-					'lng' => $lng,
-					'date' => $date,
-					'location_description'=>$location,
-					'category'=>$category,
-					'class'=>$class,
-					'reported_by'=>$reported_by
+			  $marker = array(
+							'lat' => $lat,
+							'lng' => $lng,
+							'date' => $date,
+							'location_description'=>$location,
+							//'classification'=>$classification,
+							'category'=>$category,
+							'class'=>$class,
+							'reported_by'=>$reported_by
 				);
 
 				$narrative = array(
-					'narrative_id'=>$marker_id,
 					'marker_id'=>$marker_id,
 					'what_happened'=>$what_happened,
 					'action_taken'=>$action_taken,

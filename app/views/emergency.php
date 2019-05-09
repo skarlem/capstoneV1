@@ -15,49 +15,37 @@
 </style>
 
 <div class="content">
-          <div class="container-fluid">
+          <div class="container-fluid" >
             <div class="row">
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header card-header-info">
                     <h4 class="card-title ">Emergency Reports</h4>
-                    <p class="card-category"> </p>
-
+                    <p class="card-category"></p>
                   </div>
-
-                
-
-                <div class="dataTable_wrapper">
-                    <div class="table-responsive">
-                      <table class="table table-striped table-bordered nowrap" id="dataTables-emergency" style="width:100%">
+                <div class="dataTable_wrapper" style="padding: 20px;">
+                    <div class="table-responsive material-datatables">
+                      <table class="table table-striped table-hover" cellspacing="0" id="dataTables-emergency" style="width:100%">
                         <thead class=" text-primary">
-                         
-                          
 
                           <th>
-                            Date Reported
+                            Reporter Name
                           </th>
-                         
                           <th>
                            Report Details
                           </th>
-                       
                           <th>
                             Report Image
                           </th> 
-                          
                           <th>
-                            Reporter Name
-                          </th> 
-                          
-                          <th>
-                           Contact
+                            Date Reported
                           </th>
-                          
                           <th>
-                           Reporter ID
-                          </th>  
-                    
+                            Status
+                          </th>
+                          <th>
+                            Contact
+                          </th> 
                           <th>
                             Action
                           </th>
@@ -65,8 +53,7 @@
                         <tbody>
                           
                         <?php
-                        
-                                        
+                         
                 foreach( getEmergency()as $row ){
                       $id = $row['e_report_id'];
                       $date = $row['date_reported'];
@@ -79,25 +66,24 @@
                       $lat = $row['lat'];
                       $lng = $row['lng'];
                       $action =  "index.php?".md5("controller")."=".md5("add_marker");
+                      $status = $row['status'];
                               
                           echo'
                           <tr>
-                              
-                              
-                              <td>'.$date.'</td>
+                              <td>'.$reporter_name.'</td>
                              
                               <td>'.$report_details.'</td>
                               <td><img src="'.$report_image.'" width="90" height="70" data-toggle="modal" data-target="#modal-img'.$id.'"></td>
-                              <td>'.$reporter_name.'</td>
+                              <td>'.date("M d, Y h:i A", strtotime($date)).'</td>
+                              <td>'.$status.'</td>
                               <td>'.$reporter_contact.'</td>
-                              <td>'.$reporter_id.'</td>
                               
                               <td style="width:100px;text-align:center">
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#send'.$id.'" title="Edit"><i class="material-icons">
+                                <a class="btn btn-link btn-info btn-just-icon edit" style="cursor:pointer" data-toggle="modal" data-target="#send'.$id.'" title="Save as Incident Record"><i class="material-icons">
                                 add_box
                                 </i></a>
                                
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$id.'" title="Delete"><i class="material-icons">
+                                <a class="btn btn-link btn-danger btn-just-icon edit" style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$id.'" title="Delete Report"><i class="material-icons">
                                 clear
                                 </i></a>
                                 
@@ -170,13 +156,13 @@
                              
                                   <form role="form" id="save_emergency" action="'.$action.'"method="POST">
                                     Are you sure you want to save this record?
-                                    <input type="hidden" name="marker_id" value="'.$id.'">
-                                    <input type="hidden" name="date" value="'.$date.'">
-                                    <input type="hidden" name="report_details" value="'.$report_details.'">
+                                    <input type="text" name="marker_id" value="'.$id.'">
+                                    <input type="text" name="date" value="'.$date.'">
+                                    <input type="text" name="report_details" value="'.$report_details.'">
                                     <input type="hidden" name="image" value="'.$report_image.'">
-                                    <input type="hidden" name="reported_by" value="'.$reporter_id.'">
-                                    <input type="hidden" name="lat" value="'.$lat.'">
-                                    <input type="hidden" name="lng" value="'.$lng.'">
+                                    <input type="text" name="reported_by" value="'.$reporter_id.'">
+                                    <input type="text" name="lat" value="'.$lat.'">
+                                    <input type="text" name="lng" value="'.$lng.'">
                                     
                                     
 
@@ -211,11 +197,27 @@
     </div>
 
     <div id="map"></div>
-    
+ 
+
+  </style>
+
     <script>
      
     $(document).ready(function() {
-        $('#dataTables-emergency').DataTable();
+        $('#dataTables-emergency').DataTable({
+          "pagingType": "full_numbers",
+         "lengthMenu": [
+          [10, 25, 50, -1],
+          [10, 25, 50, "All"]
+        ],
+          responsive: true,
+          language: {
+          search: "_INPUT_",
+          searchPlaceholder: "Search records",
+        } 
+        });
+
+        $(".first.paginate_button, .last.paginate_button").remove (); 
     } );
 
     </script>

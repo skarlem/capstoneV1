@@ -158,7 +158,17 @@ include_once('add_marker_nav_support.php');
                     </div>
 
 
-                                        
+
+                                <div class="row">
+                      <label class="col-sm-1 col-form-label">Recommendation</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                        <textarea class="form-control" id="recommendation" name="recommendation" rows="3"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    
+                             
                <div class="row">
                <div class="btn-group col-sm-4">
                   <label class="col-sm-3 col-form-label">Incident Status</label>
