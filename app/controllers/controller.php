@@ -4,10 +4,10 @@
 
 
 function getConn(){
-$host = "host=bigeye.msugensan.edu.ph";
-$port = "port=5440";
+$host = "host=localhost";
+$port = "port=5432";
 $dbname = "dbname=bantaymsu";
-$credentials = "user=bea password=bea";
+$credentials = "user=postgres password=12345";
 
 $db = pg_connect( "$host $port $dbname $credentials" );
 	
@@ -359,7 +359,8 @@ return $markers;
 function getAccounts(){
 	
 $result = pg_query(getConn(), "
-select * from crime_db.accountsview;
+select * from crime_db.accounts as a inner join crime_db.role as b on a.role_id = b.role_id
+order by school_id;
 ");
 if (!$result) {
 		echo "An error occurred.\n";
@@ -531,45 +532,11 @@ if (isset($_GET[md5("controller")])){
 
 
 	
-	elseif ($_GET[md5("controller")]===md5('register')) {
-		if(empty($_SESSION)){
-			include('app/views/register.php');
-		if($_SERVER['REQUEST_METHOD'] == 'POST'){
-			
-			if(isset($_POST['register_submit'])){	
-				if(trim($_POST['password']) != trim($_POST['password2'])){
-					
-					echo'<script> swal({ title:"Warning!", text: "Password do not match!", type: "success", 
-						buttonsStyling: false, confirmButtonClass: "btn btn-success"});</script>';
-				}//end if password is not equal
-				else{	
-					unset($_POST['password2']);
-					$data= array(
-						'username'=>$_POST['username'],
-						'password'=>md5($_POST['password'])
-					);
-					addUser($data);
-					echo("<script>location.href = 'index.php?$cont=$dsh';</script>");
-				//	
-					echo "<script>demo.showNotification('top','right','Sucessfully registered');</script>";
-					}//end else
-
-				}//end if register submit
-
-			}//end if method is post
-
-		}//end if session is empty
-		else{
-			header("Location: index.php?".md5("controller")."=".$_SESSION["page"]); 
-		}
-	}//end else if 
-
 	else{
 		if($_GET[md5("controller")]===md5('map')){
 			getMarkers();
 			$_SESSION['page']=md5('map');
-			include_once('app/views/map.php');	
-		
+			include_once('app/views/map.php');
 		}
 
 
@@ -739,7 +706,6 @@ if (isset($_GET[md5("controller")])){
 		elseif($_GET[md5("controller")]===md5('edit_marker')){
 			session_start();
 			$_SESSION['page']=md5('edit_marker');
-			
 			include('app/views/edit_marker.php');
 
 			if(isset($_POST['add_item'])){
@@ -977,12 +943,14 @@ if (isset($_GET[md5("controller")])){
 						$fullname = $_POST['fullname'];
 						$contact = $_POST['contact'];
 						$email = $_POST['email'];
-					
+						$password =$_POST['password'];
+
 						$marker = array(
 							'username' => $username,
 							'fullname' => $fullname,
 							'contact_no' => $contact,
-							'university_email'=>$email
+							'university_email'=>$email,
+							'password'=>$password
 				);
 
 				$where = array("school_id" => $_POST['update_id']);
@@ -1004,7 +972,9 @@ if (isset($_GET[md5("controller")])){
 					$email = $_POST['email'];
 					$school_id =$_POST['school_id'];
 					$role=$_POST['role'];
-					$picture =$_POST['profile_picture'];
+					$picture =base64_encode($_POST['profile_pic']);
+					$password =$_POST['password'];
+					$gender =$_POST['gender'];
 					$marker = array(
 						'school_id'=>$school_id,
 						'role_id'=>$role,
@@ -1012,7 +982,9 @@ if (isset($_GET[md5("controller")])){
 						'fullname' => $fullname,
 						'contact_no' => $contact,
 						'university_email'=>$email,
-						'profile_pic'=>$picture
+						'profile_pic'=>$picture,
+						'password'=>$password,
+						'gender'=>$gender
 					);
 
 					insertAccount($marker);

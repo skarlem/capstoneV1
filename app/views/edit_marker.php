@@ -388,6 +388,7 @@ if(isset($_SESSION['marker_id'])){
       <div class="card-body " style="padding:75px;">
 
       <form role="form" id="edit-form" method="POST">
+      <image
       <input type="hidden" name="marker_id" value="123123123">
       <input type="hidden" name="lat" value="'.$lat.'"id="lat"readonly>
       <input type="hidden" name="lng" value="'.$lng.'"id="lng" readonly>

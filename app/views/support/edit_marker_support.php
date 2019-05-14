@@ -27,8 +27,9 @@ if(isset($_POST['save_emergency'])){
   $_SESSION['lng']=$_POST['lng'];
   $_SESSION['date']=$_POST['date'];
   $_SESSION['narrative']=$_POST['report_details'];
-  $_SESSION['reported_by']=$_POST['reporter_id'];
-
+  $_SESSION['reported_by']=$_POST['reported_by'];
+  $_SESSION['picture']=$_POST['picture'];
+  $_SESSION['marker_id']=$_POST['marker_id'];
 }
 
 if(isset($_POST['edit-form'])){
@@ -383,6 +384,7 @@ if(isset($_SESSION['marker_id'])){
     $incident_status=$_SESSION['incident_status'];
     $reported_by=$_SESSION['reported_by'];
     $recommendation=$_SESSION['recommendation'];
+    $picture=$_SESSION['picture'];
 
     echo'
 
@@ -398,10 +400,11 @@ if(isset($_SESSION['marker_id'])){
       <div class="card-body " style="padding:75px;">
 
       <form role="form" id="edit-form" method="POST">
-      <input type="hidden" name="marker_id" value="123123123">
+      <img src="data:image/jpeg;base64,'.$picture.'">
+      <input type="hidden" name="marker_id" value="'.$marker_id.'">
       <input type="hidden" name="lat" value="'.$lat.'"id="lat"readonly>
       <input type="hidden" name="lng" value="'.$lng.'"id="lng" readonly>
-
+    <img  src="'.$_SESSION['picture'].'"/>
       <div class="row">
         <label class="col-sm-1 col-form-label">Marker ID</label>
         <div class="col-sm-10">

@@ -75,10 +75,10 @@
                       $reporter_name = $row['reporter_fullname']; 
                       $reporter_id = $row['reporter_id'];
                       $reporter_contact = $row['contact_number'];
-                      $img = 'app/views/assets/img/logo-small.png';
+                      $img = $row['report_image'];
                       $lat = $row['lat'];
                       $lng = $row['lng'];
-                      $action =  "index.php?".md5("controller")."=".md5("add_marker_support");
+                      $action =  "index.php?".md5("controller")."=".md5("edit_marker_support");
                               
                           echo'
                           <tr>
@@ -87,7 +87,7 @@
                               <td>'.$date.'</td>
                              
                               <td>'.$report_details.'</td>
-                              <td><img src="'.$report_image.'" width="90" height="70" data-toggle="modal" data-target="#modal-img'.$id.'"></td>
+                              <td><img src="data:image/jpeg;base64,'.$report_image.'" width="90" height="70" data-toggle="modal" data-target="#modal-img'.$id.'"></td>
                               <td>'.$reporter_name.'</td>
                               <td>'.$reporter_contact.'</td>
                               <td>'.$reporter_id.'</td>
@@ -115,7 +115,7 @@
                                   <div class="modal-body">
                                       <div class="col-lg-12">
                                       <center>
-                                      <img src="'.$report_image.'">
+                                      <img src="data:image/jpeg;base64,'.$report_image.'">
                                          </center>
                                       </div>
                                   </div>
@@ -177,6 +177,7 @@
                                     <input type="hidden" name="reported_by" value="'.$reporter_id.'">
                                     <input type="hidden" name="lat" value="'.$lat.'">
                                     <input type="hidden" name="lng" value="'.$lng.'">
+                                    <input type="hidden" name="picture" value="'.$img.'">
                                     
                                     
 

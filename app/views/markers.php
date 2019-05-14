@@ -266,7 +266,7 @@
                                     <input type="hidden" name="marker_id" value="'.$id.'">
                                     <input type="hidden" name="lat" value="'.$lat.'">
                                     <input type="hidden" name="lng" value="'.$lng.'">
-                                    <input type="hidden" name="date" value="'.$date.'">
+                                    <input type="hidden" name="date" value="'.date("M d, Y", strtotime($date)).'">
                                     <input type="hidden" name="location" value="'.$location.'">
                                     <input type="hidden" name="category" value="'.$category_id.'">
                                     <input type="hidden" name="class" value="'.$class.'">
@@ -343,7 +343,7 @@
                                           </div>
                                           <div class="form-group input-group">
                                               <span class="input-group-addon"><i class="material-icons">event_note</i></span>
-                                              <input type="text" class="form-control" name="date" placeholder="Date" value="'.$date.'">
+                                              <input type="text" class="form-control" name="date" placeholder="Date" value="'.date("M d, Y", strtotime($date)).'">
                                           </div>
                                           <div class="form-group input-group">
                                               <span class="input-group-addon"><i class="material-icons">edit_location</i></span>

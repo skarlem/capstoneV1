@@ -126,7 +126,7 @@ include_once('accountsall_nav.php');
         <div class="col-sm-3">
         <div class="fileinput fileinput-new text-center" data-provides="fileinput">
   <div class="fileinput-new thumbnail img-raised">
-      <img src="'.$profile_pic.'" alt="...">
+      <img src="data:image/jpeg;base64,'.$profile_pic.'" alt="...">
   </div>
   <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
   <div>
@@ -277,26 +277,40 @@ include_once('accountsall_nav.php');
             <input type="file" name="profile_pic" id="profile_pic"/>
         </span>
         <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-    </div>
-  
-                  <div class="form-group input-group">
+    </div>                          
+</div>
+<!-- end rpw -->
+
+          </div>
+          
+    <div class="col-lg-10">
+    <div class="form-group input-group">
                           <select class="form-control selectpicker"data-dropup-auto="false" data-style="btn btn-link" id="role" name="role">
                             <option >Select Role</option>
                             <option value="0">Admin</option>
                             <option value="1">Responder</option>
                           </select>         
                         </div>
-</div>
-<!-- end rpw -->
-          </div>
+ 
+    <div class="form-group input-group">
+                          <select class="form-control selectpicker"data-dropup-auto="false" data-style="btn btn-link" id="gender" name="gender">
+                            <option >Select Gender</option>
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                          </select>         
+                        </div>
+    </div>
         </div>
       </div>
+       
+
        
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
                 <label class="bmd-label-floating">Username</label>
                 <input type="text" name="username" class="form-control" value="">
+               
               </div>
               <div class="form-group">
                 <label class="bmd-label-floating">School ID</label>
@@ -305,7 +319,11 @@ include_once('accountsall_nav.php');
             </div>
             
             <div class="col-md-4">
-              
+            <div class="form-group">
+            <label class="bmd-label-floating">Password</label>
+                <input type="text" name="password" class="form-control" value="">
+               
+              </div>
             </div>
           </div>
           <div class="row">
@@ -343,17 +361,10 @@ include_once('accountsall_nav.php');
     </div>
   </div>
 </div>
-
-           
-             
-          </div>
-                     
+          </div>       
          </div><!-- end form-body-->
-
         </form>
       </div><!-- end modal-body-->
-
-
   </div>
 </div>
 </div>

@@ -15,7 +15,7 @@ function loginAdmin($user, $password) {
             
             if ($user === $row['username'] && $password === $pass) {
               
-              
+                
                 if($row['role_id']==='0'){
                     echo("<script>location.href = 'index.php?$cont=$dsh';</script>");
                     echo $row['username'];
