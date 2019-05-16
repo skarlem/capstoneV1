@@ -66,7 +66,238 @@ $_SESSION['recommendation']=$_POST['recommendation'];
 <div class="content">
         <div class="container-fluid">
           <div class="row">
+
+
+
+
+
+          <?php
+if(isset($_SESSION['marker_id'])){  
+    $marker_id= $_SESSION['marker_id'];
+    $lat=$_SESSION['lat'];
+    $lng= $_SESSION['lng'];
+    $date=$_SESSION['date'];
+    $location=$_SESSION['location'];
+    $category=$_SESSION['category'];
+    $class=$_SESSION['class'];
+    $narrative=$_SESSION['narrative'];
+    $action_taken=$_SESSION['action_taken'];
+    $incident_status=$_SESSION['incident_status'];
+    $reported_by=$_SESSION['reported_by'];
+    $recommendation=$_SESSION['recommendation'];
+    $picture=$_SESSION['picture'];
+
+    echo'
+
+<div class="col-md-12">
+    <div class="card" >
+      <div class="card-header card-header-info card-header-text">
+        <div class="card-text">
+          <h4 class="card-title">Incident Details</h4>
+          <span class="badge badge-neutral">Edit Marker: '.$_SESSION['marker_id'].'</span>
+
+        </div>
+      </div>
+      <div class="card-body " style="padding:75px;">
+
+      <form role="form" id="edit-form" method="POST">
+      <img src="data:image/jpeg;base64,'.$picture.'">
+      <input type="hidden" name="marker_id" value="'.$marker_id.'">
+      <input type="hidden" name="lat" value="'.$lat.'"id="lat"readonly>
+      <input type="hidden" name="lng" value="'.$lng.'"id="lng" readonly>
+    <img  src="'.$_SESSION['picture'].'"/>
+      <div class="row">
+        <label class="col-sm-1 col-form-label">Marker ID</label>
+        <div class="col-sm-10">
+          <div class="form-group">
+            <input type="text" class="form-control" value="'.$marker_id.'" disabled>
+          </div>
+        </div>
+      </div>
+      <!-- end first row -->
+    
+
+
+
+      <div class="row"> 
+        <div class="btn-group col-sm-4">
+        <label class="col-sm-3 col-form-label">Class</label>
+          <div class="form-group input-group">
+            <select class="form-control selectpicker"data-dropup-auto="false" value="'.$class.'"data-style="btn btn-link" id="class" name="class">
+              <option >Select</option>
+              <option value="1">Emergency</option>
+              <option value="2">Non-Emergency</option>
+            </select>         
+          </div>
+        </div>
+    </div> 
+
+
+
+                    
+  <div class="row">
+    <div class="btn-group col-sm-4">
+    <label class="col-sm-3 col-form-label">Category</label>
+      <div class="form-group input-group">
+        <select class="form-control selectpicker " data-dropup-auto="false" value="'.$category.'"data-style="btn btn-link" id="category" name="category">
+              <option >Select</option>
+              <option value="1">Disorder</option>
+              <option value="2">Drugs</option>
+              <option value="3">Death</option>
+              <option value="4">Assault</option>
             
+              <option value="5">Rape</option>
+              <option value="6">Lasciviousness</option>
+              <option value="7">Robbery</option>
+              <option value="8">Theft</option>
+              <option value="9">Breaking and Entering</option>
+              <option value="10">Emergency (Disasters)</option>
+              <option value="11">Fire</option>
+              <option value="12">Vehicular Accidents</option>
+              <option value="13">Animal Bite</option>
+            </select>         
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+    <div class="btn-group col-sm-4">
+    <label class="col-sm-3 col-form-label">Date</label>
+      <div class="input-group form-control-lg">
+          <div class="form-group bmd-form-group is-filled">
+             
+              <input type="text" class="form-control datetimepicker-input" value="'.$date.'" required oninvalid="" id="date"name="date" data-toggle="datetimepicker" data-target="#date"/>
+             
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="btn-group col-sm-4">
+    <label class="col-sm-3 col-form-label">Reported by</label>
+      <div class="input-group form-control-lg">
+      <div class="form-group">
+           
+            <input type="text" id="reported_by" name="reported_by" value="'.$reported_by.'"placeholder="ID Number" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+        <label class="col-sm-1 col-form-label">Location Description</label>
+        <div class="col-sm-10">
+          <div class="form-group">
+          <textarea class="form-control" id="location"name="location" rows="3">'.$location.'</textarea>
+          </div>
+        </div>
+      </div>
+
+    <div style="align-content: center; padding-left:350px;">
+        <div class="row" >
+          <div class="card col-sm-9" style="padding-right:- 50px;">
+            Click on Map to put a Marker
+            <div id="map"style="height: 600px; width: 900px; "></div>
+          </div>
+        </div>
+    </div>
+   
+   
+
+    <div class="row">
+        <label class="col-sm-1 col-form-label">Incident Narrative</label>
+        <div class="col-sm-10">
+          <div class="form-group">
+          <textarea class="form-control" id="narrative"  name="narrative" rows="3">'.$narrative.'</textarea>
+          </div>
+        </div>
+      </div>
+
+      
+    <div class="row">
+        <label class="col-sm-1 col-form-label">Action Taken</label>
+        <div class="col-sm-10">
+          <div class="form-group">
+          <textarea class="form-control" id="action_taken" name="action_taken" rows="3">'.$action_taken.'</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      <label class="col-sm-1 col-form-label">Recommendation</label>
+      <div class="col-sm-10">
+        <div class="form-group">
+        <textarea class="form-control" id="recommendation" name="recommendation" rows="3">'.$recommendation.'</textarea>
+        </div>
+      </div>
+    </div>
+
+                          
+ <div class="row">
+ <div class="btn-group col-sm-4">
+    <label class="col-sm-3 col-form-label">Incident Status</label>
+      <div class="form-group input-group">
+      <select class="form-control selectpicker"  data-dropup-auto="false" required oninvalid="" value="'.$incident_status.'"data-style="btn btn-link" id="incident_status" name="incident_status">
+          <option >Select</option>
+          <option value="1">Resolved</option>
+          <option value="2">Unresolved</option>
+          <option value="3">Under Investigation</option>
+          <option value="4">Forwarded to OSA</option>
+          <option value="5">Forwarded to PNP</option>
+          <option value="6">Resolved in OSA</option>
+          <option value="7">Settled</option>
+          <option value="8">Settled in OSA</option>
+          <option value="9">Investigated</option>
+                 
+        </div>
+      </div>
+ </div>
+    
+   
+      <div class="row">
+       
+        <div class="col-sm-10">
+          <div class="form-group">
+          <input type="hidden">
+          </div>
+        </div>
+      </div> 
+       
+      <div class="col-md-4 ml-auto mr-auto text-center">
+      <button type="button" class="btn btn-secondary btn-cancel">
+     Cancel
+    </button>
+      <button type="button" name="edit_form"class="btn btn-primary btn-add">
+        Save
+      </button>
+     </div>    
+  </form>
+
+
+<!-- END PHP HERE -->
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+<script type="text/javascript" src="app/js/add_marker.js" onload="initMap()"charset="UTF-8"></script>
+       
+    ';
+} 
+ 
+?>
+
+<!-- end row -->
+
+
+
 <div class="col-md-12">
     <div class="card ">
       <div class="card-header card-info-info card-header-text">
@@ -370,230 +601,6 @@ $_SESSION['recommendation']=$_POST['recommendation'];
 </div>
 </div>
 
-<?php
-if(isset($_SESSION['marker_id'])){  
-    $marker_id= $_SESSION['marker_id'];
-    $lat=$_SESSION['lat'];
-    $lng= $_SESSION['lng'];
-    $date=$_SESSION['date'];
-    $location=$_SESSION['location'];
-    $category=$_SESSION['category'];
-    $class=$_SESSION['class'];
-    $narrative=$_SESSION['narrative'];
-    $action_taken=$_SESSION['action_taken'];
-    $incident_status=$_SESSION['incident_status'];
-    $reported_by=$_SESSION['reported_by'];
-    $recommendation=$_SESSION['recommendation'];
-    $picture=$_SESSION['picture'];
-
-    echo'
-
-<div class="col-md-12">
-    <div class="card" >
-      <div class="card-header card-header-info card-header-text">
-        <div class="card-text">
-          <h4 class="card-title">Incident Details</h4>
-          <span class="badge badge-neutral">Edit Marker: '.$_SESSION['marker_id'].'</span>
-
-        </div>
-      </div>
-      <div class="card-body " style="padding:75px;">
-
-      <form role="form" id="edit-form" method="POST">
-      <img src="data:image/jpeg;base64,'.$picture.'">
-      <input type="hidden" name="marker_id" value="'.$marker_id.'">
-      <input type="hidden" name="lat" value="'.$lat.'"id="lat"readonly>
-      <input type="hidden" name="lng" value="'.$lng.'"id="lng" readonly>
-    <img  src="'.$_SESSION['picture'].'"/>
-      <div class="row">
-        <label class="col-sm-1 col-form-label">Marker ID</label>
-        <div class="col-sm-10">
-          <div class="form-group">
-            <input type="text" class="form-control" value="'.$marker_id.'" disabled>
-          </div>
-        </div>
-      </div>
-      <!-- end first row -->
-    
-
-
-
-      <div class="row"> 
-        <div class="btn-group col-sm-4">
-        <label class="col-sm-3 col-form-label">Class</label>
-          <div class="form-group input-group">
-            <select class="form-control selectpicker"data-dropup-auto="false" value="'.$class.'"data-style="btn btn-link" id="class" name="class">
-              <option >Select</option>
-              <option value="1">Emergency</option>
-              <option value="2">Non-Emergency</option>
-            </select>         
-          </div>
-        </div>
-    </div> 
-
-
-
-                    
-  <div class="row">
-    <div class="btn-group col-sm-4">
-    <label class="col-sm-3 col-form-label">Category</label>
-      <div class="form-group input-group">
-        <select class="form-control selectpicker " data-dropup-auto="false" value="'.$category.'"data-style="btn btn-link" id="category" name="category">
-              <option >Select</option>
-              <option value="1">Disorder</option>
-              <option value="2">Drugs</option>
-              <option value="3">Death</option>
-              <option value="4">Assault</option>
-            
-              <option value="5">Rape</option>
-              <option value="6">Lasciviousness</option>
-              <option value="7">Robbery</option>
-              <option value="8">Theft</option>
-              <option value="9">Breaking and Entering</option>
-              <option value="10">Emergency (Disasters)</option>
-              <option value="11">Fire</option>
-              <option value="12">Vehicular Accidents</option>
-              <option value="13">Animal Bite</option>
-            </select>         
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row">
-    <div class="btn-group col-sm-4">
-    <label class="col-sm-3 col-form-label">Date</label>
-      <div class="input-group form-control-lg">
-          <div class="form-group bmd-form-group is-filled">
-             
-              <input type="text" class="form-control datetimepicker-input" value="'.$date.'" required oninvalid="" id="date"name="date" data-toggle="datetimepicker" data-target="#date"/>
-             
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-    <div class="btn-group col-sm-4">
-    <label class="col-sm-3 col-form-label">Reported by</label>
-      <div class="input-group form-control-lg">
-      <div class="form-group">
-           
-            <input type="text" id="reported_by" name="reported_by" value="'.$reported_by.'"placeholder="ID Number" class="form-control">
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="row">
-        <label class="col-sm-1 col-form-label">Location Description</label>
-        <div class="col-sm-10">
-          <div class="form-group">
-          <textarea class="form-control" id="location"name="location" rows="3">'.$location.'</textarea>
-          </div>
-        </div>
-      </div>
-
-    <div style="align-content: center; padding-left:350px;">
-        <div class="row" >
-          <div class="card col-sm-9" style="padding-right:- 50px;">
-            Click on Map to put a Marker
-            <div id="map"style="height: 600px; width: 900px; "></div>
-          </div>
-        </div>
-    </div>
-   
-   
-
-    <div class="row">
-        <label class="col-sm-1 col-form-label">Incident Narrative</label>
-        <div class="col-sm-10">
-          <div class="form-group">
-          <textarea class="form-control" id="narrative"  name="narrative" rows="3">'.$narrative.'</textarea>
-          </div>
-        </div>
-      </div>
-
-      
-    <div class="row">
-        <label class="col-sm-1 col-form-label">Action Taken</label>
-        <div class="col-sm-10">
-          <div class="form-group">
-          <textarea class="form-control" id="action_taken" name="action_taken" rows="3">'.$action_taken.'</textarea>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-      <label class="col-sm-1 col-form-label">Recommendation</label>
-      <div class="col-sm-10">
-        <div class="form-group">
-        <textarea class="form-control" id="recommendation" name="recommendation" rows="3">'.$recommendation.'</textarea>
-        </div>
-      </div>
-    </div>
-
-                          
- <div class="row">
- <div class="btn-group col-sm-4">
-    <label class="col-sm-3 col-form-label">Incident Status</label>
-      <div class="form-group input-group">
-      <select class="form-control selectpicker"  data-dropup-auto="false" required oninvalid="" value="'.$incident_status.'"data-style="btn btn-link" id="incident_status" name="incident_status">
-          <option >Select</option>
-          <option value="1">Resolved</option>
-          <option value="2">Unresolved</option>
-          <option value="3">Under Investigation</option>
-          <option value="4">Forwarded to OSA</option>
-          <option value="5">Forwarded to PNP</option>
-          <option value="6">Resolved in OSA</option>
-          <option value="7">Settled</option>
-          <option value="8">Settled in OSA</option>
-          <option value="9">Investigated</option>
-                 
-        </div>
-      </div>
- </div>
-    
-   
-      <div class="row">
-       
-        <div class="col-sm-10">
-          <div class="form-group">
-          <input type="hidden">
-          </div>
-        </div>
-      </div> 
-       
-      <div class="col-md-4 ml-auto mr-auto text-center">
-      <button type="button" class="btn btn-secondary btn-cancel">
-     Cancel
-    </button>
-      <button type="button" name="edit_form"class="btn btn-primary btn-add">
-        Save
-      </button>
-     </div>    
-  </form>
-
-
-<!-- END PHP HERE -->
-    </div>
-</div>
-</div>
-</div>
-
-</div>
-
-
-
-<script type="text/javascript" src="app/js/add_marker.js" onload="initMap()"charset="UTF-8"></script>
-       
-    ';
-} 
- 
-?>
-
-<!-- end row -->
 
       </div>
     </div>

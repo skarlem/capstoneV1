@@ -1,6 +1,10 @@
 
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+
+  <title>
+    Bantay-e | Admin
+  </title>  
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 
@@ -101,6 +105,3 @@
 
 <script type="text/javascript" src=".assets/datepicket/src/js/tempusdominus-bootstrap-4.min.js"></script>
 <link rel="stylesheet" href="./assets/datepicket/src/css/tempusdominus-bootstrap-4.min.css" />
-
-<script type="text/javascript" src="./app/js/websocket.js"></script>
-

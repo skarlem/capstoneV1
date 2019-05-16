@@ -13,7 +13,7 @@ include_once('accountsall_nav.php');
                     <i class="material-icons">assignment</i>
                   </div>
                   <h4 class="card-title">All Accounts</h4>
-                <button class="btn btn-primary float-right"  data-toggle="modal" data-target="#add-account-modal">Add Account</button>
+                <button class="btn btn-info float-right"  data-toggle="modal" data-target="#add-account-modal">Add Account</button>
                <span style="float: right;">
                  <div class="input-group no-border">
                      
@@ -98,7 +98,7 @@ include_once('accountsall_nav.php');
 
                   
 
-<div class="modal fade bd-example-modal-lg"data-backdrop="static" data-keyboard="false" id="exampleModal'.$id.'" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="exampleModal'.$id.'" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 <div class="modal-dialog ">
   <div class="modal-content">
   <div class="modal-header">
@@ -142,7 +142,7 @@ include_once('accountsall_nav.php');
                         <select class="form-control selectpicker"data-dropup-auto="false" data-style="btn btn-link" id="role" name="role">
                           <option >Select Role</option>
                           <option value="0">Admin</option>
-                          <option value="1">Responder</option>
+                          <option value="2">Responder</option>
                         </select>         
                       </div>
 </div>
@@ -239,7 +239,7 @@ include_once('accountsall_nav.php');
   
                   
 
-<div class="modal fade bd-example-modal-lg"data-backdrop="static"  id="add-account-modal" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="add-account-modal" id role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
   <div class="modal-header">
@@ -288,7 +288,7 @@ include_once('accountsall_nav.php');
                           <select class="form-control selectpicker"data-dropup-auto="false" data-style="btn btn-link" id="role" name="role">
                             <option >Select Role</option>
                             <option value="0">Admin</option>
-                            <option value="1">Responder</option>
+                            <option value="2">Responder</option>
                           </select>         
                         </div>
  

@@ -1,5 +1,5 @@
   <div class="wrapper ">
-    <div class="sidebar" data-color="azure" data-background-color="azure" data-image="../assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="azure" data-background-color="azure" data-image="">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -47,7 +47,7 @@
         <i class="material-icons">
 note_add
 </i>
-          <p>Add Markers</p>
+          <p>Add Incident Records</p>
         </a>
       </li>
           
@@ -71,24 +71,7 @@ note_add
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               
-           <!-- dropdown for notification--> 
-           <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">notifications</i>
-                  <span class="notification">5</span>
-                  <p class="d-lg-none d-md-block">
-                    Some Actions
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                  <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                  
-                </div>
-              </li>
-             <!-- /dropdown for noticification--> 
-
-
+       
              <!-- dropdown for settings--> 
              <li class="nav-item dropdown">
                 <a class="nav-link"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

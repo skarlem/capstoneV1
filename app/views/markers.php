@@ -236,7 +236,7 @@
                             </div>
                             <div class="modal-footer">
                                   <div class="col-lg-12">
-                                      <button type="submit" class="btn btn-info float-right" id="btnPrint" >Print</button>
+                          
                                       <button type="button" class="btn btn-default float-right" data-dismiss="modal">Close</button>
                                       
                                   </div>
@@ -276,14 +276,16 @@
                                     <input type="hidden" name="reported_by" value="'.$school_id.'">
                                     <input type="hidden" name="narrative_id" value="'.$narrative_id.'">
                                     <input type="hidden" name="recommendation" value="'.$recommendation.'">
+                                    <input type="hidden" name="edit_marker" value="edit_marker">
                               </div>
                           </div>
                           <div class="modal-footer">
                               <div class="col-lg-12">
-                              <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-        
-                                  <button type="submit" class="btn btn-danger float-right " name="edit_marker" ><i class="fa fa-check"></i> Yes</button>
+                              <button type="submit" class="btn btn-info float-right " name="edit_marker" >Yes</button>
      
+                              <button type="button" class="btn btn-secondary float-right" data-dismiss="modal"> No </button>
+        
+                                 
                               </div>
                           </div>
                         </form>

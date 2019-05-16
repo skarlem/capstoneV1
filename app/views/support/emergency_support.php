@@ -93,13 +93,14 @@
                               <td>'.$reporter_id.'</td>
                               
                               <td style="width:100px;text-align:center">
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#send'.$id.'" title="Edit"><i class="material-icons">
-                                add_box
-                                </i></a>
+                              <a class="btn btn-link btn-warning btn-just-icon edit" style="cursor:pointer" data-toggle="modal" data-target="#send'.$id.'" title="Edit"><i class="material-icons">
+                              add_box
+                              </i></a>
                                
-                                <a style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$id.'" title="Delete"><i class="material-icons">
-                                clear
-                                </i></a>
+                              <a class="btn btn-link btn-danger btn-just-icon edit" style="cursor:pointer" data-toggle="modal"data-target="#ModalDelete'.$id.'" title="Delete"><i class="material-icons">
+                              clear
+                              </i></a>
+                              
                                 
                               </td>
                           </tr>
@@ -185,9 +186,10 @@
                           </div>
                           <div class="modal-footer">
                               <div class="col-lg-12">
-                              <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
+                              <button type="submit" class="btn btn-info float-right " name="save_emergency" > Yes</button>
+                              <button type="button" class="btn btn-secondary float-right" data-dismiss="modal"> No </button>
         
-                                  <button type="submit" class="btn btn-danger float-right " name="save_emergency" ><i class="fa fa-check"></i> Yes</button>
+                                 
      
                               </div>
                           </div>

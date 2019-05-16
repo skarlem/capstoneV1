@@ -72,7 +72,7 @@ function initMap(){
                         attribution: 'Map data &copy; ' + mapLink,
                         maxZoom: 25,
                         }).addTo(map);
-              map.on('dblclick', onMapClick);
+             
               map.keyboard.disable();
               map.doubleClickZoom.disable();
               map.options.maxZoom = 18;
@@ -82,6 +82,16 @@ function initMap(){
   
 }
 
+
+
+function clearMarkers2(){
+  map.eachLayer(function (layer) {
+        map.removeLayer(layer);
+       });
+  map.remove();
+   initMap2();
+  
+}
 
 function initMap2(){
   var location = '';
@@ -93,7 +103,7 @@ function initMap2(){
                       attribution: 'Map data &copy; ' + mapLink,
                       maxZoom: 25,
                       }).addTo(map);
-            map.on('dblclick', onMapClick);
+            
             map.keyboard.disable();
             map.doubleClickZoom.disable();
             map.options.maxZoom = 18;
@@ -102,6 +112,10 @@ function initMap2(){
             satView();
 
 }
+var customOptions ={
+        'maxWidth': '500',
+        'className' : 'custom'
+        }
 var customOptions ={
         'maxWidth': '500',
         'className' : 'custom'
@@ -144,17 +158,6 @@ function clearMarkers(){
     initMap();
    
 }
-
-
-function clearMarkers2(){
-  map.eachLayer(function (layer) {
-        map.removeLayer(layer);
-       });
-  map.remove();
-   initMap2();
-  
-}
-
 
 
 function formatDate(dates){
@@ -290,7 +293,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
       "Incident Category:"+jsonMap2[i]["category_desc"]+"<br>"+
       "Date: "+formatDate(jsonMap2[i][3])+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Location:"+jsonMap2[i][4 ]+"<br>"+
       "Incident Status:</font><span class='badge badge-info'>"+jsonMap2[i]['status_description']+"</span>",popupOptions);
       layer = L.layerGroup([marker]).addTo(map); 
 
@@ -332,9 +335,6 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
 }
 
 
-
-
-
 //load the markers
 function getMarkers3(){
   console.log(document.getElementById('date2').value);
@@ -342,12 +342,10 @@ function getMarkers3(){
    var startDate = new Date(document.getElementById('date1').value);
     var crime_type = document.getElementsByName('category'); 
     var classification_arr=document.getElementById('classification_nav').value;
-    
-    
- 
+
  
     var button = ' <br><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</button>';
-    var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
+    var button2 = ' <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
    
     var popupOptions ={
      'maxWidth': '2000',
@@ -360,26 +358,20 @@ function getMarkers3(){
    else{
       var counter =0;
        console.log(endDate);
-       console.log(startDate);
- 
- 
-       
+       console.log(startDate); 
       }
-      
        $.getJSON("app/controllers/results.json", function(jsonMap2) {
              for(var i=0; i<jsonMap2.length; i++){
                
-                     if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
+                     if( new Date(formatDate(jsonMap2[i][3]))>= startDate &&  new Date(formatDate(jsonMap2[i][3])) <=endDate ){
                       
                       loadMarkerImg(jsonMap2,i,button,button2,popupOptions); 
                }
              }
-       
           }); 
-     
-   }    
-
-
+   } 
+   
+   
 
 //load the markers
 function getMarkers2(){
@@ -393,7 +385,7 @@ function getMarkers2(){
 
 
    var button = ' <br><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</button>';
-   var button2 = ' <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
+   var button2 = ' <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModalDelete">Remove </button>';
   
    var popupOptions ={
     'maxWidth': '2000',
@@ -406,29 +398,19 @@ function getMarkers2(){
   else{
      var counter =0;
       console.log(endDate);
-      console.log(startDate);
-
-
-      
+      console.log(startDate);  
      }
      
       $.getJSON("app/controllers/results.json", function(jsonMap2) {
             for(var i=0; i<jsonMap2.length; i++){
               for(var j=0; j<crime_type.length; j++){
-               
-                  console.log(classification_arr);
-                  console.log(crime_type.length);
                  
                  if (crime_type[j].checked == true) {
-                  console.log(crime_type[j].value);
-                  console.log(jsonMap2[i]["category_desc"]+"checked");
-                    if( new Date(jsonMap2[i][3])>= startDate &&  new Date(jsonMap2[i][3]) <=endDate ){
-                     
-                      console.log(crime_type[j].value);
-                      console.log(jsonMap2[i]["category_desc"]);
+                    console.log('qweqwe');
+                   // console.log(formatDate(formatDate(jsonMap2[i][3]))+"daaaaate");
+                    if( new Date(formatDate(jsonMap2[i][3]))>= startDate &&  new Date(formatDate(jsonMap2[i][3])) <=endDate ){
+                     console.log(formatDate(formatDate(jsonMap2[i][3]))+"daaaaate");
                         if(jsonMap2[i]['category_desc']==crime_type[j].value){
-                          console.log(jsonMap2[i]['classification']+"jsonmap classi");
-                          console.log(classification_arr+"classi_arr");
                           
                          
                           if(jsonMap2[i]['classification_id']==classification_arr){

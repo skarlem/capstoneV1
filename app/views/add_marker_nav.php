@@ -48,7 +48,7 @@
         <i class="material-icons">
 note_add
 </i>
-          <p>Add Markers</p>
+          <p>Add Incident Records</p>
         </a>
       </li>
           
@@ -60,7 +60,7 @@ note_add
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="">Add Marker</a>
+            <a class="navbar-brand" href="">Add Incident Record</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>

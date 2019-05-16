@@ -293,7 +293,7 @@ function loadMarkerImg(jsonMap2,i,button,button2,popupOptions){
       "<font color='black'>Incident ID:"+jsonMap2[i][0]+"<br>"+
       "Incident Category:"+jsonMap2[i]["category_desc"]+"<br>"+
       "Date: "+formatDate(jsonMap2[i][3])+"<br>"+
-      "Location:"+jsonMap2[i][4]+"<br>"+
+      "Location:"+jsonMap2[i][4 ]+"<br>"+
       "Incident Status:</font><span class='badge badge-info'>"+jsonMap2[i]['status_description']+"</span>",popupOptions);
       layer = L.layerGroup([marker]).addTo(map); 
 

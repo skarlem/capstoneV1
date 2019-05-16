@@ -232,9 +232,7 @@ include_once('dashboard_nav_support.php');
                                   <i class="material-icons">weekend</i>
                                 </div>
                                 <p class="card-category">Total Incident Records</p>
-                                <h3 class="card-title"><?php
-                                echo getTotalCrime()[0][0];
-                                ?></h3>
+                                <h3 class="card-title"><?php echo getTotalCrime()[0][0];?></h3>
                               </div>
                               <div class="card-footer">
                                 <div class="stats">

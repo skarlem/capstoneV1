@@ -31,7 +31,7 @@ include_once('dashboard_nav.php');
             
   <br><br>
               
-                <input type="hidden" required oninvalid=""
+                <input type="text" required oninvalid=""
                 id="date1"name="date1" readonly/>
                 <script>
                  var today1 = new Date();
@@ -54,7 +54,7 @@ include_once('dashboard_nav.php');
               <div class="input-group">
                 
                
-                  <input type="hidden" id="date2"name="date2" readonly />
+                  <input type="text" id="date2"name="date2" readonly />
                 
                 <script>
                 var today1 = new Date().toLocaleDateString(undefined, {
@@ -199,7 +199,7 @@ include_once('dashboard_nav.php');
 
             </li>
 
-            <button class="btn btn-primary" onclick="clearMarkers()">Apply Filter</button>
+            <button class="btn btn-info" onclick="clearMarkers()">Apply Filter</button>
     
                            </div><!-- end col-->
 
@@ -754,8 +754,6 @@ include_once('dashboard_nav.php');
                 $(document).ready(function() {
                   // Javascript method's body can be found in assets/js/demos.js
                   md.initDashboardPageCharts();
-
-                  md.initVectorMap();
 
                 });
               </script>

@@ -49,7 +49,7 @@
         <i class="material-icons">
 note_add
 </i>
-          <p>Add Markers</p>
+          <p>Add Incident Records</p>
         </a>
       </li>
 

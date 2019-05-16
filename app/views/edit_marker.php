@@ -18,25 +18,10 @@ if(isset($_POST['edit_marker'])){
   $_SESSION['reported_by']=$_POST['reported_by'];
   $_SESSION['narrative_id']=$_POST['narrative_id'];
   $_SESSION['recommendation']=$_POST['recommendation'];
-
+  $_SESSION['edit_marker']=$_POST['edit_marker'];
+  unset($_SESSION['add_marker']);
 }
 
-if(isset($_POST['edit-form'])){
-$_SESSION['marker_id']=$_POST['marker_id'];
-$_SESSION['lat']=$_POST['lat'];
-$_SESSION['lng']=$_POST['lng'];
-$_SESSION['date']=$_POST['date'];
-$_SESSION['location']=$_POST['location'];
-$_SESSION['category']=$_POST['category'];
-$_SESSION['class']=$_POST['class'];
-$_SESSION['narrative']=$_POST['narrative'];
-$_SESSION['action_taken']=$_POST['action_taken'];
-$_SESSION['incident_status']=$_POST['incident_status'];
-$_SESSION['reported_by']=$_POST['reported_by'];
-$_SESSION['narrative_id']=$_POST['narrative_id'];
-$_SESSION['recommendation']=$_POST['recommendation'];
-
-}
 if(isset($_POST['add_form'])){
 $_SESSION['marker_id']=$_POST['marker_id'];
 $_SESSION['lat']=$_POST['lat'];
@@ -50,12 +35,208 @@ $_SESSION['action_taken']=$_POST['action_taken'];
 $_SESSION['incident_status']=$_POST['incident_status'];
 $_SESSION['reported_by']=$_POST['reported_by'];
 $_SESSION['recommendation']=$_POST['recommendation'];
+$_SESSION['add_marker']=$_POST['add_marker'];
+unset($_SESSION['edit_marker']);
 }
 ?>
 <div class="content">
         <div class="container-fluid">
           <div class="row">
-            
+
+
+
+    <?php
+    
+if(isset($_SESSION['add_marker'])){  
+  $marker_id= $_SESSION['marker_id'];
+  $lat=$_SESSION['lat'];
+  $lng= $_SESSION['lng'];
+  $date=$_SESSION['date'];
+  $location=$_SESSION['location'];
+  $category=$_SESSION['category'];
+  $class=$_SESSION['class'];
+  $narrative=$_SESSION['narrative'];
+  $action_taken=$_SESSION['action_taken'];
+  $incident_status=$_SESSION['incident_status'];
+  $reported_by=$_SESSION['reported_by'];
+  $recommendation=$_SESSION['recommendation'];
+  unset($_SESSION['edit_marker']);
+  echo'
+
+<div class="col-md-12">
+  <div class="card" >
+    <div class="card-header card-header-info card-header-text">
+      <div class="card-text">
+        <h4 class="card-title">Incident Details</h4>
+        <span class="badge badge-neutral">Add Marker: '.$_SESSION['marker_id'].'</span>
+
+      </div>
+    </div>
+    <div class="card-body " style="padding:75px;">
+
+    <form role="form" id="add-form" method="POST">
+
+    <input type="text" name="marker_id" value="'.$marker_id.'">
+    <input type="text" name="lat" value="'.$lat.'"id="lat"readonly>
+    <input type="text" name="lng" value="'.$lng.'"id="lng" readonly>
+
+    <div class="row">
+      <label class="col-sm-1 col-form-label">Marker ID</label>
+      <div class="col-sm-10">
+        <div class="form-group">
+          <input type="text" class="form-control" value="'.$marker_id.'" disabled>
+        </div>
+      </div>
+    </div>
+    <!-- end first row -->
+  
+
+
+
+    <div class="row"> 
+      <div class="btn-group col-sm-4">
+      <label class="col-sm-3 col-form-label">Class</label>
+        <div class="form-group input-group">
+        <input type="text" class="form-control" id="class" name="class"value="'.$class.'" disabled>
+
+        </div>
+      </div>
+  </div> 
+
+
+
+                  
+<div class="row">
+  <div class="btn-group col-sm-4">
+  <label class="col-sm-3 col-form-label">Category</label>
+    <div class="form-group input-group">
+    <input type="text" class="form-control" id="class" name="class"value="'.$category.'"  id="category" name="category" disabled>
+       
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+  <div class="btn-group col-sm-4">
+  <label class="col-sm-3 col-form-label">Date</label>
+    <div class="input-group form-control-lg">
+        <div class="form-group bmd-form-group is-filled">
+           
+            <input type="text" class="form-control datetimepicker-input" value="'.$date.'" required oninvalid="" id="date"name="date" data-toggle="datetimepicker" data-target="#date"/>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="btn-group col-sm-4">
+  <label class="col-sm-3 col-form-label">Reported by</label>
+    <div class="input-group form-control-lg">
+    <div class="form-group">
+         
+          <input type="text" id="reported_by" name="reported_by" value="'.$reported_by.'"placeholder="ID Number" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+      <label class="col-sm-1 col-form-label">Location Description</label>
+      <div class="col-sm-10">
+        <div class="form-group">
+        <textarea class="form-control" id="location"name="location" rows="3">'.$location.'</textarea>
+        </div>
+      </div>
+    </div>
+
+  <div style="align-content: center; padding-left:350px;">
+      <div class="row" >
+        <div class="card col-sm-9" style="padding-right:- 50px;">
+          Click on Map to put a Marker
+          <div id="map"style="height: 600px; width: 900px; "></div>
+        </div>
+      </div>
+  </div>
+ 
+ 
+
+  <div class="row">
+      <label class="col-sm-1 col-form-label">Incident Narrative</label>
+      <div class="col-sm-10">
+        <div class="form-group">
+        <textarea class="form-control" id="narrative"  name="narrative" rows="3">'.$narrative.'</textarea>
+        </div>
+      </div>
+    </div>
+
+    
+  <div class="row">
+      <label class="col-sm-1 col-form-label">Action Taken</label>
+      <div class="col-sm-10">
+        <div class="form-group">
+        <textarea class="form-control" id="action_taken" name="action_taken" rows="3">'.$action_taken.'</textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <label class="col-sm-1 col-form-label">Recommendation</label>
+    <div class="col-sm-10">
+      <div class="form-group">
+      <textarea class="form-control" id="recommendation" name="recommendation" rows="3">'.$recommendation.'</textarea>
+      </div>
+    </div>
+  </div>
+
+                        
+<div class="row">
+<div class="btn-group col-sm-4">
+  <label class="col-sm-3 col-form-label">Incident Status</label>
+    <div class="form-group input-group">
+    <input type="text" value="'.$incident_status.'" id="incident_status" name="incident_status"readonly/>
+
+    </div>
+</div>
+  
+ 
+    <div class="row">
+     
+      <div class="col-sm-10">
+        <div class="form-group">
+        <input type="hidden">
+        </div>
+      </div>
+    </div> 
+    <input type="text" class="form-control" id="add_id" name="add_id" value="'. $_SESSION['marker_id'].'" readonly>
+     
+    <div class="col-md-4 ml-auto mr-auto text-center">
+    <button type="button" class="btn btn-secondary btn-cancel">
+   Cancel
+  </button>
+    <button type="submit" name="add-form"class="btn btn-info">
+      Save
+    </button>
+   </div>    
+</form>
+
+
+<!-- END PHP HERE -->
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+
+<script type="text/javascript" src="app/js/add_marker.js" onload="initMap()"charset="UTF-8"></script>
+       
+     
+  ';
+} 
+    ?>        
 <div class="col-md-12">
     <div class="card ">
       <div class="card-header card-info-info card-header-text">
@@ -64,7 +245,7 @@ $_SESSION['recommendation']=$_POST['recommendation'];
          
         </div> 
         <br>
-        <button class="btn btn-primary float-right"  data-toggle="modal" data-target="#add-item-modal">Add Item</button>
+        <button class="btn btn-info float-right"  data-toggle="modal" data-target="#add-item-modal">Add Item</button>
       </div>
       <div class="card-body " style="padding:50px;">
 
@@ -106,9 +287,9 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                               <td>'.$quantity.'</td>
                               <td>'.$est_worth.'</td>
                               <td style="width:100px;text-align:center">
-                              <a style="cursor:pointer" data-toggle="modal" data-target="#Edit'.$item_id.'" title="Edit"><i class="fa fa-edit"></i></a>
+                              <a class="btn btn-link btn-warning btn-just-icon edit" style="cursor:pointer" data-toggle="modal" data-target="#Edititem'.$item_id.'" title="Edit"><i class="fa fa-edit"></i></a>
                                
-                              <a style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$item_id.'" title="Delete"><i class="material-icons">
+                              <a class="btn btn-link btn-danger btn-just-icon edit" style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$item_id.'" title="Delete"><i class="material-icons">
                               clear
                               </i></a>  
                               </td>
@@ -135,8 +316,8 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                                   </div>
                                   <div class="modal-footer">
                                       <div class="col-lg-12">
-                                          <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-                                          <button type="submit" class="btn btn-danger  float-right" name="delete_item" ><i class="fa fa-check"></i> Yes</button>
+                                          <button type="button" class="btn btn-secondary float-right" data-dismiss="modal"> No </button>
+                                          <button type="submit" class="btn btn-info  float-right" name="delete_item" > Yes</button>
                                       </div>
                                   </div>
                                 </form>
@@ -145,7 +326,7 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                       </div>
 
                        
-                      <div class="modal fade" id="Edit'.$item_id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="Edititem'.$item_id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                           <div class="modal-content">
                               <div class="modal-header">
@@ -180,7 +361,7 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                               <div class="modal-footer">
                                   <div class="col-lg-12">
                                       <button type="button" class="btn btn-secondary float-right" data-dismiss="modal"> Cancel </button>
-                                      <button type="submit" class="btn btn-primary float-right " name="edit_item" >Submit</button>
+                                      <button type="submit" class="btn btn-info float-right " name="edit_item" >Submit</button>
                                   </div>
                               </div>
                             </form>
@@ -216,7 +397,7 @@ $_SESSION['recommendation']=$_POST['recommendation'];
          
         </div>
         <br>
-        <button class="btn btn-primary float-right"  data-toggle="modal" data-target="#add-person-modal">Add Person</button>
+        <button class="btn btn-info float-right"  data-toggle="modal" data-target="#add-person-modal">Add Person</button>
       </div>
       <div class="card-body " style="padding:50px;">
 <div class="dataTable_wrapper">
@@ -257,9 +438,9 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                               <td>'.$involvement.'</td>
                               
                               <td style="width:100px;text-align:center">
-                              <a style="cursor:pointer" data-toggle="modal" data-target="#Edit'.$person_id.'" title="Edit"><i class="fa fa-edit"></i></a>
+                              <a class="btn btn-link btn-warning btn-just-icon edit" style="cursor:pointer" data-toggle="modal" data-target="#Editperson'.$person_id.'" title="Edit"><i class="fa fa-edit"></i></a>
                                
-                              <a style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$person_id.'" title="Delete"><i class="material-icons">
+                              <a class="btn btn-link btn-danger btn-just-icon edit" style="cursor:pointer" data-toggle="modal" data-target="#ModalDelete'.$person_id.'" title="Delete"><i class="material-icons">
                               clear
                               </i></a>   
                               </td>
@@ -286,8 +467,10 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                                   </div>
                                   <div class="modal-footer">
                                       <div class="col-lg-12">
-                                          <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-                                          <button type="submit" class="btn btn-danger float-right" name="delete_person" ><i class="fa fa-check"></i> Yes</button>
+                                      <button type="button" class="btn btn-secondary float-right" data-dismiss="modal"> No </button>
+                                          
+                                      <button type="submit" class="btn btn-info float-right" name="delete_person" > Yes</button>
+                                         
                                       </div>
                                   </div>
                                 </form>
@@ -302,7 +485,7 @@ $_SESSION['recommendation']=$_POST['recommendation'];
 
                       
                       
-                      <div class="modal fade" id="Edit'.$person_id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="Editperson'.$person_id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                           <div class="modal-content">
                               <div class="modal-header">
@@ -328,6 +511,7 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                                                 <span class="input-group-addon"><i class="material-icons">event_note</i></span>
                                                 <input type="text" class="form-control" placeholder="Affiliation"required oninvalid="" value="'.$affiliation.'" name="affiliation"/>
                                             </div>
+                                            
 
 
                                   </div>
@@ -335,7 +519,7 @@ $_SESSION['recommendation']=$_POST['recommendation'];
                               <div class="modal-footer">
                                   <div class="col-lg-12">
                                   <button type="button" class="btn btn-secondary float-right" data-dismiss="modal"> Cancel </button>
-                                  <button type="submit" class="btn btn-primary float-right " name="edit_person" >Submit</button>
+                                  <button type="submit" class="btn btn-info float-right " name="edit_person" >Submit</button>
                                   </div>
                               </div>
                             </form>
@@ -360,7 +544,7 @@ $_SESSION['recommendation']=$_POST['recommendation'];
 </div>
 
 <?php
-if(isset($_SESSION['marker_id'])){  
+if(isset($_SESSION['edit_marker'])){  
     $marker_id= $_SESSION['marker_id'];
     $lat=$_SESSION['lat'];
     $lng= $_SESSION['lng'];
@@ -373,7 +557,7 @@ if(isset($_SESSION['marker_id'])){
     $incident_status=$_SESSION['incident_status'];
     $reported_by=$_SESSION['reported_by'];
     $recommendation=$_SESSION['recommendation'];
-
+    unset($_SESSION['add_marker']);
     echo'
 
 <div class="col-md-12">
@@ -558,7 +742,7 @@ if(isset($_SESSION['marker_id'])){
       <button type="button" class="btn btn-secondary btn-cancel">
      Cancel
     </button>
-      <button type="submit" name="edit_form"class="btn btn-primary">
+      <button type="submit" name="edit_form"class="btn btn-info">
         Save
       </button>
      </div>    
@@ -580,6 +764,8 @@ if(isset($_SESSION['marker_id'])){
     ';
 } 
  
+
+
 ?>
 
 <!-- end row -->
@@ -650,8 +836,8 @@ if(isset($_SESSION['marker_id'])){
               </div>
           <div class="modal-footer">
             <div class="col-lg-12">
-                <button type="button" class="btn btn-primary float-right btn-add-person" id="add_person" name="add_person">
-                <i class="fa "></i> Save to database</button>
+                <button type="button" class="btn btn-info float-right btn-add-person" id="add_person" name="add_person">
+                <i class="fa "></i> Save person</button>
                 </form>
                
                   <button type="button" class="btn btn-secondary float-right btn-cancel-person" aria-label="Close" >
@@ -719,8 +905,8 @@ if(isset($_SESSION['marker_id'])){
               </div>
           <div class="modal-footer">
             <div class="col-lg-12">
-                <button type="submit" class="btn btn-primary float-right" id="add_item" name="add_item">
-                <i class="fa "></i> Save to database</button>
+                <button type="submit" class="btn btn-info float-right" id="add_item" name="add_item">
+                <i class="fa "></i> Save item</button>
                 </form>
                
                   <button type="button" class="btn btn-secondary float-right btn-cancel-item" aria-label="Close" >

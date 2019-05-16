@@ -435,9 +435,7 @@ function getPersons(){
 	
 		function getTotalUsers(){
 			//$result = pg_query_params(getConn(), 'select * from crime_db.item_involved where marker_id = $1', array($where));
-			$result = pg_query(getConn(), "
-			select count(school_id) as total_users from crime_db.accounts where role_id=1
-			");
+			$result = pg_query(getConn(), "select count(school_id) as total_users from crime_db.accounts where role_id=1");
 			// $a = trim('1'); 
 			// $query = "select * from crime_db.item_involved where marker_id = '" . "2" . "';"; 
 			// $result = pg_query(getConn(), $query); 
@@ -503,9 +501,38 @@ function getPersons(){
 	
 
 
+	function isIdDuplicate($id){
+					
+						$query = 'SELECT * FROM crime_db.emergency_report WHERE marker_id = \''.$id.'\' AND e_report_status = 3';
+						$result = pg_query(getConn(), $query);
+						if (pg_num_rows($result) == 0) {
+								pg_close($conn);
+								return false;
+						}
+						else{
+								pg_close($conn);
+								return true;
+						}
+				}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ###################CONTROLLER LOGIC########################## //
 
 
 
@@ -553,6 +580,259 @@ if (isset($_GET[md5("controller")])){
 		elseif($_GET[md5("controller")]===md5('edit_marker_support')){
 			session_start();
 			include('app/views/support/edit_marker_support.php');
+		
+
+			if(isset($_POST['add_item'])){
+				$marker_id = $_POST['item_id'];
+
+				$item_name = $_POST['item_name'];
+				$item_desc = $_POST['item_desc'];
+				$item_worth = $_POST['item_worth'];
+				$item_quantity = $_POST['item_quantity'];
+				
+				$item = array(
+					'marker_id'=> $marker_id,
+					'item_name'=>$item_name,
+					'item_description'=>$item_desc,
+					'quantity'=>$item_quantity,
+					'est_worth'=>$item_worth
+				);
+				insertItem($item);
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
+			}
+			
+			if (isset($_POST['add-form'])){
+		//		(int)$marker_id = (int)getMarkerId()[0][0]+1;
+				(int)$marker_id = $_POST['add_id'];
+				$time = strtotime($_POST['date']);
+
+				$newDate = date('Y-m-d',$time);
+			  //  $id = $_POST['id'];
+				$lat = $_POST['lat'];
+				$lng = $_POST['lng'];
+				$location = $_POST['location'];
+				
+				$date = $newDate;
+				$reported_by = $_POST['reported_by'];
+			//	(int)$classification = $_POST['classification'];
+				$class = $_POST['class']; 
+				$category = $_POST['category'];
+
+				$what_happened = $_POST['narrative'];
+				$action_taken = $_POST['action_taken'];
+				$incident_status = $_POST['incident_status'];
+				$recommendation = $_POST['recommendation'];
+			  $marker = array(
+							'marker_id'=>$marker_id,
+							'lat' => $lat,
+							'lng' => $lng,
+							'date' => $date,
+							'location_description'=>$location,
+							//'classification'=>$classification,
+							'category'=>$category,
+							'class'=>$class,
+							'reported_by'=>$reported_by
+				);
+
+				$narrative = array(
+					'marker_id'=>$marker_id,
+					'what_happened'=>$what_happened,
+					'action_taken'=>$action_taken,
+					'incident_status'=>$incident_status,
+					'recommendation'=>$recommendation
+				);
+
+				insertMarker($marker);
+
+				insertNarrative($narrative);
+				$where = array("e_report_id" => (int)$marker_id);
+				//deleteEmergency($where);
+			
+					var_dump($_POST); // this will show all posts received 
+			
+				echo '<script>console.log("add na oy");</script>';
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
+				 exit();
+			}
+
+			if(isset($_POST['add-person-form'])){
+				$marker_id = $_POST['person_id'];
+				$fullname = $_POST['fullname'];
+				$affiliation = $_POST['affiliation'];
+				(int)$involvement = $_POST['involvement'];
+
+				$person = array(
+					'marker_id'=>$marker_id,
+					'fullname'=>$fullname,
+					'affiliation'=>$affiliation,
+					'involvement'=>$involvement
+				);
+
+				insertPerson($person);
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
+			}
+
+			if(isset($_POST['delete_item'])){
+
+				$where = array("item_id" => $_POST['delete_id']);
+				//echo 
+				deleteItem($where);
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
+
+			}
+
+			if(isset($_POST['delete_person'])){
+
+				$where = array("persons_involved_id" => $_POST['delete_id']);
+				//echo 
+				deletePerson($where);
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
+				
+
+			}
+
+			if(isset($_POST['edit_item'])){
+
+						$item_name = $_POST['item_name'];
+						$item_desc = $_POST['item_desc'];
+						$quantity = $_POST['quantity'];
+						$est_worth=$_POST['est_worth'];
+
+						$marker = array(
+							'item_name' => $item_name,
+							'item_description' => $item_desc,
+							'quantity' => $quantity,
+							'est_worth'=>$est_worth
+				);
+
+					$where = array("item_id" => $_POST['edit_item_id']);
+					updateItem($marker,$where);
+					echo'<script> Swal.fire(
+            "Saved!",
+            "Changes have been saved",
+            "success"
+          ).then((result) => {
+							window.location.reload();
+						});
+						</script>';
+						exit();
+			}
+
+			if(isset($_POST['edit_person'])){
+
+				$fullname = $_POST['fullname'];
+				$affiliation = $_POST['affiliation'];
+				//(int)$involvement = $_POST['involvement'];
+
+				$person = array(
+					'fullname'=>$fullname,
+					'affiliation'=>$affiliation,
+				//	'involvement'=>$involvement
+				);
+		
+				print_r($_POST);	
+			$where = array("persons_involved_id" => $_POST['edit_person_id']);
+			updatePerson($person,$where);
+			echo'<script> Swal.fire(
+				"Saved!",
+				"Changes have been saved",
+				"success"
+			).then((result) => {
+					window.location.reload();
+				});
+				</script>';
+				exit();
+			}
+
+			if(isset($_POST['edit_form'])){
+				
+				$date1 = strtr($_POST['date'], '/', '-');
+	
+				$location = $_POST['location'];
+				$date= date('Y-m-d', strtotime($date1));
+				$category = $_POST['category'];
+				$class=$_POST['class'];
+				$reported_by=$_POST['reported_by'];
+
+				$indicent_narrative = $_POST['narrative'];
+				$action_taken = $_POST['action_taken'];
+
+				$reported_by = $_POST['reported_by'];
+				$incident_status =$_POST['incident_status'];
+				$recommendation=$_POST['recommendation'];
+
+			  	$marker = array(
+							'date' => $date,
+							'location_description'=>$location,
+						//	'classification_id'=>$classification,
+							'category'=>$category,
+							'class'=>$class,
+							'reported_by'=>$reported_by
+	 
+				);
+
+				$narrative = array(
+						'what_happened'=>$indicent_narrative,
+						'action_taken'=>$action_taken,
+						'incident_status'=>(int)$incident_status,	
+						'recommendation'=>$recommendation
+				);
+
+				$where = array("marker_id" => $_POST['edit_id']);
+				$narrative_id = array("narrative_id" => $_POST['edit_id']);
+				 updateMarker($marker,$where);
+
+				 updateNarrative($narrative,$narrative_id);
+				
+				 echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
+				 exit();
+			
+		}//end elseif for edit marker
+
+
+
 		}
 
 		
@@ -580,91 +860,7 @@ if (isset($_GET[md5("controller")])){
 			session_start();
 			include('app/views/support/add_marker_support.php');
 			$_SESSION['page']=md5('add_marker');	
-			if (isset($_POST['add-form'])){
-				(int)$marker_id = (int)getMarkerId()[0][0]+1;
-				//(int)$marker_id = $_POST['marker_id'];
-				$time = strtotime($_POST['date']);
-
-				$newDate = date('Y-m-d',$time);
-			  //  $id = $_POST['id'];
-				$lat = $_POST['lat'];
-				$lng = $_POST['lng'];
-				$location = $_POST['location'];
-				
-				$date = $newDate;
-				$reported_by = $_POST['reported_by'];
-		
-				$class = $_POST['class'];
-				$category = $_POST['category'];
-
-				$what_happened = $_POST['narrative'];
-				$action_taken = $_POST['action_taken'];
-				$incident_status = $_POST['incident_status'];
-			  $marker = array(
-							'marker_id'=>$marker_id,
-							'lat' => $lat,
-							'lng' => $lng,
-							'date' => $date,
-							'location_description'=>$location,
-							'category'=>$category,
-							'class'=>$class,
-							'reported_by'=>$reported_by
-				);
-
-				$narrative = array(
-					'narrative_id'=>$marker_id,
-					'marker_id'=>$marker_id,
-
-					'what_happened'=>$what_happened,
-					'action_taken'=>$action_taken,
-					'incident_status'=>$incident_status
-				);
-				
-				insertMarker($marker);
-
-				insertNarrative($narrative);
-				$where = array("e_report_id" => (int)$marker_id);
-				//deleteEmergency($where);
 			
-					var_dump($_POST); // this will show all posts received 
-			
-				echo '<script>console.log("add na oy");</script>';
-			}
-			if(isset($_POST['add-item-form'])){
-				$marker_id = (int)getMarkerId()[0][0];
-
-				$item_name = $_POST['item'];
-				$item_desc = $_POST['item_desc'];
-				$item_worth = $_POST['item_worth'];
-				$item_quantity = $_POST['item_quantity'];
-				
-				$item = array(
-					'marker_id'=> $marker_id,
-					'item_name'=>$item_name,
-					'item_description'=>$item_desc,
-					'quantity'=>$item_quantity,
-					'est_worth'=>$item_worth
-				);
-				insertItem($item);
-				echo '<script>console.log("add na oy");</script>';
-			}
-			
-			if(isset($_POST['add-person-form'])){
-				$marker_id = (int)getMarkerId()[0][0];
-				$fullname = $_POST['fullname'];
-				$affiliation = $_POST['affiliation'];
-				(int)$involvement = $_POST['involvement'];
-
-				$person = array(
-					'marker_id'=>$marker_id,
-					'fullname'=>$fullname,
-					'affiliation'=>$affiliation,
-					'involvement'=>$involvement
-				);
-
-				insertPerson($person);
-				echo '<script>console.log("add na oy");</script>';
-			}
 
 			if(isset($_POST['cancel-all'])){
 				$marker_id = (int)getMarkerId()[0][0];
@@ -734,7 +930,66 @@ if (isset($_GET[md5("controller")])){
 					</script>';
 			}
 			
+			if (isset($_POST['add-form'])){
+		//		(int)$marker_id = (int)getMarkerId()[0][0]+1;
+				(int)$marker_id = $_POST['add_id'];
+				$time = strtotime($_POST['date']);
 
+				$newDate = date('Y-m-d',$time);
+			  //  $id = $_POST['id'];
+				$lat = $_POST['lat'];
+				$lng = $_POST['lng'];
+				$location = $_POST['location'];
+				
+				$date = $newDate;
+				$reported_by = $_POST['reported_by'];
+			//	(int)$classification = $_POST['classification'];
+				$class = $_POST['class']; 
+				$category = $_POST['category'];
+
+				$what_happened = $_POST['narrative'];
+				$action_taken = $_POST['action_taken'];
+				$incident_status = $_POST['incident_status'];
+				$recommendation = $_POST['recommendation'];
+			  $marker = array(
+							'marker_id'=>$marker_id,
+							'lat' => $lat,
+							'lng' => $lng,
+							'date' => $date,
+							'location_description'=>$location,
+							//'classification'=>$classification,
+							'category'=>$category,
+							'class'=>$class,
+							'reported_by'=>$reported_by
+				);
+
+				$narrative = array(
+					'marker_id'=>$marker_id,
+					'what_happened'=>$what_happened,
+					'action_taken'=>$action_taken,
+					'incident_status'=>$incident_status,
+					'recommendation'=>$recommendation
+				);
+
+				insertMarker($marker);
+
+				insertNarrative($narrative);
+				$where = array("e_report_id" => (int)$marker_id);
+				//deleteEmergency($where);
+			
+					var_dump($_POST); // this will show all posts received 
+			
+				echo '<script>console.log("add na oy");</script>';
+				echo'<script> Swal.fire(
+					"Saved!",
+					"Changes have been saved",
+					"success"
+				).then((result) => {
+						window.location.reload();
+					});
+					</script>';
+				 exit();
+			}
 
 			if(isset($_POST['add-person-form'])){
 				$marker_id = $_POST['person_id'];
@@ -789,6 +1044,7 @@ if (isset($_GET[md5("controller")])){
 						window.location.reload();
 					});
 					</script>';
+				
 
 			}
 
@@ -816,6 +1072,7 @@ if (isset($_GET[md5("controller")])){
 							window.location.reload();
 						});
 						</script>';
+						exit();
 			}
 
 			if(isset($_POST['edit_person'])){
@@ -841,16 +1098,15 @@ if (isset($_GET[md5("controller")])){
 					window.location.reload();
 				});
 				</script>';
-
+				exit();
 			}
 
 			if(isset($_POST['edit_form'])){
 				
-
-				$newformat = date('Y-m-d',(int)$_POST['date']);
-
+				$date1 = strtr($_POST['date'], '/', '-');
+	
 				$location = $_POST['location'];
-				$date= $newformat;
+				$date= date('Y-m-d', strtotime($date1));
 				$category = $_POST['category'];
 				$class=$_POST['class'];
 				$reported_by=$_POST['reported_by'];
@@ -860,7 +1116,7 @@ if (isset($_GET[md5("controller")])){
 
 				$reported_by = $_POST['reported_by'];
 				$incident_status =$_POST['incident_status'];
-			
+				$recommendation=$_POST['recommendation'];
 
 			  	$marker = array(
 							'date' => $date,
@@ -875,7 +1131,8 @@ if (isset($_GET[md5("controller")])){
 				$narrative = array(
 						'what_happened'=>$indicent_narrative,
 						'action_taken'=>$action_taken,
-						'incident_status'=>(int)$incident_status
+						'incident_status'=>(int)$incident_status,	
+						'recommendation'=>$recommendation
 				);
 
 				$where = array("marker_id" => $_POST['edit_id']);
@@ -937,7 +1194,7 @@ if (isset($_GET[md5("controller")])){
 							});
 							</script>';
 					}
-				else if(isset($_POST['update_profile'])){
+				else if(isset($_POST['update_account'])){
 
 						$username = $_POST['username'];
 						$fullname = $_POST['fullname'];

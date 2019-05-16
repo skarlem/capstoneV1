@@ -6,7 +6,7 @@ include_once('add_marker_nav.php');
 
 ?>
       <div class="content">
-        <div class="container-fluid">
+        <div class="container-fluid"> 
           <div class="row">
             <div class="col-md-12">
               <div class="card ">
@@ -22,10 +22,10 @@ include_once('add_marker_nav.php');
                   </div>
 </center>
                 <form role="form" id="add-form" action="<?php echo "index.php?".md5("controller")."=".md5('edit_marker')?>"method="POST">
-                    <input type="hidden" name="marker_id" value="123123123">
+                    <input type="hidden" name="marker_id" value="888">
                     <input type="hidden" name="lat" id="lat"readonly>
                     <input type="hidden" name="lng" id="lng" readonly>
-
+                    <input type="hidden" name="add_marker" id="add_marker" value="add_marker" readonly>
                     <div class="row">
                       <label class="col-sm-1 col-form-label">Marker ID</label>
                       <div class="col-sm-10">
@@ -51,7 +51,6 @@ include_once('add_marker_nav.php');
                         </div>
                       </div>
                   </div> 
-
 
 
                                   
@@ -198,7 +197,7 @@ include_once('add_marker_nav.php');
                     </div>
                     
                     <div class="col-md-4 ml-auto mr-auto text-center">
-                    <button type="submit" name="add_form"class="btn btn-primary btn-round">
+                    <button type="submit" name="add_form"class="btn btn-info btn-round">
                       Continue Adding Details
                     </button>
                    </div>

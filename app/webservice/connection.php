@@ -1,10 +1,11 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-$host = "host=bigeye.msugensan.edu.ph";
-$port = "port=5440";
+
+$host = "host=localhost";
+$port = "port=5432";
 $dbname = "dbname=bantaymsu";
-$credentials = "user=bea password=bea";
+$credentials = "user=postgres password=12345";
 
 $conn = pg_connect( "$host $port $dbname $credentials" );
 

@@ -2,7 +2,7 @@
  
 
   <div class="wrapper ">
-    <div class="sidebar" data-color="azure" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="azure" data-background-color="white" data-image="">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -48,7 +48,7 @@
         <i class="material-icons">
 note_add
 </i>
-          <p>Add Markers</p>
+          <p>Add Incident Records</p>
         </a>
       </li>
      

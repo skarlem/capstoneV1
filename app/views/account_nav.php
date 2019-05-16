@@ -65,42 +65,7 @@
               require 'app/models/notif_model.php';
 
               ?>
-          <!-- dropdown for notification--> 
-          <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">notifications</i>
-                  
-                  <p class="d-lg-none d-md-block">
-                    Some Actions
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                 
-              <div class="dataTable_wrapper">
-                  <div class="table-responsive">
-                    <table class="table table-striped table-bordered nowrap" id="dataTables-example" style="width:100%">
-                      <thead class=" text-primary">
-                        <th>
-                          Notifications
-                        </th>
-                        <th>
-                          Action
-                        </th>
-                      </thead>
-                      <tbody>
-                        
-                    
-                      </tbody>
-                      
-                    </table>
-                  </div>
-                </div><!-- end div for table-->
-                  
-                </div>
-              </li>
-             <!-- /dropdown for noticification--> 
-
-
+       
              <!-- dropdown for settings--> 
              <li class="nav-item dropdown">
                 <a class="nav-link"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

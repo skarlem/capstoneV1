@@ -1,3 +1,5 @@
+
+
 <div class="wrapper ">
     <div class="sidebar" data-color="azure" data-background-color="azure" data-image="../assets/img/sidebar-1.jpg">
       <!--
@@ -30,15 +32,7 @@
           </li>
 
 
-          <li class="nav-item ">
-        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('add_marker_support')?>">
-        <i class="material-icons">
-note_add
-</i>
-          <p>Add Markers</p>
-        </a>
-      </li>
-          
+       
       <li class="nav-item  active">
         <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('emergency_support')?>">
         <i class="material-icons">
