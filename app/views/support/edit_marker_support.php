@@ -100,11 +100,14 @@ if(isset($_SESSION['marker_id'])){
       </div>
       <div class="card-body " style="padding:75px;">
 
-      <form role="form" id="edit-form" method="POST">
-      <img src="data:image/jpeg;base64,'.$picture.'">
-      <input type="hidden" name="marker_id" value="'.$marker_id.'">
+      <form role="form" id="add-form" name="add-form" method="POST">
+       <img src="data:image/jpeg;base64,'.$picture.'" alt=""style="display:none">
+     
+      <input type="hidden" name="marker_id" value="'.$marker_id.'" readonly>
       <input type="hidden" name="lat" value="'.$lat.'"id="lat"readonly>
       <input type="hidden" name="lng" value="'.$lng.'"id="lng" readonly>
+      
+             
     <img  src="'.$_SESSION['picture'].'"/>
       <div class="row">
         <label class="col-sm-1 col-form-label">Marker ID</label>
@@ -166,9 +169,7 @@ if(isset($_SESSION['marker_id'])){
     <label class="col-sm-3 col-form-label">Date</label>
       <div class="input-group form-control-lg">
           <div class="form-group bmd-form-group is-filled">
-             
-              <input type="text" class="form-control datetimepicker-input" value="'.$date.'" required oninvalid="" id="date"name="date" data-toggle="datetimepicker" data-target="#date"/>
-             
+          <input type="text" class="form-control" value="'.$date.'" required oninvalid="" id="date_supp" name="date_supp" readonly/>
           </div>
         </div>
       </div>
@@ -270,7 +271,7 @@ if(isset($_SESSION['marker_id'])){
       <button type="button" class="btn btn-secondary btn-cancel">
      Cancel
     </button>
-      <button type="button" name="edit_form"class="btn btn-primary btn-add">
+      <button type="submit" name="add_form"class="btn btn-info ">
         Save
       </button>
      </div>    

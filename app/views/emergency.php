@@ -133,8 +133,9 @@
                               </div>
                               <div class="modal-footer">
                                   <div class="col-lg-12">
-                                      <button type="button" class="btn btn-primary" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-                                      <button type="submit" class="btn btn-danger " name="delete_emergency" ><i class="fa fa-check"></i> Yes</button>
+                                  <button type="submit" class="btn btn-info " name="delete_emergency" > Yes</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal"> No</button>
+                                    
                                   </div>
                               </div>
                             </form>

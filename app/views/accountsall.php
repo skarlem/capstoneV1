@@ -31,6 +31,7 @@ include_once('accountsall_nav.php');
                           <th>
                             Fullname
                           </th>
+                          
                           <th>
                             User Role
                           </th>
@@ -48,13 +49,14 @@ include_once('accountsall_nav.php');
                             $email= $row['university_email'];
                             $contact = $row['contact_no'];
                             $profile_pic = $row['profile_pic'];
+                            $password= $row['password'];
                             $role = $row['role_desc'];
                             echo'
                             <tr style="text-align: center;">
                             <td>
                             '.$fullname.'
                             </td>
-                          
+                            
                             <td>
                               '.$role.'
                             </td>
@@ -83,9 +85,10 @@ include_once('accountsall_nav.php');
                                   </div>
                               </div>
                               <div class="modal-footer">
-                                  <div class="col-lg-12">
-                                      <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-                                      <button type="submit" class="btn btn-danger float-right" name="delete_account" ><i class="fa fa-check"></i> Yes</button>
+                                  <div class="col-lg-12"> 
+                                  <button type="submit" class="btn btn-info float-right" name="delete_account" > Yes</button>
+                                      <button type="button" class="btn btn-secondary float-right" data-dismiss="modal"> No </button>
+                                     
                                   </div>
                               </div>
                             </form>
@@ -138,13 +141,7 @@ include_once('accountsall_nav.php');
       <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
   </div>
 
-                <div class="form-group input-group">
-                        <select class="form-control selectpicker"data-dropup-auto="false" data-style="btn btn-link" id="role" name="role">
-                          <option >Select Role</option>
-                          <option value="0">Admin</option>
-                          <option value="2">Responder</option>
-                        </select>         
-                      </div>
+                
 </div>
 <!-- end rpw -->
         </div>
@@ -160,7 +157,10 @@ include_once('accountsall_nav.php');
           </div>
           
           <div class="col-md-4">
-            
+          <div class="form-group">
+          <label class="bmd-label-floating">Password</label>
+          <input type="text" name="password" class="form-control" value="'.$password.'">
+        </div>
           </div>
         </div>
         <div class="row">
@@ -192,8 +192,7 @@ include_once('accountsall_nav.php');
         </div>
         
         <button type="submit" class="btn btn-info pull-right" id="update_account" name="update_account">Save</button>
-        <button type="button" class="btn btn-secondary float-right btn-cancel" data-dismiss="modal"aria-label="Close" >
-        <i class="fa "></i> Cancel</button>
+        <button type="button" class="btn btn-secondary float-right btn-cancel" data-dismiss="modal"aria-label="Close" >Close</button>
         <div class="clearfix"></div>
       </form>
     </div>

@@ -21,7 +21,7 @@ function loginAdmin($user, $password) {
                     echo $row['username'];
                     exit();
                 }
-                elseif($row['role_id']==='1'){
+                elseif($row['role_id']==='2'){
                     echo("<script>location.href = 'index.php?$cont=$dsh_supp';</script>");
                 }  
             } //end inner if

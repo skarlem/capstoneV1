@@ -31,7 +31,7 @@ include_once('dashboard_nav.php');
             
   <br><br>
               
-                <input type="text" required oninvalid=""
+                <input type="hidden" required oninvalid=""
                 id="date1"name="date1" readonly/>
                 <script>
                  var today1 = new Date();
@@ -54,7 +54,7 @@ include_once('dashboard_nav.php');
               <div class="input-group">
                 
                
-                  <input type="text" id="date2"name="date2" readonly />
+                  <input type="hidden" id="date2"name="date2" readonly />
                 
                 <script>
                 var today1 = new Date().toLocaleDateString(undefined, {

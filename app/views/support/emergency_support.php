@@ -147,9 +147,9 @@
                                   </div>
                               </div>
                               <div class="modal-footer">
-                                  <div class="col-lg-12">
-                                      <button type="button" class="btn btn-primary float-right" data-dismiss="modal"> No <i class="fa fa-refresh"></i></button>
-                                      <button type="submit" class="btn btn-danger float-right " name="delete_emergency" ><i class="fa fa-check"></i> Yes</button>
+                                  <div class="col-lg-12"><button type="submit" class="btn btn-info float-right " name="delete_emergency" >Yes</button>
+                                      <button type="button" class="btn btn-secondary float-right" data-dismiss="modal"> No </button>
+                                      
                                   </div>
                               </div>
                             </form>

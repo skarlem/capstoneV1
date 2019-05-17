@@ -22,7 +22,21 @@ include_once('add_marker_nav.php');
                   </div>
 </center>
                 <form role="form" id="add-form" action="<?php echo "index.php?".md5("controller")."=".md5('edit_marker')?>"method="POST">
-                    <input type="hidden" name="marker_id" value="888">
+                       <?php 
+                       $id='';
+                           $marker_id=generateEmergencyId();
+                         while(true){
+                           if(isIdDuplicate($marker_id)){
+                            continue;
+                           }
+                           else{
+                            $id= $marker_id;
+                            break;
+                           }
+                             
+                          }
+                          ?>
+                    <input type="hidden" name="marker_id" value="<?php echo $id; ?>">
                     <input type="hidden" name="lat" id="lat"readonly>
                     <input type="hidden" name="lng" id="lng" readonly>
                     <input type="hidden" name="add_marker" id="add_marker" value="add_marker" readonly>
@@ -30,7 +44,8 @@ include_once('add_marker_nav.php');
                       <label class="col-sm-1 col-form-label">Marker ID</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input type="text" class="form-control" value="2019-ABC12" disabled>
+                          <input type="text" name="marker_id"class="form-control" value="<?php  echo $id; ?>" 
+                          disabled>
                         </div>
                       </div>
                     </div>

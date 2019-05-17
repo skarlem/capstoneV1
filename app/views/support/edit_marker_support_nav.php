@@ -18,7 +18,7 @@
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item ">
-        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('dashboard')?>">
+        <a class="nav-link" href="<?php echo "index.php?".md5("controller")."=".md5('dashboard_support')?>">
           <i class="material-icons">dashboard</i>
           <p>Dashboard</p>
         </a>
@@ -67,7 +67,7 @@ border_color
   <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
     <div class="container-fluid">
       <div class="navbar-wrapper">
-        <a class="navbar-brand" href="">Edit Marker</a>
+        <a class="navbar-brand" href="">Edit Incident Record</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>

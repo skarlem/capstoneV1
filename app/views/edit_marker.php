@@ -76,9 +76,9 @@ if(isset($_SESSION['add_marker'])){
 
     <form role="form" id="add-form" method="POST">
 
-    <input type="text" name="marker_id" value="'.$marker_id.'">
-    <input type="text" name="lat" value="'.$lat.'"id="lat"readonly>
-    <input type="text" name="lng" value="'.$lng.'"id="lng" readonly>
+    <input type="hidden" name="marker_id" value="'.$marker_id.'">
+    <input type="hidden" name="lat" value="'.$lat.'"id="lat"readonly>
+    <input type="hidden" name="lng" value="'.$lng.'"id="lng" readonly>
 
     <div class="row">
       <label class="col-sm-1 col-form-label">Marker ID</label>
@@ -97,7 +97,7 @@ if(isset($_SESSION['add_marker'])){
       <div class="btn-group col-sm-4">
       <label class="col-sm-3 col-form-label">Class</label>
         <div class="form-group input-group">
-        <input type="text" class="form-control" id="class" name="class"value="'.$class.'" disabled>
+        <input type="text" class="form-control" id="class" name="class"value="'.$class.'"  disabled>
 
         </div>
       </div>
@@ -110,7 +110,7 @@ if(isset($_SESSION['add_marker'])){
   <div class="btn-group col-sm-4">
   <label class="col-sm-3 col-form-label">Category</label>
     <div class="form-group input-group">
-    <input type="text" class="form-control" id="class" name="class"value="'.$category.'"  id="category" name="category" disabled>
+    <input type="text" class="form-control" id="category" name="category"value="'.$category.'"  id="category" name="category" disabled>
        
       </div>
     </div>
@@ -192,13 +192,11 @@ if(isset($_SESSION['add_marker'])){
   </div>
 
                         
-<div class="row">
-<div class="btn-group col-sm-4">
-  <label class="col-sm-3 col-form-label">Incident Status</label>
-    <div class="form-group input-group">
-    <input type="text" value="'.$incident_status.'" id="incident_status" name="incident_status"readonly/>
 
-    </div>
+    <div class="form-group input-group">
+    <input type="hidden" value="'.$incident_status.'" id="incident_status" name="incident_status"readonly/>
+
+   
 </div>
   
  
@@ -210,7 +208,7 @@ if(isset($_SESSION['add_marker'])){
         </div>
       </div>
     </div> 
-    <input type="text" class="form-control" id="add_id" name="add_id" value="'. $_SESSION['marker_id'].'" readonly>
+    <input type="hidden" class="form-control" id="add_id" name="add_id" value="'. $_SESSION['marker_id'].'" readonly>
      
     <div class="col-md-4 ml-auto mr-auto text-center">
     <button type="button" class="btn btn-secondary btn-cancel">
@@ -239,7 +237,7 @@ if(isset($_SESSION['add_marker'])){
     ?>        
 <div class="col-md-12">
     <div class="card ">
-      <div class="card-header card-info-info card-header-text">
+    <div class="card-header card-header-info card-header-text">
         <div class="card-text">
           <h4 class="card-title">Items Involved</h4>
          
@@ -553,18 +551,20 @@ if(isset($_SESSION['edit_marker'])){
     $category=$_SESSION['category'];
     $class=$_SESSION['class'];
     $narrative=$_SESSION['narrative'];
+    $narrative_id=$_SESSION['narrative_id'];
     $action_taken=$_SESSION['action_taken'];
     $incident_status=$_SESSION['incident_status'];
     $reported_by=$_SESSION['reported_by'];
     $recommendation=$_SESSION['recommendation'];
     unset($_SESSION['add_marker']);
+    
     echo'
 
 <div class="col-md-12">
     <div class="card" >
-      <div class="card-header card-header-info card-header-text">
-        <div class="card-text">
-          <h4 class="card-title">Incident Details</h4>
+    <div class="card-header card-header-info card-header-text">
+    <div class="card-text">
+      <h4 class="card-title">Incident Details</h4>
           <span class="badge badge-neutral">Edit Marker: '.$_SESSION['marker_id'].'</span>
 
         </div>
@@ -590,46 +590,9 @@ if(isset($_SESSION['edit_marker'])){
 
 
 
-      <div class="row"> 
-        <div class="btn-group col-sm-4">
-        <label class="col-sm-3 col-form-label">Class</label>
-          <div class="form-group input-group">
-            <select class="form-control selectpicker"data-dropup-auto="false" value="'.$class.'"data-style="btn btn-link" id="class" name="class">
-              <option >Select</option>
-              <option value="1">Emergency</option>
-              <option value="2">Non-Emergency</option>
-            </select>         
-          </div>
-        </div>
-    </div> 
 
 
-
-                    
-  <div class="row">
-    <div class="btn-group col-sm-4">
-    <label class="col-sm-3 col-form-label">Category</label>
-      <div class="form-group input-group">
-        <select class="form-control selectpicker " data-dropup-auto="false" value="'.$category.'"data-style="btn btn-link" id="category" name="category">
-              <option >Select</option>
-              <option value="1">Disorder</option>
-              <option value="2">Drugs</option>
-              <option value="3">Death</option>
-              <option value="4">Assault</option>
-            
-              <option value="5">Rape</option>
-              <option value="6">Lasciviousness</option>
-              <option value="7">Robbery</option>
-              <option value="8">Theft</option>
-              <option value="9">Breaking and Entering</option>
-              <option value="10">Emergency (Disasters)</option>
-              <option value="11">Fire</option>
-              <option value="12">Vehicular Accidents</option>
-              <option value="13">Animal Bite</option>
-            </select>         
-        </div>
-      </div>
-    </div>
+           
 
 
     <div class="row">
@@ -736,7 +699,9 @@ if(isset($_SESSION['edit_marker'])){
           </div>
         </div>
       </div> 
-      <input type="hidden" class="form-control" id="edit_id" name="edit_id" value="'. $_SESSION['marker_id'].'" readonly>
+      <input type="text" class="form-control" id="marker_id" name="marker_id" value="'. $marker_id.'" readonly>
+       
+      <input type="hidden" class="form-control" id="edit_id" name="edit_id" value="'. $_SESSION['narrative_id'].'" readonly>
        
       <div class="col-md-4 ml-auto mr-auto text-center">
       <button type="button" class="btn btn-secondary btn-cancel">
@@ -836,11 +801,11 @@ if(isset($_SESSION['edit_marker'])){
               </div>
           <div class="modal-footer">
             <div class="col-lg-12">
-                <button type="button" class="btn btn-info float-right btn-add-person" id="add_person" name="add_person">
+                <button type="submit" class="btn btn-info float-right" id="add_person" name="add_person">
                 <i class="fa "></i> Save person</button>
                 </form>
                
-                  <button type="button" class="btn btn-secondary float-right btn-cancel-person" aria-label="Close" >
+                  <button type="button" class="btn btn-secondary float-right" data-dismiss="modal" aria-label="Close" >
                   <i class="fa "></i> Close</button>
                 
             </div>

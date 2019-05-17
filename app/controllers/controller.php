@@ -4,10 +4,10 @@
 
 
 function getConn(){
-$host = "host=localhost";
+$host = "host=3.1.247.137";
 $port = "port=5432";
-$dbname = "dbname=bantaymsu";
-$credentials = "user=postgres password=12345";
+$dbname = "dbname=bantaymsu1";
+$credentials = "user=beabaebay password=beabaebay";
 
 $db = pg_connect( "$host $port $dbname $credentials" );
 	
@@ -503,16 +503,27 @@ function getPersons(){
 
 	function isIdDuplicate($id){
 					
-						$query = 'SELECT * FROM crime_db.emergency_report WHERE marker_id = \''.$id.'\' AND e_report_status = 3';
+						$query = 'SELECT * FROM crime_db.incident_records WHERE marker_id = \''.$id.'\'';
 						$result = pg_query(getConn(), $query);
 						if (pg_num_rows($result) == 0) {
-								pg_close($conn);
+								pg_close(getConn());
 								return false;
 						}
 						else{
-								pg_close($conn);
+								pg_close(getConn());
 								return true;
 						}
+				}
+
+
+				function generateEmergencyId(){
+					$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+						$charactersLength = strlen($characters);
+						$randomString = '';
+						for ($i = 0; $i < 5; $i++) {
+								$randomString .= $characters[rand(0, $charactersLength - 1)];
+						}
+						return date("Y")."-".$randomString;
 				}
 
 
@@ -608,18 +619,19 @@ if (isset($_GET[md5("controller")])){
 					</script>';
 			}
 			
-			if (isset($_POST['add-form'])){
+			if (isset($_POST['add_form'])){
 		//		(int)$marker_id = (int)getMarkerId()[0][0]+1;
-				(int)$marker_id = $_POST['add_id'];
-				$time = strtotime($_POST['date']);
+				$marker_id = $_POST['marker_id'];
 
-				$newDate = date('Y-m-d',$time);
+$date1 = strtr($_POST['date_supp'], '/', '-');
+	$date2= date('Y-m-d', strtotime($date1));
 			  //  $id = $_POST['id'];
 				$lat = $_POST['lat'];
 				$lng = $_POST['lng'];
 				$location = $_POST['location'];
 				
-				$date = $newDate;
+				$date =$date2;
+				echo $date;
 				$reported_by = $_POST['reported_by'];
 			//	(int)$classification = $_POST['classification'];
 				$class = $_POST['class']; 
@@ -788,7 +800,7 @@ if (isset($_GET[md5("controller")])){
 				$category = $_POST['category'];
 				$class=$_POST['class'];
 				$reported_by=$_POST['reported_by'];
-
+				echo $location;
 				$indicent_narrative = $_POST['narrative'];
 				$action_taken = $_POST['action_taken'];
 
@@ -813,7 +825,8 @@ if (isset($_GET[md5("controller")])){
 						'recommendation'=>$recommendation
 				);
 
-				$where = array("marker_id" => $_POST['edit_id']);
+				$where = array("marker_id" => $_POST['marker_id']);
+				echo $where;
 				$narrative_id = array("narrative_id" => $_POST['edit_id']);
 				 updateMarker($marker,$where);
 
@@ -989,6 +1002,7 @@ if (isset($_GET[md5("controller")])){
 					});
 					</script>';
 				 exit();
+				 
 			}
 
 			if(isset($_POST['add-person-form'])){
@@ -1013,6 +1027,7 @@ if (isset($_GET[md5("controller")])){
 						window.location.reload();
 					});
 					</script>';
+					exit();
 			}
 
 			if(isset($_POST['delete_item'])){
@@ -1028,7 +1043,7 @@ if (isset($_GET[md5("controller")])){
 						window.location.reload();
 					});
 					</script>';
-
+					exit();
 			}
 
 			if(isset($_POST['delete_person'])){
@@ -1044,7 +1059,7 @@ if (isset($_GET[md5("controller")])){
 						window.location.reload();
 					});
 					</script>';
-				
+				exit();
 
 			}
 
@@ -1107,8 +1122,7 @@ if (isset($_GET[md5("controller")])){
 	
 				$location = $_POST['location'];
 				$date= date('Y-m-d', strtotime($date1));
-				$category = $_POST['category'];
-				$class=$_POST['class'];
+				
 				$reported_by=$_POST['reported_by'];
 
 				$indicent_narrative = $_POST['narrative'];
@@ -1122,11 +1136,11 @@ if (isset($_GET[md5("controller")])){
 							'date' => $date,
 							'location_description'=>$location,
 						//	'classification_id'=>$classification,
-							'category'=>$category,
-							'class'=>$class,
+							
 							'reported_by'=>$reported_by
 	 
 				);
+
 
 				$narrative = array(
 						'what_happened'=>$indicent_narrative,
@@ -1134,8 +1148,9 @@ if (isset($_GET[md5("controller")])){
 						'incident_status'=>(int)$incident_status,	
 						'recommendation'=>$recommendation
 				);
-
-				$where = array("marker_id" => $_POST['edit_id']);
+				$action = "index.php?".md5("controller")."=".md5("table");
+				echo $action;
+				$where = array("marker_id" => $_POST['marker_id']);
 				$narrative_id = array("narrative_id" => $_POST['edit_id']);
 				 updateMarker($marker,$where);
 
@@ -1146,7 +1161,7 @@ if (isset($_GET[md5("controller")])){
 					"Changes have been saved",
 					"success"
 				).then((result) => {
-						window.location.reload();
+						window.location.replace("index.php?594c103f2c6e04c3d8ab059f031e0c1a=aab9e1de16f38176f86d7a92ba337a8d");
 					});
 					</script>';
 				 exit();
@@ -1201,13 +1216,14 @@ if (isset($_GET[md5("controller")])){
 						$contact = $_POST['contact'];
 						$email = $_POST['email'];
 						$password =$_POST['password'];
-
+					
 						$marker = array(
 							'username' => $username,
 							'fullname' => $fullname,
 							'contact_no' => $contact,
 							'university_email'=>$email,
-							'password'=>$password
+							'password'=>$password,
+						
 				);
 
 				$where = array("school_id" => $_POST['update_id']);
