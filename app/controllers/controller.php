@@ -959,7 +959,7 @@ $date1 = strtr($_POST['date_supp'], '/', '-');
 			//	(int)$classification = $_POST['classification'];
 				$class = $_POST['class']; 
 				$category = $_POST['category'];
-
+echo $category;
 				$what_happened = $_POST['narrative'];
 				$action_taken = $_POST['action_taken'];
 				$incident_status = $_POST['incident_status'];

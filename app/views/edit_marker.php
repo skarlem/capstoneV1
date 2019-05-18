@@ -79,6 +79,8 @@ if(isset($_SESSION['add_marker'])){
     <input type="hidden" name="marker_id" value="'.$marker_id.'">
     <input type="hidden" name="lat" value="'.$lat.'"id="lat"readonly>
     <input type="hidden" name="lng" value="'.$lng.'"id="lng" readonly>
+    <input type="hidden" name="category" value="'.$category.'"id="category"readonly>
+    <input type="hidden" name="class" value="'.$class.'"id="class" readonly>
 
     <div class="row">
       <label class="col-sm-1 col-form-label">Marker ID</label>
@@ -97,7 +99,7 @@ if(isset($_SESSION['add_marker'])){
       <div class="btn-group col-sm-4">
       <label class="col-sm-3 col-form-label">Class</label>
         <div class="form-group input-group">
-        <input type="text" class="form-control" id="class" name="class"value="'.$class.'"  disabled>
+        <input type="text" class="form-control" value="'.$class.'"  disabled>
 
         </div>
       </div>
@@ -110,7 +112,7 @@ if(isset($_SESSION['add_marker'])){
   <div class="btn-group col-sm-4">
   <label class="col-sm-3 col-form-label">Category</label>
     <div class="form-group input-group">
-    <input type="text" class="form-control" id="category" name="category"value="'.$category.'"  id="category" name="category" disabled>
+    <input type="text" class="form-control" value="'.$category.'" disabled>
        
       </div>
     </div>
